@@ -1,0 +1,7 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {0.1}Introduzione}{4}{section.0.1}%
+\contentsline {section}{\numberline {0.2}Elettrostatica nel vuoto (in assenza di materia dielettrica)}{5}{section.0.2}%
+\contentsline {subsection}{\numberline {0.2.1}Interazione (forze) di Coulomb}{5}{subsection.0.2.1}%
+\contentsline {subsection}{\numberline {0.2.2}Campo elettrostatico}{7}{subsection.0.2.2}%
+\contentsline {subsection}{\numberline {0.2.3}Energia elettrostatica}{7}{subsection.0.2.3}%

@@ -1,0 +1,9 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {0.1}Numeri complessi}{4}{section.0.1}%
+\contentsline {subsection}{\numberline {0.1.1}Formula di Eulero}{4}{subsection.0.1.1}%
+\contentsline {paragraph}{Forma esponenziale}{4}{section*.2}%
+\contentsline {subsection}{\numberline {0.1.2}Operazioni con i numero complessi}{6}{subsection.0.1.2}%
+\contentsline {paragraph}{Radici complesse}{9}{section*.3}%
+\contentsline {paragraph}{Funzioni di variabile complessa}{9}{section*.4}%
+\contentsline {subsection}{\numberline {0.1.3}Teorema fondamentale dell'algebra}{10}{subsection.0.1.3}%

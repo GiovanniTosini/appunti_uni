@@ -1,0 +1,18 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {0.1}Monitor}{4}{section.0.1}%
+\contentsline {subsection}{\numberline {0.1.1}Problematiche}{4}{subsection.0.1.1}%
+\contentsline {section}{\numberline {0.2}Deadlock}{5}{section.0.2}%
+\contentsline {paragraph}{Modello astratto RAG (Resource Allocation Graph)}{5}{section*.2}%
+\contentsline {subsection}{\numberline {0.2.1}Gestione Deadlock}{5}{subsection.0.2.1}%
+\contentsline {section}{\numberline {0.3}Gestione della memoria}{11}{section.0.3}%
+\contentsline {paragraph}{Come avviene il passaggio da programma a processo?}{11}{section*.3}%
+\contentsline {paragraph}{Chi compie questa trasformazione?}{11}{section*.4}%
+\contentsline {subsection}{\numberline {0.3.1}Tempi di compilazione}{12}{subsection.0.3.1}%
+\contentsline {subsection}{\numberline {0.3.2}Linking}{13}{subsection.0.3.2}%
+\contentsline {subsection}{\numberline {0.3.3}Loading}{13}{subsection.0.3.3}%
+\contentsline {subsection}{\numberline {0.3.4}Spazio di indirizzamento logico}{14}{subsection.0.3.4}%
+\contentsline {section}{\numberline {0.4}Schemi di gestione della memoria}{14}{section.0.4}%
+\contentsline {subsection}{\numberline {0.4.1}Allocazione contigua}{14}{subsection.0.4.1}%
+\contentsline {subsubsection}{Partizioni fisse}{14}{section*.5}%
+\contentsline {subsubsection}{Partizioni variabili}{15}{section*.6}%
