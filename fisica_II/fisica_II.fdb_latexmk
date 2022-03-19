@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1647279882 "/home/poppo/Università/appunti_miei/fisica_II/fisica_II.tex" "fisica_II.pdf" "fisica_II" 1647279884
-  "/home/poppo/Università/appunti_miei/fisica_II/fisica_II.tex" 1647279881 6679 3b9984b7c72e9989275a43b9addd9225 ""
+["pdflatex"] 1647687447 "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" "fisica_II.pdf" "fisica_II" 1647687447
+  "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" 1647687445 7289 25c9818e8b4bcdaa570fc90c4a0426f0 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -156,10 +156,9 @@
   "coulomb_2.png" 1647275719 22550 b0c8b629f4b3fa82453a833933e837ce ""
   "coulomb_3.png" 1647276232 21741 a05ca8cf898944467d3d6e1d824a321f ""
   "energia_elettrostatica_1.jpg" 1647278810 27708 ad797357f983d2872465bf55513be921 ""
-  "fisica_II.aux" 1647279883 1467 a825d68f5a4c07e49b2e60c7a881aaaf "pdflatex"
-  "fisica_II.out" 1647279883 1041 d55c73ca82855155da7d5cea6d52f64f "pdflatex"
-  "fisica_II.tex" 1647279881 6679 3b9984b7c72e9989275a43b9addd9225 ""
-  "fisica_II.toc" 1647279883 534 e69d5f49f3dc64c6ced96b99565c6a5e "pdflatex"
+  "fisica_II.aux" 1647687447 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "fisica_II.out" 0 -1 0 "pdflatex"
+  "fisica_II.tex" 1647687445 7289 25c9818e8b4bcdaa570fc90c4a0426f0 ""
   "induzione_elettrostatica.jpg" 1647262438 25977 c0b9043aa8101bdf087a602901cf651e ""
   (generated)
   "fisica_II.aux"

@@ -6,6 +6,8 @@
 %\usepackage[export]{adjustbox}
 \usepackage{hyperref}
 \usepackage{bohr}
+\usepackage{amsmath}
+\usepackage{amsfonts}
 \hypersetup{linktoc=all}
 
 \begin{document}
@@ -22,8 +24,8 @@
 
 Esistono due tipi di forze in assoluto:
 \begin{itemize}
-    \item forze attrattive
-    \item forze repulsive
+    \item  attrattive
+    \item repulsive
 \end{itemize}
 Queste forze si possono vedere anche nelle singole cariche elettriche, quelle con identica carica
 si respingeranno, mentre quelle con carica opposta si attrarranno.
@@ -37,11 +39,11 @@ Esistono tre modalità per caricare un oggetto:
 Da notare che la carica non dipende dal meccanismo con cui viene creata, ma dai costituenti
 della materia.
 \begin{center}
-    \bohr{10}{A}
-    \setbohr{nucleus-radius=1.5em}    
+    \textbf{\textbf{\bohr{10}{A}
+    \setbohr{nucleus-radius=1.5em}}}    
 \end{center}
 Un atomo è composto da: protoni, neutroni ed elettroni. La differenza di dimensioni tra un protone
-e un elettrono è di parecchi ordini di grandezza. La carica elettrica di un elettrone viene 
+e un elettrone è di parecchi ordini di grandezza. La carica elettrica di un elettrone viene 
 denominata "carica elementare", è tale perché si dice "quantizzata" essendo che si possono trovare solo
 cariche multiple di essa. Inoltre il modulo della carica di un elettrone è equivalente alla carica di
  un protone, sebbene siano due particelle differenti.
@@ -152,7 +154,7 @@ dove
     \item $\vec{F}_{tot} = q_0\sum \vec{E}_i$
 \end{itemize}
 
-Ogni carica genera un campo, ma un campo esiste anche in assenza di particelle
+Ogni carica genera un campo.
 \begin{quote}
     \begin{math}
         \vec{E}(\vec{r}) = \frac{q}{4\pi\epsilon_0r^2}\hat{r}
@@ -201,7 +203,171 @@ L'unità di misura dell'energia potenziale è il Joule [J]
 \newline $U_\infty = 0$ perché non ci sono cariche
 \newline $U = \frac{qQ}{4\pi\epsilon_0r} = -(U_\infty-U_r) = -\Delta U$
 
+\section{Campo potenziale elettrostatico}
 
+\begin{description}
+    \item[N.B.:] le cariche sono statiche
+    \item[Definizione:] $\Delta_{AB}V=\frac{\Delta U_{AB}}{q}$ 
+\end{description}
 
+Il lavoro del campo, lavoro del potenziale:
+\begin{center}
+    \item $L=-q\Delta V$
+\end{center}
+
+L'unità di misura del potenziale è il Volt [V].
+Quindi
+
+\begin{center}
+
+    $\Delta U_{energia} = -\int_A^B \vec{F}\vec{dl} \Rightarrow 
+\Delta V=V_B-V_A=-\int_A^B\vec{E}\vec{dl}$
+
+\end{center}
+Formula per il calcolo del potenziale:
+\[
+\begin{cases}
+V(r_0) = V_0 = 0 & \mbox{solo in alcuni casi} \\
+V(r) = -\int_{r_0}^{r} \vec{E} \vec{dl} \\
+\end{cases}
+\]
+
+Che cammino scelgo per calcolare $E$? Quello più comodo. Ogni carica genera potenziale e un proprio campo.
+
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{gr_part.png}
+\end{center}      
+
+\[
+\begin{split}
+	\vec{E} (r) &= \frac{q}{4\pi \epsilon_0 r^2} \hat{r} \\
+	&V(r) - V_0 = -\int_{r_0}^{r} \underbrace{\frac{q}{4\pi \epsilon_0 r^2} }_{\vec{E}(r)} \overbrace{\hat{r} \vec{dl}}^{dr} \\
+	&-\frac{q}{4\pi \epsilon_0} \int_{r_0}^{r} \overbrace{\frac{1}{r^2}dr}^{=-\frac{1}{r}} \\
+	&\frac{q}{4\pi \epsilon_0}[\frac{1}{r} - \frac{1}{r_0}] \\
+\end{split}  
+\]      
+
+Posso porre $V_0 = 0$ con 
+
+\[
+\begin{split}
+r_0 &= \infty \\
+&V(r) - \underbrace{V_{\infty}}_0 = -\int{\infty}{r} \frac{q}{4\pi \epsilon_0 r^2} = \frac{q}{\pi \epsilon_0 r} \\
+&V(r)_q = \underbrace{\frac{q}{4\pi \epsilon_0 r}}_{formula effettiva} [v] con V_{\infty} = 0 \\
+\end{split}
+\]
+
+$V_{\infty} = 0$ è possibile solo se a $\infty$ non ci sono cariche, ciò è possibile solamente in un sistema finito.  
+
+\paragraph{Cosa succede con N cariche discrete?}
+
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{discrete.png}
+\end{center} 
+
+\[
+\begin{split}
+\vec{E_i}(r) &= \frac{q_i}{4\pi \epsilon_0(r - r_i)^2} \hat{r - r_i} \\
+&E_{TOT} = \sum E_i \\
+\end{split}
+\]
+
+Per il principio di sovrapposizione si possono sommare i campi.
+
+\[
+V_{TOT}(r) = \sum_i \frac{q_i}{4\pi \epsilon_0 |r - r_i|}
+\]
+
+In una distribuzione continua \[\sum \rightarrow \int\] quindi:
+\begin{center}
+	\[V(r) = \frac{1}{4\pi \epsilon_0} \int\frac{dq}{r-r'}\]
+\end{center}
+
+Che può essere calcolato sullo spazio, il volume o linearmente.
+
+\subsection{Linee di campo}
+
+Sono linee tangenti al campo in ogni punto, continue ed escono dalle cariche positive mentre entrano da quelle negative.
+
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{left.png}
+	\includegraphics[width=0.5\textwidth]{right.png}
+\end{center}
+
+\section{Superfici equipotenziali(superfici in cui V è costante)}
+	
+\begin{center}
+	\includegraphics[width=1\textwidth]{equi.jpg}
+\end{center}
+
+La carica che genere il campo è circondata da sfere equipotenziali, la carica positiva si sposterebbe fino a \[\infty\] mentre la carica negativa verrebbe attratta fino a scontrarsi con quella che genera il campo.
+
+\[\vec{E}(r) = \frac{\vec{F}}{q} = \frac{Q}{4\pi \epsilon_0 r^2}\hat{r}\]
+
+Si calcoli il lavoro
+
+\[dL = -qdV\] se \[dV = 0\] allora \[dL\] è nullo, implica che la forza generata è perpendicolare alla superficie equipotenziale.
+
+\begin{description}
+	\item[N.B.:] il lavoro è negativo quando ci si sposta nella direzione opposta alla forza
+\end{description}
+
+Una particella lasciata libera e non fissa nello spazio avrebbe sempre lavoro positivo perché seguirebbe la forza a cui è sottoposta senza farne resistenza.
+
+\begin{description}
+	\item[Campo elettrostatico] è conservativo, ovvero esiste una \[V\] t.c. il \[L_q = -\Delta V\]
+\end{description}
+
+Il lavoro svolto in un percorso chiuso sarà sempre equivalente a zero, la \textbf{Prima equazione di Maxwell} afferma che:
+\begin{itemize}
+	\item \[\oint_{\gamma} \vec{E}\vec{dl} = 0 \]
+\end{itemize}
+
+\paragraph{Teorema di Gauss}
+
+Viene usato per calcolare \[\vec{E}(r)\]. Prendiamo una carica puntiforme $q$. Il campo è costante mantenendo fissa una certa distanza, di conseguenza moltiplicando $\vec{E}\text{ per la superficie della sfera}$ si otterrà una costante.
+
+\begin{description}
+	\item[N.B.:] un angolo solido è \[d\Omega = \frac{dS_{sferica}}{r^2} = \frac{\hat{r}\hat{n}dS}{r^2}\]
+\end{description}
+
+\paragraph{Flusso del campo $\vec{E}$}
+
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{flusso.png}
+\end{center}
+\begin{description}
+	\item[Flusso elementare] $d\Phi = \vec{E}\vec{dS}$
+\end{description}
+Dove $\vec{dS} = dS\hat{n}$, il flusso attraverso una superficie equivale a \[\Phi(E) = \int_{sup} \vec{E}\overbrace{\hat{n}dS}^{\vec{dS}}\] che ha come unità di misura \[[\Phi] = [E][superficie] = \frac{V}{m}m^2 = Vm\]
+Avremo inoltre che il flusso sarà:
+\begin{itemize}
+	\item $> 0$ quando il flusso sarà orientato con la normale di $\hat{n}$
+	\item $= 0$ quando il flusso sarà perpendicolare alla normale
+	\item $< 0$ quando il flusso sarà opposto alla direzione della normale
+\end{itemize}
+
+La \textbf{Seconda equazione di Maxwell} afferma che: \[\Phi(\vec{E}) = \oint_{\gamma}\vec{E}\vec{dS} = \frac{Q_{TOT}}{\epsilon_0}\]
+Prendendo in considerazione una carica $q$ all'interno di una superficie e concentrandoci solo su una parte della superficie, il flusso generato dalla carica sarà 
+\[
+\begin{split}
+	d\Phi &= \vec{E}\vec{dS}= \\
+	&\frac{q}{4\pi\epsilon_0r^2}\hat{r}\hat{n}dS \\
+	&\text{notare che}
+	\frac{q}{4\pi \epsilon_0}\overbrace{\frac{\hat{r}\hat{n}dS}{r^2}}^{d\Omega} \\
+	&\text{di conseguenza} 
+	\frac{q}{4\pi \epsilon_0}d\Omega \\
+\end{split}
+\]
+Quindi
+\[
+\begin{split}
+\Phi &= \oint_{\gamma} d\Phi = \\
+&\frac{q}{4\pi \epsilon_0}\int_{\gamma}d\Omega = \frac{q}{\epsilon_0}
+\end{split}
+\]
+Aggiungendo altre cariche, il flusso di tutte sarà la somma dei flussi.
+\paragraph{Perché le cariche esterne non influenzano?}
+Perché il loro flusso è nullo essendo che entrano ed escono dalla superficie.
 
 \end{document}

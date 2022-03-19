@@ -1,7 +1,13 @@
-\babel@toc {italian}{}\relax 
-\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}
+\babel@toc {italian}{}
 \contentsline {section}{\numberline {0.1}Introduzione}{4}{section.0.1}%
 \contentsline {section}{\numberline {0.2}Elettrostatica nel vuoto (in assenza di materia dielettrica)}{5}{section.0.2}%
 \contentsline {subsection}{\numberline {0.2.1}Interazione (forze) di Coulomb}{5}{subsection.0.2.1}%
 \contentsline {subsection}{\numberline {0.2.2}Campo elettrostatico}{7}{subsection.0.2.2}%
 \contentsline {subsection}{\numberline {0.2.3}Energia elettrostatica}{7}{subsection.0.2.3}%
+\contentsline {section}{\numberline {0.3}Campo potenziale elettrostatico}{8}{section.0.3}%
+\contentsline {paragraph}{Cosa succede con N cariche discrete?}{10}{section*.2}%
+\contentsline {subsection}{\numberline {0.3.1}Linee di campo}{10}{subsection.0.3.1}%
+\contentsline {section}{\numberline {0.4}Superfici equipotenziali(superfici in cui V è costante)}{12}{section.0.4}%
+\contentsline {paragraph}{Teorema di Gauss}{13}{section*.3}%
+\contentsline {paragraph}{Flusso del campo $\vec {E}$}{14}{section*.4}%
