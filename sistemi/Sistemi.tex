@@ -1,23 +1,38 @@
-\documentclass{book}
+\documentclass[a4paper, 12pt]{book}
 
-\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
-%\usepackage{listings}
-%\usepackage[export]{adjustbox}
-\usepackage{hyperref}
-\hypersetup{linktoc=all}
-
-\begin{document}
+\usepackage{quoting}
+\usepackage{graphicx} %per inserire immagini nel testo
+\usepackage{sidecap} %permette di aggiungere didascalie alle immagini
+\usepackage{subfig}
+\usepackage[colorlinks]{hyperref} %per rendere interattivo il documento, gli elementi interattivi saranno in rosso con l'opzione colorlinks
+\usepackage{amsmath}
+\usepackage{amsthm} %per enunciati
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[section]
+\usepackage{geometry}
+\geometry{a4paper, top = 3cm, bottom = 3cm, left = 3.5cm, right = 3.5cm, heightrounded, bindingoffset = 5mm}
+\pagestyle{plain}
+\usepackage{multirow}
+\setcounter{secnumdepth}{3}
 
 \title{Sistemi}
 \author{Giovanni Tosini}
 \date{ }
-\maketitle
-\newpage
-\tableofcontents
-\newpage
 
-\section{Numeri complessi}
+\begin{document}
+
+\begin{titlepage}
+    \maketitle
+\end{titlepage}
+
+\frontmatter
+\tableofcontents
+\mainmatter
+
+\chapter{Numeri complessi}
 
 Un numero complesso $s = \sigma + j\omega$ con $j = \sqrt{-1}$ e $\sigma , \omega \in R$ in cui 
 \begin{itemize}
@@ -40,7 +55,7 @@ Forma polare dei numeri complessi, $s = \rho (cos\theta +jsin\theta)$
             lungo $2\pi$ ) si ottiene l'argomento principale $\theta$ che notiamo con $arg(s)$  
 \end{description}
 
-\subsection{Formula di Eulero}
+\section{Formula di Eulero}
 
 $\theta \in R, j = \sqrt{-1}$ abbiamo $e^{j\theta}=cos\theta +jsin\theta$
 
@@ -74,7 +89,7 @@ Esempio: $e^{j\pi}=-1=e^{j\pi}+1=0$
     \includegraphics[width=0.5\textwidth]{num_comp5.png}
 \end{center}
 
-\subsection{Operazioni con i numero complessi}
+\section{Operazioni con i numero complessi}
 
 \begin{itemize}
     \item $s_1=\sigma_1+j\omega_1,s_2=\sigma_2+j\omega_2\in C$
@@ -130,18 +145,23 @@ Sia $u=cos\alpha+jsin\alpha$ con $s=\rho(cos\theta+jsin\theta)$ avremo che $su=\
 \end{center}
 $s^n=\rho^n(cos(n\theta)+jsin(n\theta))$
 
-Esempio: $(e^{j\theta})^n=e^{jn\theta}$
-
+Esempio: \[(e^{j\theta})^n=e^{jn\theta}\]
 \paragraph{Radici complesse}
 
-Ogni $s\in C$ ammette $n$ distinte radici $n$-esime $\omega_1,...,\omega_{n-1} \in C$.
+Ogni $s\in C$ ammette $n$ distinte radici $n$-esime $\omega_1,\dots,\omega_{n-1} \in C$.
 Dobbiamo trovare $\omega \in C$ t.c. $\omega^n=s$.
-\newline $\forall k \in [0, n-1], \omega_k\sqrt[n]{\rho}(cos(\frac{\theta}{n}+\frac{2\pi}{n}k)
-+jsin(\frac{\theta}{n}+\frac{2\pi}{n}k))$
-\newline Prova: $\omega_k^n=(\sqrt[n]{\rho}^n)(cos(n(\frac{\theta}{n}+\frac{2\pi}{n}k))+jsin(n(\frac{\theta}{n}+\frac{2\pi}{n}k)))$
-\newline $\rho(cos(\theta+2\pi k)+jsin(\theta+2\pi k))=s$
-\newline Notare che $cos(\theta+2\pi k)$ è equivalente a $cos\theta$ e $sin(\theta+2\pi k)$ equivale a $sin\theta$ questo
-$\forall k=0,...,n-1 $
+\[]\forall k \in [0, n-1], \omega_k\sqrt[n]{\rho}(cos(\frac{\theta}{n}+\frac{2\pi}{n}k)
++jsin(\frac{\theta}{n}+\frac{2\pi}{n}k))
+\]
+Prova: 
+\[
+\begin{split}
+\omega_k^n &= (\sqrt[n]{\rho}^n)(\cos(n(\frac{\theta}{n}+\frac{2\pi}{n}k))+jsin(n(\frac{\theta}{n}+\frac{2\pi}{n}k))) = \\
+ &= \rho(cos(\theta+2\pi k)+jsin(\theta+2\pi k))= \\
+\end{split}
+\]
+Notare che $cos(\theta+2\pi k)$ è equivalente a $cos\theta$ e $sin(\theta+2\pi k)$ equivale a $sin\theta$ questo
+$\forall k=0,...,n-1$.
 
 L'equazione: $s^4=1+2j$ ha 4 radici distinte nel campo $C$.
 Esempio: le radici complesse dell'unità
@@ -175,7 +195,7 @@ Gli insieme su cui definiamo una funzione di variabile complessa
      \item funzione polinomiale, $f(s)=\frac{P(s)}{Q(s)}$ dove $P(s)=\sum_{k=0}^n a_ks^k$ e funzione razionale $Q(s)=\sum_{k=0}^n b_ks^k$,
      $D=C-{\lambda_1,...,\lambda_m}$ dove $\lambda_\alpha$ è radice di $Q(s)=0$ per $k=1,...,m$
  \end{itemize}
- \subsection{Teorema fondamentale dell'algebra}
+ \section{Teorema fondamentale dell'algebra}
  Ogni polinomio $P(s)$ a coefficienti complessi di grado $n>0$ ha $n$ radici complesse e si può comporre come
  \begin{center}
          $P(s) = a_n(s-\lambda_1)^\mu_1(s-\lambda_2)^\mu_2...(s-\lambda_r)^\mu_r$ dove 
@@ -187,6 +207,202 @@ Gli insieme su cui definiamo una funzione di variabile complessa
     se e solo se $P(\lambda)=P'(\lambda)=P''(\lambda)=...=P^{\mu - 1}(\lambda) = 0$ e $P^\mu (\lambda)\neq 0$
     \end{description}
 
+\chapter{Segnali}
 
-    
+Sono funzioni matematiche definite su un dominio, esistono nel dominio:
+\begin{itemize}
+    \item continuo $\rightarrow R, C, \dots$;
+    \item discreto $\rightarrow Z$.
+\end{itemize}
+
+\section{Segnali elementari a tempo continuo}
+\subsection{Segnale sinusoidale}
+Consiste di una funzione:
+\[
+v: R \rightarrow R, v(t) = A \overbrace{\cos}^{[-1, 1]}(\omega t + \phi)
+\textrm{ con } A, \omega, \phi \in R 
+\]
+\begin{itemize}
+    \item $A > 0$ è l'ampiezza;
+    \item $\omega$ la pulsazione;
+    \item $\phi$ la fase;
+    \item $v$ è periodico di periodo $T = \frac{2\pi}{\omega}$;
+    \item la frequenza $f = \frac{1}{T} \rightarrow f = \frac{\omega}{2\pi}$.
+\end{itemize}
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{sinusoidale.png}
+    \caption{Funzione sinusoidale}
+\end{SCfigure}
+
+\subsection{Fasore}
+Una funzione:
+\[
+v : R \rightarrow C, v(t) = A e^{j(\omega t + \phi)}\footnote{$e^{j\theta} = \cos \theta + j\sin \theta \rightarrow
+|e^{j\theta}| = 1$} 
+\textrm{ con } A, \omega, \phi \in R    
+\]
+Di conseguenza sarà uguale sempre ad $A$.
+\begin{description}
+    \item[Osservazione: ] dalla formulla di Eulero, possiamo esprimere
+    un segnale sinusoidale \[\begin{split}
+        A \cos (\omega t + \phi) &= A\frac{e^{j(\omega t + \phi)} + e^{-j(\omega t + \phi)}}{2} = \\
+        &= \frac{A}{2} e^{j(\omega t + \phi)} + \frac{A}{2} e^{-j(\omega t + \phi)} \\
+    \end{split} \]  
+\end{description}
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{fasore.png}
+    \caption{Fasore}
+\end{SCfigure}
+
+\subsection{Segnale sinusoidale modulato esponenzialmente}
+
+\begin{gather}
+    v : R \rightarrow R\\
+    v(t) = A e^{\sigma t} \cos (\omega t + \phi)\\
+    \textrm{ con } \sigma, A, \omega, \phi \in R, A > 0\\
+\end{gather}
+ \textbf{non} è periodico.   
+
+\begin{itemize}
+    \item per $\sigma > 0$ e $t \rightarrow \infty \Rightarrow v(t) = \infty$
+    \item per $\sigma < 0$ e $t \rightarrow \infty \Rightarrow v(t) = 0$
+\end{itemize}
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.3\textwidth]{nomelunghissimo.png}
+    \caption{Segnale sinusoidale modulato esponenzialmente}
+\end{SCfigure}
+
+\begin{description}
+    \item[Osservazione: ] segnali sinusoidali, modulati esponenzialmente, si possono scrivere come combinazione lineare di fasori: \[
+        \begin{split}
+            A e^{\sigma t} \cos (\omega t + \phi) &= A e^{\sigma t} \frac{e^{j(\omega t + \phi)} + e^{-j(\omega t + \phi)}}{2} = \\
+            &= \frac{A e^{\sigma t} e^{j(\omega t + \phi)}}{2} + \frac{A e^{\sigma t} e^{-j(\omega t + \phi)}}{2} = \\
+            &= \underbrace{\frac{A}{2} e^{j\phi} e^{t(\sigma + j\omega)} + \frac{A}{2} e^{-j\phi} e^{t(\sigma - j\omega)}}_{\textrm{sono complessi coniugati}}
+        \end{split}
+         \] 
+\end{description}
+
+\subsection{Segnale esponenziale complesso}
+\[
+v : R \rightarrow C, v(t) = A e^{\sigma t} e^{j(\omega t + \phi)}
+\]
+
+\begin{figure}[h!]
+    \centering
+		\subfloat[][\textbf{\emph{Per $\sigma > 0$ e $t \rightarrow \infty |v(t)| \rightarrow \infty$}}]
+		{\includegraphics[width=0.3\textwidth]{uzumaki1.png}}\quad
+		\subfloat[][\textbf{\emph{Per $\sigma < 0$ e $t \rightarrow \infty |v(t)| \rightarrow 0$}}]
+		{\includegraphics[width=0.3\textwidth]{uzumaki2.png}}\\
+\end{figure}
+
+\subsection{Funzioni generalizzate}
+\subsubsection{Segnali polinomiali}
+\[
+\delta_{-n} : R \rightarrow R \\
+\delta_{-n} = \begin{cases}
+    \frac{t^{n - 1}}{(n - 1)!}, t \ge 0;\\
+    0 \textrm{, altrimenti}
+\end{cases}    
+\]
+
+Da un certo istante ha un valore e quello sarà l'istante 0.
+\begin{description}
+    \item[Osservazione: ] \[
+    \delta_{-n}(t) = \int_{-\infty}^t \delta_{-(n - 1)}(\Psi)d\Psi    
+    \] 
+    Il segnale polinomiale n-esimo può essere ottenuto come integrale del segnale (n - 1)-esimo
+    \[
+    \delta_{-n}(t) = \frac{d\delta_{-(n + 1)}^t}{dt}\]
+\end{description}
+Esempio per n = $1$
+\[\delta_{-1}(t) = 
+\begin{cases}
+    1, t \ge 0\\
+    0, \textrm{altrimenti}
+\end{cases}    
+\]
+
+Per n = $2$
+\[\delta_{-2}(t) =
+\begin{cases}
+    t, t \ge 0\\
+    0, \textrm{altrimenti}
+\end{cases}
+\]
+
+\begin{figure}[h!]
+    \centering
+		\subfloat[][\textbf{\emph{Funzione gradino}}]
+		{\includegraphics[width=0.3\textwidth]{gradino.jpg}}\quad
+		\subfloat[][\textbf{\emph{Rampa unitaria}}]
+		{\includegraphics[width=0.3\textwidth]{rampa.png}}\\
+\end{figure}
+
+\begin{description}
+    \item[Osservazione: ] l'integrale del gradino è la rampa e viceversa la derivata della rampa è il gradino.
+\end{description}
+\[
+    \int_{-\infty}^{t}\delta_{-1}d\alpha = \delta_{-2}(t) \\
+    \frac{d\delta_{-2}(t)}{dt} = \delta_{-1}(t)  
+\]
+
+\subsubsection{Finestra rettangolare unitaria}
+
+\[
+    \Pi : R \rightarrow R \Pi(t) = \begin{cases}
+        1, -\frac{1}{2} \le t \le \frac{1}{2}\footnote{Il supporto = $(-\frac{1}{2}, \frac{1}{2}) \subset R$}\\
+        0, \textrm{altrimenti}
+    \end{cases}    
+\]
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.3\textwidth]{finestra.png}
+    \caption{Finestra rettangolare unitaria, ampiezza = $1$}
+\end{SCfigure}
+
+\begin{description}
+    \item[Osservazione: ] La finestra rettangolare unitaria è una combinazione lineare di due gradini: 
+\end{description}
+
+\[
+    \Pi(t) = \delta_{-1}(t + \frac{1}{2}) - \delta_{-1}(t - \frac{1}{2})
+\]
+
+\subsubsection{Finestra rettangolare ad ampiezza A con diverso supporto}
+
+\begin{description}
+    \item[N.B.:] il supporto è il sottoinsieme del dominio per cui la funzione è $\neq 0$
+\end{description}
+
+\begin{center}
+    \includegraphics[width=0.3\textwidth]{finestra2.png}
+\end{center}
+
+L'ampiezza A, centrata in $t_0$, con supporto $(t_0 - \frac{\pi}{2}, t_0 + \frac{\pi}{2})$.
+\[
+    A\Pi(\frac{t - t_0}{T}) = \begin{cases}
+        A, t_0 - \frac{\pi}{2} \le t \le t_0 + \frac{\pi}{2}\\
+        0, \textrm{altrimenti}
+    \end{cases}
+\]
+
+\subsubsection{Finestre (o impulso) triangolare unitaria}
+
+\[
+    \Lambda : R \rightarrow R, \Lambda(t) = \begin{cases}
+        1 - |t|, -1 \le t \le 1\\
+        0, \textrm{altrimenti}
+    \end{cases}
+\]
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.3\textwidth]{triangolo.png}
+    \caption{Impulso, supporto $[-1, 1]$, area = $1$}
+\end{SCfigure}
+
+%continua da finestra con ampiezza A
+
 \end{document}

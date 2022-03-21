@@ -1,9 +1,20 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {section}{\numberline {0.1}Numeri complessi}{4}{section.0.1}%
-\contentsline {subsection}{\numberline {0.1.1}Formula di Eulero}{4}{subsection.0.1.1}%
-\contentsline {paragraph}{Forma esponenziale}{4}{section*.2}%
-\contentsline {subsection}{\numberline {0.1.2}Operazioni con i numero complessi}{6}{subsection.0.1.2}%
-\contentsline {paragraph}{Radici complesse}{9}{section*.3}%
-\contentsline {paragraph}{Funzioni di variabile complessa}{9}{section*.4}%
-\contentsline {subsection}{\numberline {0.1.3}Teorema fondamentale dell'algebra}{10}{subsection.0.1.3}%
+\contentsline {chapter}{\numberline {1}Numeri complessi}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Formula di Eulero}{1}{section.1.1}%
+\contentsline {paragraph}{Forma esponenziale}{2}{section*.2}%
+\contentsline {section}{\numberline {1.2}Operazioni con i numero complessi}{3}{section.1.2}%
+\contentsline {paragraph}{Radici complesse}{5}{section*.3}%
+\contentsline {paragraph}{Funzioni di variabile complessa}{6}{section*.4}%
+\contentsline {section}{\numberline {1.3}Teorema fondamentale dell'algebra}{6}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Segnali}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Segnali elementari a tempo continuo}{9}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Segnale sinusoidale}{9}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Fasore}{10}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Segnale sinusoidale modulato esponenzialmente}{10}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Segnale esponenziale complesso}{11}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Funzioni generalizzate}{11}{subsection.2.1.5}%
+\contentsline {subsubsection}{\numberline {2.1.5.1}Segnali polinomiali}{11}{subsubsection.2.1.5.1}%
+\contentsline {subsubsection}{\numberline {2.1.5.2}Finestra rettangolare unitaria}{12}{subsubsection.2.1.5.2}%
+\contentsline {subsubsection}{\numberline {2.1.5.3}Finestra rettangolare ad ampiezza A con diverso supporto}{13}{subsubsection.2.1.5.3}%
+\contentsline {subsubsection}{\numberline {2.1.5.4}Finestre (o impulso) triangolare unitaria}{13}{subsubsection.2.1.5.4}%

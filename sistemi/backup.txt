@@ -1,0 +1,202 @@
+\paragraph{Radici complesse}
+
+Ogni $s\in C$ ammette $n$ distinte radici $n$-esime $\omega_1,\dots,\omega_{n-1} \in C$.
+Dobbiamo trovare $\omega \in C$ t.c. $\omega^n=s$.
+\[]\forall k \in [0, n-1], \omega_k\sqrt[n]{\rho}(cos(\frac{\theta}{n}+\frac{2\pi}{n}k)
++jsin(\frac{\theta}{n}+\frac{2\pi}{n}k))
+\]
+Prova: 
+\[
+\begin{split}
+\omega_k^n &= (\sqrt[n]{\rho}^n)(\cos(n(\frac{\theta}{n}+\frac{2\pi}{n}k))+jsin(n(\frac{\theta}{n}+\frac{2\pi}{n}k))) = \\
+ &= \rho(cos(\theta+2\pi k)+jsin(\theta+2\pi k))= \\
+\end{split}
+\]
+Notare che $cos(\theta+2\pi k)$ è equivalente a $cos\theta$ e $sin(\theta+2\pi k)$ equivale a $sin\theta$ questo
+$\forall k=0,...,n-1$.
+
+L'equazione: $s^4=1+2j$ ha 4 radici distinte nel campo $C$.
+Esempio: le radici complesse dell'unità
+
+$s^n=1 \omega_k=cos(\frac{2\pi}{n}k) + jsin(\frac{2\pi}{n}k) k=0,...,n-1$
+
+\paragraph{Funzioni di variabile complessa}
+
+Gli insieme su cui definiamo una funzione di variabile complessa
+ f si scrivono $D(f)$, $D(f)\subseteq C$
+ \begin{description}
+     \item[Def: ]un punto $s_0\in D(f)\subseteq C$ è interno a $D(f)$
+     se esiste un disco $B_\rho(s_0)$ di raggio $\rho$ con $\rho\in R^+$ centrato
+     in $s_0$, t.c. $B_\rho(s_0)\subseteq D(f)$ dove $B_\rho(s_0)={s\in C t.c. |s-s_0| < \rho}$
+ \end{description}
+ \begin{center}
+     \includegraphics[width=0.5\textwidth]{num_comp11.png}
+ \end{center}
+ \begin{description}
+     \item[Def: ]Un insieme $D(f)\subseteq C$ si dice aperto se tutti i suoi punti
+     sono interni 
+     \item [Def: ]Una funzione $f:D(f)\rightarrow C$ con $D(f)\subseteq C$ aperto
+     è una funzione complessa
+ \end{description}
+ Esempi di funzioni complesse con annesso dominio:
+ \begin{itemize}
+     \item $f(s) = s, D(f) = C$
+     \item $f(s)=s^2,D(f)=C$
+     \item $f(s)=Re(s)+jIm(s)^2, D(f)=C$
+     \item $f(s)=\sum_{k=0}^n a_ks^k, D(f)=C$
+     \item funzione polinomiale, $f(s)=\frac{P(s)}{Q(s)}$ dove $P(s)=\sum_{k=0}^n a_ks^k$ e funzione razionale $Q(s)=\sum_{k=0}^n b_ks^k$,
+     $D=C-{\lambda_1,...,\lambda_m}$ dove $\lambda_\alpha$ è radice di $Q(s)=0$ per $k=1,...,m$
+ \end{itemize}
+ \section{Teorema fondamentale dell'algebra}
+ Ogni polinomio $P(s)$ a coefficienti complessi di grado $n>0$ ha $n$ radici complesse e si può comporre come
+ \begin{center}
+         $P(s) = a_n(s-\lambda_1)^\mu_1(s-\lambda_2)^\mu_2...(s-\lambda_r)^\mu_r$ dove 
+        $\lambda_1,...\lambda_r$ sono radici  e $\mu_1,...,\mu_r$ sono le \textbf{molteplicità} relative di ciascuna
+        radice per cui $\mu_1 + ... + \mu_r = n$
+ \end{center}
+ \begin{description}
+     \item[Osservazione] Un numero $\lambda$ è una radice di molteplicità $\mu$ per un polinomio $P(s)$
+    se e solo se $P(\lambda)=P'(\lambda)=P''(\lambda)=...=P^{\mu - 1}(\lambda) = 0$ e $P^\mu (\lambda)\neq 0$
+    \end{description}
+
+\chapter{Segnali}
+
+Sono funzioni matematiche definite su un dominio, esistono nel dominio:
+\begin{itemize}
+    \item continuo $\rightarrow R, C, \dots$;
+    \item discreto $\rightarrow Z$.
+\end{itemize}
+
+\section{Segnali elementari a tempo continuo}
+\subsection{Segnale sinusoidale}
+Consiste di una funzione:
+\[
+v: R \rightarrow R, v(t) = A \overbrace{\cos}^{[-1, 1]}(\omega t + \phi)
+\textrm{ con } A, \omega, \phi \in R 
+\]
+\begin{itemize}
+    \item $A > 0$ è l'ampiezza;
+    \item $\omega$ la pulsazione;
+    \item $\phi$ la fase;
+    \item $v$ è periodico di periodo $T = \frac{2\pi}{\omega}$;
+    \item la frequenza $f = \frac{1}{T} \rightarrow f = \frac{\omega}{2\pi}$.
+\end{itemize}
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{sinusoidale.png}
+    \caption{Funzione sinusoidale}
+\end{SCfigure}
+
+\subsection{Fasore}
+Una funzione:
+\[
+v : R \rightarrow C, v(t) = A e^{j(\omega t + \phi)}\footnote{$e^{j\theta} = \cos \theta + j\sin \theta \rightarrow
+|e^{j\theta}| = 1$} 
+\textrm{ con } A, \omega, \phi \in R    
+\]
+Di conseguenza sarà uguale sempre ad $A$.
+\begin{description}
+    \item[Osservazione: ] dalla formulla di Eulero, possiamo esprimere
+    un segnale sinusoidale \[\begin{split}
+        A \cos (\omega t + \phi) &= A\frac{e^{j(\omega t + \phi)} + e^{-j(\omega t + \phi)}}{2} = \\
+        &= \frac{A}{2} e^{j(\omega t + \phi)} + \frac{A}{2} e^{-j(\omega t + \phi)} \\
+    \end{split} \]  
+\end{description}
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{fasore.png}
+    \caption{Fasore}
+\end{SCfigure}
+
+\subsection{Segnale sinusoidale modulato esponenzialmente}
+
+\begin{gather}
+    v : R \rightarrow R\\
+    v(t) = A e^{\sigma t} \cos (\omega t + \phi)\\
+    \textrm{ con } \sigma, A, \omega, \phi \in R, A > 0\\
+\end{gather}
+ \textbf{non} è periodico.}    
+
+\begin{itemize}
+    \item per $\sigma > 0$ e $t \rightarrow \infty \Rightarrow v(t) = \infty$
+    \item per $\sigma < 0$ e $t \rightarrow \infty \Rightarrow v(t) = 0$
+\end{itemize}
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.3\textwidth]{nomelunghissimo.png}
+    \caption{Segnale sinusoidale modulato esponenzialmente}
+\end{SCfigure}
+
+\begin{description}
+    \item[Osservazione: ] segnali sinusoidali, modulati esponenzialmente, si possono scrivere come combinazione lineare di fasori: \[
+        \begin{split}
+            A e^{\sigma t} \cos (\omega t + \phi) &= A e^{\sigma t} \frac{e^{j(\omega t + \phi)} + e^{-j(\omega t + \phi)}}{2} = \\
+            &= \frac{A e^{\sigma t} e^{j(\omega t + \phi)}}{2} + \frac{A e^{\sigma t} e^{-j(\omega t + \phi)}}{2} = \\
+            &= \underbrace{\frac{A}{2} e^{j\phi} e^{t(\sigma + j\omega)} + \frac{A}{2} e^{-j\phi} e^{t(\sigma - j\omega)}}_{\textrm{sono complessi coniugati}}
+        \end{split}
+         \] 
+\end{description}
+
+\subsection{Segnale esponenziale complesso}
+\[
+v : R \rightarrow C, v(t) = A e^{\sigma t} e^{j(\omega t + \phi)}
+\]
+
+\begin{figure}[h!]
+    \centering
+		\subfloat[][\textbf{\emph{Per $\sigma > 0$ e $t \rightarrow \infty |v(t)| \rightarrow \infty$}}]
+		{\includegraphics[width=0.3\textwidth]{uzumaki1.png}}\quad
+		\subfloat[][\textbf{\emph{Per $\sigma < 0$ e $t \rightarrow \infty |v(t)| \rightarrow 0$}}]
+		{\includegraphics[width=0.3\textwidth]{uzumaki2.png}}\\
+\end{figure}
+
+\subsection{Funzioni generalizzate}
+\subsubsection{Segnali polinomiali}
+\[
+\delta_{-n} : R \rightarrow R \\
+\delta_{-n} = \begin{cases}
+    \frac{t^{n - 1}}{(n - 1)!}, t \ge 0;\\
+    0 \textrm{, altrimenti}
+\end{cases}    
+\]
+
+Da un certo istante ha un valore e quello sarà l'istante 0.
+\begin{description}
+    \item[Osservazione: ] \[
+    \delta_{-n}(t) = \int_{-\infty}^t \delta_{-(n - 1)}(\Psi)d\Psi    
+    \] 
+    Il segnale polinomiale n-esimo può essere ottenuto come integrale del segnale (n - 1)-esimo
+    \[
+    \delta_{-n}(t) = \frac{d\delta_{-(n + 1)}^t}{dt}\]
+\end{description}
+Esempio per n = $1$
+\[\delta_{-1}(t) = 
+\begin{cases}
+    1, t \ge 0\\
+    0, \textrm{altrimenti}
+\end{cases}    
+\]
+
+Per n = $2$
+\[\delta_{-2}(t) =
+\begin{cases}
+    t, t \ge 0\\
+    0, \textrm{altrimenti}
+\end{cases}
+\]
+
+\begin{figure}[t]
+    \centering
+		\subfloat[][\textbf{\emph{Funzione gradino}}]
+		{\includegraphics[width=0.3\textwidth]{gradino.jpg}}\quad
+		\subfloat[][\textbf{\emph{Rampa unitaria}}]
+		{\includegraphics[width=0.3\textwidth]{rampa.png}}\\
+\end{figure}
+
+\begin{description}
+    \item[Osservazione: ] l'integrale del gradino è la rampa e viceversa la derivata della rampa è il gradino.
+\end{description}
+\[
+    \int_{-\infty}^{t}\delta_{-1}d\alpha = \delta_{-2}(t) \\
+    \frac{d\delta_{-2}(t)}{dt} = \delta_{-1}(t)  
+\]
