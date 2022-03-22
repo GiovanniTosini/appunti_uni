@@ -19,5 +19,12 @@
 \contentsline {subsubsection}{\numberline {2.1.5.3}Finestra rettangolare ad ampiezza A con diverso supporto}{13}{subsubsection.2.1.5.3}%
 \contentsline {subsubsection}{\numberline {2.1.5.4}Finestre (o impulso) triangolare unitaria}{13}{subsubsection.2.1.5.4}%
 \contentsline {subsubsection}{\numberline {2.1.5.5}Finestra triangolare ad ampiezza A con supporto 2T centrata in $t_0$}{13}{subsubsection.2.1.5.5}%
-\contentsline {subsubsection}{\numberline {2.1.5.6}Impulso di Diraca o funzione $\delta (t)$}{14}{subsubsection.2.1.5.6}%
+\contentsline {subsubsection}{\numberline {2.1.5.6}Impulso di Dirac o funzione $\delta (t)$}{14}{subsubsection.2.1.5.6}%
 \contentsline {subsubsection}{\numberline {2.1.5.7}Impulso di ampiezza A e centrato in $t_0$}{14}{subsubsection.2.1.5.7}%
+\contentsline {section}{\numberline {2.2}Segnali a tempo discreto}{16}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Impulso unitario discreto o delta di Kroneker}{16}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Gradino unitario discreto}{16}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Rampa discreta unitaria}{17}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Successione esponenziale discreta}{17}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Successione sinusoidale discreta}{18}{subsection.2.2.5}%
+\contentsline {chapter}{\numberline {3}Sistema a tempo continuo}{19}{chapter.3}%

@@ -276,11 +276,11 @@ Di conseguenza sarà uguale sempre ad $A$.
 \end{SCfigure}
 
 \begin{description}
-    \item[Osservazione: ] segnali sinusoidali, modulati esponenzialmente, si possono scrivere come combinazione lineare di fasori: \[
+    \item[Osservazione: ] segnali sinusoidali, modulati esponenzialmente, si possono scrivere come combinazione lineare di fasori con una componente esponenziale: \[
         \begin{split}
             A e^{\sigma t} \cos (\omega t + \phi) &= A e^{\sigma t} \frac{e^{j(\omega t + \phi)} + e^{-j(\omega t + \phi)}}{2} = \\
-            &= \frac{A e^{\sigma t} e^{j(\omega t + \phi)}}{2} + \frac{A e^{\sigma t} e^{-j(\omega t + \phi)}}{2} = \\
-            &= \underbrace{\frac{A}{2} e^{j\phi} e^{t(\sigma + j\omega)} + \frac{A}{2} e^{-j\phi} e^{t(\sigma - j\omega)}}_{\textrm{sono complessi coniugati}}
+            &= \frac{A e^{\sigma t} e^{j(\omega t + \phi)}}{2} + \frac{A e^{\sigma t} e^{-j(\omega t - \phi)}}{2} = \\
+            &= \underbrace{\frac{A}{2} e^{\sigma t} e^{j\omega t + j\phi} + \frac{A}{2} e^{\sigma t} e^{-j\omega t - j\phi}}_{\textrm{sono complessi coniugati}}
         \end{split}
          \] 
 \end{description}
@@ -417,7 +417,7 @@ L'ampiezza A, centrata in $t_0$, con supporto $(t_0 - \frac{\pi}{2}, t_0 + \frac
 \]
 supporto $(t_0 - T, t_0 + T)$, area = $AT$
 
-\subsubsection{Impulso di Diraca o funzione $\delta (t)$}
+\subsubsection{Impulso di Dirac o funzione $\delta (t)$}
 \begin{description}
     \item[Osservazione: ] l'impulso è una funzione generalizzata che è definita come un limite di una succesione di funzioni. 
 \end{description}
@@ -436,7 +436,7 @@ supporto $(t_0 - T, t_0 + T)$, area = $AT$
 
 \begin{SCfigure}[50][h!]
     \includegraphics[width=0.5\textwidth]{dirac.png}
-    \caption{Impulsod di Dirac, prosegue fino a $\infty$}
+    \caption{Impulso di Dirac, prosegue fino a $\infty$}
 \end{SCfigure}
 
 \[
@@ -444,6 +444,8 @@ supporto $(t_0 - T, t_0 + T)$, area = $AT$
         \infty, t = 0\\
         0, \textrm{altrimenti}
     \end{cases}
+\]
+\[
     \begin{split}
         \int_{-\infty}^\infty \delta(t) dt &= \int_{-\infty}^\infty \lim_{n \rightarrow \infty} f_n(t) dt = \\
         &= \lim_{n \rightarrow \infty} \int_{-\infty}^\infty \overbrace{f_n (t) dt}^{\textrm{ogni finestra ha area = 1}} = \\
@@ -469,8 +471,8 @@ Proprietà dell'impulso:
 \begin{itemize}
     \item L'impulso ideale centrato in origine è pari a: \[\delta(-t) = \delta(t), t \in R\]
     \item Area unitaria \[\begin{cases}
-        \int_a^b \delta(t)dt = 1, \textrm{ se } 1 \in (a, b)\\
-        \int_a^b \delta(t)dt = 0, \textrm{ se } 1 \notin (a, b)\\
+        \int_a^b \delta(t)dt = 1, \textrm{ se } 0 \in (a, b)\\
+        \int_a^b \delta(t)dt = 0, \textrm{ altrimenti}\\
     \end{cases}\]
     \item Proprietà di campionamento
 \end{itemize}
@@ -480,28 +482,164 @@ Proprietà dell'impulso:
 \end{center}
 
 \[
-    v(t_0) = \int_{-\infty}^\infty v(\Psi) \delta(\Psi - t_0) d\Psi    
+    v(t_0) = \int_{-\infty}^\infty v(t) \delta(t - t_0) dt    
 \]
 
 Inolte se v è continua sul dominio 
 \[
-    V(t) =   \int_{-\infty}^\infty v(\Psi) \delta(\Psi - t) d\Psi \textrm{ moltiplico per } \delta(t - t_0)
+    V(t) =   \int_{-\infty}^\infty v(t) \delta(t - t) dt \textrm{ moltiplico per } \delta(t - t_0)
 \]
 \textbf{Dimostrazione}:  
 \[
     \begin{split}
         v(t_0) &= v(t) + v(t_0) - v(t)\\
         &v(t_0) \delta(t- t_0) = v(t) \delta(t - t_0) + [v(t_0) - v(t)] \delta(t - t_0)\\
-        &\int_{-\infty}^\infty v(t_0) \delta(\Psi - t_0)d\Psi =\\
-        &\int_{-\infty}^\infty v(\Psi) \delta(\Psi - t_0) d\Psi +\\
-        &+ \underbrace{\int_{-\infty}^\infty \overbrace{\delta(\Psi - t_0)}^{0 \textrm{ per } \Psi \neq t_0} \overbrace{[v(t_0) - v(\Psi)]}^{0 \textrm{ per } \Psi = t_0}}_0d\Psi\\
-        &\Rightarrow v(t_0) \underbrace{\int_{-\infty}^\infty \delta(\Psi - t_0) d\Psi}_{1 \textrm{ perché l'impulso è unitario}} = \\
-        &= \int_{-\infty}^\infty v(\Psi) \delta(\Psi - t_0) d\Psi\\
-        v(t_0) &= \int_{-\infty}^\infty v(\Psi) \delta(\Psi - t_0) d\Psi
+        &\int_{-\infty}^\infty v(t_0) \delta(t - t_0)dt =\\
+        &\int_{-\infty}^\infty v(t) \delta(t - t_0) dt +\\
+        &+ \underbrace{\int_{-\infty}^\infty \overbrace{\delta(t - t_0)}^{0 \textrm{ per } t \neq t_0} \overbrace{[v(t_0) - v(t)]}^{0 \textrm{ per } t = t_0}}_0dt\\
+        &\Rightarrow v(t_0) \underbrace{\int_{-\infty}^\infty \delta(t - t_0) dt}_{1 \textrm{ perché l'impulso è unitario}} = \\
+        &= \int_{-\infty}^\infty v(t) \delta(t - t_0) dt\\
+        v(t_0) &= \int_{-\infty}^\infty v(t) \delta(t - t_0) dt
     \end{split}    
 \] 
 \begin{description}
-    \item[Osservazione: ] si può scrivere anche come \[v(t) \delta(t - t_0) = v(t_0) \delta (t - t_0)\] 
+    \item[Osservazione: ] si può scrivere anche come \[v(t_0)  = v(t) \delta (t - t_0)\] 
 \end{description}
+
+\section{Segnali a tempo discreto}
+
+\subsection{Impulso unitario discreto o delta di Kroneker}
+
+$\delta: Z \rightarrow R$ è una successione
+\[\delta(k) = 
+    \begin{cases}
+        1, \textrm{ per } k = 0\\
+        0, \textrm{ altrimenti}
+    \end{cases}  
+\]
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{kroneker.jpg}
+    \caption{Delta di Kroneker}
+\end{SCfigure}
+
+\subsection{Gradino unitario discreto}
+
+\[
+    \delta_{-1}: Z \rightarrow R\qquad \delta_{-1} = \begin{cases}
+        1, k \ge 0\\
+        0, \textrm{ altrimenti}
+    \end{cases}
+\]
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{gradino2.jpg}
+    \caption{Gradino}
+\end{SCfigure}
+
+\subsection{Rampa discreta unitaria}
+
+\[
+    \delta_{-2}: Z \rightarrow R:\qquad \delta_{-2} = \begin{cases}
+        k, k \ge 0\\
+        0, \textrm{ altrimenti}
+    \end{cases}
+\]
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{rampa2.jpg}
+    \caption{Rampa}
+\end{SCfigure}
+
+\begin{description}
+    \item[Osservazione: ] abbiamo che l'integrale dell'impulso del gradino, come serie corrisponde a $\delta_{-1}(k) = \sum_{i = -\infty}^k \delta(i)$ praticamente se io sommo tutti 
+    tutti i valori dell'impulso avrò come risultato un qualsiasi valore $k \ge 0$, sommando tutti i valori dell'impulso ottengo il gradino e in modo analogo sommando tutti i valori 
+    del gradino fino a k ottendo la rampa $\delta_{-2} = \sum_{i = -\infty}^{k - 1} \delta_{-1} (i)$.
+    \item[N.B.: ] la somma nel campo discreto corrisponde all'integrazione nel campo continuo. 
+\end{description}
+
+\[
+    \delta_{-2} (k) = \sum_{i = -\infty}^{k - 1} \sum_{j = -\infty}^i \delta(ij)
+\]
+
+\subsection{Successione esponenziale discreta}
+
+\[
+    v : Z \rightarrow R,\quad v(k) = A e^{j\phi} \lambda^k, \textrm{ dove } k \in Z, \phi \in R,\lambda \in C.   
+\]
+\begin{description}
+    \item[Osservazione: ] se scriviamo 
+    \[\begin{split}
+        \lambda &= \rho(\cos \theta + j\sin \theta)\\
+        v(k) &= A r^{j\phi}\rho^k(\cos k \theta + j \sin k \theta) =\\
+        &= A e^{j \phi} e^{k \log \phi} e^{jk\theta} = \\
+        &= A e^{j\phi} e^{k(\log \phi + j \theta)}
+      \end{split}
+    \]
+\end{description}
+
+\subsection{Successione sinusoidale discreta}
+\[
+    \begin{split}
+    &v: Z \rightarrow R, v(k) = A \cos (\omega k + \phi),\\
+    &\textrm{ con } k \in Z, \omega \in R, \phi \in R\\
+    &\textrm{ dove } A \textrm{ ampiezza, } \omega \textrm{ pulsazione e } \phi \textrm{ fase.} 
+    \end{split}
+\]
+
+\begin{description}
+    \item[Osservazione: ] $v(k)$ è periodico di periodo $T =  \frac{2\pi}{\omega}$ se e solo se 
+    $\omega = 2\pi r$, dove $r \in Q (\omega \textrm{ è un multiplo razionale di } 2\pi)$  
+\end{description}
+
+\chapter{Sistema a tempo continuo}
+
+I sistemi possono essere a 
+\begin{itemize}
+    \item tempo continuo
+    \item tempo discreto
+\end{itemize}
+
+Un sistema è un modello matematico che formalizza un fenomeno fisico o un processo che in modo deterministico trasforma certi 
+input in determinati output. Esempio:
+\begin{itemize}
+    \item Il pendolo, data una spinta inizierà a muoversi da una parte all'altra, l'input può essere l'impulso della forza applicata
+    l'output può essere il movimento nel tempo lungo un asse designato;
+    \item Una palla che scivola lungo una collina, l'input può essere simile a quello di prima, l'output sarà il movimento lungo il versante che formerà una specie di mezza parabola;
+\end{itemize}
+
+Proprietà:
+\begin{enumerate}
+    \item Linearità, a una combinazione lineare degli input corrisponde una combinazione lineare degli output 
+    \[
+        au_1(t) + bu_2(t) \mapsto  av_1(t) + bv_2(t)
+    \]
+    \item Tempo invarianza, un sistema a tempo continuo è tempo invariante se e solo 
+    \[
+        u(t) \mapsto v(t) \Rightarrow u(t - \tau) \mapsto v(t - \tau) \forall \tau \in R
+    \]
+    \item Causalità, un sistema è causale se e solo se l'uscita al momento $\tau$ dipende soltanto dall'ingresso per $t < \tau$ ( $v(\tau)$ dipende soltano
+    da $u(t)$ per $t \le \tau$) e non da valori successivi.
+\end{enumerate}
+
+\begin{description}
+    \item[Osservazione: ] in un sistema causale, l'effetto (output) non può precedere la causa (input) 
+    \item[Osservazione: ] considereremo sistemi inizialmente a riposo 
+    \[
+        (u(t) = 0, t \le \tau \underbrace{\Rightarrow}_{\textrm{sistemi causali}} v(t) = 0, t \le \tau)
+    \]  
+    Per convenzione $\tau = 0$ (origine del tempo, $t_0$)
+    \item[Definizione: ] un sistema a tempo continuo per cui valgono le proprietà di linearità e tempo invarianza si chiama
+     sistema LTI (\textbf{Linear time invariant}) 
+\end{description}
+
+Proprietà di stabilità asintotica %52:37
+
+
+
+
+
+
+
 
 \end{document}
