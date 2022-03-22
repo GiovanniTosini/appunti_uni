@@ -403,6 +403,105 @@ L'ampiezza A, centrata in $t_0$, con supporto $(t_0 - \frac{\pi}{2}, t_0 + \frac
     \caption{Impulso, supporto $[-1, 1]$, area = $1$}
 \end{SCfigure}
 
-%continua da finestra con ampiezza A
+\subsubsection{Finestra triangolare ad ampiezza A con supporto 2T centrata in $t_0$}
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{triangolo2.png}
+\end{center}
+
+\[
+    A\Lambda(\frac{t - t_0}{T}) = \begin{cases}
+        A - \frac{A}{T} |t - t_0|, t_0 - T \le t \le t_0 + T\\
+        0, \textrm{altrimenti}
+    \end{cases}
+\]
+supporto $(t_0 - T, t_0 + T)$, area = $AT$
+
+\subsubsection{Impulso di Diraca o funzione $\delta (t)$}
+\begin{description}
+    \item[Osservazione: ] l'impulso è una funzione generalizzata che è definita come un limite di una succesione di funzioni. 
+\end{description}
+
+\[
+    \begin{split}
+        \delta(t) &= \lim_{n \rightarrow \infty} \delta_n (t) =\\
+        &= \lim_{n \rightarrow \infty} \frac{n}{2}\Pi(\frac{t}{\frac{2}{n}}) \textrm{ dove}\\
+        f_n(t) &= \frac{n}{2}\Pi(\frac{t}{\frac{2}{n}}) = \\
+        &=\begin{cases}
+            \frac{n}{2}, -\frac{1}{n} \le t \le \frac{1}{n}\\
+            0, \textrm{altrimenti}
+        \end{cases}
+    \end{split}  
+\]
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{dirac.png}
+    \caption{Impulsod di Dirac, prosegue fino a $\infty$}
+\end{SCfigure}
+
+\[
+    \delta_t "=" \begin{cases}
+        \infty, t = 0\\
+        0, \textrm{altrimenti}
+    \end{cases}
+    \begin{split}
+        \int_{-\infty}^\infty \delta(t) dt &= \int_{-\infty}^\infty \lim_{n \rightarrow \infty} f_n(t) dt = \\
+        &= \lim_{n \rightarrow \infty} \int_{-\infty}^\infty \overbrace{f_n (t) dt}^{\textrm{ogni finestra ha area = 1}} = \\
+        &= \lim_{n \rightarrow \infty} 1 = 1
+    \end{split}
+\]
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{frecciasu.png}
+    \caption{Rappresentazione grafica}
+\end{SCfigure}
+
+\subsubsection{Impulso di ampiezza A e centrato in $t_0$}
+
+\[
+    A\delta(t - t_0) = \begin{cases}
+        \infty, t = t_0\\
+        0, \textrm{altrimenti}
+    \end{cases}    
+    \int_{-\infty}^{\infty0} A\delta(t - t_0) dt = A
+\]
+Proprietà dell'impulso:
+\begin{itemize}
+    \item L'impulso ideale centrato in origine è pari a: \[\delta(-t) = \delta(t), t \in R\]
+    \item Area unitaria \[\begin{cases}
+        \int_a^b \delta(t)dt = 1, \textrm{ se } 1 \in (a, b)\\
+        \int_a^b \delta(t)dt = 0, \textrm{ se } 1 \notin (a, b)\\
+    \end{cases}\]
+    \item Proprietà di campionamento
+\end{itemize}
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{campionamento.png}
+\end{center}
+
+\[
+    v(t_0) = \int_{-\infty}^\infty v(\Psi) \delta(\Psi - t_0) d\Psi    
+\]
+
+Inolte se v è continua sul dominio 
+\[
+    V(t) =   \int_{-\infty}^\infty v(\Psi) \delta(\Psi - t) d\Psi \textrm{ moltiplico per } \delta(t - t_0)
+\]
+\textbf{Dimostrazione}:  
+\[
+    \begin{split}
+        v(t_0) &= v(t) + v(t_0) - v(t)\\
+        &v(t_0) \delta(t- t_0) = v(t) \delta(t - t_0) + [v(t_0) - v(t)] \delta(t - t_0)\\
+        &\int_{-\infty}^\infty v(t_0) \delta(\Psi - t_0)d\Psi =\\
+        &\int_{-\infty}^\infty v(\Psi) \delta(\Psi - t_0) d\Psi +\\
+        &+ \underbrace{\int_{-\infty}^\infty \overbrace{\delta(\Psi - t_0)}^{0 \textrm{ per } \Psi \neq t_0} \overbrace{[v(t_0) - v(\Psi)]}^{0 \textrm{ per } \Psi = t_0}}_0d\Psi\\
+        &\Rightarrow v(t_0) \underbrace{\int_{-\infty}^\infty \delta(\Psi - t_0) d\Psi}_{1 \textrm{ perché l'impulso è unitario}} = \\
+        &= \int_{-\infty}^\infty v(\Psi) \delta(\Psi - t_0) d\Psi\\
+        v(t_0) &= \int_{-\infty}^\infty v(\Psi) \delta(\Psi - t_0) d\Psi
+    \end{split}    
+\] 
+\begin{description}
+    \item[Osservazione: ] si può scrivere anche come \[v(t) \delta(t - t_0) = v(t_0) \delta (t - t_0)\] 
+\end{description}
 
 \end{document}
