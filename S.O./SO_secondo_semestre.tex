@@ -1,10 +1,12 @@
-\documentclass{book}
+\documentclass[a4paper, 12pt]{book}
 
-\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
-%\usepackage{listings}
-%\usepackage[export]{adjustbox}
-\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{sidecap}
+\usepackage{subfig}
+\usepackage[colorlinks]{hyperref}
 \hypersetup{linktoc=all}
 
 
@@ -19,7 +21,7 @@
 \tableofcontents
 \newpage
 
-\section{Monitor}
+\chapter{Monitor}
 
 Si tratta di una struttura simile ai semafori, implementa di default la mutua esclusione. Simile a una classe di un linguaggio a oggetti, può contenere:
 \begin{itemize}
@@ -50,14 +52,14 @@ Il comando SIGNAL può rompere la mutua esclusione, perché un eventuale process
 
 Quale metodo usare? Dipende dal Monitor.
 
-\subsection{Problematiche}
+\section{Problematiche}
 
 \begin{itemize}
     \item esistono pochi linguaggi che li implementano
     \item possono essere applicati solo quando ci sono processi che condividono la memoria(stessa macchina)
 \end{itemize}
 
-\section{Deadlock}
+\chapter{Deadlock}
 
 Causato quando un processo è in attesa di un evento causato a sua volta da un altro processo in attesa.
 Ci sono quattro condizioni che possono causare un Deadlock:
@@ -79,7 +81,7 @@ Tecnica di prevenzione: basta che una delle quattro non venga rispettata e il De
 In generale, se abbiamo una sola istanza di ogni risorsa e siamo in presenza di un ciclo, il Deadlock è certo.
 Con risorse con più istanze invece non è assicurato.
 
-\subsection{Gestione Deadlock}
+\section{Gestione Deadlock}
 
 Prevenzione statica: evitare ovvero che si verifichino una della quattro condizioni sopra riportate,
 se ci sono risorse disponibili non le assegno a prescindere.
@@ -210,7 +212,7 @@ Usando l'algoritmo si passa man mano ogni singolo processo e si verifica se nell
  processi, in quel caso una possibile soluzione potrebbe essere quella di considerare il numero di \textbf{rollback}
  nei fattori di costo.
 
- \section{Gestione della memoria}
+ \chapter{Gestione della memoria}
 
  Un processo ha bisogno sia di memoria RAM che di memoria di massa per poter lavorare. La memoria serve ai processi per
  via dell'uso del \textbf{Program Counter} da parte della CPU .
@@ -261,7 +263,7 @@ Se si troverà un'istruzione
 \end{center}
 vedendo che l'operando da prelevare è X, verrà ripescato dall'indirizzo di memoria, tale azione che collega indirizzi 
 \textbf{simbolici} a indirizzi \textbf{fisici} viene denominata \textbf{binding degli indirizzi}.
-\subsection{Tempi di compilazione}
+\section{Tempi di compilazione}
 \begin{description}
     \item[compile-time:] avviene a tempo di compilazione,in quel caso ci sarà solo il 
     \textbf{compilatore} che non può sapere se l'indirizzo che assegna al programma sia occupato o meno, di conseguenza 
@@ -275,7 +277,7 @@ vedendo che l'operando da prelevare è X, verrà ripescato dall'indirizzo di mem
 \end{description}
 I primi due tipi di \textbf{binding} sono considerati \textbf{statici} mentre l'ultimo è considerato \textbf{dinamico}.
 
-\subsection{Linking}
+\section{Linking}
 
 Può essere diverso indipendentemente dal tipo di \textbf{binding}.
 \begin{description}
@@ -304,7 +306,7 @@ Ricapitolando:
     \end{itemize}
 \end{description}
 
-\subsection{Loading}
+\section{Loading}
 
 Lo stesso concetto di statico e dinamico può essere applicato al \textbf{loader}.
 \begin{description}
@@ -318,7 +320,7 @@ Uno dei malus dello \textbf{statico} è la possibilità di programmi in cui una 
 per via di condizioni), non conviene di conseguenza caricare completamente il programma, in quel caso il loading \textbf{dinamico}
 diventa decisamente più utile.
 
-\subsection{Spazio di indirizzamento logico}
+\section{Spazio di indirizzamento logico}
 
 Consiste nello spazio visto dalla CPU quando esegue un processo, mappato su uno spazio di indirizzamento fisico in RAM. Il SO 
 deve mappare indirizzi logici o virtuali su indirizzi fisici reali, quando si fa \textbf{binding} a \textbf{compile-time} o
@@ -330,17 +332,17 @@ conto del riferimento tra indirizzo logico a quello fisico a tradurre la richies
 La MMU può essere composta da un registro e un sommatore che somma gli indirizzi logici con un offset, potrebbe essere problematico
 con processi che dovrebbero essere divisi all'interno dello spazio di memoria.
 
-\section{Schemi di gestione della memoria}
+\chapter{Schemi di gestione della memoria}
 
-\subsection{Allocazione contigua}
+\section{Allocazione contigua}
 
-L'immagine di memoria del processo sarà tutto allocato in un'area contigua per l'appunto, senza buchi in mezzo. Per gestire
+L'immagine di memoria del processo sarà tutto allocata in un'area contigua per l'appunto, senza buchi in mezzo. Per gestire tale
 l'allocazione in questo modo esistono delle varianti:
 
-\subsubsection{Partizioni fisse}
+\subsection{Partizioni fisse}
 
 La memoria è divisa a blocchi, ciascun blocco con una determinata
-    dimensione che rimarrà fissa per sempre, tra di loro possono essere variabili, ma rimangono fisse. Il processo che arriva
+    dimensione che rimarrà fissa per sempre, tra di loro possono differire in dimensione, ma rimarranno fisse. Il processo che arriva
     verrà posizionato nella prima partizione che permette di contenerlo. Un contro è che se un blocco viene occupato solo in 
     parte, quella libera sarà sprecata, perché il blocco è fisso e non può essere partizionato. Esistono delle opzioni:
 
@@ -350,7 +352,7 @@ La memoria è divisa a blocchi, ciascun blocco con una determinata
         \item tante code, una per partizione, il SO fa un preselezione del processo che verrà messo nella coda più adatta a lui
     \end{itemize}
 
-    Entrambe hanno vantaggi e svantaggi, una coda per partizione causerà la possibilità di avere delle code vuote e altre piene 
+    Entrambe hanno vantaggi e svantaggi, una coda per partizione causerà la possibilità di avere delle code vuote e altre piene, 
     in quel caso si avrebbe tanta memoria sprecata e pochi processi in coda. Va bene solo nel caso in cui il carico dei vari processi
     è ben distribuito e di varie dimensioni. Se tutte le code fossero piene, sarebbe ottimale per l'uso della memoria.
 
@@ -360,11 +362,11 @@ La memoria è divisa a blocchi, ciascun blocco con una determinata
     sono due varianti
     
     \begin{description}
-        \item[best-fit:] scansiona tutta la coda scegliendo quello più adatto alla partizione che si è liberata
+        \item[Best-fit:] scansiona tutta la coda scegliendo quello più adatto alla partizione che si è liberata
         ovvero quello che si avvicina a occuparla maggiormente, se la coda è molto lunga il tempo impiegato sarà decisamente
-        elevato
-        \item[best-available-fit:] viene scelto il primo processo che può stare nella partizione che si è liberata, non minimizza
-        lo spreco, perché potrebbe esserci un processo che occuperebbe meglio la partizione 
+        elevato;
+        \item[Best-available-fit:] viene scelto il primo processo che può stare nella partizione che si è liberata, non minimizza
+        lo spreco, perché potrebbe esserci un processo che occuperebbe meglio la partizione.
     \end{description}
 
 Lo schema della MMU con un allocazione contigua a partizioni fisse è il seguente:
@@ -376,20 +378,20 @@ Lo schema della MMU con un allocazione contigua a partizioni fisse è il seguent
 Pro e contro:
 
 \begin{description}
-    \item[pro:] semplicità, il SO deve solo tenere traccia di una tabella in cui si definisce in quale partizione andrà il processo
-    \item[contro:] il livello di multiprogrammazione è vincolato dal numero di partizioni, inoltre c'è uno spreco di memoria causato
-    dalla frammentazione della memoria:
+    \item[Pro:] semplicità, il SO deve solo tenere traccia di una tabella in cui si definisce in quale partizione andrà il processo
+    \item[Contro:] il livello di multiprogrammazione è vincolato dal numero di partizioni, inoltre c'è uno spreco di memoria causato
+    dalla frammentazione:
     
     \begin{description}
-        \item[interna:] causata dall'assegnamento di un processo a una partizione che non viene occupata al 100%
-        \item[esterna:] la somma della parte libera di partizioni parzialmente occupate potrebbe essere grande a sufficienza
+        \item[Interna:] causata dall'assegnamento di un processo a una partizione che non viene occupata al 100%
+        \item[Esterna:] la somma della parte libera di partizioni parzialmente occupate potrebbe essere grande a sufficienza
         per un processo che invece sarà costretto ad attendere 
     \end{description}
     la frammentazione riduce l'efficacia nell'uso della memoria, la tecnica con partizioni fisse soffre di entrambe, è più adatta per
     processi delle dimensioni giuste ed esatte alle partizioni che si vogliono occupare, quindi più verso i sistemi embedded.
 \end{description}
 
-\subsubsection{Partizioni variabili}
+\subsection{Partizioni variabili}
 
 Il processo che arriva in memoria si prenderà una fetta di memoria grande esattamente quanto lo spazio che occuperebbe.
 La frammentazione esterne rimarrà, esempio:
@@ -400,6 +402,218 @@ La frammentazione esterne rimarrà, esempio:
     \item un processo che occupa 70 potrebbe entrare se le posizioni da 50 e 20 venissero sommate, ma non si può a causa dell'allocazione contigua
 \end{itemize}
 
-L'effetto a "groviera" che si genera 
+Si genera un effetto a "groviera". 
  
+\subsection{Tecnica del Buddy System}
+
+Un compromesso tra partizioni fisse e variabili, ovvero
+ha partizioni fisse, ma anche variabili, le dimensioni 
+non sono customizzate, ma non rimangono fisse. Bisogna 
+immaginare la memoria un blocco fisso, come arriva un
+processo parte il sequente schema:  
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{buddy_system.png}
+    \caption{Flowchart Buddy System}
+\end{SCfigure}
+
+Questo crea liste di blocchi liberi in base alla dimensione,
+al processo successivo si andrà a guardare nella lista
+se ci sta altrimenti si ripete la divisione.
+
+\section{Paginazione}
+
+Elimina totalmente la frammentazione esterna. La memoria fisica
+viene suddivisa in tante piccole aree della stessa dimensione detti \textbf{frame}.
+Lo spazio di allocazione non deve essere contiguo, al processo 
+che arriva si daranno piccole aree fino a occupare tutte 
+quelle necessarie. Il processo viene diviso,
+quando un processo dovrà essere eseguito in CPU, SO dovrà
+ricomporlo, quindi occorre una mappa delle locazioni.
+
+La CPU è a conoscenza degli indirizzi logici, la memoria
+logica viene divisa in blocchi della stessa dimensione le \textbf{pagine}, il SO 
+trasforma le pagine in frame.
+Entra in aiuto una tabella delle pagine, ovvero una mappa
+della memoria specifica per ogni singolo processo, attraverso
+la quale il SO riesce a tradurre l'indirizzo logico che serve alla 
+CPU in un indirizzo fisico e recuperare di conseguenza le 
+informazioni necessarie.
+
+Esempio:
+\begin{itemize}
+    \item dimensione della pagina = 1KB
+    \item dimensione del programma = 2.3KB
+    \item saranno necessarie 3 pagine, dell'ultima si userà solo 0.3KB
+\end{itemize}
+Come si può notare sarà ancora possibile la frammentazione
+interna.
+
+\paragraph{Come avviene la ricerca nella tabella delle pagine?}
+L'indirizzo logico richiesto dalla CPU è composto dal numero
+di pagina e da un offset, SO tramite il numero di pagina 
+andrà alla ricerca nella tabella delle pagine del processo
+in questione, una volta trovato otterrà l'altra metà di 
+indirizzo fisico da sommare all'offset per ottenere 
+l'indirizzo fisico effettivo in memoria.
+
+Ovviamente la tabella risiede in memoria, ed è come già detto 
+specifica del processo. Nei registri della CPU sarà presente 
+la locazione della tabella e anche la sua lunghezza, a ogni context 
+switch tale valore viene aggiornato.
+
+Questo causa un doppio accesso alla memoria: uno per 
+la tabella delle pagine e uno per l'istruzione/dato necessari, per 
+questo si usa una cache dedicata, \textbf{Translation look-aside table}(TLB), 
+servirà a evitare il doppio accesso in memoria, in caso 
+di cache miss, ovvero TLB non sarà in possesso della pagina, si 
+dovrà per forza fare il doppio accesso in memoria.
+
+Il costo effettivo di accesso in memoria sarà dato dalla 
+somma del cache hit all'accesso in memoria:
+\[
+    \overbrace{(T_{MEM} + T_{TLB})\alpha\textrm{(parametro)}}^{\textrm{cache hit}} + \overbrace{(2T_{MEM} + T_{TLB})(1 - \alpha)}^{\textrm{accesso in memoria}}
+\]
+
+La tabella delle pagine è utile anche per altro:
+\begin{description}
+    \item[Bit di validità:] identifica se l'area di memoria 
+    è stata mappata per il processo o no;
+    \item[Caratteristiche:] un bit che comunica se la pagina
+    è solamente leggibile o no, per esempio il codice di una programma
+    è in sola lettura, oppure se la pagina sia eseguibile o meno.
+\end{description}
+
+\paragraph{Quanto è grande una tabella della pagine?}
+La dimensione è stabilita in base alla memoria massima e alla configurazione,
+ovvero quanto grande è ogni frame della memoria. In un ipotetico spazio di indirizzamento
+virtuale grande $2^{64}$, se ogni pagina avesse una dimensione di 4KB ovvero $2^{12}$ potrei 
+avere un numero di frame in memoria corrispondente al rapporto tra la memoria indirizzabile totale e
+la dimensione della singola pagina. 
+\[
+    2^{64} / 2^{12} = 2^{52}
+\]
+Un numero decisamente enorme che occuperebbe una grossa fetta della RAM da moltiplicare per il 
+numero di processi attivi. Si possono usare due metodi per evitare ciò:
+\begin{itemize}
+    \item una tabella delle pagine invertita;
+    \item oppure la paginazione multilivello.
+\end{itemize}
+
+\subsection{Tabella delle pagine invertita}
+Una tabella unica nel sistema e non per processo, indicizzata per frame che contiene:
+\begin{itemize}
+    \item l'indirizzo virtuale della pagina che occupa quel frame
+    \item informazioni sul processo che usa la pagina
+\end{itemize}
+Il tempo di traduzione degli indirizzi cresce perché non sarà più una ricerca per indice, ma per contenuto. Perché 
+la tabella è indicizzata per frame, mentre la CPU richiederà per pagina, il SO dovrà scorrere la tabella alla ricerca della 
+pagina e solo così otterrà il frame corrispondente che sarà l'indice del contenuto. Questo viene facilitato tramite una struttura 
+a tabella hash, invece di usare una ricerca lineare. Cambia come viene generato l'indirizzo richiesto dalla CPU, sarà diviso in tre parti:
+\begin{itemize}
+    \item offset;
+    \item numero di pagina;
+    \item PID del processo.
+\end{itemize}
+
+Con il numero di pagina e il PID ho la chiave per la tabella hash, così da ottenere il valore ricercato per la traduzione ovvero
+l'indice, perché la tabella è indicizzata per frame!
+
+\subsection{Paginazione multilivello}
+Viene paginata anche la tabella delle pagine, quindi spezzettata per fare in modo che alcuni pezzi non siano in RAM, lasciando 
+spazio libero in memoria per altro di più utile. Questa azione può essere ripetuta anche per i pezzi delle tabella delle pagine, 
+per più livelli di paginazione.  Esempio:
+\begin{itemize}
+    \item indirizzo logico a 32 bit;
+    \item dimensione della pagina = 4K = $2^{12}$;
+    \item 12 bit per offset(d);
+    \item 20 bit per numero di pagina:
+    \begin{itemize}
+        \item 10 bit per l'indice della tabella delle pagine esterna;
+        \item 10 bit per l'offset all'interno della pagina della tabella delle pagine interna.
+    \end{itemize}
+\end{itemize}
+Il costo per un accesso in memoria con una paginazione multilivello cambia di conseguenza nello speficico,
+l'accesso in memoria sarà moltiplicato per $n + 1$ livelli di paginazione:
+\[
+    (T_{MEM} + T_{TLB})\alpha + ((n + 1)T_{MEM} + T_{TLB})(1 - \alpha)
+\]
+Il $+1$ causato dall'accesso al dato.
+
+\section{Segmentazione}
+Il problema della paginazione è che lo spezzettare a blocchi il processo viene fatto senza rispettare la struttura dati 
+creata dal compilatore, sarebbe più utile avere pagine contenenti blocchi interi utili: una pagina con il main, una per le 
+funzioni, etc\dots Finché la pagina ha una dimensione fissa questo non si può ottenere, la \textbf{segmentazione} è analoga alla 
+paginazione, ma non si vincola più alla dimensione di una pagina fissa. Dal punto di vista di SO, avremo una tabella dei segmenti 
+che verranno tagliati a dimensione variabile. Un segmento di dimensioni variabili torna ad avere la problematica dell'allocazione 
+contigua, ovvero che non può essere messo dovunque, ma in blocchi unici. Nella tabella dei segmenti, ogni entry conterrà oltre 
+che all'indirizzo base del segmento anche la sua dimensione, che precedentemente non era necessaria con le pagine. 
+\paragraph{Come cambia la traduzione?}
+La CPU richiederà un indirizzo composto da una parte segmento e una parte offset, l'offset verrà analizzato, per verificare se 
+va oltre la dimensione del segmento o se rimane al suo interno (ecco da cosa viene causato il segmentation fault). La parte di offset
+verrà sommata al valore restituito dalla tabella dei segmenti, che ricordiamo contenere la dimensione del segmento e la base da sommare
+eventualmente all'offset. Esempio di traduzione:
+\begin{center}
+    \begin{tabular}{| c | c | c |}  
+        \hline
+        Segmento & Limite & Base \\
+        \hline
+        0 & 600 & 219 \\
+        \hline
+        1 & 14 & 2300 \\
+        \hline
+        2 & 100 & 90 \\
+        \hline
+        3 & 580 & 1327 \\
+        \hline      
+    \end{tabular}
+\end{center}
+
+A ogni segmento si avrà appunto il suo limite e la sua base, per esempio
+
+\begin{itemize}
+    \item se venisse richiesto il segmento $0$ e l'offset $430$ 
+    si controlla il segmento $0$, si nota che l'offset $430$ è all'interno del limite di conseguenza l'indirizzo fisico sarà dato da: 
+    offset + base = $649$.
+    \item segmento $1$ offset $20$? segmentation fault perché $20$ è superiore al limite $14$
+\end{itemize} 
+
+La segmentazione mi garantisce di gestire ancora meglio tutti gli aspetti visti nella paginazione, perché adesso avrò la certezza
+che il contenuto del segmento sarà omogeneo.
+
+\paragraph{Svantaggi della segmentazione}
+
+Torna il problema della frammentazione esterna, la pagina può essere messa in qualunque spazio, perché sono tutti uguali, 
+mentre il segmento essendo variabile ma richiedendo un'allocazione contigua non può e ciò causa la frammentazione esterna. 
+Una possibile soluzione al problema è l'unione della paginazione e della segmentazione, segmento il processo e ogni segmento lo 
+pagino, segmentandolo prima mantengo l'unità logica che verrà paginata omogeneamente in multilivelli.
+
+\section{Paginazione vs Segmentazione}
+
+Paginazione:
+\begin{description}
+    \item[Vantaggi:]\begin{itemize}
+        \item non esiste frammentazione, a parte una piccola frammentazione interna;
+        \item l'allocazione dei frame non richiede algoritmi specifici;
+    \end{itemize} 
+    \item[Svantaggi:]\begin{itemize}
+        \item non mantiene l'omogeneità;
+    \end{itemize}
+\end{description}
+Segmentazione:
+\begin{description}
+    \item[Vantaggi:]\begin{itemize}
+        \item omogeneità;
+        \item associazione di protezione/condivisione ai segmenti;
+    \end{itemize} 
+    \item[Svantaggi:]\begin{itemize}
+        \item richiede degli algoritmi di allocazione dinamica dello spazione, essendo i segmenti variabili;
+        \item reintroduce la problematica della frammentazione esterna;
+    \end{itemize}
+\end{description}
+
+Unendole si porteranno dietro i vantaggi di ciascuna limitando gli svantaggi.
+
+
+
 \end{document}

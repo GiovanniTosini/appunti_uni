@@ -1,18 +1,28 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {section}{\numberline {0.1}Monitor}{4}{section.0.1}%
-\contentsline {subsection}{\numberline {0.1.1}Problematiche}{4}{subsection.0.1.1}%
-\contentsline {section}{\numberline {0.2}Deadlock}{5}{section.0.2}%
-\contentsline {paragraph}{Modello astratto RAG (Resource Allocation Graph)}{5}{section*.2}%
-\contentsline {subsection}{\numberline {0.2.1}Gestione Deadlock}{5}{subsection.0.2.1}%
-\contentsline {section}{\numberline {0.3}Gestione della memoria}{11}{section.0.3}%
-\contentsline {paragraph}{Come avviene il passaggio da programma a processo?}{11}{section*.3}%
-\contentsline {paragraph}{Chi compie questa trasformazione?}{11}{section*.4}%
-\contentsline {subsection}{\numberline {0.3.1}Tempi di compilazione}{12}{subsection.0.3.1}%
-\contentsline {subsection}{\numberline {0.3.2}Linking}{13}{subsection.0.3.2}%
-\contentsline {subsection}{\numberline {0.3.3}Loading}{13}{subsection.0.3.3}%
-\contentsline {subsection}{\numberline {0.3.4}Spazio di indirizzamento logico}{14}{subsection.0.3.4}%
-\contentsline {section}{\numberline {0.4}Schemi di gestione della memoria}{14}{section.0.4}%
-\contentsline {subsection}{\numberline {0.4.1}Allocazione contigua}{14}{subsection.0.4.1}%
-\contentsline {subsubsection}{Partizioni fisse}{14}{section*.5}%
-\contentsline {subsubsection}{Partizioni variabili}{15}{section*.6}%
+\contentsline {chapter}{\numberline {1}Monitor}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Problematiche}{6}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Deadlock}{7}{chapter.2}%
+\contentsline {paragraph}{Modello astratto RAG (Resource Allocation Graph)}{7}{section*.2}%
+\contentsline {section}{\numberline {2.1}Gestione Deadlock}{8}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Gestione della memoria}{15}{chapter.3}%
+\contentsline {paragraph}{Come avviene il passaggio da programma a processo?}{15}{section*.3}%
+\contentsline {paragraph}{Chi compie questa trasformazione?}{16}{section*.4}%
+\contentsline {section}{\numberline {3.1}Tempi di compilazione}{17}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Linking}{17}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Loading}{18}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Spazio di indirizzamento logico}{18}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Schemi di gestione della memoria}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Allocazione contigua}{19}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Partizioni fisse}{19}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Partizioni variabili}{21}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Tecnica del Buddy System}{21}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Paginazione}{21}{section.4.2}%
+\contentsline {paragraph}{Come avviene la ricerca nella tabella delle pagine?}{22}{section*.6}%
+\contentsline {paragraph}{Quanto è grande una tabella della pagine?}{23}{section*.7}%
+\contentsline {subsection}{\numberline {4.2.1}Tabella delle pagine invertita}{23}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Paginazione multilivello}{24}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Segmentazione}{24}{section.4.3}%
+\contentsline {paragraph}{Come cambia la traduzione?}{25}{section*.8}%
+\contentsline {paragraph}{Svantaggi della segmentazione}{25}{section*.9}%
+\contentsline {section}{\numberline {4.4}Paginazione vs Segmentazione}{25}{section.4.4}%
