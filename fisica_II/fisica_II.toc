@@ -9,8 +9,8 @@
 \contentsline {paragraph}{Cosa succede con N cariche discrete?}{7}{section*.2}%
 \contentsline {section}{\numberline {2.5}Linee di campo}{8}{section.2.5}%
 \contentsline {section}{\numberline {2.6}Superfici equipotenziali(superfici in cui V è costante)}{9}{section.2.6}%
-\contentsline {paragraph}{Teorema di Gauss}{10}{section*.3}%
-\contentsline {paragraph}{Flusso del campo $\vec {E}$}{11}{section*.4}%
-\contentsline {paragraph}{Perché le cariche esterne non influenzano?}{12}{section*.5}%
-\contentsline {section}{\numberline {2.7}Elettrostatica nei conduttori}{12}{section.2.7}%
-\contentsline {subsection}{\numberline {2.7.1}Proprietà di un conduttore in equilibrio}{12}{subsection.2.7.1}%
+\contentsline {section}{\numberline {2.7}Teorema di Gauss}{10}{section.2.7}%
+\contentsline {paragraph}{Flusso del campo $\vec {E}$}{11}{section*.3}%
+\contentsline {paragraph}{Perché le cariche esterne non influenzano?}{12}{section*.4}%
+\contentsline {section}{\numberline {2.8}Elettrostatica nei conduttori}{12}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1}Proprietà di un conduttore in equilibrio}{12}{subsection.2.8.1}%

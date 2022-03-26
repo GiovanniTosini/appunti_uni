@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  26 MAR 2022 11:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  26 MAR 2022 12:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -650,7 +650,7 @@ l.72  P
        er induzione invece, un oggetto \begin{math} [1
 
 ]
-<induzione_elettrostatica.jpg, id=89, 456.70625pt x 462.72874pt>
+<induzione_elettrostatica.jpg, id=94, 456.70625pt x 462.72874pt>
 File: induzione_elettrostatica.jpg Graphic file (type jpg)
 <use induzione_elettrostatica.jpg>
 Package pdftex.def Info: induzione_elettrostatica.jpg  used on input line 77.
@@ -661,7 +661,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has b
 l.80  \chapter
               {Elettrostatica nel vuoto (in assenza di materia dielettrica)} [2 <./induzione_elettrostatica.jpg>]
 Capitolo 2.
-<coulomb.jpg, id=93, 588.1975pt x 409.53pt>
+<coulomb.jpg, id=98, 588.1975pt x 409.53pt>
 File: coulomb.jpg Graphic file (type jpg)
 <use coulomb.jpg>
 Package pdftex.def Info: coulomb.jpg  used on input line 87.
@@ -669,46 +669,46 @@ Package pdftex.def Info: coulomb.jpg  used on input line 87.
 [3
 
  <./coulomb.jpg>]
-<coulomb_2.png, id=102, 232.87pt x 209.78375pt>
+<coulomb_2.png, id=107, 232.87pt x 209.78375pt>
 File: coulomb_2.png Graphic file (type png)
 <use coulomb_2.png>
 Package pdftex.def Info: coulomb_2.png  used on input line 134.
 (pdftex.def)             Requested size: 192.0561pt x 173.02249pt.
-<coulomb_3.png, id=105, 325.215pt x 192.72pt>
+<coulomb_3.png, id=110, 325.215pt x 192.72pt>
 File: coulomb_3.png Graphic file (type png)
 <use coulomb_3.png>
 Package pdftex.def Info: coulomb_3.png  used on input line 137.
 (pdftex.def)             Requested size: 192.0561pt x 113.8126pt.
  [4 <./coulomb_2.png> <./coulomb_3.png>]
-<energia_elettrostatica_1.jpg, id=117, 446.66875pt x 441.65pt>
+<energia_elettrostatica_1.jpg, id=122, 446.66875pt x 441.65pt>
 File: energia_elettrostatica_1.jpg Graphic file (type jpg)
 <use energia_elettrostatica_1.jpg>
 Package pdftex.def Info: energia_elettrostatica_1.jpg  used on input line 191.
 (pdftex.def)             Requested size: 192.0561pt x 189.89905pt.
  [5 <./energia_elettrostatica_1.jpg>]
-<gr_part.png, id=122, 183.68625pt x 145.54375pt>
+<gr_part.png, id=127, 183.68625pt x 145.54375pt>
 File: gr_part.png Graphic file (type png)
 <use gr_part.png>
 Package pdftex.def Info: gr_part.png  used on input line 248.
 (pdftex.def)             Requested size: 192.0561pt x 152.18584pt.
  [6 <./gr_part.png>]
-<discrete.png, id=128, 474.77374pt x 181.67876pt>
+<discrete.png, id=133, 474.77374pt x 181.67876pt>
 File: discrete.png Graphic file (type png)
 <use discrete.png>
 Package pdftex.def Info: discrete.png  used on input line 275.
 (pdftex.def)             Requested size: 192.0561pt x 73.49355pt.
  [7 <./discrete.png>]
-<left.png, id=135, 139.52126pt x 125.46875pt>
+<left.png, id=140, 139.52126pt x 125.46875pt>
 File: left.png Graphic file (type png)
 <use left.png>
 Package pdftex.def Info: left.png  used on input line 303.
 (pdftex.def)             Requested size: 192.0561pt x 172.71819pt.
-<right.png, id=136, 118.4425pt x 123.46124pt>
+<right.png, id=141, 118.4425pt x 123.46124pt>
 File: right.png Graphic file (type png)
 <use right.png>
 Package pdftex.def Info: right.png  used on input line 304.
 (pdftex.def)             Requested size: 192.0561pt x 200.20012pt.
-<equi.jpg, id=137, 607.26875pt x 647.41875pt>
+<equi.jpg, id=142, 607.26875pt x 647.41875pt>
 File: equi.jpg Graphic file (type jpg)
 <use equi.jpg>
 Package pdftex.def Info: equi.jpg  used on input line 310.
@@ -717,13 +717,13 @@ Package pdftex.def Info: equi.jpg  used on input line 310.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8 <./left.png> <./right.png>] [9 <./equi.jpg>]
-<flusso.png, id=149, 110.4125pt x 140.525pt>
+<flusso.png, id=154, 110.4125pt x 140.525pt>
 File: flusso.png Graphic file (type png)
 <use flusso.png>
 Package pdftex.def Info: flusso.png  used on input line 347.
 (pdftex.def)             Requested size: 192.0561pt x 244.44717pt.
  [10] [11 <./flusso.png>]
-<conduttore.png, id=161, 115.43124pt x 254.9525pt>
+<conduttore.png, id=165, 115.43124pt x 254.9525pt>
 File: conduttore.png Graphic file (type png)
 <use conduttore.png>
 Package pdftex.def Info: conduttore.png  used on input line 396.
@@ -734,21 +734,21 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [12] [13 <./conduttore.png>] (./fisica_II.aux)
 Package rerunfilecheck Info: File `fisica_II.out' has not changed.
-(rerunfilecheck)             Checksum: CCCDA3CDA1F1F537F1008FDA3871780C;2202.
+(rerunfilecheck)             Checksum: FDFE7E57A80AB49E8C32FFAEC423455A;2343.
  ) 
 Here is how much of TeX's memory you used:
- 25037 strings out of 478287
- 479452 string characters out of 5846764
+ 25038 strings out of 478287
+ 479466 string characters out of 5846764
  745344 words of memory out of 5000000
- 42788 multiletter control sequences out of 15000+600000
+ 42789 multiletter control sequences out of 15000+600000
  482846 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,24n,103p,473b,657s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on fisica_II.pdf (17 pages, 512888 bytes).
+Output written on fisica_II.pdf (17 pages, 513635 bytes).
 PDF statistics:
- 259 PDF objects out of 1000 (max. 8388607)
- 183 compressed objects within 2 object streams
+ 263 PDF objects out of 1000 (max. 8388607)
+ 187 compressed objects within 2 object streams
  36 named destinations out of 1000 (max. 500000)
- 165 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 173 words of extra memory for PDF output out of 10000 (max. 10000000)
 
