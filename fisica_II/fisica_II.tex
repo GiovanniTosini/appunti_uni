@@ -1,26 +1,36 @@
-\documentclass{book}
+\documentclass[a4paper, 12pt]{book}
 
-\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
-%\usepackage{listings}
-%\usepackage[export]{adjustbox}
-\usepackage{hyperref}
-\usepackage{bohr}
+\usepackage{quoting}
+\usepackage{graphicx} %per inserire immagini nel testo
+\usepackage{sidecap} %permette di aggiungere didascalie alle immagini
+\usepackage{subfig}
+\usepackage[colorlinks]{hyperref} %per rendere interattivo il documento, gli elementi interattivi saranno in rosso con l'opzione colorlinks
 \usepackage{amsmath}
-\usepackage{amsfonts}
-\hypersetup{linktoc=all}
+\usepackage{amsthm} %per enunciati
+\usepackage{bohr}
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[section]
+\usepackage{geometry}
+\geometry{a4paper, top = 3cm, bottom = 3cm, left = 3.5cm, right = 3.5cm, heightrounded, bindingoffset = 5mm}
+\pagestyle{plain}
 
-\begin{document}
-    
 \author{Giovanni Tosini}
 \title{Fisica II}
 \date{ }
-\maketitle
-\newpage
-\tableofcontents
-\newpage
 
-\section{Introduzione}
+\begin{document}
+\begin{titlepage}
+    \maketitle
+\end{titlepage}
+
+\frontmatter %numeri romani prima del testo effettivo
+\tableofcontents
+\mainmatter %numeri arabi dalla prima pagina di testo effettivo
+
+\chapter{Introduzione}
 
 Esistono due tipi di forze in assoluto:
 \begin{itemize}
@@ -67,11 +77,11 @@ cariche multiple di essa. Inoltre il modulo della carica di un elettrone è equi
      \includegraphics[width=0.5\textwidth]{induzione_elettrostatica.jpg}
  \end{center}
 
- \section{Elettrostatica nel vuoto (in assenza di materia dielettrica)}
+ \chapter{Elettrostatica nel vuoto (in assenza di materia dielettrica)}
 
 Quando non c'è dipendenza dal tempo il campo elettrico e il campo magnetico sono separati.
 
-\subsection{Interazione (forze) di Coulomb}
+\section{Interazione (forze) di Coulomb}
 
 \begin{center}
     \includegraphics[width=0.5\textwidth]{coulomb.jpg}
@@ -139,7 +149,7 @@ N.B.: \begin{itemize}
     \end{math}
 \end{itemize}
 
-\subsection{Campo elettrostatico}
+\section{Campo elettrostatico}
 \begin{quote}
     \begin{math}
         \vec{F_{q_0}} = q_0\vec{E}_i(\vec{r}_0)
@@ -169,7 +179,7 @@ Definizione "operativa" di campo elettrico:
     \end{math}
 \end{quote}
 
-\subsection{Energia elettrostatica}
+\section{Energia elettrostatica}
 
 La forza elettrostatica è conservativa? Lo è se:
 \begin{itemize}
@@ -285,7 +295,7 @@ In una distribuzione continua \[\sum \rightarrow \int\] quindi:
 
 Che può essere calcolato sullo spazio, il volume o linearmente.
 
-\subsection{Linee di campo}
+\section{Linee di campo}
 
 Sono linee tangenti al campo in ogni punto, continue ed escono dalle cariche positive mentre entrano da quelle negative.
 
@@ -325,7 +335,7 @@ Il lavoro svolto in un percorso chiuso sarà sempre equivalente a zero, la \text
 
 \paragraph{Teorema di Gauss}
 
-Viene usato per calcolare \[\vec{E}(r)\]. Prendiamo una carica puntiforme $q$. Il campo è costante mantenendo fissa una certa distanza, di conseguenza moltiplicando $\vec{E}\text{ per la superficie della sfera}$ si otterrà una costante.
+Viene usato per calcolare \[\vec{E}(r)\] Prendiamo una carica puntiforme $q$. Il campo è costante mantenendo fissa una certa distanza, di conseguenza moltiplicando \[\vec{E}\textrm{ per la superficie della sfera}\] si otterrà una costante.
 
 \begin{description}
 	\item[N.B.:] un angolo solido è \[d\Omega = \frac{dS_{sferica}}{r^2} = \frac{\hat{r}\hat{n}dS}{r^2}\]
@@ -369,5 +379,34 @@ Quindi
 Aggiungendo altre cariche, il flusso di tutte sarà la somma dei flussi.
 \paragraph{Perché le cariche esterne non influenzano?}
 Perché il loro flusso è nullo essendo che entrano ed escono dalla superficie.
+
+\section{Elettrostatica nei conduttori}
+La sorgente del campo $E$ è una carica ${Q}$, il campo generato 
+agisce sulle cariche e queste lo percepiscono, a loro volta ogni 
+carica genererà un campo che verrà percepito dalle altre cariche.
+
+La materia neutra affetta da un campo reagirà in due possibili modi:
+\begin{itemize}
+    \item le cariche libere si metteranno in moto;
+    \item i materiali dielettrici vincoleranno le cariche.
+\end{itemize}
+
+\subsection{Proprietà di un conduttore in equilibrio}
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.3\textwidth]{conduttore.png}
+    \caption{Conduttore in equilibrio}
+\end{SCfigure}
+
+La  cariche di un conduttore affetto da un campo esterno si 
+sposteranno in base alla forza generata dal campo. Con questa separazione
+di cariche si accende un campo interno al conduttore, indotto appunto da quello esterno.
+Le cariche si sposteranno a fino a quando il campo interno non sarà nullo.
+
+\begin{enumerate}
+    \item Il campo interno di un conduttore in equilibrio è $0$, in caso contrario le particelle sarebbero ancora in movimento\[{E_{interno}} = {E_{indotto}} + {E_{esterno}} = 0\];
+    \item Il potenziale nel volume del conduttore sarà costante a quello della superficie \[V = \textrm{costante}\]
+    \item Se il campo fosse nulle per il teorema di Gauss la carica interna in un conduttore è $0$ \[Q_{interna} = 0\]ha solo carica superficiale \[Q_{superficiale} = \int_{superficie} \sigma dS\]
+    \item Il campo della superficie dei conduttori è noto \[\vec{E}_{superficie} = \frac{\sigma}{\epsilon_0}\hat{n}\] è un campo normale alla sua superficie.
+\end{enumerate}
 
 \end{document}
