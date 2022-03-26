@@ -633,7 +633,204 @@ Proprietà:
      sistema LTI (\textbf{Linear time invariant}) 
 \end{description}
 
-Proprietà di stabilità asintotica %52:37
+\paragraph{Proprietà di stabilità asintotica}
+
+Un sistema è asintoticamente stabile se:
+\[
+        \exists \tau \in R, \textrm{ t.c. } u(t) = 0, \forall t \ge \tau \Rightarrow \lim_{t \rightarrow \infty} v(t) = 0
+\]
+Significa che se l'ingresso non agisce più sul sistema, all'infinito l'uscita converge verso $0$.
+
+\paragraph{Bounded Input Bounded Output (BIBO) stabilità}
+
+Ingresso limitato e output limitato, come una funzione sinusoidale. Un sistema è BIBO stabile se:
+\[
+    \begin{split}
+        &\exists \tau \in R \textrm{ e } M_u > 0, M_u \in R \textrm{ t.c. se } \\
+        &|u(t)| < M_u, \forall t \ge \tau \Rightarrow \exists M_v > 0: |v(t)| < M_v, \forall t \ge \tau 
+    \end{split}
+\]
+
+\section{Sistemi descritti da equazioni differenziali}
+
+Esempio 1: Sistema massa-molla-smorzatore
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{molla.jpg}
+\end{center}
+
+Essendo che $F = ma$ e che $a(t) = \frac{d^2x(t)}{dt^2}$ avremo che:
+\[
+    \begin{split}
+        &Ma(t) = u(t) - \underbrace{F_K}_{kx(t)} - \overbrace{F_D}^{D\frac{dx(t)}{dt}} \Rightarrow \\
+        &\overbrace{M \frac{d^2x(t)}{dt^2} + D \frac{dx(t)}{dt} + kx(t)}^{ingresso} = \underbrace{u(t)}_{uscita} \\
+    \end{split}
+\]
+
+Esempio 2: Circuito elettrico
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{circuito.jpg}
+\end{center}
+
+L'ingresso in questo caso è dato dalla tensione formata dalla somma delle tensioni sull'induttore e la resistenza, come output
+avremo la tensione ai capi dei resistori:
+\[
+    \begin{split}
+        &u(t) = L \frac{di(t)}{dt} + \underbrace{Ri(t)}_{v(t)} \\
+        &\textrm{se } v(t) = Ri(t) \Rightarrow i(t) = \frac{1}{R} v(t) \\
+        &\frac{L}{R} \frac{dv(t)}{dt} + v(t) = u(t) \\
+    \end{split}
+\]
+
+In generale sono una sommatoria delle derivate dell'input che saranno uguali alla sommatoria delle derivate 
+dell'output, in generale ha la seguente forma:
+
+\[
+    a_n \frac{d^nv(t)}{dt^n} + a_{n - 1} \frac{d^{n - 1}v(t)}{dt^{n - 1}} + \dots + a_1 \frac{dv(t)}{dt} + a_0 v(t) = b_m \frac{d^mu(t)}{dt^m} + b_{m - 1} \frac{d^{m - 1} u(t)}{dt^{m - 1}} + \dots + b_0u(t)
+\]
+
+dove $u(t)$ è l'ingresso, $v(t)$ è l'uscita e $a_n, b_n \neq 0$ è fondamentale che la derivata di ordine maggiore abbia 
+coefficiente non nullo. L'equazione può essere riscritta in forma compatta con la sommatoria:
+
+\[
+    \sum_{i = 0}^n a_i \frac{d^iv(t)}{dt^i} = \sum_{i = 0}^m b_i \frac{d^iu(t)}{dt}
+\]
+
+$n$ si chiama l'ordine dell'equazione differenziale, in generale $n \ge m$, su tutti i sistemi considerati il grado 
+di derivazione dell'output sarà maggiore o uguale dell'input. Se $n \ge m$ il sistema è detto \textbf{strettamente proprio}, altrimenti
+il sistema è \textbf{proprio}.
+
+Riprendendo gli esempi fatti sopra:
+
+\[
+    \underbrace{Mx''(t)}_{a_2} + \underbrace{Dx'(t)}_{a_1} + \underbrace{kx(t)}_{a_0} = \underbrace{u(t)}_{b_0}
+\]
+
+Possiamo notare che il sistema è strettamente proprio siccome $n = 2$ e $m = 0$
+
+\begin{description}
+    \item[Osservazione:] il sistema descritto con l'equazione differenziale non ha soluzione unico, a patto che non vengano imposte $n$ condizioni iniziali 
+\end{description}
+
+\subsection{Soluzione di un sistema a tempo continuo descritto da un'equazione differenziale}
+
+La soluzione equivale all'uscita $v$ (reale o complessa) che si può scomporre in 
+
+\[
+    v = \underbrace{v_l}_{\textrm{risposta libera}} + \underbrace{v_f}_{\textrm{risposta forzata}}
+\]
+
+La risposta libera è la parte che non dipende dall'ingresso, ma dalle condizioni iniziali, perché il sistema può anche non essere a riposo, 
+mentre la risposta forzata dipende dall'ingresso $u$. 
+
+\paragraph{Evoluzione libera (oppure risposta libera)}
+
+Per calcolare l'evoluzione libera associamo all'equazione differenziale iniziale l'equazione differenziale \textbf{omogenea}:
+
+\[
+    \sum_{i = 0}^n a_i \frac{d^iv(t)}{dt^i} = 0
+\]
+
+quando una parte dell'equazione viene posta a 0 l'equazione si definisce \textbf{omogenea}, all'equazione qui sopra 
+associamo il \textbf{polinomio caratteristico}
+
+\[
+    P(s) = \sum_{i = 0}^n a_i s^i
+\]
+
+Devo risolvere l'equazione caratteristica $P(s) = 0$ applicando il teorema fondamentale dell'algebra $\rightarrow \lambda_1, \dots, \lambda_r$
+sono radici di $P(s) = 0$ con le molteplicità $\mu_1, \dots, \mu_r$  con $\mu_1 + \dots + \mu_r = n$. La soluzione dell'equazione 
+per il calcolo della risposta libera è:
+
+\[
+    v(t) = \sum_{i = 1}^r \sum_{l = 0}^{\mu_{i -1}} c_{i | l} e^{\lambda it} \frac{t^l}{l!}
+\]
+
+I coefficienti $c_{i | l}$ vengono determinati dalle condizioni iniziali. Esempio 1:
+
+\[
+    \begin{split}
+        &Mx'' + Dx' + kx = 0 \quad M = 1 \quad D = 2 \quad k = 1 \\
+        &P(s) = s^2 + 2s + 1 \quad \underbrace{\lambda_1 = -1}_{\textrm{valore che lo annulla}} \quad \mu_1 = 2 \textrm{ il grado} \\
+        &x(t) = \sum_{i = 1}^1 \sum_{l = 0}^1 c_{i | l} e^{-t} \frac{t^l}{l!} = \\
+        &\sum_{l = 0}^1 c_{i | l} e^{-t} \frac{t^l}{l!} = \\
+        &c_{1, 0} e^{-t} + c_{1, 1} e^{-t} t
+    \end{split}
+\]
+
+Notare che la prima sommatoria non c'è perché abbiamo una sola radice distinta.
+
+Esempio 2:
+
+\[
+    \begin{split}
+        &v'''(t) + 3v''(t) + 3v'(t) + 1 = 0 \\
+        &P(s) = s^3 + 3s^2 + 3s + 1 = (s + 1)^3 \\
+        &\lambda_1 = 1 \quad \mu_1 = 3 \\
+        &v(t) = c_{1,0} e^{-t} + c_{1,1} e^{-t}t + c{_1,2} e^{-t} \frac{t^2}{2}
+    \end{split}
+\]
+
+La prima sommatoria scompare pure in questo caso.
+
+\subsection{Modi elementari}
+
+\[
+    m_i(t) = e^{\lambda it} \frac{t^l}{l!}
+\]
+
+è detto \textbf{modo elementare} $(i = 1,\dots,r)$
+
+\begin{description}
+    \item[Osservazione:] $c_{i,l}$ verranno calcolati dalle condizioni iniziali. 
+\end{description}
+
+Esempio: Trovare la risposta libera del sistema
+
+\[
+    v''(t) + 3v'(t) - 4v(t) = 5u'(t) - u(t)
+\]
+
+con le condizioni iniziali
+
+\[
+    v(0) = 0, \quad v'(0) = 1
+\]
+
+Come si risolve? Si scrive l'equazione omogenea:
+
+\[
+    v''(t) + 3v'(t) - 4v(t) = 0
+\]
+
+Ora si scrive il polinomio caratteristico:
+
+\[
+    \begin{split}
+        &P(s) = s^2 + 3s - 4 = (s - 1)(s + 4) \\
+        &\lambda_1 = 1 \quad \mu_1 = 1 \\
+        &\lambda_2 = -4 \quad \mu_2 = 1 \\
+        &v_l(t) = c_{1,0} e^t + c_{2,0} e^{-4t} \\
+        &v_l(t) = c_{1,0} e^t - 4c{2,0}^{-4t} \\
+    \end{split}
+\]
+\[
+v_l{0} =
+    \begin{cases}
+        c_{1,0} + c_{2,0} = 0 \textrm{ condizione iniziale} \\
+        c_{1,0} - 4c_{2,0} = 1 \textrm{ condizione iniziale} \\
+    \end{cases}
+\]
+\[
+    \begin{split}
+        &c_{1,0} = \frac{1}{5} \quad c_{2,0} = -\frac{1}{5} \\
+        &v_l(t) = \frac{1}{5} e^t - \frac{1}{5} e^{-4t}
+    \end{split}
+\]
+
+    
+
 
 
 

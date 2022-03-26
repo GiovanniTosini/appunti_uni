@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1647967485 "/home/poppo/Università/appunti_miei/appunti_uni/sistemi/Sistemi.tex" "Sistemi.pdf" "Sistemi" 1647967487
-  "/home/poppo/Università/appunti_miei/appunti_uni/sistemi/Sistemi.tex" 1647967484 23085 ff20115629766fab7915ed60b4465f9a ""
+["pdflatex"] 1648314151 "/home/poppo/Università/appunti_miei/appunti_uni/sistemi/Sistemi.tex" "Sistemi.pdf" "Sistemi" 1648314152
+  "/home/poppo/Università/appunti_miei/appunti_uni/sistemi/Sistemi.tex" 1648314149 29621 e737a0883529ea7850cd19b92621c489 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -126,11 +126,12 @@
   "/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1643544901 4379201 880d78f4a2bde4f491e7d718ab91f390 ""
   "/usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1643544949 2796807 8292054a54d16185d5323e4801eb9517 ""
   "/usr/local/texlive/2021/texmf.cnf" 1643544867 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "Sistemi.aux" 1647967487 7582 205c620ebaf2c151f2f615b67a368cd6 "pdflatex"
-  "Sistemi.out" 1647967487 3483 093bdb85fa5eb93396ee5682a3700380 "pdflatex"
-  "Sistemi.tex" 1647967484 23085 ff20115629766fab7915ed60b4465f9a ""
-  "Sistemi.toc" 1647967487 2767 4a3b4303f5502b2188a2971ac85d6092 "pdflatex"
+  "Sistemi.aux" 1648314152 8431 1a8f9e0c05bdfbf6ff90872c13e91dae "pdflatex"
+  "Sistemi.out" 1648314152 4402 5fa663d9765e4ee184fa9e66ba510d58 "pdflatex"
+  "Sistemi.tex" 1648314149 29621 e737a0883529ea7850cd19b92621c489 ""
+  "Sistemi.toc" 1648314152 3370 4b4d7067bf06c3edd258964324f14629 "pdflatex"
   "campionamento.png" 1647944240 16580 6562b9d7c01bfd06c5994f782fe4ce67 ""
+  "circuito.jpg" 1648307483 114552 3ec74c8530460fdd50a89bcfdd040bda ""
   "dirac.png" 1647943402 19304 704688dba41f0da1443fbe3fdfde6bb5 ""
   "fasore.png" 1647873858 26419 a353415b76e0a02f64d7a8794121eeef ""
   "finestra.png" 1647883811 7831 abfaa413011e20124893e5d62663d15f ""
@@ -139,6 +140,7 @@
   "gradino.jpg" 1647876716 62739 6639306786e29442f7cdb1cac3b7e13e ""
   "gradino2.jpg" 1647963558 55975 d2e26a414648b0a9a8996ed368561f1e ""
   "kroneker.jpg" 1647963042 48613 853dec398c14d9e6c7a79ca2a23e6e1b ""
+  "molla.jpg" 1648307482 91930 76977706e34273cedad72ead49f77154 ""
   "nomelunghissimo.png" 1647874183 32019 65ff3b2fd12710845bff08e505d2aca2 ""
   "num_comp.jpg" 1647334864 26907 e593240d123a94da446befd3c096dc50 ""
   "num_comp10.jpg" 1647339373 31261 b9025b4dacc8fddc90170bf051d3d05c ""
