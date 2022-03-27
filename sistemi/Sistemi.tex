@@ -710,7 +710,7 @@ Riprendendo gli esempi fatti sopra:
 Possiamo notare che il sistema è strettamente proprio siccome $n = 2$ e $m = 0$
 
 \begin{description}
-    \item[Osservazione:] il sistema descritto con l'equazione differenziale non ha soluzione unico, a patto che non vengano imposte $n$ condizioni iniziali 
+    \item[Osservazione:] il sistema descritto con l'equazione differenziale non ha soluzione unica, a patto che non vengano imposte $n$ condizioni iniziali 
 \end{description}
 
 \subsection{Soluzione di un sistema a tempo continuo descritto da un'equazione differenziale}
@@ -747,14 +747,16 @@ per il calcolo della risposta libera è:
     v(t) = \sum_{i = 1}^r \sum_{l = 0}^{\mu_{i -1}} c_{i | l} e^{\lambda it} \frac{t^l}{l!}
 \]
 
-I coefficienti $c_{i | l}$ vengono determinati dalle condizioni iniziali. Esempio 1:
+I coefficienti $c_{i | l}$ vengono determinati dalle condizioni iniziali. 
+
+Esempio 1:
 
 \[
     \begin{split}
         &Mx'' + Dx' + kx = 0 \quad M = 1 \quad D = 2 \quad k = 1 \\
-        &P(s) = s^2 + 2s + 1 \quad \underbrace{\lambda_1 = -1}_{\textrm{valore che lo annulla}} \quad \mu_1 = 2 \textrm{ il grado} \\
-        &x(t) = \sum_{i = 1}^1 \sum_{l = 0}^1 c_{i | l} e^{-t} \frac{t^l}{l!} = \\
-        &\sum_{l = 0}^1 c_{i | l} e^{-t} \frac{t^l}{l!} = \\
+        &P(s) = s^2 + 2s + 1 \quad \underbrace{\lambda_1 = -1}_{\textrm{valore che lo annulla}} \quad \underbrace{\mu_1 = 2}_{\textrm{ il grado}} \\
+        &x(t) = \sum_{i = 1}^1 \sum_{l = 0}^1 c_{i , l} e^{-t} \frac{t^l}{l!} = \\
+        &\sum_{l = 0}^1 c_{i , l} e^{-t} \frac{t^l}{l!} = \\
         &c_{1, 0} e^{-t} + c_{1, 1} e^{-t} t
     \end{split}
 \]
@@ -829,12 +831,199 @@ v_l{0} =
     \end{split}
 \]
 
-    
+Per un sistema descritto dall'equazione differenziale di base, la risposta libera è la funzione $v_l$ che si ottiene come 
+soluzione dell'equazione omogenea 
 
+\[
+    \sum_{i = 1}^n a_i \frac{d^iv(t)}{dt^i} = 0
+\]
 
+i cui coefficienti sono determinati dalle condizioni iniziali.
 
+\begin{description}
+    \item[Osservazione:] la risposta libera di un sistema è la risposta del sistema in assenza di ingresso ($u(t) = 0$) e dipende soltanto dalla condizioni iniziali.
+\end{description}
 
+\subsection{Convergenza dei modi elementari}
 
+Dato il modo elementare vale che:
+
+\begin{enumerate}
+    \item \[\lim_{t \rightarrow \infty} m(t) = 0 \Leftrightarrow Re(\lambda) < 0\];
+    \item \[m(t) \textrm{ limitato su } [0, \infty) \Leftrightarrow Re(\lambda) \le 0\] Se $Re(\lambda) = 0$ allora deve valere che $l = 0$;
+    \item \[\lim_{t \rightarrow \infty} = \infty\] in tutti gli altri casi $(Re(\lambda) > 0)$ oppure $Re(\lambda) = 0$ e $l \neq 0)$
+\end{enumerate}
+
+\textbf{Dimostrazione:}
+
+\begin{enumerate}
+    \item $Re(\lambda) < 0$. Scriviamo \[\lambda = \sigma + j\omega \Rightarrow\] \[\begin{split}
+        m(t) &= \frac{t^l}{l!}e^{\sigma t}e^{j\omega t} \\
+        &\underbrace{\frac{t^l}{l!\overbrace{e^{-\sigma t}}^{\infty}}}_0 \overbrace{e^{j\omega t}}^{\textrm{funzione limitata}} \Rightarrow \\
+        &\lim_{t \rightarrow \infty} m(t) = 0
+    \end{split}\]
+    \item $Re(\lambda) \le 0$ per $Re(\lambda) < 0$  abbiamo visto che il modo converge per \[t \rightarrow \infty \overbrace{\Rightarrow}^{m(t) \textrm{ continuo}} m(t) \textrm{ limitato }\] Per \[Re(\lambda) = 0 \textrm{ e } l = 0 \Rightarrow m(t) = e^{j\omega t}\] una funzione limitata in modulo;
+    \item \[Re(\lambda) > 0 \Rightarrow e^{\sigma t} \rightarrow \infty \textrm{ per } t \rightarrow \infty \Rightarrow \lim_{t \rightarrow \infty} m(t) = \infty\] Per \[Re(\lambda) = 0 \textrm{ e } l \neq 0 \Rightarrow m(t) = \underbrace{\frac{t^l}{l!}}_{\textrm{per } t\rightarrow \infty = \infty} \underbrace{e^{j\omega t}}_{\textrm{limitata}} \Rightarrow \lim_{t \rightarrow \infty} m(t) = \infty\]
+\end{enumerate}
+
+\begin{description}
+    \item[Teorema:] un sistema LTI descritto dall'equazione differenziale è asintoticamente stabile se e solo se ogni suo modo elementare converge a zero, cioè \[\lim_{t \rightarrow \infty} m_i(t) = 0, \textrm{ dove } m_i(t) = e^{\lambda it} \frac{t^l}{l!} \textrm{ per } i = 1, \dots, r\]
+    \item[Osservazione:] un sistema LTI descritto  dall'equazione differenziale è asintoticamente stabile se e solo se tutte le radici del polinomi caratteristico hanno la parte reale negativa
+\end{description}
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{radici.jpg}
+    \caption{Con le radici a sinistra dell'asse dell'immaginario il sistema sarà asintoticamente stabile.}
+\end{SCfigure}
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{radici2.jpg}
+    \caption{Questo sistema non è asintoticamente stabile perché ho una parte reale maggiore di zero.}
+\end{SCfigure}
+
+Esempio 1 dal circuito eletrico RL:
+
+\[
+    \frac{dv(t)}{d(t)} + \frac{R}{L}v(t) = \frac{R}{L}u(t)
+\]
+
+L'equazione caratteristica sarà:
+
+\[
+    s + \frac{R}{L} = 0 \Rightarrow \lambda = -\frac{R}{L} \in R \quad \lambda < 0 \textrm{ per } R,L>0
+\]
+
+quindi il sistema è stabile.
+
+Esempio 2 della molla:
+
+\[
+    M\frac{d^2v(t)}{dt^2} + D\frac{dv(t)}{dt} - kv(t) = 0 \textrm{ con } M, D, k > 0
+\]
+
+L'equazione caratteristica sarà:
+
+\[
+    Ms^2 + Ds - k = 0 \rightarrow \lambda_{1,2} = \frac{-D\pm \sqrt{D^2 + 4kM}}{2M}
+\]
+
+In base ai valori di M, D, k si ricaveranno i valori di $\lambda_1, \lambda_2$
+
+\subsection{Risposta impulsiva ed evoluzione forzata}
+
+\begin{description}
+    \item[Definizione:] il prodotto di convoluzione tra due funzione u,v se esiste è definito da \[\begin{split}
+        (u \ast v)(t) &= \int_{-\infty}^\infty u(\xi)v(t - \xi)d\xi = \\
+        &\underbrace{=}_{\textrm{cambio variabile } t - \xi = x} \int_{-\infty}^\infty u(t - \xi)v(\xi)d\xi 
+    \end{split}\] 
+\end{description}
+
+Proprietà:
+\begin{enumerate}
+    \item Commutatività: \[(u \ast v)(t) = (v \ast u)(t)\]
+    \item Associatività: \[(u \ast v)(t) \ast w(t) = u(t) \ast (v \ast w)(t)\]
+    \item Distribuibilità rispetto alla somma: \[u(t) \ast (v(t) + w(t)) = (u \ast v)(t) + (u \ast w)(t)\] questre tre prime proprietà derivano dalle proprietà dell'integrazione
+    \item L'impulso è elemento neutro per la convoluzione: \[(v \ast \delta)(t) = (\delta \ast v)(t) = v(t)\] per la proprietà di campionamento dell'impulso: \[v(t) = \int_{-\infty}^\infty v(\xi)\delta(t - \xi)d\xi = (v \ast \delta)(t)\] 
+\end{enumerate}
+
+\begin{description}
+    \item[Definizione:] dato un sistema a tempo continuo inizialmente a riposo definiamo la risposta impulsiva del sistema, la risposta in corrispondenza dell'impulso ideale 
+\end{description}
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{risposta_impulsiva.jpg}
+    \caption{La risposta impulsiva $h(t)$}
+\end{SCfigure}
+
+\begin{description}
+    \item[Teorema:] la risposta in uscita $v(t)$ di una sistema LTI, inizialmente a riposo , in corrispondenza a un ingresso $u(t)$ è data dal seguente prodotto di convoluzione (se esiste) \[v(t) = (u \ast h)(t) = \int_{-\infty}^\infty h(\xi)u(t - \xi)d\xi = \int_{-\infty}^\infty h(t - \xi) u(\xi) d\xi\] con $h(t)$ la risposta impulsiva del sistema.
+    \item[Osservazione:] un sistema LTI inizialmente a riposo è causale \[u(t) = 0, v(t) = 0 \textrm{ per } t < 0\] siamo a riposo. Siccome $h(t) = 0$ per $t < 0$ (perché $\delta (t) = 0, t < 0) \Rightarrow$ \[\begin{split}
+        (u \ast h)(t) &= \int_{0^-}^\infty h(\xi) u(t - \xi) d\xi = \\
+        &= \int_{-\infty}^{t^+} h(t- \xi) u(\xi) d\xi
+    \end{split} \] In particolare, la risposta forzata di un sistema LTI, iniziailmente a riposo (quindi causale) in corrispondenza a un ingresso $u(t) (u(t) = 0, t<0)$ è: \[ \begin{split}
+        v_f(t) = (u \ast h) (t) &= \int_{0^-}^{t^+} h(\xi) u(t - \xi) d\xi = \\
+        &= \int_{0^-}^{t^+} h(t - \xi) u(\xi) d\xi
+    \end{split}\]
+    \item[Dimostrazione:] \begin{SCfigure}[50][h!]
+        \includegraphics[width=0.5\textwidth]{tre_sistemi.jpg}
+        \caption{La secondo valida per tempo invarianza, mentre le terza per la linearità }
+    \end{SCfigure} Integriamo $\Rightarrow$ \[ \begin{split}
+        &\underbrace{\int_{-\infty}^\infty u(\xi) \delta(t - \xi) d\xi}_{u(t)} \mapsto \int_{-\infty}^\infty u(\xi) h(t - \xi) d\xi \\
+        &u(t) \mapsto \int_{-\infty}^\infty u(\xi) h(t - \xi) d\xi = (u \ast h)(t)
+    \end{split} \]
+    \begin{SCfigure}[50][h!]
+        \includegraphics[width=0.5\textwidth]{sistema1.jpg}
+        \caption{Dimostrazione completata.}
+    \end{SCfigure}
+    \item[Osservazione:] si può dimostrare che per il sistema definito dalla prima equazione differenziale \[h(t) = d_0\delta(t) + \sum_{i = 1}^r \sum_{l = 0}^{\mu_i - 1} d_{i,l} \frac{t^l}{l!} e^{\lambda_it} \underbrace{\delta_{-1} (t)}_{\textrm{dobbiamo assicurarci la causalità}}\] con $d_0 \neq 0$ se e solo se $n = m$ 
+\end{description}
+
+Esempio: determinare la risposta impulsiva del sistema 
+
+\[
+    \frac{dv(t)}{dt} + 2v(t) = \frac{du(t)}{dt} + u(t)
+\]
+
+Equazione caratteristica:
+
+\[
+    s + 2 = 0 \Rightarrow \lambda = -2 \Rightarrow \textrm{ il modo elementare } m(t) = e^{-2t}
+\]
+
+\[
+    h(t) = d_0\delta(t) + d_1 e^{-2t} \delta_{-1} (t)
+\]
+
+Come si ricavano $d_0, d_1= ?$
+
+\[
+    \frac{dh(t)}{dt} = d_0 \frac{d\delta(t)}{dt} -2d_1 e^{-2t} \delta_{-1}(t) + d_1 e^{-2t} \delta(t)
+\]
+
+Sostituisco nell'equazione (*)
+
+\[
+    \begin{split}
+        \Rightarrow &d_0 \frac{d\delta(t)}{dt} - 2d_1 e^{-2t} \delta_{-1}(t) + d_1 e^{-2t} \delta(t) + 2d_0 \delta(t) + 2 d_1 e^{-2t} \delta_{-1}(t) = \frac{d\delta(t)}{dt} +\delta(t) \\
+        &d_0 \frac{d\delta(t)}{dt} + d_1 \delta(t) + 2d_0 \delta(t) = \frac{d\delta(t)}{dt} + \delta(t) \\
+        &d_{0 - 1} \frac{d\delta(t)}{dt} + (d_1 + 2d_{0 - 1}) \delta(t) = 0 \\
+    \end{split}
+\]
+\[\Rightarrow
+\begin{cases}
+    d_{0 - 1} = 0 \Rightarrow d_0 = 1\\
+    d_1 + 2d_{0 - 1} = 0 \Rightarrow d_1 = -1\\
+\end{cases}
+\]
+Per $t\rightarrow 0$. Perciò abbiamo trovato la nostra risposta impulsiva:
+
+\[
+    h(t) = \delta(t) - e^{-2t} \delta_{-1}(t)
+\]
+
+Riassumento, se noi abbiamo una sistema LTI rappresentato dall'equazione differenziale, avremo che la risposta totale sarà data dalla somma della risposta libera con la risposta forzata:
+
+\[
+    v(t) = v_l(t) + v_f(t)
+\]
+
+\begin{itemize}
+    \item $v_l(t)$ si ottiene trovando le radici dell'equazione omogenea associata e utilizzando le condizioni iniziali $\rightarrow$ stabilità asintotica
+    \item $v_f(t)$ si ottiene tramite \[\int_0^{t^+} u(\xi)h(t - \xi) d\xi\] $\rightarrow$ stabilità BIBO
+\end{itemize}
+
+\subsection{Stabilità di un sistema continuo definito dalla risposta impulsiva}
+
+\begin{description}
+    \item[Teorema:] un sistema a tempo continuo LTI è BIBO stabile se e solo se \[ \int_{-\infty}^\infty |h(\xi)|d\xi < \infty\]
+    \item[Dimostrazione:] da destra a sinistra, se \[\int_{-\infty}^\infty |h(\xi)|d\xi < \infty \Rightarrow \textrm{ il sistema è BIBO stabile}\] Se l'ingresso $u(t)$ tale che $|u(t)| < M_u, \forall t$ dobbiamo dimostrare che l'uscita $v(t)$ corrispondente  è limitata $(\exists M_v \textrm{ t.c. } |v(t)| < M_v, \forall t)$ \[ \begin{split}
+        &v(t) = (u \ast h)(t) = \int_{-\infty}^\infty h(\xi) u(t - \xi) d\xi \\
+        &|v(t)| = \int_{-\infty}^\infty |h(\xi) u(t - \xi)| d\xi = \\
+        &= \int_{-\infty}^{\infty} |h(\xi)|\underbrace{|u(t - \xi)|}_{< M_u} d\xi < \overbrace{M_u \underbrace{\int_{-\infty}^\infty|h(\xi)|d\xi}_{< \infty}}^{= M_v} \\
+        &\Rightarrow |v(t)| < M_v
+    \end{split} 
+    \]
+\end{description}
 
 
 
