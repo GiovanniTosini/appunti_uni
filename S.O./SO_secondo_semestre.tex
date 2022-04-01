@@ -590,29 +590,135 @@ pagino, segmentandolo prima mantengo l'unità logica che verrà paginata omogene
 
 \section{Paginazione vs Segmentazione}
 
-Paginazione:
-\begin{description}
-    \item[Vantaggi:]\begin{itemize}
-        \item non esiste frammentazione, a parte una piccola frammentazione interna;
-        \item l'allocazione dei frame non richiede algoritmi specifici;
-    \end{itemize} 
-    \item[Svantaggi:]\begin{itemize}
-        \item non mantiene l'omogeneità;
-    \end{itemize}
-\end{description}
-Segmentazione:
-\begin{description}
-    \item[Vantaggi:]\begin{itemize}
-        \item omogeneità;
-        \item associazione di protezione/condivisione ai segmenti;
-    \end{itemize} 
-    \item[Svantaggi:]\begin{itemize}
-        \item richiede degli algoritmi di allocazione dinamica dello spazione, essendo i segmenti variabili;
-        \item reintroduce la problematica della frammentazione esterna;
-    \end{itemize}
-\end{description}
+Vantaggi della paginazione:
+\begin{itemize}
+    \item non esiste frammentazione, a parte una piccola frammentazione interna;
+    \item l'allocazione dei frame non richiede algoritmi specifici;
+\end{itemize} 
+Svantaggi della paginazione:
+\begin{itemize}
+    \item non mantiene l'omogeneità;
+\end{itemize}
+Vantaggi della segmentazione:
+\begin{itemize}
+    \item omogeneità;
+    \item associazione di protezione/condivisione ai segmenti;
+\end{itemize} 
+Svantaggi della segmentazione:
+\begin{itemize}
+    \item richiede degli algoritmi di allocazione dinamica dello spazione, essendo i segmenti variabili;
+    \item reintroduce la problematica della frammentazione esterna;
+\end{itemize}
 
 Unendole si porteranno dietro i vantaggi di ciascuna limitando gli svantaggi.
+
+\section{Segmentazione paginata}
+
+L'indirizzo logico sarà composto da segmento e offset, il numero di segmento verrà sommato al valore all'interno \textbf{Segment Table Base Register} (indica dove si trova la tabella dei segmenti all'interno della memoria) 
+per andare a indicizzare la tabella dei segmenti. All'interno della tabella dei segmenti si troverà la lunghezza del segmento e 
+la \textbf{Page Table Base} in cui si troverà l'indirizzo di locazione della tabella delle pagine specifica di quel segmento. 
+L'indirizzo verrà combinato con l'offset, che è composto da due parti, una che indica il numero di pagina e una che indica 
+l'offset effettivo. Il numero di pagina verrà sommata al \textbf{Page Table Base Register} per recuperare la riga effettiva della 
+tabella delle pagine, una volta indicizzata la riga in questione, si sommerà il valore del frame all'offset effettivo e si farà 
+l'accesso alla memoria per recuperare il dato necessario. 
+
+\chapter{Memoria virtuale}
+
+\section{Motivazioni}
+
+L'immagine di memoria di un processo è davvero necessaria che sia \textbf{tutta} caricata in RAM? In generale no, serve solo una parte,
+ovvero quella che rappresenta la località spazio temporale necessaria. Quella che non serve verrà lasciata sul disco, 
+questo permetterà di lasciare spazio libero in memoria per altre immagini di memoria più utili e avvantaggiare la multiprogrammazione.
+Lo spazio logico sarà più grande dello spazio in memoria, perché sarà composto dalla somma di tutte le immagini dei processi che 
+saranno in parte in RAM e in parte sul disco. 
+
+\section{Paginazione su domanda}
+
+Una pagina si troverà in memoria solo quando necessaria. I vantaggi sono i seguenti:
+\begin{itemize}
+    \item meno memoria occupata da ogni processo;
+    \item se il livello di multiprogrammazione fosse troppo alto, l'eventuale swap out verrà fatto solo a una parte delle pagine riucendo i tempi di I/O;
+\end{itemize}
+
+Per poter implementare occorre sapere se la pagina richiesta dalla CPU sia valida o no, entra in gioco il bit di validità presente
+nella tabella delle pagine. Quel bit segnalerà se la pagina si trova in RAM, su disco oppure se la pagina non si trova 
+nell'intervallo di memoria. Quando una pagina è mappata su un frame che non si trova in RAM, bit validità = 0, avviene un \textbf{page fault}.
+Quindi:
+
+\begin{enumerate}
+    \item controllando sulla tabella delle pagine risulterà che la pagina è invalida, non è in RAM, di conseguenza sarà su disco;
+    \item parte un interrupt, il \textbf{page fault};
+    \item il S.O. verificherà che la pagina si trovi nella parte di disco dedicata alla funzione di RAM, (\textbf{Backing Store} o \textbf{Area di Swap});
+    \item localizza la pagina e la riporta nella memoria, cercherà un frame e caricherà la parte di memoria recuperata;
+    \item reset della \textbf{page table} per indicare che ora la pagina è in memoria con annessa aggiunta dell'indirizzo e modifica del bit validità;
+    \item il processo verrà rimesso in ready queue per essere pronto all'esecuzione.
+\end{enumerate}
+
+Questo avviene a ogni \textbf{page fault}. 
+
+\subsection{EAT di un Page Fault}
+
+Introduciamo un parametro p (tasso di page fault), che vale in questo intervallo $0 \le p \le 1$, dove 
+
+\begin{itemize}
+    \item p = 0, nessun page fault;
+    \item p = 1, ogni acceso è un page fault.
+\end{itemize}
+
+\[
+    EAT = (1 - p) * t_{mem} + p * t_{\textrm{page fault}}
+\]
+
+La parte $p * t_{\textrm{page fault}}$ è la moltiplicazione tra la percentuale di page fault e il tempo richiesto per recuperare il 
+dato su disco, mentre $t_{mem}$ è il tempo di accesso alla memoria tramite il meccanismo di gestione dell'allocazione di 
+memoria ai processi. Il $t_{\textrm{page fault}}$ è composto dalla gestione dell'interrupt che arriva, il context switch per 
+permettere al S.O. di gestire la situazione, torna al processo che era stato interrotto (context switch).
+
+\begin{itemize}
+    \item gestione dell'interrupt (primo context switch);
+    \item swap in, lettura della pagina mancante da disco a memoria;
+    \item costo di riavvio del processo (secondo context switch);
+    \item (opzionalmente) swap out della pagina che devo estrarre per fare spazio a quella richiesta.
+\end{itemize}
+
+Ci sono ben due context switch.
+
+\subsection{Rimpiazzamento delle pagine}
+
+In caso di assenza di frame liberi in cui mettere la pagina recuperata:
+
+\begin{itemize}
+    \item tramite un algoritmo specifico di rimpiazzamento delle pagine si trova una pagina da sostituire;
+    \item avviene lo swap su disco della pagina sostituita;
+    \item swap dell'altra pagina nel frame dal disco;
+    \item modifica le tabelle (tabella delle pagine e bit di validità);
+    \item ripristino dell'istruzione che ha causato il page fault.
+\end{itemize}
+
+Rimpiazzare una pagina costa il doppio di una normale gestione del page fault. Per questo entra in gioco l'utilità del \textbf{dirty bit}
+ovvero un bit che specifica se la pagina è stata modificata mentre si trovava in memoria o meno, in caso di una modifica occorre
+ricaricarla su disco. Rimpiazzare una pagina che non è stata modifica costa meno, perché si può semplicemente sovrascrivere.
+
+\subsection{Algoritmi di rimpiazzamento delle pagine}
+
+Obiettivo: minimizzare il tasso di page fault, dipenderà dalla scelta delle pagine da caricare in memoria. Un metodo è l'uso 
+di una stringa di riferimenti. Ipotizzando pagine grandi 100 byte, la stringa sarà composta dalla cifra delle centinaia delle 
+pagine che verranno richieste. Esempio: 
+
+\begin{itemize}
+    \item indirizzi generati: 100, 604, 128, 130, 256, 260, 264, 268;
+    \item la stringa di riferimento sarebbe composto da: 1, 6, 1, 1, 2 ,2, 2, 2;
+    \item in realtà sarà composta da: 1, 6, 1, 2. Perché il page fault sarà possibile con la prima pagina, sicuramente non con quelle successive.
+\end{itemize}
+
+\subsubsection{Algoritmo FIFO}
+
+Prima pagina che carico sarà la prima scelta a essere rimossa per liberare  eventualmente spazio, non è adatto nè per lo scheduling 
+nè per la gestione della memoria. Può causare l'anomalia di Belady, ovvero aumentando la disposizione di frame in memoria potrebbero 
+aumentare i page fault diversamente da quello che ci si aspetterebbe.
+
+
+
 
 
 

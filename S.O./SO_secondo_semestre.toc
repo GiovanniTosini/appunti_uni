@@ -26,3 +26,11 @@
 \contentsline {paragraph}{Come cambia la traduzione?}{25}{section*.8}%
 \contentsline {paragraph}{Svantaggi della segmentazione}{25}{section*.9}%
 \contentsline {section}{\numberline {4.4}Paginazione vs Segmentazione}{25}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Segmentazione paginata}{26}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Memoria virtuale}{27}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Motivazioni}{27}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Paginazione su domanda}{27}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}EAT di un Page Fault}{28}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Rimpiazzamento delle pagine}{29}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Algoritmi di rimpiazzamento delle pagine}{29}{subsection.5.2.3}%
+\contentsline {subsubsection}{Algoritmo FIFO}{29}{section*.10}%

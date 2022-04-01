@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  25 MAR 2022 15:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  1 APR 2022 15:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -330,14 +330,14 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 35
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<ovetto.png, id=142, 447.6725pt x 327.2225pt>
+<ovetto.png, id=185, 447.6725pt x 327.2225pt>
 File: ovetto.png Graphic file (type png)
 <use ovetto.png>
 Package pdftex.def Info: ovetto.png  used on input line 44.
 (pdftex.def)             Requested size: 195.0pt x 142.53535pt.
  [5 <./ovetto.png>] [6]
 Capitolo 2.
-<rag.jpg, id=156, 837.1275pt x 725.71124pt>
+<rag.jpg, id=199, 837.1275pt x 725.71124pt>
 File: rag.jpg Graphic file (type jpg)
 <use rag.jpg>
 Package pdftex.def Info: rag.jpg  used on input line 79.
@@ -348,23 +348,23 @@ Underfull \vbox (badness 5908) has occurred while \output is active []
  [7
 
 ] [8 <./rag.jpg>]
-<rag_reclamo.png, id=168, 747.79375pt x 338.26375pt>
+<rag_reclamo.png, id=210, 747.79375pt x 338.26375pt>
 File: rag_reclamo.png Graphic file (type png)
 <use rag_reclamo.png>
 Package pdftex.def Info: rag_reclamo.png  used on input line 142.
 (pdftex.def)             Requested size: 312.00119pt x 141.1304pt.
  [9 <./rag_reclamo.png>]
-<banchiere3.png, id=174, 600.2425pt x 126.4725pt>
+<banchiere3.png, id=216, 600.2425pt x 126.4725pt>
 File: banchiere3.png Graphic file (type png)
 <use banchiere3.png>
 Package pdftex.def Info: banchiere3.png  used on input line 151.
 (pdftex.def)             Requested size: 390.0pt x 82.17526pt.
-<banchiere1.png, id=176, 751.80875pt x 433.62pt>
+<banchiere1.png, id=218, 751.80875pt x 433.62pt>
 File: banchiere1.png Graphic file (type png)
 <use banchiere1.png>
 Package pdftex.def Info: banchiere1.png  used on input line 155.
 (pdftex.def)             Requested size: 390.0pt x 224.94115pt.
-<banchiere2.png, id=177, 730.73pt x 508.90125pt>
+<banchiere2.png, id=219, 730.73pt x 508.90125pt>
 File: banchiere2.png Graphic file (type png)
 <use banchiere2.png>
 Package pdftex.def Info: banchiere2.png  used on input line 159.
@@ -377,7 +377,7 @@ LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 1
  (/usr/local/texlive/2021/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<detection.png, id=185, 1010.77625pt x 654.445pt>
+<detection.png, id=227, 1010.77625pt x 654.445pt>
 File: detection.png Graphic file (type png)
 <use detection.png>
 Package pdftex.def Info: detection.png  used on input line 174.
@@ -386,7 +386,7 @@ Package pdftex.def Info: detection.png  used on input line 174.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11 <./banchiere2.png>]
-<detection2.png, id=192, 451.6875pt x 361.35pt>
+<detection2.png, id=234, 451.6875pt x 361.35pt>
 File: detection2.png Graphic file (type png)
 <use detection2.png>
 Package pdftex.def Info: detection2.png  used on input line 182.
@@ -399,7 +399,7 @@ Capitolo 3.
 [15
 
 ]
-<trasformazione.png, id=213, 835.12pt x 292.09125pt>
+<trasformazione.png, id=255, 835.12pt x 292.09125pt>
 File: trasformazione.png Graphic file (type png)
 <use trasformazione.png>
 Package pdftex.def Info: trasformazione.png  used on input line 249.
@@ -409,34 +409,38 @@ Capitolo 4.
 [19
 
 ]
-<mmu_partizioni_fisse.png, id=234, 788.9475pt x 258.9675pt>
+<mmu_partizioni_fisse.png, id=276, 788.9475pt x 258.9675pt>
 File: mmu_partizioni_fisse.png Graphic file (type png)
 <use mmu_partizioni_fisse.png>
 Package pdftex.def Info: mmu_partizioni_fisse.png  used on input line 375.
 (pdftex.def)             Requested size: 390.0pt x 128.01344pt.
  [20 <./mmu_partizioni_fisse.png>]
-<buddy_system.png, id=240, 532.99126pt x 293.095pt>
+<buddy_system.png, id=282, 532.99126pt x 293.095pt>
 File: buddy_system.png Graphic file (type png)
 <use buddy_system.png>
 Package pdftex.def Info: buddy_system.png  used on input line 416.
 (pdftex.def)             Requested size: 195.0pt x 107.23146pt.
- [21 <./buddy_system.png>] [22] [23] [24] [25] [26] (./SO_secondo_semestre.aux)
+ [21 <./buddy_system.png>] [22] [23] [24] [25] [26]
+Capitolo 5.
+[27
+
+] [28] [29] (./SO_secondo_semestre.aux)
 Package rerunfilecheck Info: File `SO_secondo_semestre.out' has not changed.
-(rerunfilecheck)             Checksum: 9B6095A4F650F1CE466D17639DB504D4;2854.
+(rerunfilecheck)             Checksum: 283F14AD6808020E2AAC996D466F1E4C;4081.
  ) 
 Here is how much of TeX's memory you used:
- 11576 strings out of 478287
- 188908 string characters out of 5846764
- 489104 words of memory out of 5000000
- 29564 multiletter control sequences out of 15000+600000
+ 11600 strings out of 478287
+ 189170 string characters out of 5846764
+ 491104 words of memory out of 5000000
+ 29571 multiletter control sequences out of 15000+600000
  481622 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,9n,79p,336b,461s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,9n,79p,389b,461s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsl1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on SO_secondo_semestre.pdf (26 pages, 870559 bytes).
+Output written on SO_secondo_semestre.pdf (29 pages, 885117 bytes).
 PDF statistics:
- 363 PDF objects out of 1000 (max. 8388607)
- 278 compressed objects within 3 object streams
- 55 named destinations out of 1000 (max. 500000)
- 214 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 427 PDF objects out of 1000 (max. 8388607)
+ 338 compressed objects within 4 object streams
+ 72 named destinations out of 1000 (max. 500000)
+ 270 words of extra memory for PDF output out of 10000 (max. 10000000)
 
