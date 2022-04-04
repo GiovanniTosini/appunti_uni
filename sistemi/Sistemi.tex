@@ -814,11 +814,11 @@ Ora si scrive il polinomio caratteristico:
         &\lambda_1 = 1 \quad \mu_1 = 1 \\
         &\lambda_2 = -4 \quad \mu_2 = 1 \\
         &v_l(t) = c_{1,0} e^t + c_{2,0} e^{-4t} \\
-        &v_l(t) = c_{1,0} e^t - 4c{2,0}^{-4t} \\
+        &v_l'(t) = c_{1,0} e^t - 4c{2,0}^{-4t} \\
     \end{split}
 \]
 \[
-v_l{0} =
+v_l(0) =
     \begin{cases}
         c_{1,0} + c_{2,0} = 0 \textrm{ condizione iniziale} \\
         c_{1,0} - 4c_{2,0} = 1 \textrm{ condizione iniziale} \\
@@ -849,8 +849,8 @@ i cui coefficienti sono determinati dalle condizioni iniziali.
 Dato il modo elementare vale che:
 
 \begin{enumerate}
-    \item \[\lim_{t \rightarrow \infty} m(t) = 0 \Leftrightarrow Re(\lambda) < 0\];
-    \item \[m(t) \textrm{ limitato su } [0, \infty) \Leftrightarrow Re(\lambda) \le 0\] Se $Re(\lambda) = 0$ allora deve valere che $l = 0$;
+    \item \[\lim_{t \rightarrow \infty} m(t) = 0 \Leftrightarrow Re(\lambda) < 0\]
+    \item \[m(t) \textrm{ limitato su } [0, \infty) \Leftrightarrow Re(\lambda) \le 0\] Se $Re(\lambda) = 0$ allora deve valere che $l = 0$
     \item \[\lim_{t \rightarrow \infty} = \infty\] in tutti gli altri casi $(Re(\lambda) > 0)$ oppure $Re(\lambda) = 0$ e $l \neq 0)$
 \end{enumerate}
 
@@ -946,7 +946,7 @@ Proprietà:
     \end{split}\]
     \item[Dimostrazione:] \begin{SCfigure}[50][h!]
         \includegraphics[width=0.5\textwidth]{tre_sistemi.jpg}
-        \caption{La secondo valida per tempo invarianza, mentre le terza per la linearità }
+        \caption{La secondo valida per tempo invarianza, mentre la terza per la linearità }
     \end{SCfigure} Integriamo $\Rightarrow$ \[ \begin{split}
         &\underbrace{\int_{-\infty}^\infty u(\xi) \delta(t - \xi) d\xi}_{u(t)} \mapsto \int_{-\infty}^\infty u(\xi) h(t - \xi) d\xi \\
         &u(t) \mapsto \int_{-\infty}^\infty u(\xi) h(t - \xi) d\xi = (u \ast h)(t)
@@ -1024,6 +1024,252 @@ Riassumento, se noi abbiamo una sistema LTI rappresentato dall'equazione differe
     \end{split} 
     \]
 \end{description}
+
+\subsection{Risposta in frequenza}
+
+Ci interessa la risposta di un sistema definito dall'equzione differenziale
+in corrispondenza di un ingresso del tipo: 
+
+\[
+    u(t) = A e^{j(\omega_0t + \phi)} = A e^{j\phi} e^{j\omega_0t} \quad (fasore)
+\]
+Il sistema è BIBO stabile $\leftrightarrow$ 
+\[
+    \int_{-\infty}^\infty |h(\tau)| d\tau < +\infty
+\]
+\[
+\begin{split}
+    v(t) &= (u \ast h)(t) = \int_{-\infty}^\infty h(\tau) u(t - \tau) d\tau = \\
+    &= \int_{-\infty}^\infty h(\tau) A e^{j(\omega_0(t - \tau) +)} d\tau = \\
+    &= \underbrace{A e^{j(\omega_0t + \phi)}}_{\in C} \underbrace{\int_{-\infty}^\infty h(\tau) e^{-j\omega_0\tau)} d\tau}_{\textrm{converge?}} \\
+    &|\int_{-\infty}^\infty h(\tau) e^{-j\omega_0\tau} d\tau| = \int_{-\infty}^\infty |h(\tau)| |\underbrace{e^{-j \omega_0 \tau}}_{= 1}| d\tau = \\
+    &= \int_{-\infty}^\infty |h(\tau)| d\tau < +\infty
+\end{split}
+\]
+Possiamo scrivere:
+\[
+    \begin{split}
+        &H(j\omega_0) = \int_{-\infty}^\infty h(\tau) e^{-j\omega_0 \tau} d\tau \\
+        &\Rightarrow v(t) = \underbrace{H(j\omega_0)}_{\textrm{dipende soltanto dal sistema considerato}} \underbrace{A e^{j(\omega_0 t + \phi)}}_{\textrm{l'ingresso}}, t \in R
+    \end{split}
+\]
+\begin{description}
+    \item[Definizione:] dato un sistema LTI BIBO stabile, di risposta impulsiva h(t) definiamo la \textbf{rispsta in frequenza} la 
+    funzione \[ H(j\omega) =   \int_{-\infty}^\infty h(\tau) e^{-j\omega \tau} d\tau, H(j\omega) \in C, \omega \in R \] Definiamo inoltre
+    \[ \begin{split}
+        &A(\omega) = |H(j\omega)| \\
+        &\Phi(\omega) = arg(H(j\omega))
+    \end{split}
+    \] il modulo A e l'argomento (la fase) $\Phi$ della rispota in frequenza H 
+    \[\begin{split}
+        &A(\omega) := |H(j\omega)| = |\int_{-\infty}^\infty h(\tau) e^{-j\omega \tau)} d\tau| \\
+        &\Phi(\omega) := arg(H(j\omega)) = arg(\int_{-\infty}^\infty h(\tau) e^{-j\omega \tau} d\tau)
+    \end{split}
+    \]
+\end{description}
+\begin{figure}[h!]
+    \centering
+    \subfloat[][]
+    {\includegraphics[width=0.5\textwidth]{risp_freq1.jpg}}\quad
+    \subfloat[][]
+    {\includegraphics[width=0.5\textwidth]{risp_freq2.jpg}}
+\end{figure}
+\[
+    \begin{split}
+        &s = \rho(\cos \theta + j \sin \theta) \\
+        &\rho = |s| \\
+        &\theta = arg(s)
+    \end{split}
+\]
+Proprietà:
+\begin{enumerate}
+    \item $A(\omega)$ è pari $(A(-\omega) = A(\omega))$
+    \item $\Phi(\omega)$ è dispari $(\Phi(-\omega) = -\Phi(\omega))$
+    \item $H(-j\omega)$ = $\overline{H(j\omega)}$ 
+\end{enumerate}
+\textbf{Dimostrazione del punto 3}
+\[
+    \begin{split}
+        H(-j \omega) &= \int_{-\infty}^\infty \underbrace{h(\tau)}_{\in R} e^{j \omega \tau} d \tau = \\
+        &= \int_{-\infty}^\infty \overline{h(\tau) e^{-j \omega \tau}} d \tau = \\
+        &= \overline{\int_{-\infty}^\infty h(\tau) e^{-j \omega \tau} d \tau} = \overline{H(j \omega)}
+    \end{split}
+\]
+Esempio di risposta a un segnale sinusoidale:
+\[
+    u(t) = A \cos (\omega t + \underbrace{\phi}_{fase})
+\]
+Formula di Eulero
+\[
+    \begin{split}
+        \Rightarrow u(t) &= \frac{A}{2} e^{j(\omega t + \phi)} + \frac{A}{2} e^{-j(\omega t + \phi)} = \\
+        &= \underbrace{\frac{A}{2} e^{j \phi} e^{j \omega t}}_{u_1(t)} + \underbrace{\frac{A}{2} e^{-j \phi} e^{-j \omega t}}_{u_2(t)}
+    \end{split}
+\]
+Per la linearità 
+\[
+    \begin{split}
+        &u_1(t) \mapsto v_1(t) \\
+        &u_2(t) \mapsto v_2(t) 
+    \end{split}
+\]
+Quindi 
+\[
+    A \cos (\omega t + \phi) = u_1(t) + u_2(t) \mapsto v_1(t) + v_2(t) = v(t)
+\]
+Scriviamo
+\[
+    \begin{split}
+        &H(j \omega) = A(\omega) e^{j \phi (\omega)} \textrm{ rappresentazione esponenziale} \\
+        v(t) &= \underbrace{\frac{A}{2} A(\omega) e^{j(\phi + \Phi (\omega))} e^{j \omega t}}_{v_1(t)} + \underbrace{\frac{A}{2} A(-\omega) e^{-j(\phi - \Phi (-\omega))} e^{-j \omega t}}_{v_2(t)} = \textrm{ per proprietà 1 e 2} \\
+        &= A(\omega) \frac{A}{2} e^{j(\phi + \Phi (\omega))} e^{j \omega t} + \frac{A}{2} A(\omega) e^{-j(\phi + \Phi (\omega))} e^{-j \omega t} \\
+        &= AA(\omega)[\frac{e^{j(\omega t + \phi + \Phi(\omega))}}{2} + \frac{e^{-j(\omega t + \phi + \Phi(\omega))}}{2}] = \\
+        &= AA(\omega) \cos (\omega t + \phi + \Phi (\omega)) \\
+        &\underbrace{A \cos (\omega t + \phi)}_{ingresso} \mapsto \underbrace{\overbrace{AA(\omega)}^1 \cos (\omega t + \phi + \overbrace{\Phi (\omega)}^2)}_{uscita}
+    \end{split}
+\]
+\begin{enumerate}
+    \item Per l'ampiezza della risposta in frequenza $H(j \omega)$
+    \item Più l'argomento (fase) della risposta in frequenza $H(j \omega)$
+\end{enumerate}
+\begin{description}
+    \item[Osservazione:] La risposta di un sistema LTI e BIBO staile a un segnale sinusoidale di frequenza $\omega$ e un 
+    segnale sinusoidale della stessa frequenza $\omega$ è:
+    \begin{itemize}
+        \item ampiezza data dal prodotto dell'ampiezza dell'ingresso per l'ampiezza della risposta in frequenza;
+        \item fase data dalla somma della fase iniziale e della fase della risposta in frequenza
+    \end{itemize}   
+\end{description}
+
+Esempio $u(t) = e^{j \omega t}$
+\[
+    \begin{split}
+        v(t) = (u \ast h) (t) &= \int_{-\infty}^\infty h(\tau)  e^{j \omega (t - \tau)} d \tau = \\
+        &= e^{j \omega t} \underbrace{\int_{-\infty}^\infty h(\tau)  e^{-j \omega \tau} d \tau}_{H(j \omega) \textrm{ risposta in frequenza}} = H(j \omega) e^{j \omega t}
+    \end{split}
+\]
+Per i sistemi definiti dall'equazione differenziale e ingresso $u(t)$
+\[
+    \begin{split}
+        &\sum_{i = 0}^n a_i \frac{d^iv(t)}{dt^i} = \sum_{i = 0}^m b_i \frac{d^iu(t)}{dt^i} \\
+        &\Rightarrow \sum_{i = 0}^n a_i \frac{d^i (H(j \omega) e^{j \omega t})}{dt^i} = \sum_{i = 0}^m b_i \frac{d^i (e^{j \omega t})}{dt^i} \\
+        &\Leftrightarrow H(j \omega) e^{j \omega t} \sum_{i = 0}^n a_i (j \omega)^i =  e^{j \omega t} \sum_{i = 0}^m b_i (j \omega)^i \\
+        &\frac{d^i (e^{j \omega t})}{dt^i} = (j \omega)^i e^{j \omega t}
+    \end{split}
+\]
+\begin{description}
+    \item[Osservazione:] Per il sistema dell'equazione differenziale, in corrispondenza di ingressi fasori la risposta in 
+    frequenza è una funzione razionale (rapporto di due polinomi) in $j\omega$. 
+\end{description}
+
+\subsection{La trasformata di Laplace}
+
+Sia $v(t), t \in R$ una funzione sommabile su $[0^-, \infty)(\int_{-\infty}^\infty |v(t)| dt < \infty)$ la \textbf{trasformata 
+di Laplace unilatera} è:
+\[
+    V(s) = \int_{-\infty}^\infty v(t) e^{-st} dt, s \in C
+\]
+Notazione $V(s) = \mathcal{L} [v(t)](s)$
+\begin{description}
+    \item[Osservazione:] Affinchè $V(s)$ esista \[ |\int_{0^-}^\infty v(t) e^{-st}| < \infty \textrm{ l'integrale converge} \] 
+    Il dominio di $V$ saranno tutti gli $s$ per cui l'integrale converge e viene chiamato \textbf{regione di convergenza}(RdC).
+    Si può dimostrare che RdC è sempre un semipiano aperto del tipo \[ RdC = {s \in C | Re(s) > \alpha}, \alpha \in R \] $\alpha$ 
+    si chiama \textbf{ascissa di convergenza}.  
+\end{description}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{RdC.png}
+\end{center}
+
+\subsection{RdC della trasformata di Laplace unilatera di una combinazione lineare di funzioni esponenziali}
+
+\textbf{Teorema} $v(t) = \sum_{i = 0}^n c_i e^{\lambda_i t}$, dove $\lambda_i = \sigma_i + j \omega_i \in C$, $c_i$ costanti.
+La RdC di $\mathcal{L} [v(t)] (s)$ è un semipiano destro 
+\[
+    RdC = { s \in C | Re(s) > \alpha} \textrm{ dove } \alpha = max{Re(\lambda_0), \dots, Re(\lambda_n)}
+\]
+Dimostrazione:
+\[
+    \begin{split}
+        \mathcal{L} [v(t)] (s) &= \int_{0^-}^\infty (\sum_{i = 0}^n c_i e^{\lambda_i t}) e^{-st} dt = \\
+        &\sum_{i = 0}^n c_i \int_{0^-}^\infty e^{\lambda_i t} e^{-st} dt \\
+        &\int_{0^-}^\infty e^{}
+    \end{split}
+\]
+\textbf{INCOMPLETA VEDI LEZIONE 31-03}
+Per $i \in {o, \dots, n}$ sia $\lambda_i = \sigma_i + j\omega_i$ e $s = \sigma + j\omega$, valutiamo il modulo dell'integrale 
+\[
+    \begin{split}
+        &| \int_{0^-}^\infty e^{\lambda_i t} e^{-st} dt | = \\
+        &| \int_{0^-}^\infty e^{\sigma_i t} e^{j \omega_i t} e^{-\sigma t} e^{-j\omega t} dt | = \\
+        &| \int_{0^-}^\infty e^{[\sigma_i - \sigma + j(\omega_i - \omega)]t} dt | = \\
+        &| \frac{e^{[\sigma_i - \sigma + j(\omega_i - \omega)]t}}{\sigma_i - \sigma + j\omega_i - j\omega} |_{0^-}^\infty | = \\
+        &| \lim_{t \rightarrow \infty} \frac{\overbrace{e^{(\sigma_i - \sigma)t}}^1 \overbrace{e^{j(\omega_i - \omega)t}}^2}{\sigma_i - \sigma + j\omega_i - j\omega} - \frac{1}{\sigma_i - \sigma + j\omega_i - j\omega} | < \infty \\
+        & \textrm{per } \sigma > sigma_i \leftrightarrow Re(s) > Re(\lambda_i)
+    \end{split}
+\]
+\begin{enumerate}
+    \item converge per $\sigma_i - \sigma < 0$
+    \item ha il modulo 1
+\end{enumerate}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{RdC2.png}
+\end{center}
+
+\subsection{Proprietà della trasformata di Laplace}
+
+\begin{enumerate}
+    \item \textbf{Linearità}, se $v_1, v_2$ ammettono la trasformata di Laplace (TdL) allora anche $a_1v_1 + a_2v_2$ ammette la TdL e: \[ \mathcal{L} [a_1v_1(t) + a_2v_2(t)] (s) = a_1 \mathcal{L} [v_1(t)] (s) + a_2 \mathcal{L} [v_2(t)] (s) \] e l'ascissa di convergenza è $\alpha \ge max{\alpha_1, \alpha_2}$ dove $\alpha_1$ w $\alpha_2$ sono rispettivamente le ascisse di convergenza di $v_1$ e $v_2$ \begin{center}
+        \includegraphics[width=0.5\textwidth]{RdC3.png}
+    \end{center}
+    \item Traslazione nel dominio del tempo (\textbf{time shifting}) se $v(t)$ ammette TdL allora anche $v(t - \tau), \tau > 0$ ammette TdL e:
+    \[
+        \mathcal{L} [v(t - \tau)] (s) = e^{-s \tau} \mathcal{L} [v(t)] (s)
+    \]
+    L'ascisse di convergenza non cambia
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{RdC3.png}
+    \end{center}
+    \textbf{dimostrazione: } 
+    \[
+        \begin{split}
+            \mathcal{L} [v(t - \tau)] (s) &= \int_{0^-}^\infty v(t - \tau) e^{-st} dt \overbrace{=}^* \\
+            &= \int_{0^-}^\infty v(x) e^{-s(x + \tau)} dx = \\
+            &= e^{s\tau} \int_{0^-}^\infty v(x) e^{-sx} dx \overbrace{=}^{**} \\
+            &= e^{s \tau} \mathcal{L} [v(t)] (s)
+        \end{split}
+    \]
+    (*) cambio di variabile \[x = t - \tau \Rightarrow dx = dt\]
+    (**) ritorno alla variabile di prima
+    \item Traslazione nel dominio dei complesi o moltiplicazione per una funzione esponenziale(\textbf{frequency shifting})
+    Se $v(t)$ ammette TdL $V(s)$, allora anche $e^{\lambda t}v(t)$ ammette TdL e 
+    \[
+        \mathcal{L} [e^{\lambda t} v(t)] (s) = V(s - \lambda) (= \mathcal{L} [v(t)] (s- \lambda))
+    \]
+    L'ascissa di convergenza è $\alpha = \alpha_0 + Re(\lambda)$ dove $\alpha_0$ è l'ascissa di convergenza di $V(s)$ \textbf{dimostrazione:}
+    \[
+        \begin{split}
+            \mathcal{L} [e^{\lambda t} v(t)] (s) &= \int_{0^-}^\infty e^{\lambda t} v(t) e^{-st} dt = \\
+            &= \int_{0^-}^\infty v(t) e^{-(s - \lambda)t} dt = \mathcal{L} [v(t)] (s - \lambda) = V(s - \lambda)
+        \end{split}
+    \]
+    \item Cambiamento di scale (\textbf{scaling}) se $v(t)$ ammette TdL allora $v(rt)$ ammette TdL e 
+    \[
+        \mathcal{L} [v(rt)] (s) = \frac{1}{r} V(\frac{s}{r})
+    \]
+    con ascissa di convergenza $\alpha = r \alpha_0$
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{RdC4.png}
+    \end{center}
+    \textbf{dimostrazione:}
+    \[
+        \begin{split}
+            \mathcal{L} [v(rt)] (s) &= \int_{0^-}^\infty v(rt) e^{-st} dt \overbrace{=}^* \\
+            & \frac{1}{r} \int_{0^-}^\infty v(\tau) e^{\frac{s}{r} \tau} d \tau = \\
+            &\frac{1}{r} V(\frac{s}{r})
+        \end{split}
+    \]
+    (*) cambio variabile \[ rt = \tau \quad dt = \frac{d\tau}{r}\]
+\end{enumerate}
 
 
 

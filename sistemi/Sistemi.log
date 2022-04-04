@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  27 MAR 2022 15:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  4 APR 2022 16:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -448,12 +448,12 @@ LaTeX Info: Redefining \nameref on input line 25.
 
 ]
 Capitolo 1.
-<num_comp.jpg, id=149, 361.35pt x 329.23pt>
+<num_comp.jpg, id=171, 361.35pt x 329.23pt>
 File: num_comp.jpg Graphic file (type jpg)
 <use num_comp.jpg>
 Package pdftex.def Info: num_comp.jpg  used on input line 44.
 (pdftex.def)             Requested size: 192.0561pt x 174.98338pt.
-<num_comp2.png, id=150, 241.90375pt x 200.75pt>
+<num_comp2.png, id=172, 241.90375pt x 200.75pt>
 File: num_comp2.png Graphic file (type png)
 <use num_comp2.png>
 Package pdftex.def Info: num_comp2.png  used on input line 66.
@@ -465,12 +465,12 @@ l.67 \end{center}
                   [1
 
  <./num_comp.jpg>]
-<num_comp3.png, id=162, 132.495pt x 112.42pt>
+<num_comp3.png, id=184, 132.495pt x 112.42pt>
 File: num_comp3.png Graphic file (type png)
 <use num_comp3.png>
 Package pdftex.def Info: num_comp3.png  used on input line 72.
 (pdftex.def)             Requested size: 192.0561pt x 162.9688pt.
-<num_comp4.png, id=163, 207.77625pt x 191.71625pt>
+<num_comp4.png, id=185, 207.77625pt x 191.71625pt>
 File: num_comp4.png Graphic file (type png)
 <use num_comp4.png>
 Package pdftex.def Info: num_comp4.png  used on input line 80.
@@ -480,34 +480,34 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has b
                    \relax 
 l.88 \begin{center}
                     [2 <./num_comp2.png> <./num_comp3.png> <./num_comp4.png>]
-<num_comp5.png, id=173, 202.7575pt x 176.66pt>
+<num_comp5.png, id=195, 202.7575pt x 176.66pt>
 File: num_comp5.png Graphic file (type png)
 <use num_comp5.png>
 Package pdftex.def Info: num_comp5.png  used on input line 89.
 (pdftex.def)             Requested size: 192.0561pt x 167.34082pt.
-<num_comp6.png, id=174, 202.7575pt x 195.73125pt>
+<num_comp6.png, id=196, 202.7575pt x 195.73125pt>
 File: num_comp6.png Graphic file (type png)
 <use num_comp6.png>
 Package pdftex.def Info: num_comp6.png  used on input line 105.
 (pdftex.def)             Requested size: 192.0561pt x 185.40602pt.
-<num_comp7.png, id=175, 186.6975pt x 173.64874pt>
+<num_comp7.png, id=197, 186.6975pt x 173.64874pt>
 File: num_comp7.png Graphic file (type png)
 <use num_comp7.png>
 Package pdftex.def Info: num_comp7.png  used on input line 112.
 (pdftex.def)             Requested size: 192.0561pt x 178.64027pt.
-<num_comp8.png, id=176, 184.69pt x 154.5775pt>
+<num_comp8.png, id=198, 184.69pt x 154.5775pt>
 File: num_comp8.png Graphic file (type png)
 <use num_comp8.png>
 Package pdftex.def Info: num_comp8.png  used on input line 113.
 (pdftex.def)             Requested size: 192.0561pt x 160.74263pt.
  [3 <./num_comp5.png> <./num_comp6.png>]
-<num_comp9.png, id=187, 176.66pt x 166.6225pt>
+<num_comp9.png, id=208, 176.66pt x 166.6225pt>
 File: num_comp9.png Graphic file (type png)
 <use num_comp9.png>
 Package pdftex.def Info: num_comp9.png  used on input line 135.
 (pdftex.def)             Requested size: 192.0561pt x 181.1471pt.
  [4 <./num_comp7.png> <./num_comp8.png>]
-<num_comp10.jpg, id=194, 305.14pt x 323.2075pt>
+<num_comp10.jpg, id=215, 305.14pt x 323.2075pt>
 File: num_comp10.jpg Graphic file (type jpg)
 <use num_comp10.jpg>
 Package pdftex.def Info: num_comp10.jpg  used on input line 144.
@@ -518,7 +518,7 @@ Overfull \hbox (30.61934pt too wide) in paragraph at lines 151--153
  []
 
 [5 <./num_comp9.png> <./num_comp10.jpg>]
-<num_comp11.png, id=201, 301.125pt x 210.7875pt>
+<num_comp11.png, id=222, 301.125pt x 210.7875pt>
 File: num_comp11.png Graphic file (type png)
 <use num_comp11.png>
 Package pdftex.def Info: num_comp11.png  used on input line 181.
@@ -527,18 +527,18 @@ Package pdftex.def Info: num_comp11.png  used on input line 181.
 
 ]
 Capitolo 2.
-<sinusoidale.png, id=217, 257.96375pt x 192.72pt>
+<sinusoidale.png, id=238, 257.96375pt x 192.72pt>
 File: sinusoidale.png Graphic file (type png)
 <use sinusoidale.png>
 Package pdftex.def Info: sinusoidale.png  used on input line 234.
 (pdftex.def)             Requested size: 192.0561pt x 143.48686pt.
 [9 <./sinusoidale.png>]
-<fasore.png, id=227, 293.095pt x 251.94125pt>
+<fasore.png, id=248, 293.095pt x 251.94125pt>
 File: fasore.png Graphic file (type png)
 <use fasore.png>
 Package pdftex.def Info: fasore.png  used on input line 255.
 (pdftex.def)             Requested size: 192.0561pt x 165.08615pt.
-<nomelunghissimo.png, id=228, 420.57124pt x 391.4625pt>
+<nomelunghissimo.png, id=249, 420.57124pt x 391.4625pt>
 File: nomelunghissimo.png Graphic file (type png)
 <use nomelunghissimo.png>
 Package pdftex.def Info: nomelunghissimo.png  used on input line 274.
@@ -548,12 +548,12 @@ Package pdftex.def Info: nomelunghissimo.png  used on input line 274.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [10 <./fasore.png>]
-<uzumaki1.png, id=245, 262.9825pt x 251.94125pt>
+<uzumaki1.png, id=266, 262.9825pt x 251.94125pt>
 File: uzumaki1.png Graphic file (type png)
 <use uzumaki1.png>
 Package pdftex.def Info: uzumaki1.png  used on input line 296.
 (pdftex.def)             Requested size: 115.23483pt x 110.39702pt.
-<uzumaki2.png, id=246, 249.93375pt x 228.855pt>
+<uzumaki2.png, id=267, 249.93375pt x 228.855pt>
 File: uzumaki2.png Graphic file (type png)
 <use uzumaki2.png>
 Package pdftex.def Info: uzumaki2.png  used on input line 298.
@@ -563,7 +563,7 @@ Package pdftex.def Info: uzumaki2.png  used on input line 298.
                    \relax 
 l.338 		\subfloat
                  [][\textbf{\emph{Funzione gradino}}]
-<gradino.jpg, id=261, 754.82pt x 639.38875pt>
+<gradino.jpg, id=282, 754.82pt x 639.38875pt>
 File: gradino.jpg Graphic file (type jpg)
 <use gradino.jpg>
 Package pdftex.def Info: gradino.jpg  used on input line 339.
@@ -573,34 +573,34 @@ pdfTeX warning (ext4): destination with the same identifier (name{subfigure.2.4.
                    \relax 
 l.340 		\subfloat
                  [][\textbf{\emph{Rampa unitaria}}]
-<rampa.png, id=262, 199.74625pt x 144.54pt>
+<rampa.png, id=283, 199.74625pt x 144.54pt>
 File: rampa.png Graphic file (type png)
 <use rampa.png>
 Package pdftex.def Info: rampa.png  used on input line 341.
 (pdftex.def)             Requested size: 115.23483pt x 83.38553pt.
-<finestra.png, id=264, 197.73875pt x 163.61125pt>
+<finestra.png, id=285, 197.73875pt x 163.61125pt>
 File: finestra.png Graphic file (type png)
 <use finestra.png>
 Package pdftex.def Info: finestra.png  used on input line 362.
 (pdftex.def)             Requested size: 115.23483pt x 95.34645pt.
  [12 <./gradino.jpg> <./rampa.png> <./finestra.png>]
-<finestra2.png, id=275, 270.00874pt x 269.005pt>
+<finestra2.png, id=296, 270.00874pt x 269.005pt>
 File: finestra2.png Graphic file (type png)
 <use finestra2.png>
 Package pdftex.def Info: finestra2.png  used on input line 381.
 (pdftex.def)             Requested size: 115.23483pt x 114.8038pt.
-<triangolo.png, id=276, 245.91875pt x 208.78pt>
+<triangolo.png, id=297, 245.91875pt x 208.78pt>
 File: triangolo.png Graphic file (type png)
 <use triangolo.png>
 Package pdftex.def Info: triangolo.png  used on input line 402.
 (pdftex.def)             Requested size: 115.23483pt x 97.83351pt.
-<triangolo2.png, id=277, 346.29375pt x 266.9975pt>
+<triangolo2.png, id=298, 346.29375pt x 266.9975pt>
 File: triangolo2.png Graphic file (type png)
 <use triangolo2.png>
 Package pdftex.def Info: triangolo2.png  used on input line 409.
 (pdftex.def)             Requested size: 192.0561pt x 148.07942pt.
  [13 <./finestra2.png> <./triangolo.png> <./triangolo2.png>]
-<dirac.png, id=289, 390.45876pt x 244.915pt>
+<dirac.png, id=310, 390.45876pt x 244.915pt>
 File: dirac.png Graphic file (type png)
 <use dirac.png>
 Package pdftex.def Info: dirac.png  used on input line 438.
@@ -610,7 +610,7 @@ Underfull \hbox (badness 5802) in paragraph at lines 440--440
 [][]\T1/cmr/m/n/12 : |Im-pul-so di Di-rac,
  []
 
-<frecciasu.png, id=290, 157.58875pt x 155.58125pt>
+<frecciasu.png, id=311, 157.58875pt x 155.58125pt>
 File: frecciasu.png Graphic file (type png)
 <use frecciasu.png>
 Package pdftex.def Info: frecciasu.png  used on input line 457.
@@ -619,18 +619,18 @@ Package pdftex.def Info: frecciasu.png  used on input line 457.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [14 <./dirac.png>]
-<campionamento.png, id=299, 339.2675pt x 234.8775pt>
+<campionamento.png, id=320, 339.2675pt x 234.8775pt>
 File: campionamento.png Graphic file (type png)
 <use campionamento.png>
 Package pdftex.def Info: campionamento.png  used on input line 481.
 (pdftex.def)             Requested size: 192.0561pt x 132.96048pt.
  [15 <./frecciasu.png> <./campionamento.png>]
-<kroneker.jpg, id=308, 812.03375pt x 492.84125pt>
+<kroneker.jpg, id=329, 812.03375pt x 492.84125pt>
 File: kroneker.jpg Graphic file (type jpg)
 <use kroneker.jpg>
 Package pdftex.def Info: kroneker.jpg  used on input line 522.
 (pdftex.def)             Requested size: 192.0561pt x 116.5622pt.
-<gradino2.jpg, id=309, 841.1425pt x 510.90875pt>
+<gradino2.jpg, id=330, 841.1425pt x 510.90875pt>
 File: gradino2.jpg Graphic file (type jpg)
 <use gradino2.jpg>
 Package pdftex.def Info: gradino2.jpg  used on input line 536.
@@ -640,7 +640,7 @@ Package pdftex.def Info: gradino2.jpg  used on input line 536.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [16 <./kroneker.jpg>]
-<rampa2.jpg, id=315, 830.10126pt x 518.93875pt>
+<rampa2.jpg, id=336, 830.10126pt x 518.93875pt>
 File: rampa2.jpg Graphic file (type jpg)
 <use rampa2.jpg>
 Package pdftex.def Info: rampa2.jpg  used on input line 550.
@@ -650,13 +650,13 @@ Capitolo 3.
 [19
 
 ]
-<molla.jpg, id=333, 821.0675pt x 735.74875pt>
+<molla.jpg, id=355, 821.0675pt x 735.74875pt>
 File: molla.jpg Graphic file (type jpg)
 <use molla.jpg>
 Package pdftex.def Info: molla.jpg  used on input line 659.
 (pdftex.def)             Requested size: 192.0561pt x 172.09265pt.
  [20 <./molla.jpg>]
-<circuito.jpg, id=341, 1084.05pt x 551.05875pt>
+<circuito.jpg, id=362, 1084.05pt x 551.05875pt>
 File: circuito.jpg Graphic file (type jpg)
 <use circuito.jpg>
 Package pdftex.def Info: circuito.jpg  used on input line 673.
@@ -667,18 +667,18 @@ Overfull \hbox (56.42996pt too wide) detected at line 691
  []
 
 [21 <./circuito.jpg>] [22] [23] [24]
-<radici.jpg, id=365, 701.62125pt x 379.4175pt>
+<radici.jpg, id=386, 701.62125pt x 379.4175pt>
 File: radici.jpg Graphic file (type jpg)
 <use radici.jpg>
 Package pdftex.def Info: radici.jpg  used on input line 875.
 (pdftex.def)             Requested size: 192.0561pt x 103.8567pt.
-<radici2.jpg, id=366, 685.56125pt x 447.6725pt>
+<radici2.jpg, id=387, 685.56125pt x 447.6725pt>
 File: radici2.jpg Graphic file (type jpg)
 <use radici2.jpg>
 Package pdftex.def Info: radici2.jpg  used on input line 880.
 (pdftex.def)             Requested size: 192.0561pt x 125.40892pt.
  [25 <./radici.jpg> <./radici2.jpg>]
-<risposta_impulsiva.jpg, id=374, 614.295pt x 249.93375pt>
+<risposta_impulsiva.jpg, id=395, 614.295pt x 249.93375pt>
 File: risposta_impulsiva.jpg Graphic file (type jpg)
 <use risposta_impulsiva.jpg>
 Package pdftex.def Info: risposta_impulsiva.jpg  used on input line 934.
@@ -688,13 +688,13 @@ Package pdftex.def Info: risposta_impulsiva.jpg  used on input line 934.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [26]
-<tre_sistemi.jpg, id=383, 1056.94875pt x 800.9925pt>
+<tre_sistemi.jpg, id=404, 1056.94875pt x 800.9925pt>
 File: tre_sistemi.jpg Graphic file (type jpg)
 <use tre_sistemi.jpg>
 Package pdftex.def Info: tre_sistemi.jpg  used on input line 948.
 (pdftex.def)             Requested size: 192.0561pt x 145.5413pt.
  [27 <./risposta_impulsiva.jpg> <./tre_sistemi.jpg>]
-<sistema1.jpg, id=391, 709.65125pt x 324.21124pt>
+<sistema1.jpg, id=412, 709.65125pt x 324.21124pt>
 File: sistema1.jpg Graphic file (type jpg)
 <use sistema1.jpg>
 Package pdftex.def Info: sistema1.jpg  used on input line 955.
@@ -704,25 +704,73 @@ Overfull \hbox (19.86487pt too wide) detected at line 991
 []
  []
 
-[28 <./sistema1.jpg>] [29] (./Sistemi.aux)
+[28 <./sistema1.jpg>] [29]
+<risp_freq1.jpg, id=422, 566.115pt x 435.6275pt>
+File: risp_freq1.jpg Graphic file (type jpg)
+<use risp_freq1.jpg>
+Package pdftex.def Info: risp_freq1.jpg  used on input line 1073.
+(pdftex.def)             Requested size: 192.0561pt x 147.78568pt.
+<risp_freq2.jpg, id=423, 952.55875pt x 649.42625pt>
+File: risp_freq2.jpg Graphic file (type jpg)
+<use risp_freq2.jpg>
+Package pdftex.def Info: risp_freq2.jpg  used on input line 1075.
+(pdftex.def)             Requested size: 192.0561pt x 130.93335pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[30] [31 <./risp_freq1.jpg> <./risp_freq2.jpg>]
+Overfull \hbox (13.13536pt too wide) detected at line 1130
+[]
+ []
+
+[32]
+<RdC.png, id=444, 573.14125pt x 316.18124pt>
+File: RdC.png Graphic file (type png)
+<use RdC.png>
+Package pdftex.def Info: RdC.png  used on input line 1180.
+(pdftex.def)             Requested size: 192.0561pt x 105.95152pt.
+ [33 <./RdC.png>]
+<RdC2.png, id=451, 977.6525pt x 401.5pt>
+File: RdC2.png Graphic file (type png)
+<use RdC2.png>
+Package pdftex.def Info: RdC2.png  used on input line 1215.
+(pdftex.def)             Requested size: 192.0561pt x 78.87112pt.
+ [34 <./RdC2.png>]
+<RdC3.png, id=460, 582.175pt x 400.49625pt>
+File: RdC3.png Graphic file (type png)
+<use RdC3.png>
+Package pdftex.def Info: RdC3.png  used on input line 1222.
+(pdftex.def)             Requested size: 192.0561pt x 132.12138pt.
+File: RdC3.png Graphic file (type png)
+<use RdC3.png>
+Package pdftex.def Info: RdC3.png  used on input line 1230.
+(pdftex.def)             Requested size: 192.0561pt x 132.12138pt.
+ [35 <./RdC3.png>]
+<RdC4.png, id=467, 325.215pt x 229.85875pt>
+File: RdC4.png Graphic file (type png)
+<use RdC4.png>
+Package pdftex.def Info: RdC4.png  used on input line 1261.
+(pdftex.def)             Requested size: 192.0561pt x 135.74524pt.
+ [36 <./RdC4.png>] (./Sistemi.aux)
 Package rerunfilecheck Info: File `Sistemi.out' has not changed.
-(rerunfilecheck)             Checksum: A8F5B191CEE8B979CB38CC22539C426C;5321.
+(rerunfilecheck)             Checksum: B6FAED65D3318616B9BB872753BC2BB6;6530.
  ) 
 Here is how much of TeX's memory you used:
- 13171 strings out of 478287
- 212204 string characters out of 5846764
- 521635 words of memory out of 5000000
- 31050 multiletter control sequences out of 15000+600000
+ 13242 strings out of 478287
+ 213112 string characters out of 5846764
+ 527635 words of memory out of 5000000
+ 31090 multiletter control sequences out of 15000+600000
  486081 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,30n,79p,598b,513s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,30n,79p,679b,513s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbi1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on Sistemi.pdf (33 pages, 1446135 bytes).
+Output written on Sistemi.pdf (40 pages, 1793658 bytes).
 PDF statistics:
- 529 PDF objects out of 1000 (max. 8388607)
- 384 compressed objects within 4 object streams
- 108 named destinations out of 1000 (max. 500000)
- 368 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 612 PDF objects out of 1000 (max. 8388607)
+ 449 compressed objects within 5 object streams
+ 133 named destinations out of 1000 (max. 500000)
+ 430 words of extra memory for PDF output out of 10000 (max. 10000000)
 
