@@ -19,3 +19,7 @@
 \contentsline {subsection}{\numberline {2.8.4}Capacità elettrostatica}{16}{subsection.2.8.4}%
 \contentsline {subsubsection}{Conduttore isolato}{16}{section*.7}%
 \contentsline {subsubsection}{Conduttore non isolato}{17}{section*.8}%
+\contentsline {subsection}{\numberline {2.8.5}Collegamento di condensatori}{17}{subsection.2.8.5}%
+\contentsline {subsection}{\numberline {2.8.6}Partitore capacitivo}{19}{subsection.2.8.6}%
+\contentsline {subsection}{\numberline {2.8.7}Lastra conduttrice in un condensatore}{21}{subsection.2.8.7}%
+\contentsline {subsection}{\numberline {2.8.8}Energia}{22}{subsection.2.8.8}%

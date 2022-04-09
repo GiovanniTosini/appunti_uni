@@ -453,7 +453,6 @@ elettrostatico}, ovvero la differenza di potenziale
 tra esterno e cavità rimarrà costante. 
 
 \[V_{esterno} - V_{interno} = \textrm{costante}\]
-
 Il potenziale della cavità cambierà in conseguenza all'
 esterno, se non fosse così avrei modo dall'interno di 
 sapere cosa succede all'esterno. Il campo elettrico nullo
@@ -477,7 +476,7 @@ cavità.
 
 Poiché il conduttore esterno era inzialmente scarico, 
 per la conservazione della carica dovrà comparire
-una quantità di carica $Q_1$ sulla superficie. Apparirà 
+una quantità di carica $-Q_1$ sulla superficie. Apparirà 
 solo sull'esterno poichè all'interno deve esserci 
 campo elettrico nullo. Quindi abbiamo che una carica 
 interna della cavità induce una carica esterna sul conduttore.
@@ -522,14 +521,14 @@ il vuoto.
 Da un punto di vista pratico, prendiamo un conduttore isolato 
 sferico di raggio R, depositando una carica sulla sua
 superficie si genererà un campo, con un corrispondente potenziale 
-nello spazio, il campo dato da \[ E = \frac{Q}{4\pi \epsilon_0 r^2} \textrm{per r esterno} \] 
-mentre il potenziale è \[ V = \frac{Q}{4\pi \epsilon_0 r} \textrm{per r esterno} \]
+nello spazio, il campo dato da \[ E = \frac{Q}{4\pi \epsilon_0 r^2} \textrm{ per r esterno} \] 
+mentre il potenziale è \[ V = \frac{Q}{4\pi \epsilon_0 r} \textrm{ per r esterno} \]
 Per un eventuale r interno il campo è nullo e il potenziale ovviamente 
 è costante. Il potenziale sulla superficie della sfera 
 per $r = R$, quindi  \[ C = \frac{Q}{V_{\textrm{superficiale r=R}}} = 4\pi \epsilon_0 R \]
 è la capacità di un conduttore sferico isolato. Per ottenere
 la capacità di un 1 Farad occorrerà una sfera di raggio
- \[ R = \frac{1}{4\pi \epsilon_0 } = 9x10^9m \] . Si tratta 
+ \[ R = \frac{1}{4\pi \epsilon_0 } = 9\cdot 10^9m \] . Si tratta 
 di numeri molto grandi, di conseguenza solitamente la capacità si misura in 
 
 \begin{itemize}
@@ -574,9 +573,185 @@ distanza sia molto minore della lunghezza delle superfici,
 che in maniera simile al cilindro si rirtroveranno in 
 induzione completa.
 
+\subsection{Collegamento di condensatori}
 
+Collegamento in \textbf{serie}.
 
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{coll_serie.jpg}
+\end{center}
+Tale collegamento ha la caratteristica che la carica 
+$Q$ è sempre la stessa e che il potenziale totale è dato 
+da \[ V_{TOT} = \sum_{i = 1}^n V_i \] quindi ricordando 
+che la capacità equivale a \[ C_{TOT} = \frac{Q_{TOT}}{\Delta V_{TOT}} \]
+avremo che 
+\[
+    \begin{split}
+        V_{TOT} &= \Delta V_{TOT} \\
+        &= \sum \frac{Q_i}{C_i} \textrm{ Q essendo costante la si porta fuori} \\
+        &= Q \sum \frac{1}{C_i} \\
+        &= \frac{Q_{TOT}}{C_{TOT}} \textrm{ Q totale = Q}
+    \end{split}
+\]
+Avremo quindi che la capacità totale di un collegamento 
+in serie sarà data da \[ \frac{1}{C_{TOT}} = \sum_{i = 1}^n \frac{1}{C_i} \]
+Da notare che in serie la \textbf{capacità} tende a \textbf{calare} con 
+l'aumentare dei condensatori.
 
+Collegamento in \textbf{parallelo}.
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{coll_parall.png}
+\end{center}
+Nel collegamento in parallelo a rimanere costante sarà 
+il potenziale. La carica $Q$ di un eventuale capacitore 
+equivalente sarà la somma delle cariche dei singoli 
+capacitori \[Q_{TOT} = \sum_{i = 1}^n Q_i \] ricordando 
+la definizione di \textbf{capacità} avremo che \[ Q_{TOT}
+\sum C_i V_i = V \sum C_i = V_{TOT} C_{TOT} \] Cosa succede 
+alla capacità di un collegamento in parallelo? La carica 
+aumenta, il potenziale è \textbf{costante}, quindi la 
+capacità \textbf{aumenterà}.
+
+\subsection{Partitore capacitivo}
+
+Consiste nel collegamento di condensatori in serie, 
+come si ripartisce il potenziale negli elementi del circuito?
+Avere la stessa carica $Q$ costante significa che \[ Q = 
+C_1 V_1 = C_2 V_2 = \dots = C_n V_n \] di conseguenza
+\[ Q = C_{TOT} V{TOT} \] il potenziale è \textbf{inversamente 
+proporzionale} alla capacità nei collegamenti in serie.
+\[ V_i = \frac{Q}{C_i} = \frac{C_{TOT}}{C_i} V_{TOT} \]
+Prendiamo un caso esempio con quattro condensatori con 
+un interrutore aperto.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{int_aperto.jpg}
+\end{center}
+Proviamo a calcolarne la capacità totale. In questo caso
+$C_1$ e $C_2$ sono collegati in serie come lo sono anche 
+$C_3$ e $C_4$. Il capacitore formato da $C_1$ e $C_2$ sarà 
+dato da \[ \frac{1}{C_{TOT}} = \sum \frac{1}{C_i} \] 
+quindi \[ \frac{1}{C_{12}} = \frac{1}{C_1} + \frac{1}{C_2} = \frac{C_2 + C_1}{C_1C_2}\] 
+oppure \[ C_{12} = \frac{C_1C_2}{C_1+C_2}\]  analogamente 
+\[ C_{34} = \frac{C_3C_4}{C_3+C_4}\] i capacitori 
+$C_{12}$ e $C_{34}$ sono a loro volta collegati in parallelo 
+perché ai capi hanno la stessa \textbf{differenza di potenziale} ovvero $V_0$.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{coll_parall_2.jpg}
+\end{center}
+Il circuito equivalente sarà dato da 
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{coll_parall_3.jpg}
+\end{center}
+\[C_{1234} = C_{12} + C_{34} \] 
+Se invece l'interruttore fosse chiuso 
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{int_chiuso.jpg}
+\end{center}
+$C_1$ e $C_3$ diventano collegati in parallelo e analogamente
+$C_2$ e $C_4$ e diventa 
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{int_chiuso2.jpg}
+\end{center}
+Essendo collegati solo a un estremo saranno collegati in serie.
+La capacità totale si calcolerà similarmente a come fatto prima.
+
+\subsection{Lastra conduttrice in un condensatore}
+
+Ipotizziamo di inserire una lastra conduttrice tra le 
+armature di un condensatore.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{lastra.jpg}
+\end{center}
+Ricordando che $Q$ è costante, essendo il sistema \textbf{isolato}
+e $\Sigma$ equivalente all'area delle armature e che:
+\[
+    \begin{split}
+        &E = \frac{\sigma}{\epsilon_0} \\
+        &\sigma = \frac{Q}{\Sigma} \\
+        &C = \frac{Q}{\Delta V} \\
+        &= \frac{\sigma \Sigma}{\frac{\sigma}{\epsilon_0} h} \\
+        &= \frac{\epsilon_0 \Sigma}{h} \\
+    \end{split}
+\]
+Ricordando che \[ \Delta V = V^+ - V^- = - \int_-^+ \vec{E} \vec{dl} \Rightarrow V = Eh = \frac{\sigma}{\epsilon_0}h \] 
+Il potenziale aumenterà allontando le armature perché ci vuole più 
+lavoro per lo spostamento. Inserendo la lastra conduttrice
+avremo un collegamento di condensatori in serie, il potenziale 
+sarà minore a causa del conduttore perché avrà un campo nullo al suo interno.
+Al calare del potenziale aumenterà la capacità, il potenzale
+dovrà essere calcolato considerando la lasta in mezzo:
+\[ V = Eh_1 + 0x + E_h2 = E(h - x) \] quindi la capacità
+sarà equivalente a \[ \frac{1}{C} = \frac{h_1}{\epsilon_0 \Sigma}
++ \frac{h2}{\epsilon_0 \Sigma} = \frac{(h - x)}{\epsilon_0 \Sigma} \] 
+avremo che la \textbf{capacità} effettiva con la lastra 
+sarà equivalente a \[ C_{lastra} = \frac{\epsilon_0 \Sigma}{h - x} \] 
+
+\subsection{Energia}
+
+Quale lavoro bisogna compiere per caricare le armature 
+di un condensatore? Quanta energia è immagazzinata nelle 
+armature? Prendiamo due armature scariche e le carichiamo 
+sottraendo una carica $Q$ dalla prima armatura e posizionandola
+sulla seconda, ciò porterà a caricare con carica $+Q$ una 
+e con carica $-Q$ l'altra. Notare che la carica totale 
+rimarrà in ogni istante nulla. Successivamente il lavoro 
+per traspostare una carica $q$ da una parte all'altra per 
+la differenza di potenziale sarà dato da 
+\[ 
+    \begin{split}
+        L_{\textrm{TOT ext}} &= \int_0^Q V(q) dq \\
+        &= \int_0^Q \frac{q}{C} dq = \\
+        &= \frac{1}{2} \frac{Q^2}{C} = U_{sistema} \\
+    \end{split}
+\] 
+Ricordando che $C = \frac{Q}{V} \rightarrow V = \frac{q}{C}$
+Questo lavoro totale esterno è l'energia immagazzinata 
+nel sistema. Quindi l'energia immagazzinata in un condensatore 
+è \[ U = \frac{1}{2} \frac{Q^2}{C} \] questa espressione 
+si potrà esprimere in tre modi differenti: 
+\begin{itemize}
+    \item $U = \frac{1}{2} \frac{Q^2}{C}$
+    \item $U = \frac{1}{2} CV^2$
+    \item $U = \frac{1}{2} QV^2$
+\end{itemize}
+Si misura in Joule $[J]$. 
+\begin{description}
+    \item[N.B.:]  il potenziale è lineare nella carica, il potenziale ha
+    sempre la carica al numeratore, sono sempre quadratiche nella carica 
+    per la seconda, il potenziale va sempre con la carica, quindi 
+    c'è un $Q^2$, idem per la terza, $Q\cdot V$ equivale a 
+    $Q^2$. Non si scriverà \textbf{mai} $\frac{Q}{V}$.
+\end{description}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{lastre.png}
+\end{center}
+Preso un condensatore avremo 
+\[
+    \begin{split}
+        C &= \frac{\epsilon_0 \Sigma}{h} \\
+        E &= \frac{\sigma}{\epsilon_0} \\
+        \sigma &= \frac{Q}{\Sigma} \\
+    \end{split}
+\]
+sostituendo la prima e la terza all'interno di \[ U = \frac{1}{2} \frac{Q^2}{C} \]
+ottengo 
+\[
+    \begin{split}
+        U &= \frac{1}{2} \frac{Q^2}{\epsilon_0} \frac{h}{h} \\
+        &= \frac{\epsilon_0}{2} E^2 \cdot \textrm{ volume} \rightarrow \Sigma h \\
+    \end{split}    
+\] 
+Ne ricaviamo che l'energia del condensatore piano si può 
+esprimere anche in questa maniera. Il volume del condensatore 
+corrisponde allo spazio tra le armature, ovvero il volume 
+dove il campo \textbf{non} è nullo. Quindi se in una regione 
+di spazio si ha un certo campo, allora il campo 
+genera una densità di energia, ovvero l'energia presente 
+in un volume dello spazio, tale densità sarà:
+\[ u_E = \frac{\epsilon_0 E^2}{2} \] 
+unità di misura $[\frac{J}{m^3}]$ \textbf{densità di energia 
+elettrostatica}.
 
 
 
