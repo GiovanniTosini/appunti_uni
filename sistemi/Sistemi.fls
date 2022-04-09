@@ -932,6 +932,11 @@ INPUT ./RdC4.png
 INPUT RdC4.png
 INPUT ./RdC4.png
 INPUT ./RdC4.png
+INPUT ./trasf_not_1.jpg
+INPUT ./trasf_not_1.jpg
+INPUT trasf_not_1.jpg
+INPUT ./trasf_not_1.jpg
+INPUT ./trasf_not_1.jpg
 INPUT Sistemi.aux
 INPUT ./Sistemi.out
 INPUT ./Sistemi.out

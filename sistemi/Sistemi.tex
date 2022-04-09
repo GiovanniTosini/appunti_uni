@@ -1162,7 +1162,7 @@ Per i sistemi definiti dall'equazione differenziale e ingresso $u(t)$
     frequenza è una funzione razionale (rapporto di due polinomi) in $j\omega$. 
 \end{description}
 
-\subsection{La trasformata di Laplace}
+\section{La trasformata di Laplace}
 
 Sia $v(t), t \in R$ una funzione sommabile su $[0^-, \infty)(\int_{-\infty}^\infty |v(t)| dt < \infty)$ la \textbf{trasformata 
 di Laplace unilatera} è:
@@ -1218,10 +1218,10 @@ Per $i \in {o, \dots, n}$ sia $\lambda_i = \sigma_i + j\omega_i$ e $s = \sigma +
 \subsection{Proprietà della trasformata di Laplace}
 
 \begin{enumerate}
-    \item \textbf{Linearità}, se $v_1, v_2$ ammettono la trasformata di Laplace (TdL) allora anche $a_1v_1 + a_2v_2$ ammette la TdL e: \[ \mathcal{L} [a_1v_1(t) + a_2v_2(t)] (s) = a_1 \mathcal{L} [v_1(t)] (s) + a_2 \mathcal{L} [v_2(t)] (s) \] e l'ascissa di convergenza è $\alpha \ge max{\alpha_1, \alpha_2}$ dove $\alpha_1$ w $\alpha_2$ sono rispettivamente le ascisse di convergenza di $v_1$ e $v_2$ \begin{center}
+    \item \textbf{Linearità}: se $v_1, v_2$ ammettono la trasformata di Laplace (TdL) allora anche $a_1v_1 + a_2v_2$ ammette la TdL e: \[ \mathcal{L} [a_1v_1(t) + a_2v_2(t)] (s) = a_1 \mathcal{L} [v_1(t)] (s) + a_2 \mathcal{L} [v_2(t)] (s) \] e l'ascissa di convergenza è $\alpha \ge max{\alpha_1, \alpha_2}$ dove $\alpha_1$ w $\alpha_2$ sono rispettivamente le ascisse di convergenza di $v_1$ e $v_2$ \begin{center}
         \includegraphics[width=0.5\textwidth]{RdC3.png}
     \end{center}
-    \item Traslazione nel dominio del tempo (\textbf{time shifting}) se $v(t)$ ammette TdL allora anche $v(t - \tau), \tau > 0$ ammette TdL e:
+    \item Traslazione nel dominio del tempo (\textbf{time shifting}): se $v(t)$ ammette TdL allora anche $v(t - \tau), \tau > 0$ ammette TdL e:
     \[
         \mathcal{L} [v(t - \tau)] (s) = e^{-s \tau} \mathcal{L} [v(t)] (s)
     \]
@@ -1240,8 +1240,8 @@ Per $i \in {o, \dots, n}$ sia $\lambda_i = \sigma_i + j\omega_i$ e $s = \sigma +
     \]
     (*) cambio di variabile \[x = t - \tau \Rightarrow dx = dt\]
     (**) ritorno alla variabile di prima
-    \item Traslazione nel dominio dei complesi o moltiplicazione per una funzione esponenziale(\textbf{frequency shifting})
-    Se $v(t)$ ammette TdL $V(s)$, allora anche $e^{\lambda t}v(t)$ ammette TdL e 
+    \item Traslazione nel dominio dei complesi o moltiplicazione per una funzione esponenziale(\textbf{frequency shifting}):
+    se $v(t)$ ammette TdL $V(s)$, allora anche $e^{\lambda t}v(t)$ ammette TdL e 
     \[
         \mathcal{L} [e^{\lambda t} v(t)] (s) = V(s - \lambda) (= \mathcal{L} [v(t)] (s- \lambda))
     \]
@@ -1252,7 +1252,7 @@ Per $i \in {o, \dots, n}$ sia $\lambda_i = \sigma_i + j\omega_i$ e $s = \sigma +
             &= \int_{0^-}^\infty v(t) e^{-(s - \lambda)t} dt = \mathcal{L} [v(t)] (s - \lambda) = V(s - \lambda)
         \end{split}
     \]
-    \item Cambiamento di scale (\textbf{scaling}) se $v(t)$ ammette TdL allora $v(rt)$ ammette TdL e 
+    \item Cambiamento di scale (\textbf{scaling}): se $v(t)$ ammette TdL allora $v(rt)$ ammette TdL e 
     \[
         \mathcal{L} [v(rt)] (s) = \frac{1}{r} V(\frac{s}{r})
     \]
@@ -1269,7 +1269,97 @@ Per $i \in {o, \dots, n}$ sia $\lambda_i = \sigma_i + j\omega_i$ e $s = \sigma +
         \end{split}
     \]
     (*) cambio variabile \[ rt = \tau \quad dt = \frac{d\tau}{r}\]
+    \item Proprietà della derivata (\textbf{molto importante}): 
+    se $v(t)$ ammette TdL ed esiste ed è finito il 
+    $\lim_{t \rightarrow 0} v(t) = v(0^-)$ allora anche 
+    la derivata ammette TdL \[ \mathcal{L}[\frac{dv(t)}{dt}]
+    (s) = sV(s) - v(0^-) \] dove $V(s)$ è TdL di $v(t)$.
+    In generale \[ \mathcal{L}[\frac{d^iv(t)}{dt^i}](s)
+    = s^i V(s) - \sum_{k=0}^{i-1} \frac{d^kv(t)}{dt^k} \mid_{t = 0^-} \cdot s^{i - 1 - k} \]
+    \textbf{Dimostrazione: }
+    \[
+        \begin{split}
+            \mathcal{L}[\frac{dv(t)}{dt}] (s) &= \int_{0^-}^\infty \frac{dv(t)}{dv} e^{-st} dt \overbrace{=}^* \\
+            &= v(t) e^{-st} \mid_{0^-}^\infty - \int_{0^-}^\infty v(t) (-s) e^{-st} dt = \\
+            &= v(0^-) + sV(s)
+        \end{split}
+    \]
+    (*) integrazione per parti.
+    Per $i = 2$ si ottiene TdL della $2^a$ derivata.
+    \[ \mathcal{L}[\frac{d^2v(t)}{dt^2}](s) = s^2V(s) - sv(0^-) - \frac{dv(t)}{dt} \mid_{t = 0^-} \]
+    Per $i = 3$
+    \[ \mathcal{L} [\frac{d^3v(t)}{dt^3}](s) = s^3V(s) - s^2v(0^-) - sv'(0^-) - v''(0^- \]
+    \item Moltiplicazione per funzione polinomiale:  se v(t) ammette 
+    TdL $V(s)$ allora anche $t^iv(t), i \in Z$ ammette TdL e
+        \[ \mathcal{L}[t^i v(t)](s) = (-1)^i \frac{d^i V(s)}{dt^i} \]
+    \item Integrazione nel dominio del tempo \[ \mathcal{L}[\int_{0^-}^t v(\tau) d\tau](s) = \frac{V(s)}{s} \]
+    \item Integrazione nel dominio complesso \[ \mathcal{L}[\frac{v(t)}{t}](s) = \int_s^\infty V(\xi) d\xi \]
+    \item Teorema del valore iniziale: se $v(t)$ ammette TdL
+    ed esiste ed è finito $\lim_{t \rightarrow 0^-} v(t)$ allora \[ \lim_{t \rightarrow 0^-} v(t) = \lim_{|s| \rightarrow \infty} s \mathcal{L}[v(t)](s) \]
+    \item Teorema del valore finale: se $v(t)$ ammette TdL ed esiste ed è finito $\lim_{t \rightarrow \infty} v(t)$ allora \[ \lim_{t \rightarrow \infty} v(t) = \lim_{|s| \rightarrow 0^+} sV(s) \]
+    \item Convoluzione nel dominio del tempo: se $u(t), v(t)$ ammettono TdL $V(s), U(s)$ rispettivamente, allora $u \ast v$ ammette TdL e \[ \mathcal{L}[(u \ast v)(t)](s) = V(s) U(s) \] 
 \end{enumerate}
+A cosa serve la trasformata di Laplace? Ci permette di 
+portare un problema nel dominio del tempo nel dominio del
+complesso, il dominio delle frequenze, che rende più facile 
+trovare una soluzione al problema e sarà una soluzione 
+algebrica. Usando $TdL^{-1}$ la soluzione viene riportata 
+nel tepo ottenendo la stessa soluzione se avessimo continuato 
+a lavorare nel tempo, ma semplificando i passaggi.
+
+\subsection{Trasformate notevoli}
+
+\begin{enumerate}
+    \item Impulso \[ \mathcal{L} [\delta(t)] (s) = \int_{0-}^\infty \delta (t) e^{-st} dt \overbrace{=}^* e^{-st} \mid_{t = 0^-} = 1 \] (*) proprietà del campionamento \begin{center} \includegraphics[width=0.5\textwidth]{trasf_not_1.jpg} \end{center}
+    \item Gradino $\delta_{-1}(t)$ 
+    \[
+        \begin{split}
+            \mathcal{L}[\delta_{-1} (t)] (s) &= \int_{0^-}^\infty \delta_{-1} (t) e^{-st} dt = \\
+            &= \int_{0^-}^\infty e^{-st} dt = \\
+            &= \frac{-e^{-st}}{s} \mid_{t = 0^-}^{t = \infty} = \frac{1}{s}
+        \end{split}
+    \]
+    \item Impulso centrato in $t_0, t_0 > 0$ \[ \mathcal{L} [\delta (t - t_0)] (s) \overbrace{=}^{\textrm{prop. 2}} e^{-st_0} \overbrace{\mathcal{L} [ \delta(t) ](s)}^{= 1 \textrm{ esempio 1}} = e^{-st_0} \]
+    \item Esponenziale complesso causale \[ \mathcal{L}[e^{\lambda t} \delta_{-1} (t)](s) \overbrace{=}^{\textrm{prop. 3}} \mathcal{L}[\delta_{-1}](s- \lambda) \overbrace{=}^{\textrm{esempio 2}} = \frac{1}{s - \lambda} \]
+    \item Esponenziale complesso causale moltiplicato per un funzione polinomiale 
+    \[
+        \begin{split}
+            \mathcal{L}[\frac{t^l}{l!} e^{\lambda t} \delta_{-1}(s)](s) &= \frac{1}{l!} \mathcal{L}[t^l e^{\lambda t} \delta_{-1} (t)] (s) = \\
+            &= \frac{(-1)^l}{l!} \frac{d^l\frac{1}{s - \lambda}}{ds^l} = \\
+            &= \frac{(-1)^l}{l!} \frac{l!(-1)^l}{(s-\lambda)^{l + 1}} = \frac{1}{(s-\lambda)^{l + 1}}
+        \end{split}
+    \] 
+    Per $l = 1$ \[ \mathcal{L} [t e^{\lambda t} \delta_{-1}(t)] = \frac{1}{(s - \lambda)^2} \] 
+    Per $l = 2$ \[ \mathcal{L} [t^2 e^{\lambda t} \delta_{-1}(t)] = \frac{1}{(s - \lambda)^3} \]
+    \item Funzione sinusoidali 
+    \[ 
+        \begin{split}
+            \mathcal{L}[\cos(\omega t)] (s) &=  \mathcal{L} [\frac{e^{j \omega t} + e^{-j \omega t}}{2}] (s) = \\
+            &= \frac{1}{2} \mathcal{L} [e^{j\omega t} + e^{-j \omega t}] (s) = \\
+            &= \frac{1}{2} (\frac{1}{s + j \omega} + \frac{1}{s - j \omega}) = \\
+            &= \frac{1}{2} \frac{s - j\omega + s + j\omega}{(s+j\omega)(s - j\omega)} = \frac{s}{s^2 + \omega^2}
+        \end{split}
+    \] 
+    Notare che all'inizio si è applicata la formula di Eulero e che $j\omega = \lambda$.
+    \item $\mathcal{L} [\sin \omega t \delta_{-1} (t)] \dots = \frac{\omega}{s^2 + \omega^2}$
+\end{enumerate}
+Utilizzo TdL nella risoluzione dei sistemi LTI causali, 
+soluzione nel dominio complesso 
+\[ 
+    \sum_{i = 0}^n a_i \frac{d^i v(t)}{dt^i} = \sum_{i = 0}^m b_i \frac{d^i u(t)}{dt^i}
+\]
+con $n \ge m, u(t) = u(t) \delta_{-1} (t) $ è l'ingresso 
+($u(t) = 0, t < 0$). Siano le n condizioni sull'uscita $v(t)$:
+\[
+    v(0^-), \frac{dv(0^-)}{dt}, \dots, \frac{d^{n - 1}v(0^-)}{dt^{n - 1}}
+\]
+Utilizzeremo $U(s), V(s)$ per TdL di $u(t)$ e $v(t)$, 
+appliccheremo TdL all'equazione differenziale.
+\[
+    \overbrace{\Rightarrow}^{\mathcal{L}} \sum_{i= 0}^n 
+    a_i \mathcal{L} [ \frac{d^iv(t)}{dt^i}](s) = \sum_{i= 0}^m 
+    b_i \mathcal{L} [\frac{d^i u(t)}{dt^i}](s)
+\]
 
 
 

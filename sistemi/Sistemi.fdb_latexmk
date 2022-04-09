@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1649083292 "/home/poppo/Università/appunti_miei/appunti_uni/sistemi/Sistemi.tex" "Sistemi.pdf" "Sistemi" 1649083294
-  "/home/poppo/Università/appunti_miei/appunti_uni/sistemi/Sistemi.tex" 1649083289 51003 0eba6aa66913e4b79a7ae7c1e293c72f ""
+["pdflatex"] 1649517652 "/home/poppo/Università/appunti_miei/appunti_uni/sistemi/Sistemi.tex" "Sistemi.pdf" "Sistemi" 1649517653
+  "/home/poppo/Università/appunti_miei/appunti_uni/sistemi/Sistemi.tex" 1649517651 56542 9e95486e438c89a6626ee8aca441404f ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -130,10 +130,10 @@
   "RdC2.png" 1649081402 82370 4b862d2ff8d718abf3b062e8900442d2 ""
   "RdC3.png" 1649081771 45919 1186b236484afcccaa88650f213cc41c ""
   "RdC4.png" 1649083089 23864 294c24ca3ed005c1fafe6961d7cedef7 ""
-  "Sistemi.aux" 1649083294 11105 804737172ff70734263930e7a76678ca "pdflatex"
-  "Sistemi.out" 1649083294 6530 b6faed65d3318616b9bb872753bc2bb6 "pdflatex"
-  "Sistemi.tex" 1649083289 51003 0eba6aa66913e4b79a7ae7c1e293c72f ""
-  "Sistemi.toc" 1649083294 4185 b46269056816090a01e636703855611b "pdflatex"
+  "Sistemi.aux" 1649517653 11227 dc0a2ab27bfecf2c1daec6908bf588d8 "pdflatex"
+  "Sistemi.out" 1649517653 6688 017d2fc79b001ff093a5464d33d4dd00 "pdflatex"
+  "Sistemi.tex" 1649517651 56542 9e95486e438c89a6626ee8aca441404f ""
+  "Sistemi.toc" 1649517653 4266 7d5c5d3b3090c686bc406794721f136c "pdflatex"
   "campionamento.png" 1647944240 16580 6562b9d7c01bfd06c5994f782fe4ce67 ""
   "circuito.jpg" 1648307483 114552 3ec74c8530460fdd50a89bcfdd040bda ""
   "dirac.png" 1647943402 19304 704688dba41f0da1443fbe3fdfde6bb5 ""
@@ -166,6 +166,7 @@
   "risposta_impulsiva.jpg" 1648377663 38812 effa112d9e1b4ae9b0c686f059e0afbd ""
   "sinusoidale.png" 1647872618 17198 32f3b0da2ad4948d67bf2d4a64a88887 ""
   "sistema1.jpg" 1648383610 45938 4b132b31873c1cfd431baed5af967e8b ""
+  "trasf_not_1.jpg" 1649514482 72870 2f6f06bb6979b870c9b1a3e5c6be1e96 ""
   "tre_sistemi.jpg" 1648383113 154337 365e3300e1d1a2b97d32ef1fbc71099a ""
   "triangolo.png" 1647884539 11124 03c92a4718767b809986c6396e8a4ab3 ""
   "triangolo2.png" 1647942665 21042 45346a58c93a2798826f27a501300896 ""
