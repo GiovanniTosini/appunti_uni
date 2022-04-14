@@ -637,7 +637,7 @@ saranno in parte in RAM e in parte sul disco.
 Una pagina si troverà in memoria solo quando necessaria. I vantaggi sono i seguenti:
 \begin{itemize}
     \item meno memoria occupata da ogni processo;
-    \item se il livello di multiprogrammazione fosse troppo alto, l'eventuale swap out verrà fatto solo a una parte delle pagine riucendo i tempi di I/O;
+    \item se il livello di multiprogrammazione fosse troppo alto, l'eventuale swap out verrà fatto solo a una parte delle pagine riducendo i tempi di I/O;
 \end{itemize}
 
 Per poter implementare occorre sapere se la pagina richiesta dalla CPU sia valida o no, entra in gioco il bit di validità presente
@@ -711,11 +711,129 @@ pagine che verranno richieste. Esempio:
     \item in realtà sarà composta da: 1, 6, 1, 2. Perché il page fault sarà possibile con la prima pagina, sicuramente non con quelle successive.
 \end{itemize}
 
-\subsubsection{Algoritmo FIFO}
+\subsection{Algoritmo FIFO}
 
 Prima pagina che carico sarà la prima scelta a essere rimossa per liberare  eventualmente spazio, non è adatto nè per lo scheduling 
 nè per la gestione della memoria. Può causare l'anomalia di Belady, ovvero aumentando la disposizione di frame in memoria potrebbero 
 aumentare i page fault diversamente da quello che ci si aspetterebbe.
+
+\begin{figure}[h!]
+    \centering
+    \subfloat[][\textbf{\emph{Esempio con algoritmo FIFO, causa 15 page fault}}]
+    {\includegraphics[width=0.5\textwidth]{FIFO.png}}\quad
+    \subfloat[][\textbf{\emph{Anomalia di Belady, all'aumentare dei frame aumentano i page fault}}]
+    {\includegraphics[width=0.5\textwidth]{belady.png}}
+\end{figure}
+
+\subsection{Algoritmo Ideale}
+
+L'\textbf{algoritmo ideale}, dovrebbe essere in grado di scegliere la pagina che non userò per più tempo, garantendo che per un po'
+ non avrò page fault.
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{ideale.png}
+    \caption{Esempio di algoritmo ideale}
+\end{SCfigure}
+
+\subsection{Algoritmo LRU}
+
+L'algoritmo \textbf{Least Recently Used}, approssima un possibile algoritmo ideale guardando al passato, rimpiazza la pagina
+che non viene utilizzata da più tempo.
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{LRU.png}
+    \caption{Esempio di algoritmo LRU, uso dell'asterisco per indicare la pagina meno utilizzata da più tempo}
+\end{SCfigure}
+
+Lo si implementa tramite un contatore, all'interno si salverà il time stamp cioè il clock di sistema, indica da quanto non viene 
+usata una pagina, il tutto verrà memorizzato nella tabella delle pagine. Inoltre quando avviene un page fault, sarà necessario far 
+partire una ricerca tra tutte le pagine per vedere quale ha il time stamp più vecchio. Il tutto è decisamente costoso perché appunto 
+sarà necessario avere il time stamp di tutte le pagine e successivamente bisognerà controllarle tutte alla ricerca di quelle più 
+vecchio.
+
+Una possibile approssimazione per risparmiare spazio e tempo perdendo un po' di precisione è tramite l'uso dello stack. Si evita di 
+memorizzare il clock per ogni pagina, ma si crea una pila, uno stack in cui si tiene un ordine di accesso. In fondo sarà presente 
+la pagina più vecchia, man mano che viene utilizzata si metterà in cima, trovando in fondo la meno usata e in cima la più usata. Sarà
+comodo perché la vittima è sempre quella in fondo, ma scomodo perché bisognerà passare l'intero stack alla ricerca della pagina 
+da mettere in cima.
+
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{LRU_approx.png}
+\end{center}
+
+Un'altra approssimazione potrebbe basarsi sui i bit di reference, alla pagina se ne assocerebbero di meno, con un limite inferiore 
+uguale a 1, mentre il massimo il numero di bit necessari a memorizzare il time stamp. Si userà per individuare le pagina da eliminare
+in caso di necessità, quindi varrà 0 o 1, se 0 verrà eliminata.
+
+Un'ulteriore approssimazione è tramite l'algoritmo dell'\textbf{orologio} o algoritmo \textbf{secondo chance}. Al posto delle ore 
+si metteranno i numeri di pagina, la prima e la seconda lancetta si muoveranno senza mai modificare l'angolo tra di loro. Come 
+la prima lancetta raggiungerà una pagina, metterà il bit di reference a 0, quindi un unico bit per ogni pagina. La pagina ha tempo 
+tanto quanto l'angolo formato tra le lancette per tornare a 1, in caso contrario significherà che quella pagina non è stata riferita,
+nel momento in cui servirà una "vittima" da rimuovere, come passerà la seconda lancetta verrà scelta quella pagina.
+
+Una quarta opzione si basa non più sul tempo, ma sulla frequenza in cui una pagina verrà riferita. Qui si avranno due opzioni:
+\begin{itemize}
+    \item Algoritmo LFU (\textbf{Least Frequently Used}), conto quante volte viene riferita una pagina, nel caso in cui mi serva 
+    una vitta sceglierò quella con il conteggio più basso;
+    \item Algoritmo MFU (\textbf{Most Frequently Used}), l'esatto opposto, ipotizza che la pagina con meno riferimenti sia stata 
+    caricata da poco e che potrebbe venire utilizzata maggiormente in futuro.
+\end{itemize}
+
+\chapter{Allocazione dei frame}
+
+Quanti frame assegnare a un processo? Occorre sapere qual è il numero minimo di frame che si possono assegnare per dargli la garanzia 
+che riesca a eseguire un'istruzione alla volta. Quanti frame richiede un'istruzione? Potrebbe richiederne uno come anche due nel 
+caso in cui l'istruzione sia a cavallo di due pagine, a questi bisogna aggiungere gli eventuali operandi che in base all'architettura 
+se fossero tre, potrebbero essere anche loro  su due pagine diverse arrivando a un totale possibile di 8 frame necessari. Il minimo 
+è dato dal massimo numero di indirizzi specificabili da un'istruzione, che cambia da architettura ad architettura.
+
+Dal minimo si può ovviamente salire, ma di quanto? Ci può essere anche qui un'allocazione \textbf{fissa} e un'allocazione \textbf{variabile}. 
+
+\begin{description}
+    \item[Allocazione fissa:] ogni processo riceve un numero di frame definito, non per forza uguale per tutti, ma che non varia una volta definito;
+    \item[Allocazione variabile:] il numero di frame di un processo può variare durante la sua esecuzione, è decisamente più difficile da gestire; 
+\end{description}
+
+\section{Allocazione fissa}
+
+Si divide in due ulteriori categorie:
+
+\begin{description}
+    \item[In parti uguali:] i frame vengono assegnati in maniera equa a ogni processo, anche se un processo ne avrebbe bisogno di un numero maggiore;
+    \item[Proporzionale:] in base alla grandezza in frame dei processi richiedenti i frame disponibili vengono assegnati in maniera proporzionale;  
+\end{description}
+Un contro della proporzionale è che un processo che richiede molti frame in realtà poi all'interno a righe di codice che gli portano 
+a dover usare molti frame in meno rispetto a quella che sembrava inizialmente. 
+
+\section{Allocazione variabile}
+
+Una soluzione migliore, allocare a runtime è decisamente meglio, ma è molto difficile da gestire. Ci sono due possibili soluzioni:
+\begin{itemize}
+    \item tramite calcolo del \textbf{working set};
+    \item tramite calcolo del PFF (\textbf{Page Fault Frequency});
+\end{itemize}
+
+\subsection{Working set}
+
+Segue il principio di località, i frame verranno assegnati in base alla località. Come lo misuro? 
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{working_set.png}
+\end{center}
+Periodicamento, al tempo $t_1$, $t_2$, etc..., si andrà a guardare a quante pagine ci si è riferiti negli istanti di tempo ovvero 
+$\Delta$, all'istante $t_1$ il working set è di 5 pagine, ma all'istante successivo come si può vedere calerà a 2 pagine. In base a ciò
+vengono assegnati i frame. Sarà fondamentale scegliere il parametro $\Delta$, troppo piccolo diventa poco significativo, troppo 
+grande potrebbe essere a cavallo di due località. 
+
+Cosa succede se la somma dei working set richiede un numero di frame maggiori di quelli a disposizione? Si verifica il fenomeno del 
+\textbf{thrashing}, il SO si accorge che l'uso della CPU è sceso e ci sono molti processi in coda per fare accesso al disco e fare 
+swap in e swap out. Una cattiva gestione della cosa porterebbe a fare entrare nella cosa pronti altri processi, che avrebbero necessità
+di memoria e di conseguenza tale memoria verrebbe rimossa a quelli già presenti, i quali vedranno i pochi frame a loro disposizione 
+calare ulteriormente e di conseguenza richiederebbero ulteriori swap in e swap out e ciclicamente nuovi processi che entrano e 
+ulteriori frame rimossi fino a un blocco totale. 
+
+
+
 
 
 
