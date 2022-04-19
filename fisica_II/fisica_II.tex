@@ -380,7 +380,7 @@ Aggiungendo altre cariche, il flusso di tutte sarà la somma dei flussi.
 \paragraph{Perché le cariche esterne non influenzano?}
 Perché il loro flusso è nullo essendo che entrano ed escono dalla superficie.
 
-\section{Elettrostatica nei conduttori}
+\chapter{Elettrostatica nei conduttori}
 La sorgente del campo $E$ è una carica ${Q}$, il campo generato 
 agisce sulle cariche e queste lo percepiscono, a loro volta ogni 
 carica genererà un campo che verrà percepito dalle altre cariche.
@@ -391,7 +391,7 @@ La materia neutra affetta da un campo reagirà in due possibili modi:
     \item i materiali dielettrici vincoleranno le cariche.
 \end{itemize}
 
-\subsection{Proprietà di un conduttore in equilibrio}
+\section{Proprietà di un conduttore in equilibrio}
 \begin{SCfigure}[50][h!]
     \includegraphics[width=0.3\textwidth]{conduttore.png}
     \caption{Conduttore in equilibrio}
@@ -409,7 +409,7 @@ Le cariche si sposteranno a fino a quando il campo interno non sarà nullo.
     \item Il campo della superficie dei conduttori è noto \[\vec{E}_{superficie} = \frac{\sigma}{\epsilon_0}\hat{n}\] è un campo normale alla sua superficie.
 \end{enumerate}
 
-\subsection{Cavità in un conduttore}
+\section{Cavità in un conduttore}
 
 \begin{SCfigure}[50][h!]
     \includegraphics[width=0.5\textwidth]{conduttore_cavo.png}
@@ -443,7 +443,7 @@ delle cariche esterne dello spazio esterno il conduttore
 andrà in equilibrio elettrostatico distrubuendo le cariche 
 sulla superficie esterna.
 
-\subsection{Schermo elettrostatico}
+\section{Schermo elettrostatico}
 
 Dal punto di vista generale abbiamo un conduttore cavo, possiamo
 avere delle cariche libere esterne e/o depositate sul conduttore.
@@ -502,8 +502,8 @@ cavità è uno schermo elettrostatico, questo varrà
 anche in presenza di più conduttori all'interno della 
 cavità.
 
-\subsection{Capacità elettrostatica}
-\subsubsection{Conduttore isolato}
+\section{Capacità elettrostatica}
+\subsection{Conduttore isolato}
 
 Prendiamo un conduttore isolato caricato con una carica Q,
 come visto prima si porterà a un potenziale costante 
@@ -537,7 +537,7 @@ di numeri molto grandi, di conseguenza solitamente la capacità si misura in
     \item $\mu F$ ovvero $10^{-6}F$
 \end{itemize}
 
-\subsubsection{Conduttore non isolato}
+\subsection{Conduttore non isolato}
 
 Ci possono essere altri conduttori, in modo più esteso 
 la terra stessa è un conduttore, il conduttore non essendo 
@@ -573,7 +573,7 @@ distanza sia molto minore della lunghezza delle superfici,
 che in maniera simile al cilindro si rirtroveranno in 
 induzione completa.
 
-\subsection{Collegamento di condensatori}
+\section{Collegamento di condensatori}
 
 Collegamento in \textbf{serie}.
 
@@ -613,7 +613,7 @@ alla capacità di un collegamento in parallelo? La carica
 aumenta, il potenziale è \textbf{costante}, quindi la 
 capacità \textbf{aumenterà}.
 
-\subsection{Partitore capacitivo}
+\section{Partitore capacitivo}
 
 Consiste nel collegamento di condensatori in serie, 
 come si ripartisce il potenziale negli elementi del circuito?
@@ -656,7 +656,7 @@ $C_2$ e $C_4$ e diventa
 Essendo collegati solo a un estremo saranno collegati in serie.
 La capacità totale si calcolerà similarmente a come fatto prima.
 
-\subsection{Lastra conduttrice in un condensatore}
+\section{Lastra conduttrice in un condensatore}
 
 Ipotizziamo di inserire una lastra conduttrice tra le 
 armature di un condensatore.
@@ -687,7 +687,7 @@ sarà equivalente a \[ \frac{1}{C} = \frac{h_1}{\epsilon_0 \Sigma}
 avremo che la \textbf{capacità} effettiva con la lastra 
 sarà equivalente a \[ C_{lastra} = \frac{\epsilon_0 \Sigma}{h - x} \] 
 
-\subsection{Energia}
+\section{Energia}
 
 Quale lavoro bisogna compiere per caricare le armature 
 di un condensatore? Quanta energia è immagazzinata nelle 
@@ -752,6 +752,206 @@ in un volume dello spazio, tale densità sarà:
 \[ u_E = \frac{\epsilon_0 E^2}{2} \] 
 unità di misura $[\frac{J}{m^3}]$ \textbf{densità di energia 
 elettrostatica}.
+
+\chapter{Elettrostatica nei dielettrici}
+
+Sono caratterizzati dal fatto che le loro cariche sono vincolate, non sono libere di muoversi. I materiali dielettrici in presenza 
+di campo esterno, mostrano la capacità di \textbf{polarizzarsi} ovvero avviene una distribuzione di carica. Un'ulteriore caratteristica 
+è che i centri di carica, che normalmente nell'atomo neutro sono coincidenti, in presenza di un campo elettrico \textbf{esterno},
+i costituenti carichi dell'atomo presenteranno uno spostamento dei centri di simmetria, la forza sarà data da $\vec{F} = q \vec{E}$.
+
+Il \textbf{dipolo elettrico} è un oggetto costituito da due cariche uguali ma di segno opposto separate da una distanza rigida 
+$d$ e l'orientamente sarà dalla negativa alla positiva. 
+\begin{description}
+    \item[Momento di dipolo elettrico:] la quantità data dalla carica per la distanza e si orienta dalla carica negativa alla positiva \[ \vec{p} = q \vec{d} \] è un vettore che caratterizza il dipolo. 
+\end{description}
+Il \textbf{campo di polarizzazione} sarà dato da:
+\[
+    \vec{P}(\vec{r}) = \frac{\textrm{momento di dipolo}}{\textrm{volume}}
+\] 
+
+\section{Proprietà del dipolo elettrico}
+
+\begin{description}
+    \item[Potenziale:] preso un punto p molto distante dal dipolo, abbastanza da non vedere la struttuta interno del dipolo. Il potenziale sarà dato da \[ V(\vec{r}) = V_{q^+} + V_{q^-} = \frac{q}{4 \pi \epsilon_0}(\frac{1}{r^+} \frac{1}{r^-}) = \frac{q}{4 \pi \epsilon_0} \frac{r^- - r^+ }{r^+r^-} \] 
+    essendo $r$ la distanza presa per il punto ed essendo di molto maggiore della distanza all'interno del dipolo $d$, valgono le 
+    seguente approssimazioni: 
+    \begin{itemize}
+        \item $r^+r^- \cong r^2$
+        \item $r^--r^+ \cong d\cos \theta$
+    \end{itemize} 
+    Dove $\theta$ è l'angolo preso tra il centro dell'eventuale sistema di assi costruito sul dipolo e la distanza $r$ oppure 
+    l'angolo che si forma sempre con la distanza $r$ ma preso da una delle cariche. Di conseguenza il potenziale sarà uguale a 
+    \[ 
+        V(\vec{r}) = \frac{qd\cos \theta}{r^2}
+    \]
+    Ricorda la definizione del \textbf{momento di dipolo} lo si può riscrivere come:
+    \[
+        V(\vec{r}) = \frac{\vec{p} \vec{r}}{r^3} \propto \frac{1}{r^2}
+    \]
+    Ricordando che $\vec{p} \vec{r}$ è nullo quando sono ortogonali, quindi il raggio vettore $r$ è perpendicolare al momento di dipolo
+    $p$, di conseguenza si avrà che $V = 0$
+    \begin{SCfigure}[50][h!]
+        \includegraphics[width=0.5\textwidth]{dipolo.png}
+        \caption[]{Linee di campo di un dipolo elettrico.}
+    \end{SCfigure}
+    Nel cilindro attorno all'asse centrato su $p$ non c'è modo di distinguere la fisica generata dal dipolo.
+\end{description}
+
+\section{Condensatore riempito di dielettrico}
+
+Prendendo un condensatore piano con area $\Sigma$ e distanza $d$
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{condensatore_con_lastra.png}
+\end{center}
+Nel vuoto avremo:
+\begin{itemize}
+    \item $C_0 = \frac{\epsilon_0 \Sigma}{d}$ [$F$]
+    \item $Q = V_0 C_0$ [$C$]
+    \item $E_0 = \frac{\sigma_0}{E_0}$ [$\frac{V}{m}$]
+    \item $\Delta V = E_0 d$
+\end{itemize}
+Isolo il sistema dal generatore, quindi la carica $Q$ sarà \textbf{costante}, inserisco un dielettrico tra le armature. Il potenziale 
+sarà dal rapporto tra il potenziale nel vuoto e una costante dielettrica caratteristica del materiale, sarà di conseguenza minore del potenziale 
+nel vuoto. 
+\[
+    V_K = \frac{V_0}{K} < V_0
+\]
+Se il potenziale diminuisce, la capacità di conseguenza aumenterà.
+\[
+    \begin{split}
+        C_K &= (\frac{Q}{V}) = K C_0 \\
+        C_K &= K \epsilon_0 \frac{\Sigma}{d} \\
+    \end{split}
+\]
+$K \epsilon_0$ viene definita come \textbf{permettività} del materiale, definita normalmente come $\epsilon$. Quindi la permettività 
+dielettrica del vuoto è uguale a 1 perché non c'è materiale presente.
+\[
+    E_K = \frac{E_0}{K} < E_0
+\]
+Il campo elettrico è diminuito ed è \textbf{diverso} da 0, diversamente dai conduttori. $E_K$ è il campo elettrico \textbf{totale}.
+Quindi il campo indotto dai dipoli, sommato al campo precedentemente presente non dà zero. La sommma sarà equivalente a $E_K$. 
+\[
+    \vec{E_TOT} = E_K = \vec{E_0} + E_{\textrm{campo indotto}}
+\]
+Il campo indotto \textbf{non è} il campo totale.
+
+Prendendo un condensatore elettrico con un dielettrico tra le armature, poniamo un cilindro di Gauss tra l'armatura e il 
+dielettrico. Per il teorema di Gauss, il flusso passerà solo attraverso l'area del cilindro interno al dielettrico, essendo che il campo 
+nella parte interna al condensatore è nullo per definizione.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{cond_diel_campo.jpg}
+\end{center}
+Ricordando che per il teorema di Gauss, il flusso è dato da $\oint_{sup} \vec{E} \vec{dS}$ avremo che 
+\[
+    E_TOT A + EA = \frac{Q_{int}}{\epsilon_0}
+\]
+Le cariche interne a questo cilindro saranno date dalle cariche libere del conduttore più le cariche di polarizzazione indotte 
+nel materiale all'accensione del campo.
+\[
+    \frac{Q_{libere} - Q_{pol}}{\epsilon_0} = \frac{\sigma_0}{\epsilon_0} A - \frac{\sigma_p}{\epsilon_0} A
+\]
+Dove:
+\begin{itemize}
+    \item $Q_{libere} = \sigma_0 \textrm{ Area}$
+    \item $Q_p = \sigma_p \textrm{ Area}$
+\end{itemize}
+L'area ovviamente sparisce, quindi abbiamo ricavato che il campo nel dielettrico, ovvero $E_TOT$ sarà uguale a 
+\[
+    E_TOT = \frac{|\sigma_0|}{\epsilon_0} - \frac{\sigma_p}{\epsilon_0}
+\]
+Ricordando comunque che 
+\[
+    E_TOT = \frac{E_0}{K}
+\]
+Ricordando che $E_0 = \frac{\sigma_0}{\epsilon_0}$ e mettendo il tutto assieme possiamo ricavare che:
+\[
+    |\sigma_p| = |\sigma_0| \frac{K - 1}{K}
+\]
+Questa formula ci permetterà di calcolare le cariche di polarizzazione.
+
+Ricordiamo che per $\sigma$ si intende il numero di carica per unità di superficie, prendendo una volume unitario di una superficie,
+ che momento di dipolo avremo in un volume unitario? La polarizzazione $P$ sarà esattamente la densità di carica della superficie. 
+\[
+    |\vec{P}| = \sigma_p
+\]
+$\sigma_p$ è il modulo del campo di polarizzazione. Avremo che:
+\[
+    \sigma_p = \vec{P} \hat{n} [\frac{C}{m^2}]
+\]
+
+\section{Dielettrico lineare}
+
+Un dielettrico per cui se io accendo un campo, mi si forma una polarizzazione $P$ e tale polarizzazione è parallela e 
+proporzionale al campo.
+\[
+    \vec{P} = \epsilon_0 \chi \vec{E}
+\]
+Dove $\chi$ sta per la \textbf{suscettività dielettrica del materiale}. Tale suscettività è costante, il dielettrico si 
+definirà \textbf{normale}, ovvero sarà lineare e omogeneo. Risulta che il campo nel dielettrico, il campo totale, l'unico campo presente 
+sarà uguale a
+\[
+    E_K = \frac{\epsilon_0}{\underbrace{1 - \chi}_{K}}
+\]
+
+\section{Teorema di Gauss nei dielettrici}
+
+Riprendendo l'esempio con la superficie di Gauss cilindrica, si era ottenuto che 
+\[
+    \oint E = \frac{\sigma_{libere}}{\epsilon_0} - \frac{\sigma_{pol}}{\epsilon_0}
+\]
+La carica di polarizzazione è 
+\[
+    \sigma_p = \vec{P} \vec{n}
+\]
+Si può esprimere il tutto in termini integrali di flusso 
+\[
+    \oint E dS = \frac{q_{libere}}{\epsilon_0} - \frac{\oint \vec{P} \vec{dS}}{\epsilon_0}
+\]
+Ricordando il termini generali il teorema di Gauss
+\[
+    \oint E dS = \frac{Q_{int}}{\epsilon_0}
+\]
+Il valore di $Q_int$ nel caso del dielettrico sarà equivalente alla carica totale tra le cariche libere e polarizzate. Non avremo più 
+un campo nel vuoto, ma nel dielettrico ovviamente. Il problema della cariche polarizzate è che sono dipendenti dalle caratteristiche 
+microscopiche del materiale, a noi interessa un teorema di Gauss in cui vengono usate esclusivamente le cariche libere, perché le possiamo 
+controllare più facilmente (depositandole sui conduttori, attaccando potenziali,...).
+
+La nuova definizione del teorema sarà quindi 
+\[
+    \begin{split}
+        \oint E dS &= \frac{q_{libere}}{\epsilon_0} - \frac{\oint \vec{P} \vec{dS}}{\epsilon_0} \\
+        \oint \underbrace{(\epsilon_0 \vec{E} + \vec{P})}_{*} dS &= Q_{libere} \\
+    \end{split}
+\]
+(*) lo definisco come $\vec{D}$, è un nuovo campo e verrà definito come \textbf{induzione dielettrica}. Posso esprimere il \textbf{teorema 
+di Gauss per i dielettrici} in notazione compatta come 
+\[
+    \oint \vec{D} \vec{dS} = Q_{\textrm{int. totali libere}}
+\]
+Quindi senza le cariche polerizzate. 
+
+Il nostro scopo è sempre stato quello di calcolare il campo usando il teorema di Gauss, in presenza di materiali dielettrici non
+ possiamo farlo senza pensieri perché le cariche polarizzate genereranno a loro volta un campo che andrà a sommarsi a quello totale.
+ Utilizziamo Gauss per ricavare $\vec{D}$
+\[
+    \begin{split}
+        \vec{D} &= \epsilon_0 E + P \\
+        P &= \epsilon_0 \chi E \\
+        \vec{D} &= \epsilon_0 K \vec{E} [\frac{C}{m^2}]\\
+        \vec{E_K} &= \frac{\vec{D}}{\epsilon_0 K} \\
+        P &= \epsilon_0 (K - 1) \vec{E} [\frac{C}{m^2}] \\
+        \vec{P} &= \frac{K - 1}{K} D \\
+    \end{split}
+\] 
+Trovata la polarizzazione, alla richieste del valore delle cariche su una certa superficie $s$
+\[
+    \sigma_p (s) = P (s)
+\]
+
+
+
+
 
 
 
