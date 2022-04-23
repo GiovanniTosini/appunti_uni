@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  19 APR 2022 13:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  23 APR 2022 11:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -650,7 +650,7 @@ l.72  P
        er induzione invece, un oggetto \begin{math} [1
 
 ]
-<induzione_elettrostatica.jpg, id=164, 456.70625pt x 462.72874pt>
+<induzione_elettrostatica.jpg, id=174, 456.70625pt x 462.72874pt>
 File: induzione_elettrostatica.jpg Graphic file (type jpg)
 <use induzione_elettrostatica.jpg>
 Package pdftex.def Info: induzione_elettrostatica.jpg  used on input line 77.
@@ -661,7 +661,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has b
 l.80  \chapter
               {Elettrostatica nel vuoto (in assenza di materia dielettrica)} [2 <./induzione_elettrostatica.jpg>]
 Capitolo 2.
-<coulomb.jpg, id=168, 588.1975pt x 409.53pt>
+<coulomb.jpg, id=179, 588.1975pt x 409.53pt>
 File: coulomb.jpg Graphic file (type jpg)
 <use coulomb.jpg>
 Package pdftex.def Info: coulomb.jpg  used on input line 87.
@@ -669,46 +669,46 @@ Package pdftex.def Info: coulomb.jpg  used on input line 87.
 [3
 
  <./coulomb.jpg>]
-<coulomb_2.png, id=177, 232.87pt x 209.78375pt>
+<coulomb_2.png, id=188, 232.87pt x 209.78375pt>
 File: coulomb_2.png Graphic file (type png)
 <use coulomb_2.png>
 Package pdftex.def Info: coulomb_2.png  used on input line 134.
 (pdftex.def)             Requested size: 192.0561pt x 173.02249pt.
-<coulomb_3.png, id=180, 325.215pt x 192.72pt>
+<coulomb_3.png, id=191, 325.215pt x 192.72pt>
 File: coulomb_3.png Graphic file (type png)
 <use coulomb_3.png>
 Package pdftex.def Info: coulomb_3.png  used on input line 137.
 (pdftex.def)             Requested size: 192.0561pt x 113.8126pt.
  [4 <./coulomb_2.png> <./coulomb_3.png>]
-<energia_elettrostatica_1.jpg, id=193, 446.66875pt x 441.65pt>
+<energia_elettrostatica_1.jpg, id=203, 446.66875pt x 441.65pt>
 File: energia_elettrostatica_1.jpg Graphic file (type jpg)
 <use energia_elettrostatica_1.jpg>
 Package pdftex.def Info: energia_elettrostatica_1.jpg  used on input line 191.
 (pdftex.def)             Requested size: 192.0561pt x 189.89905pt.
  [5 <./energia_elettrostatica_1.jpg>]
-<gr_part.png, id=198, 183.68625pt x 145.54375pt>
+<gr_part.png, id=208, 183.68625pt x 145.54375pt>
 File: gr_part.png Graphic file (type png)
 <use gr_part.png>
 Package pdftex.def Info: gr_part.png  used on input line 248.
 (pdftex.def)             Requested size: 192.0561pt x 152.18584pt.
  [6 <./gr_part.png>]
-<discrete.png, id=204, 474.77374pt x 181.67876pt>
+<discrete.png, id=214, 474.77374pt x 181.67876pt>
 File: discrete.png Graphic file (type png)
 <use discrete.png>
 Package pdftex.def Info: discrete.png  used on input line 275.
 (pdftex.def)             Requested size: 192.0561pt x 73.49355pt.
  [7 <./discrete.png>]
-<left.png, id=211, 139.52126pt x 125.46875pt>
+<left.png, id=221, 139.52126pt x 125.46875pt>
 File: left.png Graphic file (type png)
 <use left.png>
 Package pdftex.def Info: left.png  used on input line 303.
 (pdftex.def)             Requested size: 192.0561pt x 172.71819pt.
-<right.png, id=212, 118.4425pt x 123.46124pt>
+<right.png, id=222, 118.4425pt x 123.46124pt>
 File: right.png Graphic file (type png)
 <use right.png>
 Package pdftex.def Info: right.png  used on input line 304.
 (pdftex.def)             Requested size: 192.0561pt x 200.20012pt.
-<equi.jpg, id=213, 607.26875pt x 647.41875pt>
+<equi.jpg, id=223, 607.26875pt x 647.41875pt>
 File: equi.jpg Graphic file (type jpg)
 <use equi.jpg>
 Package pdftex.def Info: equi.jpg  used on input line 310.
@@ -717,14 +717,14 @@ Package pdftex.def Info: equi.jpg  used on input line 310.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8 <./left.png> <./right.png>] [9 <./equi.jpg>]
-<flusso.png, id=225, 110.4125pt x 140.525pt>
+<flusso.png, id=235, 110.4125pt x 140.525pt>
 File: flusso.png Graphic file (type png)
 <use flusso.png>
 Package pdftex.def Info: flusso.png  used on input line 347.
 (pdftex.def)             Requested size: 192.0561pt x 244.44717pt.
  [10] [11 <./flusso.png>] [12]
 Capitolo 3.
-<conduttore.png, id=241, 115.43124pt x 254.9525pt>
+<conduttore.png, id=251, 115.43124pt x 254.9525pt>
 File: conduttore.png Graphic file (type png)
 <use conduttore.png>
 Package pdftex.def Info: conduttore.png  used on input line 396.
@@ -732,75 +732,75 @@ Package pdftex.def Info: conduttore.png  used on input line 396.
 [13
 
  <./conduttore.png>]
-<conduttore_cavo.png, id=248, 210.7875pt x 177.66376pt>
+<conduttore_cavo.png, id=258, 210.7875pt x 177.66376pt>
 File: conduttore_cavo.png Graphic file (type png)
 <use conduttore_cavo.png>
 Package pdftex.def Info: conduttore_cavo.png  used on input line 415.
 (pdftex.def)             Requested size: 192.0561pt x 161.87758pt.
  [14 <./conduttore_cavo.png>] [15]
-<conduttore_inception.jpg, id=270, 1419.3025pt x 800.9925pt>
+<conduttore_inception.jpg, id=280, 1419.3025pt x 800.9925pt>
 File: conduttore_inception.jpg Graphic file (type jpg)
 <use conduttore_inception.jpg>
 Package pdftex.def Info: conduttore_inception.jpg  used on input line 474.
 (pdftex.def)             Requested size: 192.0561pt x 108.38599pt.
  [16 <./conduttore_inception.jpg>]
-<capacità_sfera.jpg, id=275, 936.49875pt x 852.18375pt>
+<capacità_sfera.jpg, id=285, 936.49875pt x 852.18375pt>
 File: capacità_sfera.jpg Graphic file (type jpg)
 <use capacità_sfera.jpg>
 Package pdftex.def Info: capacità_sfera.jpg  used on input line 518.
 (pdftex.def)             Requested size: 192.0561pt x 174.76381pt.
  [17 <./capacità_sfera.jpg>]
-<cond_terra.jpg, id=281, 819.06pt x 716.6775pt>
+<cond_terra.jpg, id=291, 819.06pt x 716.6775pt>
 File: cond_terra.jpg Graphic file (type jpg)
 <use cond_terra.jpg>
 Package pdftex.def Info: cond_terra.jpg  used on input line 549.
 (pdftex.def)             Requested size: 192.0561pt x 168.04742pt.
-<coll_serie.jpg, id=282, 851.18pt x 416.55624pt>
+<coll_serie.jpg, id=292, 851.18pt x 416.55624pt>
 File: coll_serie.jpg Graphic file (type jpg)
 <use coll_serie.jpg>
 Package pdftex.def Info: coll_serie.jpg  used on input line 581.
 (pdftex.def)             Requested size: 192.0561pt x 93.98807pt.
  [18 <./cond_terra.jpg>]
-<coll_parall.png, id=287, 315.1775pt x 160.6pt>
+<coll_parall.png, id=297, 315.1775pt x 160.6pt>
 File: coll_parall.png Graphic file (type png)
 <use coll_parall.png>
 Package pdftex.def Info: coll_parall.png  used on input line 604.
 (pdftex.def)             Requested size: 192.0561pt x 97.86292pt.
  [19 <./coll_serie.jpg> <./coll_parall.png>]
-<int_aperto.jpg, id=293, 482.80376pt x 505.89pt>
+<int_aperto.jpg, id=303, 482.80376pt x 505.89pt>
 File: int_aperto.jpg Graphic file (type jpg)
 <use int_aperto.jpg>
 Package pdftex.def Info: int_aperto.jpg  used on input line 628.
 (pdftex.def)             Requested size: 192.0561pt x 201.24083pt.
  [20 <./int_aperto.jpg>]
-<coll_parall_2.jpg, id=298, 478.78876pt x 532.99126pt>
+<coll_parall_2.jpg, id=308, 478.78876pt x 532.99126pt>
 File: coll_parall_2.jpg Graphic file (type jpg)
 <use coll_parall_2.jpg>
 Package pdftex.def Info: coll_parall_2.jpg  used on input line 640.
 (pdftex.def)             Requested size: 192.0561pt x 213.79456pt.
-<coll_parall_3.jpg, id=299, 481.8pt x 461.725pt>
+<coll_parall_3.jpg, id=309, 481.8pt x 461.725pt>
 File: coll_parall_3.jpg Graphic file (type jpg)
 <use coll_parall_3.jpg>
 Package pdftex.def Info: coll_parall_3.jpg  used on input line 644.
 (pdftex.def)             Requested size: 192.0561pt x 184.05264pt.
-<int_chiuso.jpg, id=300, 474.77374pt x 491.8375pt>
+<int_chiuso.jpg, id=310, 474.77374pt x 491.8375pt>
 File: int_chiuso.jpg Graphic file (type jpg)
 <use int_chiuso.jpg>
 Package pdftex.def Info: int_chiuso.jpg  used on input line 649.
 (pdftex.def)             Requested size: 192.0561pt x 198.96043pt.
  [21 <./coll_parall_2.jpg> <./coll_parall_3.jpg>]
-<int_chiuso2.jpg, id=306, 478.78876pt x 480.79625pt>
+<int_chiuso2.jpg, id=316, 478.78876pt x 480.79625pt>
 File: int_chiuso2.jpg Graphic file (type jpg)
 <use int_chiuso2.jpg>
 Package pdftex.def Info: int_chiuso2.jpg  used on input line 654.
 (pdftex.def)             Requested size: 192.0561pt x 192.85797pt.
-<lastra.jpg, id=307, 639.38875pt x 411.5375pt>
+<lastra.jpg, id=317, 639.38875pt x 411.5375pt>
 File: lastra.jpg Graphic file (type jpg)
 <use lastra.jpg>
 Package pdftex.def Info: lastra.jpg  used on input line 664.
 (pdftex.def)             Requested size: 192.0561pt x 123.6129pt.
  [22 <./int_chiuso.jpg> <./int_chiuso2.jpg> <./lastra.jpg>] [23]
-<lastre.png, id=316, 346.29375pt x 278.03876pt>
+<lastre.png, id=326, 346.29375pt x 278.03876pt>
 File: lastre.png Graphic file (type png)
 <use lastre.png>
 Package pdftex.def Info: lastre.png  used on input line 727.
@@ -810,39 +810,48 @@ Package pdftex.def Info: lastre.png  used on input line 727.
 ]
 Capitolo 4.
 [27]
-<dipolo.png, id=337, 439.6425pt x 239.89626pt>
+<dipolo.png, id=347, 439.6425pt x 239.89626pt>
 File: dipolo.png Graphic file (type png)
 <use dipolo.png>
 Package pdftex.def Info: dipolo.png  used on input line 795.
 (pdftex.def)             Requested size: 192.0561pt x 104.79694pt.
-<condensatore_con_lastra.png, id=338, 263.98625pt x 239.89626pt>
+<condensatore_con_lastra.png, id=348, 263.98625pt x 239.89626pt>
 File: condensatore_con_lastra.png Graphic file (type png)
 <use condensatore_con_lastra.png>
 Package pdftex.def Info: condensatore_con_lastra.png  used on input line 805.
 (pdftex.def)             Requested size: 192.0561pt x 174.5298pt.
  [28 <./dipolo.png> <./condensatore_con_lastra.png>]
-<cond_diel_campo.jpg, id=346, 805.0075pt x 459.7175pt>
+<cond_diel_campo.jpg, id=356, 805.0075pt x 459.7175pt>
 File: cond_diel_campo.jpg Graphic file (type jpg)
 <use cond_diel_campo.jpg>
 Package pdftex.def Info: cond_diel_campo.jpg  used on input line 843.
 (pdftex.def)             Requested size: 192.0561pt x 109.67506pt.
- [29 <./cond_diel_campo.jpg>] [30] [31] [32] (./fisica_II.aux)
+ [29 <./cond_diel_campo.jpg>] [30] [31] [32]
+Capitolo 5.
+
+Overfull \hbox (6.09773pt too wide) in paragraph at lines 970--972
+[]$\OML/cmm/m/it/12 L[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 q[]\OT1/cmr/m/n/12 (^^A\OML/cmm/m/it/12 V[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 q[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 V[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r[]\OT1/cmr/m/n/12 )) + [] + [] + [] + \OML/cmm/m/it/12 V[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r[]\OT1/cmr/m/n/12 ))$
+ []
+
+[33
+
+] [34] (./fisica_II.aux)
 Package rerunfilecheck Info: File `fisica_II.out' has not changed.
-(rerunfilecheck)             Checksum: 8A325EB4E158E3A2EAEAA3B6EE6A5F71;4926.
+(rerunfilecheck)             Checksum: 22FBFA28DBDE78708CABFE60B0D53E24;5249.
  ) 
 Here is how much of TeX's memory you used:
- 25205 strings out of 478287
- 482307 string characters out of 5846764
+ 25211 strings out of 478287
+ 482365 string characters out of 5846764
  745509 words of memory out of 5000000
- 42901 multiletter control sequences out of 15000+600000
+ 42903 multiletter control sequences out of 15000+600000
  482846 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,24n,103p,473b,657s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on fisica_II.pdf (36 pages, 1847219 bytes).
+Output written on fisica_II.pdf (38 pages, 1852798 bytes).
 PDF statistics:
- 466 PDF objects out of 1000 (max. 8388607)
- 342 compressed objects within 4 object streams
- 75 named destinations out of 1000 (max. 500000)
- 365 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 488 PDF objects out of 1000 (max. 8388607)
+ 362 compressed objects within 4 object streams
+ 79 named destinations out of 1000 (max. 500000)
+ 381 words of extra memory for PDF output out of 10000 (max. 10000000)
 

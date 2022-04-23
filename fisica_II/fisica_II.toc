@@ -28,3 +28,5 @@
 \contentsline {section}{\numberline {4.2}Condensatore riempito di dielettrico}{28}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Dielettrico lineare}{30}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Teorema di Gauss nei dielettrici}{31}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Energia elettrostatica}{33}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Sistema di conduttori}{34}{section.5.1}%

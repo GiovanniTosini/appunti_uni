@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1650367857 "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" "fisica_II.pdf" "fisica_II" 1650367859
-  "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" 1650367856 39602 c22003bf73c7d72308aedd84f4ef518e ""
+["pdflatex"] 1650705068 "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" "fisica_II.pdf" "fisica_II" 1650705070
+  "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" 1650705066 41565 8b12cacd9952d46e135498ed3eb9ac2a ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -203,10 +203,10 @@
   "discrete.png" 1647694431 26021 1977080560d665b1f78f610c897fcc4b ""
   "energia_elettrostatica_1.jpg" 1647278810 27708 ad797357f983d2872465bf55513be921 ""
   "equi.jpg" 1647703692 113448 cf1a9b282130f86d6dd877d09234cab6 ""
-  "fisica_II.aux" 1650367859 5185 15e531f543b7222dbfdc09b897fa6680 "pdflatex"
-  "fisica_II.out" 1650367859 4926 8a325eb4e158e3a2eaeaa3b6ee6a5f71 "pdflatex"
-  "fisica_II.tex" 1650367856 39602 c22003bf73c7d72308aedd84f4ef518e ""
-  "fisica_II.toc" 1650367859 2502 4430afc34218865e025408d2aa10908f "pdflatex"
+  "fisica_II.aux" 1650705070 5504 138b22ed73782fe8a0fc8c6bfeafb881 "pdflatex"
+  "fisica_II.out" 1650705070 5249 22fbfa28dbde78708cabfe60b0d53e24 "pdflatex"
+  "fisica_II.tex" 1650705066 41565 8b12cacd9952d46e135498ed3eb9ac2a ""
+  "fisica_II.toc" 1650705070 2663 ef12d1f4f09c967b6e9969cc879199be "pdflatex"
   "flusso.png" 1647704871 7934 a568d803a61794096daa222c83bad11a ""
   "gr_part.png" 1647692582 8143 5b9334899df059fca300088464997cda ""
   "induzione_elettrostatica.jpg" 1647262438 25977 c0b9043aa8101bdf087a602901cf651e ""

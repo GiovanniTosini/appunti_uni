@@ -908,11 +908,11 @@ Si può esprimere il tutto in termini integrali di flusso
 \[
     \oint E dS = \frac{q_{libere}}{\epsilon_0} - \frac{\oint \vec{P} \vec{dS}}{\epsilon_0}
 \]
-Ricordando il termini generali il teorema di Gauss
+Ricordando in termini generali il teorema di Gauss
 \[
     \oint E dS = \frac{Q_{int}}{\epsilon_0}
 \]
-Il valore di $Q_int$ nel caso del dielettrico sarà equivalente alla carica totale tra le cariche libere e polarizzate. Non avremo più 
+Il valore di $Q_{int}$ nel caso del dielettrico sarà equivalente alla carica totale tra le cariche libere e polarizzate. Non avremo più 
 un campo nel vuoto, ma nel dielettrico ovviamente. Il problema della cariche polarizzate è che sono dipendenti dalle caratteristiche 
 microscopiche del materiale, a noi interessa un teorema di Gauss in cui vengono usate esclusivamente le cariche libere, perché le possiamo 
 controllare più facilmente (depositandole sui conduttori, attaccando potenziali,...).
@@ -948,6 +948,50 @@ Trovata la polarizzazione, alla richieste del valore delle cariche su una certa 
 \[
     \sigma_p (s) = P (s)
 \]
+
+\chapter{Energia elettrostatica}
+
+Un particella dentro l'effetto di un campo elettrico 
+sentirà una forza calcolabile come \[ \vec{F} = q\vec{E} \] 
+Ricordando che la forza elettrostatica del campo è 
+\textbf{conservativa} possiamo ottenere che \[ L = \Delta U \] 
+Ponendo $U_\infty = 0$, la possiamo riscrivere come \[ L 
+= q\Delta V \] con l'energia all'infinito uguale a 0, 
+l'energia del sistema sarà equivalente al lavoro \textbf{totale
+contro il campo} per "costruire" il sistem.
+
+Una distribuzione discreta di cariche q, ponendo il potenziale 
+all'infinito uguale a zero ci porterà i seguenti risultati.
+\begin{itemize}
+    \item $L_1 = 0$ perché spostando la prima carica da 
+    infinito nel sistema, non essendoci cariche presenti
+    non verrà svolto del lavoro;
+    \item $L_2 = (q_2 \Delta V_1) = q_2 V_1(r_2) = q_2 \frac{q_1}{4 \pi \epsilon_0 r_2}$
+    \item $L_N = q_N (\Delta V_{\textrm{TOT altre cariche}} = 
+    q_N (V_1(r_N)) + \dots + \underbrace{V_i(r_N)}_{(*)} + \dots + V_{N-1} (r_N))$ (*) = $\frac{q_i}{4 \pi \epsilon_0 r_N}$
+\end{itemize}
+Da cui si ricava che l'energia elettrostatica sarà 
+equivalente a \[ U_{el} = \frac{1}{2} \sum_i^N q_i V_i = 
+\frac{1}{2} \sum_{i=1}^N \sum_{j\neq i}^N q_i \frac{q_j}{4 \pi \epsilon_0 r_{ij}} \]
+In distribuzione continua avremo quindi che 
+\[ \begin{split}
+    dU_{el} &= \frac{\overbrace{\rho(r_1)d\tau_1}^{dq_1}\overbrace{\rho(r_2)d\tau_2}^{dq_2}}{4\pi \epsilon_0 r_{12}} \\
+    U_{el} &= \frac{1}{2} \int_{\textrm{volume}}\int \frac{\rho(r_1)\rho(r_2)}{4 \pi \epsilon_0 r_{12}}d\tau_1d\tau_2 \\
+    &= \frac{1}{2} \int_{\textrm{volume}} \rho (r) V(r) d \tau 
+\end{split}
+\]
+
+\section{Sistema di conduttori}
+
+L'energia in un sistema con due conduttori verrà ricavata da 
+\[
+    \begin{split}
+        U_{el} &= \frac{1}{2} \sum_{i=1}^2 Q_i V_i =  \frac{1}{2} (Q_1 V_1 + Q_2 V_2) \\
+        &= \frac{1}{2} C \Delta V^2 = \frac{1}{2} \frac{Q^2}{C} = \frac{1}{2} QV \\
+    \end{split}
+\]
+
+
 
 
 
