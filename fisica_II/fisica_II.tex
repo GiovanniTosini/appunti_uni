@@ -991,6 +991,145 @@ L'energia in un sistema con due conduttori verrà ricavata da
     \end{split}
 \]
 
+\chapter{Elettrodinamica - conduzione elettrica}
+
+\[
+    \begin{cases}
+        \oint_{sup} EdS = \frac{Q_{int}}{\epsilon_0} \\
+        \oint_{\Gamma} EdL = 0
+    \end{cases}
+\]
+Sono le equazioni di Maxwell, con l'introduzione della 
+variabile tempo ci ritroveremo con la prima che continuerà 
+a valere, mentre la seconda no, siccome in elettrodinamica
+il campo elettrico \textbf{non} è conservativo.
+
+\section{Corrente elettrica - Forza elettromotrice}
+
+Prendiamo due conduttori collegati tra loro da un terzo conduttore,
+uno con potenziale maggiore dell'altro. Le cariche in moto 
+verranno definite come \textbf{corrente elettrica} o 
+\textbf{transiente} di cariche in moto.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{conduttori_corrente.png}
+\end{center}
+Prendendo un generatore come in figura
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{gener.png}
+\end{center}
+noteremo che le cariche si spostano contro la direzione del 
+campo, avverrà un lavoro esterno contro il campo 
+elettrostatico. Tale \textbf{forza elettromotrice}
+f.e.m. la si calcolerà come
+\[
+    \varepsilon = + \int_A^B (\frac{F}{q}) dL = V_B^+ - V_A^-
+\]
+Dove AB sono i capi del generatore. Ricordando che 
+il elettrostatico di un circuito chiuso è nullo avremo quindi 
+che
+\[
+    \varepsilon = \oint E dL
+\]
+Che ovviamente si misura in Volt [V].
+
+\section{Intensità di corrente}
+
+La quantità di carica che passa in un'unità di tempo 
+attraverso una certa superficie.
+\[
+    i = \frac{dq}{dt}
+\]
+Unità di misura è l'ampére [A]
+
+\section{Densità di corrente}
+
+Quantità di caricare che attraversa una superficie
+unitaria messa diagonalmente al flusso di cariche.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{dens_corr.png}
+\end{center}
+Avremo che 
+\[
+    i = \int_{sup} \vec{j} \vec{dS}
+\]
+Che si misurerà come [$\frac{A}{m^2}$]. Da un punto di 
+vista microscopico avremo che 
+\[
+    i = Nq_evdSn
+\]
+Dove
+\begin{itemize}
+    \item $N$ sta per il numero di elettroni per unità di volume 
+    \item $q_ev$ moltiplicato per $N$ corrisponde a $\vec{j}$
+    \item $n$ invece corrisponde alla normale
+\end{itemize}
+\textbf{N.B.:} $j$ è una costante.
+
+\section{Corrente stazionaria}
+
+Nella sezione del conduttore di interesse avremo che l'
+intensità di corrente sarà \textbf{costante}.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{corr_staz.png}
+\end{center}
+
+\section{Legge di Ohm}
+
+\[
+    V = Ri
+\]
+$R$, sta per \textbf{resistenza} dipende dal materiale
+ e dalla sua geometria, si misura in [$\Omega$] Ohm.
+\[
+    R = \rho \frac{l}{s}
+\]
+l lunghezza del conduttore, s sezione.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{ohm.png}
+\end{center}
+Da questa immagine possiamo ricavare che 
+\[
+    dV = Rdi \begin{cases}
+        di = jdS \\
+        dV = Edl
+    \end{cases}
+\]
+quindi 
+\[
+    \vec{E} = \rho \vec{j}
+\]
+e 
+\[
+    \vec{j} = \sigma \vec{E}
+\]
+dove $\sigma$ è la \textbf{conducibilità elettrica}
+inversamente proporzianle alla resistività
+\[
+    \rho = \frac{1}{\sigma}
+\]
+
+\section{Potenza elettrica - Effetto Joule}
+
+Ricordando che la potenza è equivalente a 
+\[
+    P = \frac{dL}{dt}
+\]
+e che 
+\[
+    dL = Vdq
+\]
+dove per $L$ si intende quella del generatore, ricaveremo 
+che 
+\[
+    P = Vi
+\]
+che si misura in Watt [W], la potenza elettrica erogata
+dal generatore. \textbf{SE} se vale Ohm, allora 
+\[
+    P = Ri^2 = \frac{V^2}{R}
+\]
+L'effetto Joule produce calore dalla potenza dissipata 
+dal resistore.
 
 
 
