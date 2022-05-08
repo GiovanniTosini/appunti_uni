@@ -1131,6 +1131,154 @@ dal generatore. \textbf{SE} se vale Ohm, allora
 L'effetto Joule produce calore dalla potenza dissipata 
 dal resistore.
 
+\section{Bilancio energetico}
+
+Ricordando che in presenza di una resistenza avremo 
+che la differenza di potenziale sarà equivalente a 
+\[ V = Ri \] per il calcolo della differenza di potenziale.
+\textbf{N.B.:} il potenziale per noi sarà sempre positivo.
+La corrente scorre sempre dal (+) al (-), caduta di 
+potenziale.
+
+Per far circolare la corrente in un circuito sarà necessario 
+mettere un generatore, che ripristina il salto 
+di potenziale. Un generatore eroga una potenza equivalente 
+a \[ P_{erogata} = \mathcal{E} i \] questa viene usata nel circuito da 
+tutti i dispositivi collegati. Il resistore in particolare 
+dissipa sempre una potenza \[ P_{dissipata} = (Vi) = Ri^2 \] è \textbf{sempre} 
+maggiore di zero. Il bilancio energetico sarà sempre 
+la potenza erogata uguale alla potenza dissipata. Se devo 
+calcolare il lavoro [J] nel tempo, partendo dalla definizione 
+di potenza [W] \[ P = \frac{dL}{dt} \] dovrà integrare 
+la potenza nel tempo \[ L = \int Pdt \] per tutta 
+la durata di tempo in cui avrò intensità di corrente 
+diversa da zero. Il bilancio dei lavori darà \[ \mathcal{E}i \Delta t = Ri^2 \Delta t \] 
+
+Partendo dalla figura
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{circ_res.jpg}
+\end{center}
+Il verso della corrente dipende dai morsetti, mentre il 
+segno dipende dal verso che associo al circuito. La forza 
+elettromotrice del generatore sarà spesa per generare 
+il salto di potenziale, che sarà la somma totale dei potenziale 
+persi nel circuito. \[ \mathcal{E} = Ri + ri \] la differenza 
+di potenziale ai capi A e B sommata alla differenza di 
+potenziale tra la resistenza del generatore. Il seguente 
+grafico mostra la caduta di potenziale lungo il circuito:
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{graf_potenziale.jpg}
+\end{center}
+La differenza di potenziale sarà \[ V_A - V_B = Ri = \mathcal{E} - ri < \mathcal{E} \]
+L'intensità di corrente sarà \[ i = \frac{\mathcal{E}}{R + r} \] 
+mettendo tutto assieme avremo che \[ \mathcal{E} - r \frac{\mathcal{E}}{R + r}\] 
+raccogliendo $R$ avremo \[ V_A - V_B = \frac{\mathcal{E}}{1 + \frac{r}{R}} \]
+a circuito aperto, ovvero con $R\rightarrow \infty$ e $i\rightarrow 0$ avremo 
+\[V_A - V_B = \mathcal{E}\]
+
+\section{Bilancio energetico nel potenziale}
+
+Il bilancio in potenziale:
+\[ \mathcal{E} = Ri + ri \] che per definizione vale 
+per carica unitaria. Per una carica q generica avremo 
+\[ dq = idt \] avrò quindi il bilancio in energia:
+\[ \mathcal{E}idt = Ri^2dt + ri^2dt \] togliendo $dt$ 
+avrò il bilancio nelle potenze:
+\[ \mathcal{E}i = Ri^2 + ri^2 \] 
+
+\section{Resistori}
+
+Possono essere in
+\begin{itemize}
+    \item serie, in cui le intensità di corrente sono equivalenti, mentre \[ V_i = R_i i \] 
+    \item parallelo, le differenze di potenziale sono equivalenti.
+\end{itemize}
+\begin{figure}[h!]
+    \centering
+    \subfloat[][\textbf{\emph{Resistori in serie}}]
+    {\includegraphics[width=0.3\textwidth]{res_serie.jpg}}\quad
+    \subfloat[][\textbf{\emph{Resistori in parallelo}}]
+    {\includegraphics[width=0.3\textwidth]{res_parallello.jpg}}\\
+\end{figure}
+L'obiettivo è di trovare la resistenza equivalente di entrambi 
+i casi.
+\begin{description}
+    \item[Def:] la resistenza equivalente è quella resistenza per cui se io prendo una differenza di potenziale ai capi di un collegamento, io avrò \[ V_{TOT} = R_{eq}i_{TOT} \] 
+\end{description}
+
+\subsection{Collegamento in serie}
+
+Il potenziale da un morsetto e l'altro sarà la somma dei potenziali:
+\[ V_{TOT} = \sum^N_i V_i = \sum R_i i \] la corrente è costante e quindi avremo 
+\[ R_{eq} = \sum_{i = 1}^N Ri \]
+
+\subsection{Collegamento in parallelo}
+
+La corrente totale sarà la somma delle correnti che escono 
+dai nodi, con il segno scelto convenzionalmente, ciò che 
+entra deve essere uguale a ciò che esce. 
+\[ i_{TOT} = \sum^N_i i_i = \sum \frac{V_i}{R_i} \] il potenziale 
+in questo caso è costante, quindi avremo \[ R_{eq} = (\sum \frac{1}{R_i})^{-1} \]
+
+\subsection{Esempio}
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{es_serie.jpg}
+\end{center}
+
+\[ R_{eq} = R_1 + R_2 \] 
+L'intesità di correnti che scorre su $R_1$ è equivalente a quella 
+che scorre su $R_2$ \[ i = i_1 = i_2 = \frac{\mathcal{E}}{R_1 + R_2} = \frac{\mathcal{E}}{R_{eq}} \]
+che si misura ovviamente in ampére [A].
+
+La differenza di potenziale ai capi della resistenza $R_1$ sarà 
+\[ V_1 = R_1i = \frac{R_1 \mathcal{E}}{R_1 + R_2} \] 
+analogamente la differenza di potenziale ai capi della seconda 
+resistenza sarà \[ V_2 = \frac{R_2 \mathcal{E}}{R_1 + R_2} \] 
+volt [V]. I potenziali vengono ripartiti.
+
+Ovviamente \[ V_1 + V_2 = \mathcal{E} \] 
+
+Se invece collego in parallelo due resistori 
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{es_parall.jpg}
+\end{center}
+\[ R_{eq} = \frac{R_1R_2}{R_1 + R_2} \] 
+$V$ ai capi della resistenza è la stessa e analogamente da 
+sopra, qui è la corrente che viene ripartita, siccome il potenziale
+è costante.
+\[ i_1 = \frac{\mathcal{E}}{R_1} = \frac{R_2}{R_1 + R_2} i \] 
+analogamente
+\[ i_2 = \frac{R_1}{R_1 + R_2} i \]
+
+\subsection{Potenze}
+
+\[ P = \sum^N P_i = \sum R_i i_i^2 = R_{eq}i^2_{TOT} \]
+La potenza in serie \[ P_{serie} = (R_1 + R_2) i^2_{TOT} \] 
+In parallelo \[ P_{parallelo} = R_1 i_1^2 + R_2 i_2^2 = \mathcal{E}^2 (\frac{1}{R_1} + \frac{1}{R_2}) \] 
+e quindi \[ P_{parallelo} = \frac{R_1 R_2}{R_1 + R_2} i^2_{TOT} \] 
+Ricapitolando, per avere la potenza totale del circuito si 
+possono sommare localmente. In generale \[ P_{TOT} = R_{eq} i^2 \]
+
+\section{Leggi di Kirchhoff}
+
+Nelle reti lineari l'intensità di corrente è \textbf{continua} e vale la legge di Ohm.
+\begin{enumerate}
+    \item $\sum i_k = 0$ con il segno dato dalla convenzione del verso, in un nodo rendiamo positive le correnti uscenti e negative quelle entranti;
+    \item $\sum \mathcal{E}_k = \sum R_k i_k $ con il segno delle tensioni deciso dal verso, questa è la differenza di potenziale.
+\end{enumerate}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{segno.jpg}
+\end{center}
+Deciso un verso, se la corrente che risulta nella maglia è 
+positiva allora sarò oraria, altrimenti antioraria. Il 
+segno dei generatori è dato dal verso della maglia, se il 
+generatore fornisce un lavoro per far scorrere una corrente 
+nel verso della maglia il segno sara positivo. Forniscono 
+una f.e.m. totale nel circuito data da \[ \mathcal{E}_1 - \mathcal{E}_2 = Ri \]
+dove l'intensità non è conosciuta, ma si è deciso il segno positivo 
+in quella direzione.
+
 
 
 

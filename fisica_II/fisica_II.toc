@@ -37,3 +37,11 @@
 \contentsline {section}{\numberline {6.4}Corrente stazionaria}{37}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Legge di Ohm}{37}{section.6.5}%
 \contentsline {section}{\numberline {6.6}Potenza elettrica - Effetto Joule}{38}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Bilancio energetico}{38}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Bilancio energetico nel potenziale}{40}{section.6.8}%
+\contentsline {section}{\numberline {6.9}Resistori}{40}{section.6.9}%
+\contentsline {subsection}{\numberline {6.9.1}Collegamento in serie}{41}{subsection.6.9.1}%
+\contentsline {subsection}{\numberline {6.9.2}Collegamento in parallelo}{41}{subsection.6.9.2}%
+\contentsline {subsection}{\numberline {6.9.3}Esempio}{41}{subsection.6.9.3}%
+\contentsline {subsection}{\numberline {6.9.4}Potenze}{43}{subsection.6.9.4}%
+\contentsline {section}{\numberline {6.10}Leggi di Kirchhoff}{43}{section.6.10}%
