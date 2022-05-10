@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1652009969 "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" "fisica_II.pdf" "fisica_II" 1652009972
-  "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" 1652009968 51536 2ce1608243f83c996b4612e71195be9f ""
+["pdflatex"] 1652178144 "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" "fisica_II.pdf" "fisica_II" 1652178147
+  "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" 1652178143 55824 4119c0b94dd1beb778da7fc857d33aac ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -214,11 +214,12 @@
   "equi.jpg" 1647703692 113448 cf1a9b282130f86d6dd877d09234cab6 ""
   "es_parall.jpg" 1652006328 26934 47b1f1a7f405bd39f8f90d14a55d383f ""
   "es_serie.jpg" 1652005539 60195 2014d022cd9bf09c4ad463d92ea32181 ""
-  "fisica_II.aux" 1652009971 7474 a80ccb7c30a76b7ac00b9ac30424503e "pdflatex"
-  "fisica_II.out" 1652009971 7802 2ca278beaee5396bfd00ba98489ebe33 "pdflatex"
-  "fisica_II.tex" 1652009968 51536 2ce1608243f83c996b4612e71195be9f ""
-  "fisica_II.toc" 1652009971 3942 dc7cf02eb81f90790f42fec44160fad0 "pdflatex"
+  "fisica_II.aux" 1652178146 8357 19ece3f23c140ba57c892dd1f33c9017 "pdflatex"
+  "fisica_II.out" 1652178146 8146 8612b64c379d8891f2a65cef2ea7a1da "pdflatex"
+  "fisica_II.tex" 1652178143 55824 4119c0b94dd1beb778da7fc857d33aac ""
+  "fisica_II.toc" 1652178146 4109 1252982095d515f88633f024467ec97e "pdflatex"
   "flusso.png" 1647704871 7934 a568d803a61794096daa222c83bad11a ""
+  "frecce.png" 1652177799 42062 6162781cf82f21825f67a5e6c4aa949b ""
   "gener.png" 1651224518 19444 0f6ee13b04f1725b20175859b5910c91 ""
   "gr_part.png" 1647692582 8143 5b9334899df059fca300088464997cda ""
   "graf_potenziale.jpg" 1652001512 64637 c5b7ecf47799c5a69169a329761c4185 ""
@@ -233,6 +234,7 @@
   "res_parallello.jpg" 1652003312 37192 c09d66a1272fda43470ee246a5ff6700 ""
   "res_serie.jpg" 1652003312 36148 170bed6a3e0c47ed48a400a09032eb18 ""
   "right.png" 1647702816 6173 e93d43ddea2984d2798bc5556fe5c107 ""
+  "scarica.png" 1652102913 22736 51355978dc0b0fa0b55080c5652d8de7 ""
   "segno.jpg" 1652009659 29349 19945ba1a14463c46fc697e754d647d4 ""
   (generated)
   "fisica_II.aux"

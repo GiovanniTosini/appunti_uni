@@ -45,3 +45,5 @@
 \contentsline {subsection}{\numberline {6.9.3}Esempio}{41}{subsection.6.9.3}%
 \contentsline {subsection}{\numberline {6.9.4}Potenze}{43}{subsection.6.9.4}%
 \contentsline {section}{\numberline {6.10}Leggi di Kirchhoff}{43}{section.6.10}%
+\contentsline {section}{\numberline {6.11}Carica/scarica di un condensatore}{44}{section.6.11}%
+\contentsline {chapter}{\numberline {7}Magnetostatica}{47}{chapter.7}%

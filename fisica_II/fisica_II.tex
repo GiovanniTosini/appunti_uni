@@ -1279,6 +1279,93 @@ una f.e.m. totale nel circuito data da \[ \mathcal{E}_1 - \mathcal{E}_2 = Ri \]
 dove l'intensità non è conosciuta, ma si è deciso il segno positivo 
 in quella direzione.
 
+\section{Carica/scarica di un condensatore}
+
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.5\textwidth]{scarica.png}
+    \caption{Circuito di scarica del condensatore}
+\end{SCfigure}
+Nel circuito le cariche inizieranno a scorrere 
+come in figura. La carica varierà nel tempo, la carica 
+migra da un'armatura all'altra e il potenziale varia nel
+tempo con la carica. Ricordiamo che la capacità la si 
+calcola come \[ C = \frac{Q}{V^+ - V^-} \]
+Dove $V^+ - V^- = V$.
+
+Chiudendo l'interrutore, in un instante generico di tempo 
+avremo ai capi del condensatore, avrò una differenza di potenziale 
+che varia nel tempo data da \[ V(t) = \frac{Q(t)}{C} \]
+L'intensità di corrente sarà data dalla carica che scorre 
+\[ i = -\frac{dQ}{dt} \] Il meno dell'intensità è dato 
+perché la carica Q sul condensatore diminuisce e l'intensità 
+aumenta. La legge di Ohm vale, quindi \[ i(t) = \frac{V(t)}{R} \] 
+in cui la differenza di potenziale è calcolata ai capi 
+della resistenza.
+
+\begin{description}
+    \item[N.B.:] Se la scarica è "lenta", la differenza di potenziale ai capi 
+    del resistore, in ogni momento sarà uguale a quella 
+    ai capi del condensatore. 
+\end{description}
+Partendo quindi da queste formule otteniamo che 
+\[ \frac{dQ}{dt} + \frac{Q}{RC} = 0 \] 
+\[\int_{Q_0} \frac{dQ}{Q} = \int_{t_0} -\frac{dt}{RC} \] 
+Avremo quindi \[ Q(t) = Q_0 e^{-\frac{t}{RC}} \] 
+questa è la \textbf{legge di scarica del condensatore}. 
+Derivando questa otterremo \[ i(t) = i_0 e^{-\frac{t}{RC}} \]
+Quanto vale $i_0$? \[ i_0 = \frac{Q_0}{RC} = \frac{V_0}{R} \] 
+Il potenziale? \[ V = V_0 e^{-\frac{t}{RC}} \]
+La potenza? Dissipata dal resistore e immagazzinata 
+dal condensatore, la formula sarà: \[ P = Ri^2(t) = \frac{V_0^2}{R} e^{-\frac{2t}{RC}} \] 
+Quanto è l'energia totale dissipata? Quanto calore si genera? 
+\[ U_{\textrm{tot dissipata}} = \int_{t_0 = 0}^{t = \infty} Pdt = \frac{V_0^2}{R} [(\frac{RC}{2})-e^{-\frac{2t}{RC}}]\mid_0^\infty = \frac{V_0^2C}{2} = U\] 
+Che è esattamente l'energia immagazzinata nel condensatore.
+
+\textbf{Analogamente} per la carica, partendo da un circuito 
+scarico, mettendo un generatore che muove le cariche, queste 
+andranno a caricare le armature. Partendo dalla legge di 
+Ohm \[ \mathcal{E} = V_R(t) + V_C(t) \] in questa situazione 
+l'intensità rispetto a prima avrà lo stesso segno delle cariche e 
+la formula rimarrà la stessa \[ i = +\frac{dQ}{dt} \] 
+mentre la carica \[ Q(t) = \frac{C \mathcal{E} }{Q_{finale}} (1 - e^{-\frac{t}{RC}}) \] il condensatore 
+raggiungerà una carica massima data dalla forza dele generatore.
+\begin{description}
+    \item[N.B.:] la corrente all'istante $t_0$ è \textbf{massima} e andrà a calare man mano che si carica il condensatore.
+\end{description}
+\[i(t) = i_0 e^{-\frac{t}{\tau}} \] dove \[ i_0 = \frac{\mathcal{E}}{R} \] 
+e \[ V(t) = \frac{Q(t)}{C} \] 
+
+\chapter{Magnetostatica}
+
+Si osserva che alcuni materiali (ossidi di ferro), palesano 
+un'esistenza di una nuova forza, ovvero non descrivibile con le 
+teoria conosciute finora. Questa forza può essere attrattiva e repulsiva.
+Questa forza è localizzata ai poli (nord e sud) del materiale.
+Inoltre prendendo un materiale simile, ma molto piccolo,
+che chiameremo "ago magnetico" e osservo che si orienta
+sempre in una certa direzione, esiste un effetto magnetico
+dovuto dal pianeta terra. Spezzando l'oggetto osserverò 
+che non si possono isolare i poli, perché i due pezzi 
+avranno dei nuovi poli. \textbf{Non} esiste il mono polo magnetico
+ovvero \textbf{non esiste} la carica magnetica. Prendendo 
+un filo di corrente e una lastra di materiale dielettrico cosparso di 
+aghi magnetici, osserverò che gli aghi si orientano atttorno 
+al filo (espierienza di Oersted) secondo delle linee concentriche, 
+quindi la corrente elettrica è causa di effetti magnetici.
+La sorgente del campo magnetico $\vec{B}$ è la corrente 
+elettrica, che ovviamente può essere prodotto pure da una 
+carica in moto.
+
+La \textbf{forza di Lorentz} sarà data da: \[ \vec{F} = q \vec{v} x \vec{B} \] 
+essendo una forza tridimensionale, il verso sarà dato 
+usando la regola della mano destra.
+\begin{SCfigure}[50][h!]
+    \includegraphics[width=0.8\textwidth]{frecce.png}
+    \caption{Convenzione per le frecce uscenti ed entranti}
+\end{SCfigure}
+
+
+
 
 
 

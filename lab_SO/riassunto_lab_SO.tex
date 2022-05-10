@@ -109,7 +109,7 @@
         ...
     \end{lstlisting}
     La maggior parte delle system call ritorna un -1 
-    o Null Pointer in caso di errore, alcune però 
+    o NULL Pointer in caso di errore, alcune però 
     usano il -1 come valore di ritorno anche in caso di 
     non errore. Qui l'uso di \verb|errno| acquista 
     ulteriore valore. Esempio:
@@ -412,6 +412,126 @@
         \item G verifica se il gruppo che sta eseguendo è il gruppo proprietario;
         \item T è lo sticky bit, funziona come un bit che non ci permette di cancellare quel file;
     \end{itemize}
+    File e directory sono la stessa cosa, per modificare i permessi 
+    di una directory si usano le stesse mode dei file.
+
+    \subsection{access}
+
+    Controlla l'accessibilità di un file relativamento 
+    al nostro user id e group id.
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+
+        //Returns 0 if all permissions are granted, otherwise -1
+        int access(const char *pathname, int mode)
+    \end{lstlisting}
+    Le possibili mode che si possono usare insieme 
+    a questa system call sono queste:
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{access.png}
+    \end{center}
+
+    \subsection{chmod e fchmod}
+
+    Permettono di cambiare i permessi di un file prendendo
+    in input il pathname o il file descriptor più le eventuali
+    mode di interesse.
+    \begin{lstlisting}[language=C]
+        //All return 0 on success, or -1 on error
+        #include <sys/stat.h>
+
+        int chmod(const char *pathname, mode_t mode);
+
+        #define _BSD_SOURCE
+        #include <sys/stat.h>
+
+        int fchmod(int fd, mode_t mode);
+    \end{lstlisting}
+
+    \section{Directory}
+
+    \subsection{mkdir}
+
+    Prende in input il pathname della directory e 
+    una mode.
+    \begin{lstlisting}[language=C]
+        #include <sys/stat.h>
+
+        //Returns 0 on success, or -1 on error.
+        int mkdir(const char *pathname, mode_t mode);
+    \end{lstlisting}
+    I parametri mode sono gli stessi della \verb|open|,
+    se la directory esistesse già, il valore di ritorno sarà 
+    sempre -1, ma la variabile \verb|errno| conterrà 
+    il messaggio \verb|EEXIST|, a indicare che tale 
+    directory è già presente.
+
+    \subsection{rmdir}
+
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+
+        //Returns 0 on success, or -1 on error.
+        int rmdir(const char *pathname);
+    \end{lstlisting}
+    Se esiste anche un solo file all'interno dello directory
+    tale system call tornerà -1 di errore, per avere successso
+    deve essere completamente vuota.
+
+    \subsection{opendir, closedir e readdir}
+
+    \begin{lstlisting}[language=C]
+        #include <sys/types.h>
+        #include <dirent.h>
+
+        //Returns directory stream handler, or NULL on error.
+        DIR *opendir(const char *dirpath);
+
+        //Returns 0 on success, or -1 on error
+        int closedir(DIR *dirp);
+    \end{lstlisting}
+    Una volta aperta una directory per leggerla si userà
+    \begin{lstlisting}[language=C]
+        #include <sys/types.h>
+        #include <dirent.h>
+
+        //Returns pointer to an allocated structure describing the
+        //next directory entry or NULL on end-of-directory or error
+        struct dirent *readdir(DIR *dirp);
+    \end{lstlisting}
+    La struttura di riferimento per la \verb|readdir|:
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{dirent.png}
+    \end{center}
+    Tramite il \verb|d_type| possiamo ottenere delle informazioni
+    sul tipo di file che stiamo scorrendo:
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{d_type.png}
+    \end{center}
+    Esempio d'uso:
+    \begin{lstlisting}[language=C]
+        DIR *dp = opendir("myDir");
+        if(dp == NULL)
+            return -1;
+        
+        errno = 0;
+        struct dirent *dentry;
+        //Iterate until NULL is returned as a result
+        while((dentry = readdir(dp)) != NULL){
+            if(dentry->d_type == DT_REG)
+                printf("Regular file: %s\n", dentry->d_name);
+            errno = 0;
+        }
+        //NULL is returned on error, and when the end-of-directory is reached!
+        if(errno != 0)
+        printf("Error while reading dir.\n");
+        closedir(dp);
+    \end{lstlisting}
+
+
+     
+
+
     
     
 
