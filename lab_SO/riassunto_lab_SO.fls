@@ -595,6 +595,11 @@ INPUT ./d_type.png
 INPUT d_type.png
 INPUT ./d_type.png
 INPUT ./d_type.png
+INPUT ./exec.png
+INPUT ./exec.png
+INPUT exec.png
+INPUT ./exec.png
+INPUT ./exec.png
 INPUT riassunto_lab_SO.aux
 INPUT ./riassunto_lab_SO.out
 INPUT ./riassunto_lab_SO.out

@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1652089640 "/home/poppo/Università/appunti_miei/appunti_uni/lab_SO/riassunto_lab_SO.tex" "riassunto_lab_SO.pdf" "riassunto_lab_SO" 1652089642
-  "/home/poppo/Università/appunti_miei/appunti_uni/lab_SO/riassunto_lab_SO.tex" 1652089637 18447 e94691c3525120675c560a322546dbca ""
+["pdflatex"] 1652364650 "/home/poppo/Università/appunti_miei/appunti_uni/lab_SO/riassunto_lab_SO.tex" "riassunto_lab_SO.pdf" "riassunto_lab_SO" 1652364652
+  "/home/poppo/Università/appunti_miei/appunti_uni/lab_SO/riassunto_lab_SO.tex" 1652364647 33492 4946aa03229036fdaf9968b6e0381371 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -103,13 +103,14 @@
   "access.png" 1652087745 17380 54f9a4f887ba90c4a995708b976b9418 ""
   "d_type.png" 1652089291 19753 f9b7417fe9b497e5b8d91391158622f2 ""
   "dirent.png" 1652089104 22571 7c3eb64d5b1c0c8acb7792513449c007 ""
+  "exec.png" 1652363989 58445 02af95755fc55d6d94d94ecca92ce25d ""
   "flag_open.png" 1651848693 56930 0a766bbd3754b652861f1b3e3e5b64a7 ""
   "lseek.png" 1651852328 33193 38dd85ed9eee6fe90162531a8bb17cd4 ""
   "mode_open.png" 1651848949 104818 fcc2e909bb52205c922efbaa4b21b46a ""
-  "riassunto_lab_SO.aux" 1652089642 3460 231c4dc93b94d62d0bce26173f31aa0a "pdflatex"
-  "riassunto_lab_SO.out" 1652089642 2280 221fe096d600469b01459c17d97476a8 "pdflatex"
-  "riassunto_lab_SO.tex" 1652089637 18447 e94691c3525120675c560a322546dbca ""
-  "riassunto_lab_SO.toc" 1652089642 1607 1f63d5b9fc588b53102f5f85c9d323fb "pdflatex"
+  "riassunto_lab_SO.aux" 1652364652 6271 eec4067a8ac85f1e186c7ed0ca2986ab "pdflatex"
+  "riassunto_lab_SO.out" 1652364652 5130 5a77707f5180893f8f132de3db0b7a3c "pdflatex"
+  "riassunto_lab_SO.tex" 1652364647 33492 4946aa03229036fdaf9968b6e0381371 ""
+  "riassunto_lab_SO.toc" 1652364652 3364 2543815a7481ccd823f0080efb92dba0 "pdflatex"
   "st_mode.png" 1651853810 17540 40c261fba6cc6af261954dfb7c4844dc ""
   (generated)
   "riassunto_lab_SO.aux"

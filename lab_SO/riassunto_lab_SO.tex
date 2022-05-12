@@ -395,7 +395,7 @@
 
         //Checking if /tmp/file.txt is a regular file
         if((statbuf.st_mode & S_IFMT) == S_IFREG)
-            prinf("regular file!\n);
+            printf("regular file!\n);
 
         //Equivalently, checking if /tmp/file.txt is a 
         //regular file by S_ISREG macro
@@ -527,6 +527,408 @@
         printf("Error while reading dir.\n");
         closedir(dp);
     \end{lstlisting}
+
+    \chapter{Processi}
+
+    \section{Identificatori}
+
+    Ogni processo è caratterizzato da un PID univoco che cambia 
+    sempre, l'unico processo a mantenere sempre lo stesso 
+    identificatore è il processo \verb|INIT|.
+
+    \subsection{getpid}
+
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+        #include <sys/types.h>
+
+        pid_t getpid(void);
+    \end{lstlisting}
+    Ritorna come valore il PID del processo chiamante e \textbf{non può
+    fallire}.
+
+    \subsection{getuid, geteuid, getgid e getegid}
+
+    Anche queste system call \textbf{hanno sempre successo}.
+    La differenza \verb|getuid| e \verb|geteuid|, ovvero
+    tra real user ed effective user, consiste che il 
+    real user (vale anche per il real group), identificano 
+    l'utente o il gruppo a cui appartiene il processo, 
+    mentre l'effective è quello che viene usato dal SO, 
+    per gestire operazioni solitamente non permesse (come 
+    installare tramite packet manager, si usa \verb|sudo|). 
+
+    \section{Environment}
+
+    Ad ogni processo viene associato un array \verb|environ|,
+    di stringhe che contiene tutte le variabili di
+    ambiente salvate all'interno di \verb|environ|
+
+    Esempio:
+    \begin{lstlisting}[language=C]
+        #include <stdio.h>
+        //Global variable pointing to the environment of the process
+        extern char **environ;
+
+        int main(int argc, char *argv[]){
+            for(char **it = environ; (*it) != NULL; ++it){
+                printf("--> %s\n", *it);
+            }
+            return 0;
+        }
+    \end{lstlisting}  
+    
+    \subsection{getenv, setenv, unsetenv}
+
+    \begin{lstlisting}[language=C]
+        #include <stlib.h>
+        //Returns pointer to (value) string, or NULL if no such variable exists
+        char *getenv(const char *name);
+        //Returns 0 on success, or -1 on error
+        int setenv(const char *name, const char *value, int overwrite);
+        //Returns 0 on success, or -1 on error
+        int unseten(const char *name);
+    \end{lstlisting} 
+    Sono system call che interagiscono con l'environment.
+
+    \section{Working directory}
+
+    \subsection{getcwd}
+
+    Per identificare la directory in cui io sto lavorando
+    in questo momento, si usa la system call \verb|getcwd|
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+
+        //Returns cwdbuf on success, or NULL on error
+        char *getcwd(char *cwdbuf, size_t size);
+    \end{lstlisting} 
+    Ritorna \verb|NULL| nell'eventualità che il pathname 
+    sia più lungo della \verb|size| data.
+
+    \subsection{chdir, fchdir}
+
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+
+        //Returns 0 on success, or -1 on error
+        int chdir(const char *pathname);
+    \end{lstlisting} 
+    Permette di cambiare la directory attuale tramite 
+    l'uso del pathname.
+
+    \begin{lstlisting}[language=C]
+        #define _BSD_SOURCE
+        #include <unistd.h>
+
+        //Returns 0 on success, or -1 on error
+        int fchdir(int fd);
+    \end{lstlisting} 
+    Permette di cambiare la directory attuale tramite 
+    l'uso del file descriptor.
+
+    \section{File descripto table}
+
+    Per visualizzare la file descriptor table di un processo
+    basta andare all'interno della cartella 
+    \verb|/proc/<PID>/fd|, dove \verb|fd| è un symbolic 
+    link per ogni riga della tabella. Si potranno trovare 
+    anche socket e pipe.
+    
+    \subsection{dup}
+
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+
+        //Returns (new) file descriptor on success, or -1 on error
+        int dup(int oldfd);
+    \end{lstlisting} 
+    Ritornerà un nuovo file descriptor a partire da uno 
+    che si ha già, ovviamente partendo dal valore più basso
+    disponibile.
+
+    \section{Operazioni con i processi}
+
+    \subsection{exit, atexit}
+
+    \begin{lstlisting}[language=C]
+        #include <stdlib.h> //N.B. provided by C library
+
+        void exit(int status);
+    \end{lstlisting} 
+    Al suo interno chiama un'altra system call \verb|_exit|,
+    va \textbf{sempre} a buon fine. La terminazione 
+    del processo può essere gestita da noi tramite
+    \verb|atexit|
+    
+    \begin{lstlisting}[language=C]
+        #include <stdlib.h> 
+        //Returns 0 on success, or nonzero on error
+
+        int atexit(void (*func)(void));
+    \end{lstlisting} 
+    Il puntatore a funzione preso come parametro, quando 
+    viene creato non va a finire all'interno del layout 
+    di memoria del processo.
+
+    Esempio pratico
+    \begin{lstlisting}[language=C]
+        #include <stdio.h>
+        #include <stdlib.h>
+        #include <unistd.h>
+
+        void func1(){
+            printf("\tAtexit function 1 called\n");
+        }
+        void func2(){
+            printf("\tAtexit function 2 called\n");
+        }
+
+        int main(int argc, char *argv[]){
+            if(atexit(func1) != 0 || atexit(func2) != 0)
+                _exit(EXIT_FAILURE);
+            exit(EXIT:SUCCESS);
+        }
+    \end{lstlisting}
+    L'eventuala output sarà
+    \begin{lstlisting}[language=C]
+        Atexit function 2 called
+        Atexit function 1 called
+    \end{lstlisting}
+    Eseguire un \verb|return(n)| è equivalente all'eseguire 
+    un \verb|exit(n)|, se il \verb|return| non viene messo il 
+    programma metterà in automatico il \verb|return(0)|.
+
+    \section{Creazione dei processi}
+
+    \subsection{fork}
+
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+
+        //In parent: returns process ID of child on success, or -1 on error
+        //In created child: always returns 0
+        pid_t fork(void);
+    \end{lstlisting}
+    Il processo figlio sarà una copia del padre in tutto e per tutto e inizieranno 
+    a eseguire in parallelo, ovviamente l'esecuzione non è sincrona. L'unica differenza tra 
+    i due è la variabile di ritorno \verb|pid_t| che sarà 0 per il figlio, mentre per il 
+    padre conterrà il PID del figlio. Si userà il valore 0 per far fare delle operazioni 
+    specifiche eslclusivamente il figlio magari. 
+
+    Il figlio eredita tutto quello che il padre aveva già aperto, istanziato, etc.
+    Esempio:
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+        
+        int main(){
+            int stack = 111;
+            pid_t pid = fork();
+            if(pid == -1)
+                errExit("fork");
+            //Both parent and child come here 
+            if(pid == 0)
+                stack = stack *4;
+            printf("\t%s stack %d\n", (pid == 0) ? "(child)" : "(parent)", stack);
+        }
+    \end{lstlisting}
+    
+    \subsection{getppid}
+
+    Permette di ottenere il pid del padre.
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+
+        //Always succesfully returns PID of caller's parent 
+        pid_t getppid(void);
+    \end{lstlisting}
+    Torna sempre il PID del padre di norma, ma se dovesse succedere 
+    che il padre termini prima del figlio, in quel caso tornerà il PID del 
+    processo che ha ereditato il figlio, di normale tale processo è \verb|INIT| 
+    ovvero il processo con PID 1.
+
+    \section{Monitoring}
+
+    I metodi del padre per monitorare i figli 
+
+    \subsection{wait}
+
+    \begin{lstlisting}[language=C]
+        #include <sys/wait.h>
+
+        //Returns PID of terminated child, or -1 on error 
+        pid_t wait(int *status);
+    \end{lstlisting}
+    Prende in input uno status o anche \verb|NULL|, con \verb|NULL| come 
+    status, il padre aspetterà la terminazione di uno qualunque dei suoi 
+    figli. Questa system call blocca il padre.
+
+    Se un padre che non ha più figli, fa la \verb|wait| gli ritornerà 
+    un -1, ma per capire che non ci sono più figli ovviamente 
+    dobbiamo guardare il contenuto della variabile \verb|errno|
+    che in questa casistica conterrà \verb|ECHILD|.
+
+    Se si volesse aspettare tutti i figli occorrerà mettere questa 
+    chiamata in un ciclo \verb|while|, se status non è \verb|NULL|
+    la system call darà come ritorno gli stati di terminazione del figlio 
+    come \verb|exit(1)| o \verb|exit(0)|.
+
+    \subsection{waitpid}
+
+    La differenza con la \verb|wait| è che questa aspetta un figlio 
+    specifico in base al valore del PID
+    \begin{lstlisting}[language=C]
+        #include <sys/wait.h>
+
+        //Returns a PID, 0 or -1 on error
+        pid_t waitpid(pid_t pid, int *status, int options);
+    \end{lstlisting}
+    In base al valore inserito in \verb|pid| si comporta diversamente:
+    \begin{itemize}
+        \item \verb|pid| $\ge$ 0, aspetta il figlio con quello specifico PID;
+        \item \verb|pid| = 0, aspetta la terminazione di ogni figlio nello stesso process group(originati tutti dallo stesso padre);
+        \item \verb|pid| < -1, aspetta che uno dei processi del process group con quel PID passato, termini;
+        \item \verb|pid| = -1, aspetto indistintamente che ogni processo termini.
+    \end{itemize}
+    Per le options si possono usare:
+    \begin{description}
+        \item[WUNTRACED]: ritorna il PID del figlio sia quando viene terminato che quando viene stoppato;
+        \item[WCONTINUED]: ritorna quando un figlio è stato rimesso in esecuzione dopo essere stato stoppato;
+        \item[WNOHANG]: non è bloccante, quindi fino a quando i figli indicati dal pid non hanno cambiato status, il padre che la chiama continuerà a fare altro, in questo caso il valoe di ritorno della \verb|waitpid| è 0;
+        \item[0]: aspetta solo per i figli che terminano.    
+    \end{description}
+    \begin{lstlisting}[language=C]
+        pid_t pid;
+        for(int i = 0; i < 3; ++i){
+            pid = fork();
+            if(pid == 0){
+                //Code executed by the child process... 
+                exit(0);
+            }
+        }
+        //The parent process only waits for the last created child 
+        waitpid(pid, NULL, 0);
+    \end{lstlisting}
+    Altro esempio:
+    \begin{lstlisting}[language=C]
+        pid_t pid = fork();
+        if(pid == 0){
+            //Code executed by the child process
+        }
+        else{
+            //Waiting for a terminated/stopped | resumed child process 
+            waitpid(pid, NULL, WUNTRACED | WCONTINUED);
+        }
+    \end{lstlisting}
+    Lo status è un intero a 16 bit, gli 8 bit più significativi vengono 
+    usati per capire lo status di uscita(quindi i possibili valori vanno da 0 a 255).
+    Inoltre vengono fornite dal SO delle macro per capire come il processo figlio ha 
+    terminato 
+    \begin{description}
+        \item[WIFEXITED]: ritorna true se il figlio termina normalmente;
+        \item[WEXITSTATUS]: ritorna lo status con cui ha terminato il processo figlio;
+        \item[WIFSIGNALED]: ritorna true se il processo figlio è stato ucciso con un segnale;
+        \item[WTERMSIG]: ritorna il numero del segnale che ha causato la terminazione del figlio;
+        \item[WIFSTOPPED]:   ritorna true se il processo è stato stoppato con un segnale;
+        \item[WSTOPSIG]: ritorna il numero del segnale che stoppato il processo figlio;
+        \item[WIFCONTINUED]: ritorna true se il figlio ha ripreso l'esecuzione tramite un \verb|SIGCONT|.         
+    \end{description}
+    Esempi vari:
+    \begin{lstlisting}[language=C]
+        waitpid(-1, &status, WUNTRACED | WCONTINUED);
+        if(WIFEXITED(status)){
+            printf("Child exited, status = %s\n", WEXITSTATUS(status));
+        }
+    \end{lstlisting}
+    \begin{lstlisting}[language=C]
+        waitpid(-1, &status, WUNTRACED | WCONTINUED);
+        if(WIFSIGNALED(status)){
+            printf("child killed by signal %d (%s)", WTERMSIG(status), strsignal(WTERMSIG(status)));
+        }
+    \end{lstlisting}
+
+    \section{Program execution}
+
+    \subsection{exec system calls}
+
+    La system call \verb|exec|, non crea figli, un processo che chiama 
+    tale system call viene rimodellato, prende l'eseguibile a cui punta 
+    e lo rimappa all'interno del processo chiamante. Trasforma tutto il contenuto del
+    processo chiamante, il PID \textbf{non} cambia.
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+        //None of the following returns on success, all return -1 on error 
+        int execl(const char *path, const char *arg, ...); //variadic functions
+        int execlp(const char *path, const char *arg, ...);
+        int execle(const char *path, const char *arg, ..., char *const envp[]);
+        int execv(const char *path, char *const argv[]);
+        int execvp(const char *path, char *const argv[]);
+        int execve(const char *path, char *const argv[], char *const envp[]);
+    \end{lstlisting}
+    L'ultimo parametro delle \verb|execl| deve essere sempre un \verb|NULL|.
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{exec.png}
+    \end{center}
+    \begin{description}
+        \item[path]: per pathname ci si riferisce al path assoluto all'eseguibile,
+        mentre con filename al nome dell'eseguibile che si deve trovare nella lista 
+        delle directory del PATH environ;
+        \item[argv]: una lista o array terminata da \verb|NULL|, che definiscono gli argomenti del programma;
+        \item[envp]: un array di puntatori a stringhe terminato da \verb|NULL| che definiscono l'environ del programma.  
+    \end{description}
+    Esempio:
+    \begin{lstlisting}[language=C]
+        #include <stdio.h>
+        #include <unistd.h>
+        #include <stdlib.h>
+        
+        int main(int argc, char *argv[]){
+            printf("PID of example.c = %d\n", getpid());
+            char *args[] = {"Hello.c", "C", "Programming", NULL};
+            execv("./hello", args);
+            printf("Back to example.c");
+
+            return 0;
+        }
+    \end{lstlisting}
+    Eseguendo sia questo codice che "Hello.c" il primo programma 
+    andrà a essere rimodellato con il codice all'interno di "Hello.c".
+    
+
+
+     
+
+    \chapter{Domande fatte all'orale}
+
+    \begin{enumerate}
+        \item \textbf{D:} Dove va a finire l'handler dell'exit? (lezione 2 al 1:00:00)
+        
+        \textbf{R:} L'handler viene preso dal SO così com'è e viene 
+        mappa da qualche parte all'interno del SO, non 
+        all'interno della memoria del processo. Quando viene 
+        chiamato si va fuori e poi si ritorno all'interno 
+        del processo.
+        \item \textbf{D:} Se il figlio ha terminato e il padre non riesce a 
+        eseguire la \verb|wait|, cosa succede?
+
+        \textbf{R:} Quel figlio viene trasformato in un processo di cui manteniamo 
+        non tutto il layout di memoria, ma solo informazioni basi come il PID, lo status
+        di terminazione e le risorse usate. Viene trasformato in un processo zombie. Quando il padre 
+        esegue la \verb|wait| vede che il figlio ha già terminato e allora il SO 
+        rimuove il processo zombie. La \verb|wait| ha questo scopo di tenere il sistema 
+        più flessibile possibile, \verb|INIT| tramite la \verb|wait| eredita i processi 
+        zombie ed eventualmente li termina.
+        \item \textbf{D:} Differenza tra \verb|exec| e \verb|fork|
+    \end{enumerate}
+
+    
+
+
+
+
+
+
+
 
 
      
