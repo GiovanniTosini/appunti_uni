@@ -47,3 +47,5 @@
 \contentsline {section}{\numberline {6.10}Leggi di Kirchhoff}{43}{section.6.10}%
 \contentsline {section}{\numberline {6.11}Carica/scarica di un condensatore}{44}{section.6.11}%
 \contentsline {chapter}{\numberline {7}Magnetostatica}{47}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Dipolo magnetico in campo esterno $\vec {B}$}{48}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Teorema di Ampère}{50}{section.7.2}%

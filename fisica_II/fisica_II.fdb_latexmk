@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1652178144 "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" "fisica_II.pdf" "fisica_II" 1652178147
-  "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" 1652178143 55824 4119c0b94dd1beb778da7fc857d33aac ""
+["pdflatex"] 1652531727 "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" "fisica_II.pdf" "fisica_II" 1652531730
+  "/home/poppo/Università/appunti_miei/appunti_uni/fisica_II/fisica_II.tex" 1652531723 59856 90f8d3c543b1a6b695a594e4acb8a263 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -26,6 +26,7 @@
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1136768653 1520 eccf95517727cb11801f4f1aee3a21b4 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
+  "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr17.tfm" 1136768653 1292 296a67155bdbfc32aa9c636f21e91433 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1136768653 1300 b62933e007d01cfd073f79b963c01526 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1136768653 1292 21c1c5bfeaebccffdb478fd231a0997d ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
@@ -214,10 +215,10 @@
   "equi.jpg" 1647703692 113448 cf1a9b282130f86d6dd877d09234cab6 ""
   "es_parall.jpg" 1652006328 26934 47b1f1a7f405bd39f8f90d14a55d383f ""
   "es_serie.jpg" 1652005539 60195 2014d022cd9bf09c4ad463d92ea32181 ""
-  "fisica_II.aux" 1652178146 8357 19ece3f23c140ba57c892dd1f33c9017 "pdflatex"
-  "fisica_II.out" 1652178146 8146 8612b64c379d8891f2a65cef2ea7a1da "pdflatex"
-  "fisica_II.tex" 1652178143 55824 4119c0b94dd1beb778da7fc857d33aac ""
-  "fisica_II.toc" 1652178146 4109 1252982095d515f88633f024467ec97e "pdflatex"
+  "fisica_II.aux" 1652531729 8624 c1e672bb423cf46711ca951cb479f5a2 "pdflatex"
+  "fisica_II.out" 1652531729 8535 f2b3a8f5bdaea6cbc85ca6faa3ba840d "pdflatex"
+  "fisica_II.tex" 1652531723 59856 90f8d3c543b1a6b695a594e4acb8a263 ""
+  "fisica_II.toc" 1652531729 4293 b386b90ca3f0a9e418e84bf41f1439a4 "pdflatex"
   "flusso.png" 1647704871 7934 a568d803a61794096daa222c83bad11a ""
   "frecce.png" 1652177799 42062 6162781cf82f21825f67a5e6c4aa949b ""
   "gener.png" 1651224518 19444 0f6ee13b04f1725b20175859b5910c91 ""
@@ -236,6 +237,7 @@
   "right.png" 1647702816 6173 e93d43ddea2984d2798bc5556fe5c107 ""
   "scarica.png" 1652102913 22736 51355978dc0b0fa0b55080c5652d8de7 ""
   "segno.jpg" 1652009659 29349 19945ba1a14463c46fc697e754d647d4 ""
+  "spira.jpg" 1652527307 56662 d5e4f02e5a700689794b6b4d7d076f2a ""
   (generated)
   "fisica_II.aux"
   "fisica_II.log"

@@ -1339,10 +1339,10 @@ e \[ V(t) = \frac{Q(t)}{C} \]
 
 Si osserva che alcuni materiali (ossidi di ferro), palesano 
 un'esistenza di una nuova forza, ovvero non descrivibile con le 
-teoria conosciute finora. Questa forza può essere attrattiva e repulsiva.
-Questa forza è localizzata ai poli (nord e sud) del materiale.
+teoria conosciute finora. Questa forza può essere attrattiva e repulsiva
+ed è localizzata ai poli (nord e sud) del materiale.
 Inoltre prendendo un materiale simile, ma molto piccolo,
-che chiameremo "ago magnetico" e osservo che si orienta
+che chiameremo "ago magnetico", osservo che si orienta
 sempre in una certa direzione, esiste un effetto magnetico
 dovuto dal pianeta terra. Spezzando l'oggetto osserverò 
 che non si possono isolare i poli, perché i due pezzi 
@@ -1363,6 +1363,94 @@ usando la regola della mano destra.
     \includegraphics[width=0.8\textwidth]{frecce.png}
     \caption{Convenzione per le frecce uscenti ed entranti}
 \end{SCfigure}
+L'unità di misura del \textbf{campo magnetico} è il Tesla [T], 
+solitamente si usa il Gauss che equivale a $10^{-4}$T.
+
+Cosa sono le correnti? Cariche in moto, quindi mi aspetto 
+un'espressione della forza che agisce sulle correnti 
+partendo da quella appena trovata. Ingrandendo un filo conduttore
+percorso da una certa intensità di corrente $i$, all'interno 
+avrò delle cariche in moto lungo il filo $dL$, su ognuna di questa 
+carica agirà una \textbf{forza di Lorentz}. Ricordando che la 
+densità di corrente è data dal numero delle cariche per 
+la velocità \[ \vec{j} = Nq\vec{v} \] e ricordando che 
+l'intensità non è altro che \[ i = \vec{j} \vec{dS} \] 
+perché è il flusso di $\vec{j}$, la somma risultante delle 
+forze che agiscono su queste cariche libere, la posso esprimere 
+in funzione della correnta e la lunghezza del filo. Trovo 
+che su quel pezzettino di filo agisce una forza di Lorentz
+complessiva, espressa come \[ dF = i\vec{dL}x\vec{B} \] 
+questa è la \textbf{seconda legge di Laplace}. 
+
+La forza magnetica compie sempre lavoro nullo, perché $dS$ 
+è ortogonale a $F$. Le linee di campo di $\vec{B}$ saranno \textbf{sempre} 
+chiuse perché non esiste il mono polo. Avvicinando 
+una superficie chiusa, troveremo che il numero di linee 
+entranti sommato a quelle uscenti sarà sempre nullo, quindi 
+il flusso sarà sempre uguale a 0 \[ \Phi (\vec{B}) = 0 \] 
+e sempre \[ \oint \vec{B} \vec{dS} = 0 \], si capisce 
+anche che \textbf{non esiste} un potenziale magnetico.
+Il flusso di $\vec{B}$ attraverso una superficie dS si misura 
+in [W] Weber.
+
+Ricapitolando non esistono sorgenti isolate, le sorgenti 
+casomai sono le cariche in moto e le correnti.
+
+Le conseguenza della \textbf{forza di Lorentz} sono tre:
+\begin{enumerate}
+    \item il comportamento di una spira in un campo $\vec{B}$;
+    \item il moto di cariche nel campo $\vec{B}$ e $\vec{E}$;
+    \item effetto Hall, un potenziale elettrico che si osserva in un sistema in cui scorre corrente elettrica e in cui si accende un campo magnetico;
+\end{enumerate}
+
+\section{Dipolo magnetico in campo esterno $\vec{B}$}
+
+Cos'è un dipolo magnetico? Una spira elementare,
+ovvero la cui geometria è così piccola da 
+essere trascurabile, percorsa da corrente. Quindi a noi 
+interesserà esclusamente:
+\begin{itemize}
+    \item l'area;
+    \item il verso; 
+    \item la corrente.
+\end{itemize}
+Definisco un parametro che racchiuda tutte queste tre cose,
+ovvero il \textbf{momento di dipolo magnetico} che chiamerò 
+\[ \mu = i\vec{S} \] dato dall'intensità di corrente, per l'area 
+è la normale che sarà il suo verso, normale presa dal verso di i, 
+tramite la regola della mano destra. Tale momento non ha 
+unità di misura effettiva, sarà [$Am^2$].
+
+Prendendo una spira percorsa da corrente i immersa in un 
+campo magnetico costante. 
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{spira.jpg}
+\end{center}
+Usando \[ \vec{F} = i\vec{dL}x\vec{B} \] e ricordando 
+che un prodotto scalare è nullo quando le forze sono 
+ortogonali o parallele. La risultante è nulla come 
+si vede in figura, l'oggetto non trasla. Avremo un momento 
+$\tau$ diverso da 0, perché l'oggetto ruota.
+\[ \tau = (rxF)  = \underbrace{i\frac{ab}{S}B}_\mu \] 
+da cui \[ \vec{\tau} = \vec{\mu} x \vec{B} \] 
+Il momento meccanico del dipolo magnetico/spira immerso 
+in campo esterno magnetico.
+
+Quindi in presenza di un dipolo messo in qualsiasi modo 
+e un campo magnetico, il dipolo si allineerà al campo, 
+analogamente al dipolo elettrico. Momento di dipolo 
+magnetico \[ \vec{\tau} = \vec{\mu} x \vec{B} \] 
+momento di dipolo elettrico 
+\[ \vec{\tau} = \vec{p} x \vec{E} \]
+L'energia del dipolo è \[ U = -\vec{\mu}x\vec{B} \] 
+
+\section{Teorema di Ampère}
+
+Calcolando $\vec{B}$ collocato in un circuito attorno 
+a un filo elettrico \[ \oint_{\Gamma} \vec{B} \vec{dL} \] 
+sappiamo che $\vec{B}$ è costante ed è proporzionale a i, 
+tale costante di proporzionalità o \textbf{permeabilità magnetica}
+sarà \[ \mu_0 i \] dove $\mu_0$ corrisponde a $4\pi10^{-7}$ (S.I.)
 
 
 

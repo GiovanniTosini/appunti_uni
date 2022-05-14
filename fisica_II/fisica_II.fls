@@ -1178,6 +1178,15 @@ INPUT ./frecce.png
 INPUT frecce.png
 INPUT ./frecce.png
 INPUT ./frecce.png
+INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
+INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT ./spira.jpg
+INPUT ./spira.jpg
+INPUT spira.jpg
+INPUT ./spira.jpg
+INPUT ./spira.jpg
 INPUT fisica_II.aux
 INPUT ./fisica_II.out
 INPUT ./fisica_II.out
