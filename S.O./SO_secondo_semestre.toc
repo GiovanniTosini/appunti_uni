@@ -40,3 +40,14 @@
 \contentsline {section}{\numberline {6.1}Allocazione fissa}{33}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Allocazione variabile}{34}{section.6.2}%
 \contentsline {subsection}{\numberline {6.2.1}Working set}{34}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Page Fault Frequency}{35}{subsection.6.2.2}%
+\contentsline {chapter}{\numberline {7}Memoria secondaria}{37}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Scheduling degli accessi a disco}{37}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Formattazione dei dischi}{40}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Gestione dei blocchi difettosi}{41}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Gestione dello spazio di swap}{41}{section.7.4}%
+\contentsline {chapter}{\numberline {8}File System}{43}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Interfaccia}{43}{section.8.1}%
+\contentsline {paragraph}{Cos'è un file?}{43}{section*.14}%
+\contentsline {paragraph}{Cosa contiene un file?}{43}{section*.15}%
+\contentsline {subsection}{\numberline {8.1.1}Operazioni su file}{44}{subsection.8.1.1}%

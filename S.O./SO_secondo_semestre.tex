@@ -827,10 +827,275 @@ grande potrebbe essere a cavallo di due località.
 
 Cosa succede se la somma dei working set richiede un numero di frame maggiori di quelli a disposizione? Si verifica il fenomeno del 
 \textbf{thrashing}, il SO si accorge che l'uso della CPU è sceso e ci sono molti processi in coda per fare accesso al disco e fare 
-swap in e swap out. Una cattiva gestione della cosa porterebbe a fare entrare nella cosa pronti altri processi, che avrebbero necessità
+swap in e swap out. Una cattiva gestione porterebbe a fare entrare pronti altri processi, che avrebbero necessità
 di memoria e di conseguenza tale memoria verrebbe rimossa a quelli già presenti, i quali vedranno i pochi frame a loro disposizione 
 calare ulteriormente e di conseguenza richiederebbero ulteriori swap in e swap out e ciclicamente nuovi processi che entrano e 
 ulteriori frame rimossi fino a un blocco totale. 
+
+\subsection{Page Fault Frequency}
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{pff.png}
+\end{center}
+
+L'obiettivo è di mantenere tutti i processi nella fascia 
+intermedia tra upper bound e lower bound, il SO 
+farà scelte per fare in modo che se ci sono processi 
+sotto la soglia lower bound, gli toglierà dei frame perché 
+il numero di page fault è molto basso, quindi potrà assegnare 
+frame ai processi che superano la soglia di upper bound. 
+
+\chapter{Memoria secondaria}
+
+Necessaria per implementare la memoria virtuale e per memorizzare 
+a lungo termine dati e programmi necessari. Diventa rilevante 
+il concetto di tempo di accesso al disco, dipende da tre 
+parametri:
+\begin{itemize}
+    \item \textbf{Seek Time}, tempo di spostamento della testina, meccanico, parte più lenta;
+    \item \textbf{Latency Time}, tempo di attesa che il disco sottostante porti il settore di interesse sotto la testina, il disco ruota continuamente;
+    \item \textbf{Transfer Time}, tempo necessario per spostare i dati da disco a controllore o viceversa.
+\end{itemize}
+Essendo il Seek Time il momento che fa perdere pià tempo in 
+assoluto, conviene muoversi a cilindri lungo i dischi, così 
+da non dover spostare la testina, ma bisogna anche considerare 
+che non si riesce a memorizzare un file tutto contiguo.
+Inolte poichè il disco è uno, ma i processi che leggono e scrivono
+sono tanti, il SO riceverà molte richieste di lettura 
+e scrittura su zone diverse del disco.
+
+Queste problematiche svaniscono tramite l'uso di dispositivi
+a stato solido, perché non ci sono più componenti meccaniche 
+ma prettamente elettroniche.
+
+\section{Scheduling degli accessi a disco}
+
+Il disco è diviso in piatti concentrici, suddiviso in 
+tracce e a loro volta suddivise in settori della stessa 
+dimensione. Dal punto di vista logico come un vettore di 
+elementi, un array di blocchi ordinati, tutti della stessa 
+dimensione. Quando avviene un accesso al disco, ci sarà una 
+coda di richieste con indirizzi e blocchi che indicano dove 
+devono essere fatti e annessa quantità di dati da leggere 
+o scrivere. 
+
+Il SO ragiona in termini di costi ed efficacia per decidere
+riguardo gli accessi. Esempio:
+\begin{itemize}
+    \item disco con 200 intervalli di valori ammissibili [0, 199];
+    \item la testina di lettura e scrittua si trova sulla testina 53;
+    \item le richieste di accesso sono per i valori: 98, 183, 37, 122, 14, 124, 65 e 67;
+\end{itemize}
+Applicando il meccanismo \textbf{FIFO}, la testina si sposterà a 
+zig zag per eseguire tutti gli accessi.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{zigzag.png}
+\end{center}
+Lo spostamento totale finale sarà di 640 tracce.
+
+Una prima soluzione sarebbe quella di spostarsi verso la 
+zona più vicina a quella in cui ci si trova, implementando 
+l'algoritmo \textbf{SSTF} (Shortest Seek Time First), riduce 
+lo spostamento della testina rispetto alla posizione attuale.
+Questo algoritmo è decisamente ottimo rispetto al \textbf{FIFO}, 
+ma non il migliore.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{sstf.png}
+\end{center}
+Se l'elenco di richieste accesso in lettura e scrittura fosse 
+stabile, andrebbe bene, ma durante l'accesso al primo blocco
+molto probabilmente arriverebbero altre richieste di accesso, 
+quindi la coda di richieste è in continup aggiornamento.
+
+Una possibile alternativa a questa è l'implementazione 
+dell'algoritmo dell'ascensore o \textbf{SCAN}. Si sposta 
+da un'estremità all'altra servendo tutto quello che si trova 
+in mezzo.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{scan.png}
+\end{center}
+Tale algoritmo si può migliorare, per esempio lo spostamento
+nella traccia 0 non ha senso siccome non sono avvenute richieste 
+minore della 14.
+
+L'algoritmo \textbf{C-SCAN} o algoritmo dello spalatore 
+di neve è simile allo SCAN, ma la differenza sta che una
+volta raggiunta l'ultima traccia, ritorna alle tracce iniziali 
+che molto probabilmente saranno state richieste dai processi.
+Il tutto ovviamente senza servire le eventuali richieste 
+intermedie.
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{c-scan.png}
+\end{center}
+\textbf{SCAN} e \textbf{C-SCAN} evitano la starvation?
+No, perché le richieste agli estremi rimangono sempre le 
+ultime.
+
+Una soluzione migliore che implementa il meglio degli altri
+è una variante dello SCAN, ovvero \textbf{N-step SCAN}, 
+la coda delle richieste viene divisa in partizioni grandi 
+N, un valore parametrizzato, in questo modo saturate le richieste 
+la lista rimane congelata e le servo una dopo l'altra senza 
+fermarmi a metà strada, le richieste che arrivano nel mentre 
+verranno salvate in una coda diversa. Se il valore di N 
+diventasse troppo grande si regredirebbe all'algoritmo 
+SCAN, mentre un con valore uguale a 1 si tornerebbe all'
+algoritmo FIFO. Con un valore intermedio le cose verrebbero 
+gestite decisamente meglio.
+
+La variante più semplicemte e \textbf{FSCAN} (Fast SCAN)
+che ha solo due code, si riempie una prima coda e nel 
+mentre che viene servita si riempie la seconda, alternandosi 
+tra le due.
+
+L'algoritmo \textbf{LIFO} (Last In First Out), in alcuni 
+casi avrebbe senso schedulare gli accessi nell'ordine opposto
+di arrivo, per dare preferenza a richieste con elevata località.
+Pone un alto riscio di starvation, è molto specifico.
+
+Ci sono vari fattori che influenza quale possa essere 
+l'algoritmo migliore, nel general purpose il caso medio 
+è quello che interessa, mentre in un caso specifico ovviamente 
+varia.
+
+\section{Formattazione dei dischi}
+
+Un disco per essere utilizzare deve essere formattato, 
+esistono due tipi di formattazione:
+\begin{itemize}
+    \item basso livello o fisica;
+    \item logica.
+\end{itemize}
+La prima permette di partizionarlo e prepararlo a ricevere 
+i dati e iniziare a essere utilizzato. La seconda prepara 
+le strutture dati che verranno usate dal SO per gestire 
+il disco. Inoltre la formattazione logica va a inserire il 
+programma di Bootstrap per caricare i driver dei dispositivi 
+e lanciare il SO.
+\begin{figure}[h!]
+    \centering
+    \subfloat[][\textbf{\emph{Disco nudo, preformattazione fisica e logica}}]
+    {\includegraphics[width=0.5\textwidth]{nuda.png}}\quad
+    \subfloat[][\textbf{\emph{Disco post formattazione fisica}}]
+    {\includegraphics[width=0.5\textwidth]{form_fisica.png}}\\
+    \subfloat[][\textbf{\emph{Disco post formattazione logica}}]
+    {\includegraphics[width=0.5\textwidth]{form_logica.png}}\quad
+\end{figure}
+La formattazione fisica divide in settori, ogni settore 
+avrà uno spazio per i dati e uno per la correzione d'errore,
+permettono di ripristinare o identificare un certo numero di 
+errori. Se il numero di errori fisici o logici è inferiore 
+al numero di errori che possono essere corretti allora si 
+potrà continuare a leggere anche in presenza di errori.
+
+La formattazione logica andrà a inserire le strutture 
+necessarie per la gestione del file system, capire quali 
+blocchi sono liberi e quali sono occupati. 
+
+\section{Gestione dei blocchi difettosi}
+
+Un blocco si può danneggiare per motivi fisici, urti o 
+usura, ma anche dei danni software, come un corruzione 
+del file system. 
+
+Esistono dei meccanismi di gestione degli errori online, 
+un blocco che non funziona lo rimappo in un blocco di scorta.
+Il dato non verrà recuperato, però evita di riutilizzare 
+il blocco difettoso. I processi continueranno a chiedere 
+accessi al blocco difettoso e il SO saprà che dovrà rigirare
+tutto al blocco rimappato. Lo svantaggio è che andrà a inficiare 
+i meccanismi di scheduling visti sopra, loro saranno convinti 
+di andare al blocco con un certo numero, che essendo 
+corrotto sarà reindirizzato a un altro blocco che magari si 
+trova molto distante causando un aumento del \textbf{Seek Time}.
+
+\section{Gestione dello spazio di swap}
+
+Si tratta di un area in cui vengono salvate pagine e 
+frame, non file e cartelle, ma viene gestita alla 
+stessa maniera. Le opzioni sono:
+\begin{itemize}
+    \item definisco l'area non come il file system definendo delle primitive, system call diverse per accedervi;
+    \item definisco l'area di memoria virtuale ma la tratto come fosse il file system.
+\end{itemize}
+Così avremo un sistema meno efficiente perché si avrà a 
+che fare con struttre dati inutili per quello che viene 
+salvato lì, ma risparmio il dover definire delle 
+system call apposite. Viceversa con una partizione 
+separata occorerranno le system call ad hoc, ma le 
+prestazioni aumenteranno notevolmente.
+
+\chapter{File System}
+
+Consiste di una struttura dati che ci permette di memorizzare 
+e organizzare dati e programmi nel modo migliore possibile 
+per poterli trovare al momento del bisogno. La struttura 
+è simile a quella di un albero, i rami sono le cartelle 
+mentre i file sono le foglie.
+
+\section{Interfaccia}
+
+\paragraph{Cos'è un file?} Un file è un'idea astratta 
+di uno spazio omogeneo in cui memorizzo dati. Idea 
+astratta perché non si sa fisicamente come sia fatto 
+o dove si trovi. Un file è uno spazio di indirizzamento 
+logico e contiguo. L'unica cosa che lo identifica è 
+il nome. Il file può essere di tipi diversi, ha una 
+struttura omogenea rispetto all'utilizzo che se ne farà.
+
+\paragraph{Cosa contiene un file?} Oltre ai dati 
+che si vogliono memorizzare contiene una parte di attributi,
+una sorta di Process Control Block. Gi attributi non sono 
+memorizzati dentro al file stesso, ma vengono memorizzate 
+all'interno della cartella. Tali attributi sono:
+\begin{itemize}
+    \item il nome;
+    \item il tipo, eseguibile, non eseguibile,...;
+    \item la posizione, dove si trova in memoria;
+    \item la dimensione;
+    \item la protezione, chi può farci e che cosa;
+    \item tempo di creazione;
+    \item tempo di ultimo accesso;
+    \item tempo di ultima modifica;
+    \item identità del proprietario.
+\end{itemize}
+Questi attributi vengono memorizzati in una struttura 
+inode, che ha bisogno di spazio e viene memorizzata 
+all'interno della cartella.
+
+\subsection{Operazioni su file}
+
+\begin{description}
+    \item[Creazione]: il SO deve mettere a disposizione delle 
+    system call per creare file, che vanno a cercare dello 
+    spazio a disposizione per contenere il file.
+    \item[Scrittura e lettura]: necessità di sapere la 
+    posizione in cui andare a scrivere, analogamente la 
+    lettura.
+    \item[Cancellazione]: semplicemente rimuove gli 
+    attributi dalla directory, ma i dati rimangono in memoria,
+    cambia soltanto che non si sa più come raggiungerli.
+    I dati spariranno effettivamente con una sovrascrizione
+    che non si può sapere quando avverrà effettivamente.
+    \item[Troncamento]: lascia il file con gli attributi 
+    inalterati, ma azzera la dimensione, ovviamente così 
+    il contenuto non viene cancellato.
+    \item[Apertura]: impone la ricerca del file all'interno
+    della struttura della cartella su disco, la copia in memoria 
+    del contenuto e la creazione di due tabelle all'interno 
+    delle strutture dati del SO. Una per ogni file aperto 
+    e una che lega il file al processo che l'ha aperto.
+    Finchè il file è in uso, una sua copia viene 
+    caricato in RAM, così da velocizzare lettura e scrittura, 
+    la chiusura del file porta al salvataggio permanente 
+    su disco.
+\end{description}
+La rinominazione \textbf{non} è un'operazione su file, 
+avviene sulla struttua della cartella, perché cambiare il 
+nome di un file consiste nel cambiare la sua posizione, 
+il suo pathname.
+
+
 
 
 
