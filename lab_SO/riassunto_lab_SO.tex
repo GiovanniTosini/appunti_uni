@@ -627,7 +627,7 @@
     Permette di cambiare la directory attuale tramite 
     l'uso del file descriptor.
 
-    \section{File descripto table}
+    \section{File descriptor table}
 
     Per visualizzare la file descriptor table di un processo
     basta andare all'interno della cartella 
@@ -893,6 +893,590 @@
     \end{lstlisting}
     Eseguendo sia questo codice che "Hello.c" il primo programma 
     andrà a essere rimodellato con il codice all'interno di "Hello.c".
+
+    \chapter{Interprocess communication}
+
+    Sono dei meccanismi utilizzati per coordinare attività 
+    tra vari processi, in parole povere servono a sincronizzare 
+    i processi. Di base le IPC possono essere create tramite 
+    un comando con \verb|get|, prendono come primo parametro 
+    una chiave che serve ai processi per poter comunicare 
+    tra di loro, senza non riuscirebbero. Ognuna di queste 
+    ritorna un file descriptor.
+
+    \section{Creazione delle chavi}
+
+    Le chiavi delle system V IPC, sono dei tipi \verb|key_t|
+    e praticamente sono degli \verb|int|, possono essere definite 
+    da noi o lasciare che si arrangi il SO. Una chiave è univoca 
+    un eventuale creazione di due IPC differenti con la stessa 
+    chiave porterebbe a una sovrascrizione. Per delegarne 
+    la creazione al SO si utilizza la macro \verb|IPC_PRIVATE|, 
+    che in automatico genera una chiave univoca verificando 
+    prima le chiavi già in uso.
+
+    Un'altra modalità è tramite l'uso della system call 
+    \verb|ftok| 
+    \begin{lstlisting}[language=C]
+        #include <sys/ipc.h>
+
+        //Returns integer key on success, or -1 on error(check errno)
+        key_t ftok(char *pathname, int proj_id);
+    \end{lstlisting}
+    Il \verb|proj_id| può essere un qualunque \verb|int| 
+    l'importante che i suoi ultimi 8 bit siano diversi da 0
+    visto che saranno quelli che verranno usati per la creazione, 
+    usando dei caratteri ASCII si ha la certezza che gli 
+    ultimi 8 bit non saranno uguali a 0.
+    
+    Un ultimo possibile metodo è definirle manualmente, con 
+    il rischio di usare chiavi già in uso.
+
+    \section{Data Structure}
+
+    Ogni IPC ha una sua struttura, ma ognuna ha in comune 
+    un'unica struttua, la \verb|ipc_perm|:
+    \begin{lstlisting}[language=C]
+        struct ipc_perm{
+            key_t __key;            //Key, as supplied to 'get' call
+            uid_t uid;              //Owner's user ID
+            gid_t gid;              //Owner's group ID
+            uid_t cuid;             //Creator's user ID
+            gid_t cgid;             //Creator's group ID
+            unsigned short mode;    //Permissions
+            unsigned short __seq;    //Sequence number
+        }
+    \end{lstlisting}
+    La \verb|mode| sono una serie di permessi che possono 
+    essere settati. \verb|cuid| e \verb|gid| sono immutabili.
+    Inoltre le IPC possono avere solo permessi di lettura 
+    e scrittura, non di esecuzione.
+    Esempio:
+    \begin{lstlisting}[language=C]
+        struct semid_ds semq;
+        //get the data structure of a semaphore from the kernel 
+        if(semctl(semid, 0, IPC_STAT, &semq) == -1)
+            errExit("semctl get failed");
+        //change the owner of the semaphore
+        semq.sem_perm.uid = newuid;
+        //update the kernel copy of the data structure 
+        if(semctl(semid, IPC_SET, &semq) == -1)
+            errExit("semctl set failed");
+    \end{lstlisting}
+    
+    \section{IPC commands}
+
+    \subsection{ipcs}
+
+    \verb|ipcs| da terminale, mostra tutti i dettagli 
+    delle IPC esistenti in quell'istante all'interno del SO.
+    Tali dettagli sono:
+    \begin{itemize}
+        \item key;
+        \item owner;
+        \item permessi;
+        \item dimensione;
+    \end{itemize}
+    Più altri dettagli specifici per la singola IPC.
+    
+    \subsection{ipcrm}
+
+    \verb|ipcrm| permette di eliminare delle IPC che sono 
+    ancora attive, nel caso in cui non venga gestita la cosa 
+    dal programmatore.
+
+    \section{Semaphores}
+
+    \subsection{semget}
+
+    \verb|semget| è la system call che permette di creare 
+    un set di semafori.
+    \begin{lstlisting}[language=C]
+        #include <sys/sem.h>
+
+        //Returns semaphore set identifier on success, or -1 on error 
+        int semget(key_t key, int nsems, int semflg);
+    \end{lstlisting}
+    Prende come parametri una chiave, un numero di semafori 
+    che dovrà essere contenuto dal set di semafori e infine 
+    prende input delle flag. Tali flag possono essere 
+    una qualsiasi della \verb|open| (non i permessi di 
+    esecuzione siccome le IPC non ne necessitano), in aggiunta 
+    si metteranno sempre in or \verb|IPC_CREAT| e la 
+    \verb|IPC_EXCL|, che differenza c'è tra queste due flag? 
+    La prima dice che se il semaforo con quella chiave, non 
+    esiste lo crea, nel caso in cui esista, restituisce 
+    l'ID di quel set di semafori. La seconda insieme alla prima
+    farà fallire la system call in caso la chiave in input sia 
+    già in uso per un altro set di semafori. Questo è comodo 
+    in base al fatto che si voglia creare un set di semafori nuovo 
+    oppure ottenere l'ID di un set esistente.
+
+    \subsection{semctl}
+
+    Permette di svolgere svariate operazioni su un determinato 
+    set di semafori.
+    \begin{lstlisting}[language=C]
+        #include <sys/sem.h>
+
+        //Returns non negative integer on success, or -1 on error 
+        int semctl(int semid, int semnum, int cmd, .../*union semnum arg*/);
+    \end{lstlisting}
+    \verb|semid| è l'identificatore del set di semafori, su 
+    cui le operazioni verranno effettuate. \verb|semnum|
+    è un identificatore specifico per un semaforo all'interno del 
+    set (vuoi lavore con il terzo semaforo di un set compost da 10? metti 3),
+    mettendo 0 si agirà sull'intero set.
+    \verb|cmd| possono essere una serie di flag. Una \verb|union| 
+    funziona in maniera simile a una \verb|struct|, permette di definire al 
+    suo interno vari campi, ma dal punto di vista del SO, 
+    per quella \verb|union| verrà allocata una memoria pari alla 
+    dimensione della variabile più grande al suo interno.
+
+    Esempio:
+    \begin{lstlisting}[language=C]
+        #ifndef SEMUN_H
+        #define SEMUN_H
+        #include <sys/sem.h>
+        //definition of the union semun 
+        union semun{
+            int val;                //per operazioni su singolo semaforo
+            struct semid_ds *buf;   //su permessi 
+            unsigned short *array;  //su un intero set di semafori
+        };
+        #endif
+    \end{lstlisting}
+    In questo caso verrà allocata memoria equivalente alla 
+    \verb|struct semid_ds|.
+
+    \subsubsection{Flag}
+
+    \begin{lstlisting}[language=C]
+        int semctl(semid, 0 /*ignored*/, cmd, arg);
+    \end{lstlisting}
+    L'elenco delle flag da usare con \verb|semctl| al parametro 
+    \verb|cmd|
+    \begin{itemize}
+        \item \verb|IPC_RMID|: deve essere usata per eliminare l'IPC 
+        alla fine del suo utilizzo;
+        \item \verb|IPC_STAT|: permette di salvare lo stato dell'IPC 
+        all'interno della \verb|strcut semid_ds|, verrà salvato 
+        all'interno di \verb|arg.buf|;
+        \item \verb|IPC_SET|: occore per settare i nuovi permessi
+        passando in input \verb|arg| modificato;
+    \end{itemize}
+    \begin{lstlisting}[language=C]
+        struct semid_ds{
+            struct ipc_perm sem_perm; //ownership and permissions
+            time_t sem_otime; //Time of last semop()
+            time_t sem_ctime; //Time of last change
+            unsigned long sem_nsems; //Number of semaphores in set
+        };
+    \end{lstlisting}
+    Esempio di modifica dei permessi di un set di semafori:
+    \begin{lstlisting}[language=C]
+        int semid = semget(key, 10, IPC_CREAT | S_IRUSR | S_IWUSR);
+        //instantiate a semid_ds struct 
+        strcut semid_ds ds;
+        //instantiate a semun union(defined manually somewhere)
+        union semun arg;
+        arg.buf = &ds;
+        //get a copy of semid_ds structure belonging to the kernel 
+        if(semctl(semid, 0 /*ignored*/, IPC_STAT, arg) == -1)
+            errExit("semctl IPC_STAT failed");
+        //update permissions to guarantee read access to the group 
+        arg.buf->sem_perms.mode |= S_IRGRP;
+        //update the semid_ds structure of the kernel 
+        if(semctl(semid, 0 /*ignored*/, IPC_SET, arg) == -1)
+            errExit("semctl IPC_SET failed");
+    \end{lstlisting}
+
+    \subsubsection{Semaphore Control Operations}
+
+    \begin{lstlisting}[language=C]
+        int semctl(semid, semnum, cmd, arg);
+    \end{lstlisting}
+    Per usare i \verb|cmd| \verb|SETVAL| e \verb|GETVAL|
+    occorre specificare il semaforo singolo del set.
+    \begin{itemize}
+        \item \verb|SETVAL| si usa il campo val della 
+        union e si setta il singolo semaforo a quel 
+        valore;
+        \item \verb|GETVAL| ritorna il valore del 
+        semaforo. (modificato da "ritorna il valore in arg.val)
+    \end{itemize}
+    Se invece si vuole lavorare con l'intero set di semafori,
+    \begin{lstlisting}[language=C]
+        int semctl(semid, 0 /*ignored*/, cmd, arg);
+    \end{lstlisting}
+    \begin{itemize}
+        \item \verb|SETALL| si usa il campo array della 
+        union e si setta l'intero set del semaforo a quel 
+        con quei valori;
+        \item \verb|GETALL| salva in \verb|arg.array| tutti 
+        i valori dei semafori.
+    \end{itemize}
+    Esempio per settare i valori di un set:
+    \begin{lstlisting}[language=C]
+        int semid = semget(key, 10, IPC_CREAT | S_IRUSR | S_IWUSR);
+        //set the first 5 semaphores to 1, and the remaining to 0
+        int values[] = {1, 1, 1, 1, 1, 0, 0, 0, 0, 0};
+        union semun arg;
+        arg.array = values;
+        //initialize the semaphore set 
+        if(semctl(semid, 0/*ignored*/, SETALL, arg) == -1)
+            errExit("semctl SETALL");
+    \end{lstlisting}
+    Altre operazioni:
+    \begin{lstlisting}[language=C]
+        int semctl(semid, semnum, cmd, 0);
+    \end{lstlisting}
+    \begin{itemize}
+        \item \verb|GETPID|: ritorna il PID dell'ultimo 
+        processo che ha fatto una semop sul semaforo specificato;
+        \item \verb|GETNCNT|: ritorna il numero dei processi 
+        in attesa che il valore di un semaforo diventi positivo;
+        \item \verb|GETZCNT|: ritorna il numero di processi che 
+        attualmente stanno aspettando che un semaforo diventi 
+        zero.
+    \end{itemize}
+    
+    \subsection{semop}
+
+    \begin{lstlisting}[language=C]
+        #include <sys/sem.h>
+
+        //Returns 0 on success, or -1 on error 
+        int semop(int semid, struct sembuf *sops, unsigned int nsops);
+    \end{lstlisting}
+    La struttura \verb|sembuf| è la seguente:
+    \begin{lstlisting}[language=C]
+        struct sembuf{
+            unsigned shor sem_num; //semaphore number 
+            short sem_op; //operation to be performed 
+            short sem_flag; //operation flags
+        }
+    \end{lstlisting}
+    \verb|nsops| indica la dimensione della \verb|struct|,
+    sono tutte operazioni a livello atomico. Se \verb|sem_op| 
+    è positiva, si va ad aggiungere tale valore al semaforo 
+    in oggetto, di conseguenza se negativa avverrà una 
+    differenza. Invece se \verb|sem_op| è uguale a 0 e il
+    semaforo è positivo, il processo che chiama rimarrà
+    bloccato fino a quando il semaforo non sarà uguale a 0.
+    
+    Usando la \verb|sem_flag| \verb|IPC_NOWAIT|, la chiamata 
+    non sarà bloccante e tornerà un errore \verb|EAGAIN|.
+
+    Se il set di semafori viene rimosso, tutti i processi 
+    bloccati vengono risvegliati e avranno in outpu \verb|EINTR|
+    a indicare che lo sblocco è avvenuto per l'eliminazione 
+    del semaforo.
+
+    \section{Signals}
+
+    Un segnale è una notifica a un processo che qualcosa 
+    è avvenuto, un processo riceve un segnale nel momento 
+    in cui avviene un certo evento o un altro processo 
+    invia un segnale a un altro processo. Durante il tempo 
+    che passa tra la generazione del segnale e la ricezione
+    si dice che il segnale è \textbf{pendente}. Normalmente 
+    un segnale pendente raggiunge il processo target nell'istante 
+    immediato in cui il target riottiene la possibilità 
+    di usare la CPU, nel caso in cui la stesse già utilizzando 
+    il segnale verrà ricevuto pressochè istantaneamente.
+    Una volta ricevuto un segnale il processo destinatario 
+    a seconda del segnale ricevuto:
+    \begin{itemize}
+        \item terminerà;
+        \item si sospenderà/bloccherà;
+        \item verrà ripreso dopo essere stato bloccato;
+        \item il segnale verrà ignorato, quindi scartato dal kernel senza alcun effetto sul processo;
+        \item il processo eseguirà un \verb|signal handler|, una funzione definita dal programmatore che esegue determinate azioni in base al segnale ricevuto.
+    \end{itemize} 
+
+    \subsection{Segnali di default}
+
+    \subsubsection{Segnali per terminare un processo}
+
+    \begin{description}
+        \item[SIGTERM]: permette di terminare un processo, può essere gestito per lasciare il sistema in uno stato "safe";
+        \item[SIGINT]: viene inviato a un processo quando si fa CTRL+C, anche questo è gestibile;
+        \item[SIGQUIT]: usato per generare dei core dump e fare debug;
+        \item[SIGKILL]: immediato, non è gestibile e termina il processo; 
+    \end{description}
+
+    \subsubsection{Segnali per bloccare e riprendere}
+
+    \begin{description}
+        \item[SIGSTOP]: blocca un processo immediatamente, non può essere bloccato, ignorato o gestito da un \verb|handler|;
+        \item[SIGCONT]: fa riprendere l'esecuzione a un processo precedentemente bloccato.
+    \end{description}
+
+    \subsubsection{Altri segnali}
+
+    \begin{description}
+        \item[SIGPIPE]: generato quando un processo prova a scrivere su una PIPE o FIFO per le quali non c'è il corrispondente processo lettore;
+        \item[SIGALRM]: segnale che usa un processo per mandare un segnale a sè stesso dopo un certo lasso di tempo;
+        \item[SIGUSR1 e SIGUSR2]: vengono usati come più pare e piace da parte del programmatore.
+    \end{description}
+
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline 
+            Nome & Numero & Può essere gestito? & Azione di default \\
+            \hline 
+            SIGTERM & 15 & si & termina un processo \\
+            SIGINT & 2 & si & termina un processo \\
+            SIGQUIT & 3 & si & core dump + terminazione \\
+            SIGKILL & 9 & no & termina un processo \\
+            SIGSTOP & 17 & no & blocca un processo \\
+            SIGCONT & 19 & si & riprende un processo \\
+            SIGPIPE & 13 & si & termina un processo \\
+            SIGALRM & 14 & si & termina un processo \\
+            SIGUSR1 & 30 & si & termina un processo \\
+            SIGUSR2 & 31 & si & termina un processo \\
+            \hline 
+        \end{tabular}
+    \end{center}
+
+    Una tabella riassuntiva, la colonna "numero" indica 
+    il codice per l'architettura x86 per inviare quel segnale 
+    da terminale tramite il comando \verb|kill|.
+
+    \subsection{signal handler}
+
+    Un \verb|signal handler| è una funzione chiamata come 
+    uno specifico segnale viene consegnato a un processo,
+    la sua forma generale è la seguente:
+    \begin{lstlisting}[language=C]
+        void sigHandler(int sig){
+            //code for the handler
+        }
+    \end{lstlisting}
+    La funzione non ha alcun valore di ritorno, il paramentro 
+    che prende è il segnale specifico. Quando il \verb|signal handler|
+    è chiamato dal kernel, \verb|sig| è impostato con il 
+    valore numerico del segnale consegnato al processo.
+
+    Di base il SO ha un suo handler di default, che fa delle 
+    operazioni sui dati di un processo che riceve un 
+    \verb|SIGSTOP| o \verb|SIGKILL|.
+
+    La chiamata a un \verb|signal handler| può interrompere 
+    il flusso del programma principale in qualsiasi momento. 
+    Il kernel invoca la funzione e una volta conclusa il
+    programma riprende se può, da dove era stato interrotto.
+
+    \subsection{signal}
+
+    Una volta definito il \verb|signal handler| la system call
+    \verb|signal| permette di settare quello definito 
+    al posto di quello di default.
+
+    \begin{lstlisting}[language=C]
+        #include <signal.>
+
+        typedef void (*signalhandler_t)(int);
+        //Returns previous signal disposition on success, or SIG_ERR on error 
+        sighandler_t signal(int signum, sighandler_t handler);
+    \end{lstlisting}
+    \verb|signum| identifica il segnale che voglia gestire, 
+    mentre \verb|handler| può essere:
+    \begin{itemize}
+        \item l'indirizzo di un \verb|signal handler| definito dall'utente;
+        \item la costante \verb|SIG_DFL| che resetta la disposizione di default del processo per il segnale \verb|signum|;
+        \item la costante \verb|SIG_IGN| che setta il processo per ignorare la ricezione di una segnale \verb|signum|.
+    \end{itemize}
+    Esempio:
+    \begin{lstlisting}[language=C]
+        void sigHandler(int sig){
+            printf("The signal %s was caught!\n",
+             (sig == SIGINT) ? "CTRL-C" : "signal user-1");
+        }
+        int main(int argc. char *argv[]){
+            //setting sigHandler to be executed for SIGINT or SIGUSR1
+            if(signal(SIGINT, sigHandler) == SIG_ERR ||
+            signal(SIGUSR1, sigHandler) == SIG_ERR){
+                errExit("change signal handler failed");
+            }
+            //Do something else her. During this time, if SIGINT/SIGUSR1
+            //is delivered, sigHandler will be used to handle the signal.
+            //Reset the default process disposition for SIGINT and SIGUSR1
+            if(signal(SIGINT, SIG_DFL) == SIG_ERR || 
+            signal(SIGUSR1, SIG_DFL) == SIG_ERR){
+                errExit("reset signal handler failed");
+            }
+            return 0;
+        }
+    \end{lstlisting}
+    \begin{description}
+        \item[N.B.:] la \verb|SIG_DFL| è una flag specifica per resettare.
+    \end{description}
+    Riassunto:
+    \begin{itemize}
+        \item \verb|SIGKILL| e \verb|SIGSTOP| non possono essere gestite;
+        \item un segnale è un evento asincrono, non possiamo predire quando arriverà;
+        \item quando viene chiamato un \verb|signal handler| il segnale che l'ha invocato viene automaticamente bloccato e sbloccato solo successivamente alla fine del \verb|signal handler|;
+        \item se un segnale bloccato viene generato più volte, una volta sbloccato verrà consegnato al proccesso solo una;
+        \item l'esecuzione di un \verb|signal handler| può essere interrotta da un segnale non bloccato;
+        \item le disposizioni del segnale sono ereditate dai figli del processo padre.
+    \end{itemize}
+
+    \subsection{pause}
+
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+        //Always return -1 with errno set to EINTR
+        int pause();
+    \end{lstlisting}
+    Sospende l'esecuzione del processo fino a quando un segnale 
+    non viene catturato dal \verb|signal handler| o un 
+    segnale non gestito lo termina.
+
+    \subsection{sleep}
+
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+        unsigned int sleep(unsigned int seconds);
+        //Returns 0 on normale completion, or 
+        number of unslept seconds if prematurely terminated
+    \end{lstlisting}
+    Sospende l'esecuzione del processo chiamante per un 
+    numero specifico di secondi specificato nel parametro 
+    \verb|seconds| o fino a quando un segnale non viene 
+    catturato interrompendo la sospensione.
+
+    \subsection{kill}
+
+    \begin{lstlisting}[language=C]
+        #include <signal.h>
+
+        //Returns 0 on success, or -1 on error 
+        int kill(pid_t pid, int sig);
+    \end{lstlisting}
+    Questa system call prende in input il PID a del processo 
+    a cui si vuole inviare il segnale e il tipo di segnale che 
+    si vuole inviare. 
+    \begin{itemize}
+        \item (PID > 0): il segnale verrà inviato al processo con quel PID specifico;
+        \item (PID = 0): il segnale viene inviato a tutti i processo appartenti allo stesso gruppo, incluso il processo chiamante;
+        \item (PID < 0): il segnale viene mandato a tutti i processi di un certo gruppo che ha un ID equivalente al PID in assoluto;
+        \item (PID = -1): il segnale viene inviato a tutti i processi tranne INIT, sè stesso o quelli a cui non si può inviare un segnale.
+    \end{itemize}
+    Esempio:
+    \begin{lstlisting}[language=C]
+        int main(int argc, char *argv[]){
+            pid_t child = fork();
+            switch(child){
+                case -1:
+                    errExit("fork");
+                case 0: //Child process 
+                    while(1);
+                default: //Parent process 
+                    sleep(10); //wait 10 seconds 
+                    kill(child, SIGKILL); //kill the child process
+            }
+            return 0;
+        }
+    \end{lstlisting}
+    
+    \subsection{alarm}
+
+    \begin{lstlisting}
+        #include <signal.h>
+
+        //Always succeeds, returning number of seconds remaining on 
+        //any previously set timer, or 0 if no timer previously was set 
+        unsigned int alarm(unsigned int seconds);
+    \end{lstlisting}
+    Invia il segnale SIGALRM al processo chiamante dopo un 
+    periodo preciso di secondi. Se viene richiamata dopo 
+    va a risettare i secondi.
+
+    \subsection{sigemptyset/sigfillset}
+
+    \begin{lstlisting}
+        #include <signal.h>
+
+        typedef unsigned long sigset_t;
+
+        //Both return 0 on success, or -1 on error 
+        int sigemptyset(sigset_t *set);
+        int sigfillset(sigset_t *set);
+    \end{lstlisting}
+    \verb|sigset_t| è un tipo di dato che rappresenta l'insieme 
+    dei segnali. \verb|sigemptyset| e \verb|sigfillset| 
+    devono essere usate per inizializzare il set 
+    dei segnali prima di usarlo in qualsiasi altra maniera.
+    La prima inizializza il set contenendo alcun segnale, 
+    mentre la seconda lo inizializza per contenerli tutti.
+
+    \subsection{sigaddset, sigdelset, sigismember}
+
+    Dopo l'inizializzazione, si possono aggiungere o rimuovere 
+    segnali individuali dall'insieme tramite \verb|sigaddset| 
+    e \verb|sigdelset|:
+    \begin{lstlisting}[language=C]
+        #include <signal.h>
+
+        //Both return 0 on success, or -1 on error 
+        int sigaddset(sigset_t *set, int sig);
+        int sigdelset(sigset_t *set, int sig);
+    \end{lstlisting}
+    Si può anche verificare se uno specifico segnale 
+    sia presente all'interno del set:
+    \begin{lstlisting}[language=C]
+        #include <signal.h>
+
+        //Returns 1 if sig is member of set, otherwise 0 
+        int sigismember(const sigset_t *set, int sig);
+    \end{lstlisting}
+
+    \subsection{sigprocmask}
+
+    \begin{lstlisting}[language=C]
+        #include <signal.h>
+
+        //Returns 0 on success, or -1 on error  
+        int sigprocmask(int how, const sigset_t *set, sigset_t *oldset);
+    \end{lstlisting}
+    Per ogni processo il kernel ha una maschera dei segnali, 
+    ovvero un insieme di segnali che non possono essere 
+    inviati al processo. Se si prova a inviare un segnale 
+    appartenente alla maschera, al processo, la consegna 
+    di tale segnale verrà posticipata fino a quando 
+    non sarà sbloccato il segnale, rimuovendolo dalla maschera.
+    Il parametro \verb|how| può assumere vari valori:
+    \begin{itemize}
+        \item \verb|SIG_BLOCK|, il set dei segnali bloccati 
+        sarà l'unione tra il set corrente e quello nuovo;
+        \item \verb|SIG_UNBLOCK|, prende tutti i segnali passati
+        l'argomento \verb|set| e li toglie dalla maschera corrente;
+        \item \verb|SIG_SETMASK|, setta il \verb|set| passato, 
+        come maschera del processo.
+    \end{itemize}
+    Se l'argomento \verb|oldset| non è \verb|NULL|, punterà 
+    a un buffer in cui verrà salvata la precedente maschera.
+    Se invece si vuole recuperare la maschera senza cambiarla, 
+    si specifica \verb|NULL| al posto di \verb|set|, in quel 
+    caso \verb|how| sarà ignorato.
+
+
+
+    
+
+
+
+    
+    
+
+
+
+
+
+
+
     
 
 
@@ -919,6 +1503,16 @@
         più flessibile possibile, \verb|INIT| tramite la \verb|wait| eredita i processi 
         zombie ed eventualmente li termina.
         \item \textbf{D:} Differenza tra \verb|exec| e \verb|fork|
+        \item \textbf{D:} Mostra come posso modificare i permessi 
+        di un determinato semaforo. 
+
+        \textbf{R:} serve l'ID del semaphore set, tramite la \verb|semctl| 
+        passo tale valore con \verb|IPC_STAT| che  verrà salvato 
+        in \verb|arg.buf|, in cui posso entrare dentro e 
+        da lì modificare i permessi.
+        \item \textbf{D:} Dove avviene l'handling da parte del signal handler?
+        
+        \textbf{R:} Avviene all'interno del Kernel.
     \end{enumerate}
 
     

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  12 MAY 2022 16:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  24 MAY 2022 12:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -326,41 +326,41 @@ Capitolo 3.
 
 ]
 Capitolo 4.
-<flag_open.png, id=338, 703.62875pt x 271.0125pt>
+<flag_open.png, id=443, 703.62875pt x 271.0125pt>
 File: flag_open.png Graphic file (type png)
 <use flag_open.png>
 Package pdftex.def Info: flag_open.png  used on input line 204.
 (pdftex.def)             Requested size: 195.0pt x 75.10553pt.
-<mode_open.png, id=340, 698.61pt x 475.7775pt>
+<mode_open.png, id=445, 698.61pt x 475.7775pt>
 File: mode_open.png Graphic file (type png)
 <use mode_open.png>
 Package pdftex.def Info: mode_open.png  used on input line 208.
 (pdftex.def)             Requested size: 195.0pt x 132.80298pt.
 [9 <./flag_open.png>] [10 <./mode_open.png>] [11]
-<lseek.png, id=424, 1043.9pt x 244.915pt>
+<lseek.png, id=529, 1043.9pt x 244.915pt>
 File: lseek.png Graphic file (type png)
 <use lseek.png>
 Package pdftex.def Info: lseek.png  used on input line 332.
 (pdftex.def)             Requested size: 195.0pt x 45.74953pt.
  [12 <./lseek.png>] [13]
-<st_mode.png, id=480, 1081.03876pt x 126.4725pt>
+<st_mode.png, id=586, 1081.03876pt x 126.4725pt>
 File: st_mode.png Graphic file (type png)
 <use st_mode.png>
 Package pdftex.def Info: st_mode.png  used on input line 406.
 (pdftex.def)             Requested size: 195.0pt x 22.8123pt.
  [14 <./st_mode.png>]
-<access.png, id=508, 350.30875pt x 159.59625pt>
+<access.png, id=614, 350.30875pt x 159.59625pt>
 File: access.png Graphic file (type png)
 <use access.png>
 Package pdftex.def Info: access.png  used on input line 431.
 (pdftex.def)             Requested size: 195.0pt x 88.83995pt.
  [15 <./access.png>]
-<dirent.png, id=533, 629.35126pt x 165.61874pt>
+<dirent.png, id=638, 629.35126pt x 165.61874pt>
 File: dirent.png Graphic file (type png)
 <use dirent.png>
 Package pdftex.def Info: dirent.png  used on input line 504.
 (pdftex.def)             Requested size: 195.0pt x 51.316pt.
-<d_type.png, id=534, 303.1325pt x 233.87375pt>
+<d_type.png, id=639, 303.1325pt x 233.87375pt>
 File: d_type.png Graphic file (type png)
 <use d_type.png>
 Package pdftex.def Info: d_type.png  used on input line 509.
@@ -373,7 +373,7 @@ Underfull \vbox (badness 1796) has occurred while \output is active []
 ]
 Capitolo 5.
 [19] [20] [21] [22] [23] [24] [25]
-<exec.png, id=768, 892.33376pt x 326.21875pt>
+<exec.png, id=874, 892.33376pt x 326.21875pt>
 File: exec.png Graphic file (type png)
 <use exec.png>
 Package pdftex.def Info: exec.png  used on input line 870.
@@ -382,23 +382,37 @@ Package pdftex.def Info: exec.png  used on input line 870.
 
 ]
 Capitolo 6.
-[29] (./riassunto_lab_SO.aux)
+[29] [30] [31]
+Overfull \hbox (55.0982pt too wide) in paragraph at lines 1062--1065
+[][][]\T1/cmtt/m/n/12 IPC_STAT[]\T1/cmr/m/n/12 : per-met-te di sal-va-re lo sta-to del-l'I-PC al-l'in-ter-no del-la [][]\T1/cmtt/m/n/12 strcut semid_ds[]\T1/cmr/m/n/12 ,
+ []
+
+[32] [33] [34] [35] [36] [37] [38] [39]
+Overfull \hbox (3.441pt too wide) in paragraph at lines 1408--1414
+[][]\T1/cmtt/m/n/12 sigset_t []\T1/cmr/m/n/12 è un ti-po di da-to che rap-pre-sen-ta l'in-sie-me dei se-gna-li. [][]\T1/cmtt/m/n/12 sigemptyset
+ []
+
+[40] [41] [42
+
+]
+Capitolo 7.
+[43] (./riassunto_lab_SO.aux)
 Package rerunfilecheck Info: File `riassunto_lab_SO.out' has not changed.
-(rerunfilecheck)             Checksum: 5A77707F5180893F8F132DE3DB0B7A3C;5130.
+(rerunfilecheck)             Checksum: D1B03E3902BFBC4752419169645AD62A;7610.
  ) 
 Here is how much of TeX's memory you used:
- 12822 strings out of 478287
- 194295 string characters out of 5846764
- 966005 words of memory out of 5000000
- 30357 multiletter control sequences out of 15000+600000
+ 13299 strings out of 478287
+ 200596 string characters out of 5846764
+ 966018 words of memory out of 5000000
+ 30581 multiletter control sequences out of 15000+600000
  483167 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,6n,63p,373b,1889s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsl1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on riassunto_lab_SO.pdf (33 pages, 541685 bytes).
+Output written on riassunto_lab_SO.pdf (47 pages, 587623 bytes).
 PDF statistics:
- 991 PDF objects out of 1000 (max. 8388607)
- 905 compressed objects within 10 object streams
- 514 named destinations out of 1000 (max. 500000)
- 377 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1428 PDF objects out of 1440 (max. 8388607)
+ 1324 compressed objects within 14 object streams
+ 767 named destinations out of 1000 (max. 500000)
+ 545 words of extra memory for PDF output out of 10000 (max. 10000000)
 
