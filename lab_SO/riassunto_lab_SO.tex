@@ -7,6 +7,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{multirow}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -109,7 +110,7 @@
         ...
     \end{lstlisting}
     La maggior parte delle system call ritorna un -1 
-    o NULL Pointer in caso di errore, alcune però 
+    o \verb|NULL| Pointer in caso di errore, alcune però 
     usano il -1 come valore di ritorno anche in caso di 
     non errore. Qui l'uso di \verb|errno| acquista 
     ulteriore valore. Esempio:
@@ -191,7 +192,7 @@
         #include <sys/stat.h>
         #include <stdio.h>
 
-        //Returns file descriptor on successo, or -1 on error 
+        //Returns file descriptor on success, or -1 on error 
         int open(const char *pathname, int flags, .../*mode_t mode*/);
     \end{lstlisting}
     \begin{itemize}
@@ -1462,6 +1463,330 @@
     si specifica \verb|NULL| al posto di \verb|set|, in quel 
     caso \verb|how| sarà ignorato.
 
+    \section{Shared Memory}
+
+    Segmento di memoria fisica condivisa gestita dal 
+    Kernel, una volta istanziata, viene linkata al 
+    processo che la vuole utilizzare. I dati scritti 
+    sulla memoria condivisa da un processo A sono 
+    immediatamente visti da un processo B. La mutua esclusione 
+    in questa casistica è importante per chi scrive (semafori).
+    
+    \subsection{shmget}
+
+    \begin{lstlisting}[language=C]
+        #include <sys/shm.h>
+
+        //Returns a shared memory segment identifier on success, or -1 on error  
+        int shmget(ket_t key, size_t size, int shmflg);
+    \end{lstlisting}
+    La \verb|size| della shared memory è definita in byte
+    e verrà sempre approssimato alla dimensione successiva 
+    della pagina di sistema. Se si prova a creare un 
+    segmento di memoria usando la chiave di un segmento 
+    già esistente, nel caso in cui si passa una dimensione 
+    inferiore, la \verb|shmget| tornerà l'ID del segmento,
+    nel caso in cui la dimensione sarà maggiore tornerà 
+    un errore. Nella \verb|shmflg| si possono mettere tutte 
+    quelle relative alla \verb|open| con una nota particolare 
+    nei confronti di:
+    \begin{itemize}
+        \item \verb|IPC_CREAT|: se non esiste alcun segmento 
+        con quella chiave, allora crea un nuovo segmento;
+        \item \verb|IPC_EXCL|: insieme a \verb|IPC_CREAT| 
+        fa fallire la \verb|shmget| se esiste già un segmento 
+        con quella chiave specificata.
+    \end{itemize}
+    
+    \subsection{shmat}
+
+    \begin{lstlisting}[language=C]
+        #include <sys/shm.h>
+
+        //Returns address at which shared memory is attached on success
+        //or (void *) -1 on error  
+        int *shmat(int shmid, const void *shmaddr, int shmflg);
+    \end{lstlisting}
+    \verb|shmaddr|, di norma è \verb|NULL|, il Kernel 
+    deciderà quale indirizzo allocare, se invece non è 
+    NULL, si deve passare l'indirizzo a mano, in questo caso 
+    serve passare la \verb|shmflg SHM_RND|, arrotonda 
+    l'indirizzo al multiplo più vicino alla costante 
+    \verb|SHMLBA| (shared memory low boundary address).
+    La flag serve ad arrotondare il più possibile nel 
+    caso in cui l'indirizzo passato sia occupato.
+
+    Perché \verb|shmaddr| di base va messo a \verb|NULL|?
+    \begin{itemize}
+        \item aumenta la portabilità dell'applicazione;
+        \item cercare di mappare a mano rischia di mappare 
+        zone di memoria già occupate causando errori.
+    \end{itemize}
+    Tra le flag c'è anche la \verb|SHM_RDONLY|, per poter 
+    leggere e basta sulla shared memory. Una volta che un 
+    processo ha fatto l'attach della shared memory, 
+    l'eventuale figlio creato successivamente avrà già a 
+    disposizione il puntatore a tale segmento. Eventualmente 
+    se venisse fatta una \verb|exec| sul figlio, le shared 
+    memory verranno staccate perché non saranno più disponibili.
+
+    Esempio:
+    \begin{lstlisting}[language=C]
+        //attach the shared memory in read/write mode 
+        int *ptr_1 = (int *)shmat(shmid, NULL, 0);
+        //attach the shared memory in read only mode 
+        int *ptr_2 = (int *)shmat(shmid, NULL, SHM_RDONLY);
+        //N.B. ptr_1 and ptr_2 are different!
+        //But they refer to the same shared memory!
+        //write 10 integers to shared memory segment 
+        for(int i = 0; i < 10; ++i)
+            ptr_1[i] = i;
+        //read 10 integers from shared memory segment
+        for(int i = 0; i < 10; ++i)
+            printf("integer: %d\n", ptr_2[i]);
+    \end{lstlisting}
+
+    \subsection{shmdt}
+
+    \begin{lstlisting}[language=C]
+        #include <sys/shm.h>
+
+        //Returns 0 on success, or -1 on error 
+        int shmdt(const void *shmaddr);
+    \end{lstlisting}
+    Prende in input i puntatori al segmento ottenuti dopo 
+    la \verb|shmat|. Dopo una detach la shared memory 
+    istanziata esiste ancora anche se non sarà più 
+    linkata, un ulteriore metodo è che tutti i processi 
+    che l'hanno richiamata terminino, una volta terminati 
+    la shared memory verrà eliminata. \textbf{N.B.:} la 
+    detach viene fatta in automatico alla terminazione 
+    del processo.
+
+    Esempio:
+    \begin{lstlisting}[language=C]
+        //attach the shared memory in read/write mode 
+        int *ptr_1 = (int *)shmat(shmid, NULL, 0);
+        if(ptr_1 == (void *) -1)
+            errExit("first shmat failed");
+        //attach the shared memory in read only mode 
+        int *ptr_2 = (int *)shmat(shmid, NULL, SHM_RDONLY);
+        if(ptr_2 == (void *) -1)
+            errExit("second shmat failed");
+        //...
+        //detach the shared memory segments 
+        if(shmdt(ptr_1) == -1 || shmdt(ptr_2) == -1)
+            errExit("shmdt failed");
+    \end{lstlisting}
+
+    \subsection{shmctl}
+
+    \begin{lstlisting}[language=C]
+        #include <sys/shm.h>
+
+        //Returns 0 on success, or -1 on error 
+        int shmctl(int shmid, int cmd, struct shmid_ds *buf);
+    \end{lstlisting}
+    \verb|cmd| sono:
+    \begin{itemize}
+        \item \verb|IPC_RMID|: segna il segmento come da eliminare 
+        come tutti i processi attaccati si staccheranno;
+        \item \verb|IPC_STAT|: copia la struttura dati \verb|shmid_ds| 
+        associata alla shared memory nella struttura puntata da \verb|buf|;
+        \item \verb|IPC_SET|: update dei parametri della \verb|shmid_ds| 
+        passati e associati alla shared memory tramite i valori 
+        passati da \verb|buf|.
+    \end{itemize}
+    Per ogni shared memory il kernel ha una struttura dati 
+    a essa associata:
+    \begin{lstlisting}[language=C]
+        struct shmid_ds{
+            struct ipc_perm shm_perm; //Ownership and permissions 
+            size_t shm_segsz; //Size of segment in bytes 
+            time_t shm_atime; //Time of last shmat()
+            time_t shm_dtime; //Time of last shmdt()
+            time_t shm_ctime; //Time of last chane 
+            pid_t shm_cpid; //PID of creator 
+            pid_t shm_lpid; //PID of last shmat()/shmdt()
+            shmatt_t shm_nattch; //Number of currently attached processes
+        };
+    \end{lstlisting}
+    \textbf{L'unico campo} che si può modificare una 
+    volta inizializzata è il campo \verb|shm_perm|.
+
+    \section{Message Queue}
+
+    Permette la comunicazione tra processi diversi.
+
+    \subsection{msgget}
+
+    \begin{lstlisting}[language=C]
+        #include <sys/msg.h>
+
+        //Returns message queue identifier on success, or -1 on error 
+        int msgget(key_t key, int msgflg);
+    \end{lstlisting}
+    Nel caso la coda fosse già stata creata, ritorna l'ID 
+    della coda già esistente. Per il parametro \verb|msgflg|
+    vale la stessa regola di quelle della shared memory.
+
+    Vengono inviate delle \verb|struct|, un esempio è:
+    \begin{lstlisting}[language=C]
+        struct mymsg{
+            long mtype; //Message type 
+            char mtext[]; //Message body 
+        }
+    \end{lstlisting}
+    \textbf{L'unico vincolo} sulla creazione della 
+    \verb|struct| è che sia presente il 
+    \verb|long mtype|. Fondamentale perchè è un campo 
+    usato dalle system call della Message Queue per lettura 
+    e scrittura, il resto è scelto dal programmatore. 
+    \textbf{Deve} essere maggiore di 0.
+
+    \subsection{msgsnd}
+
+    \begin{lstlisting}[language=C]
+        #include <sys/msg.h>
+
+        //Returns 0 on success, or -1 on error 
+        int msgsnd(int msqid, const void *msgp, size_t msgz, int msgflg);
+    \end{lstlisting}
+    Scrive il messaggio in una specifica cosa di messaggi, 
+    definita dall'ID. Necessario l'uso del puntatore (\verb|*msgp|)
+    al messaggio che si vuole inviare, dimensione (\verb|msgz|) 
+    in byte ed eventuali flag. \verb|msgflg| di norma 
+    è 0, così facendo la rende bloccante, ovvero se si 
+    prova a scrivere un messaggio su una coda piena, siccome 
+    la coda ha una dimensione massima, allora il processo 
+    si bloccherà, finchè un processo non leggerà un messaggio 
+    liberando spazio nella coda. Se invece non si vuole 
+    bloccare, la flag necessaria sarà \verb|IPC_NOWAIT|,
+    non si bloccherà e tornerà l'errore \verb|EAGAIN|.
+
+    Esempio:
+    \begin{lstlisting}[language=C]
+        //Message structure 
+        struct mymsg{
+            long mtype; 
+            char mtext[100]; 
+        };
+        //Message has type 1
+        m.mtype = 1;
+        //Message contains the following string 
+        char *text = "Ciao mondo!";
+        memcpy(m.mtext, text, strlen(text) + 1);
+        //size of m is only the size of its mtext attribute 
+        size_t mSize = sizeof(struct mymsg) - sizeof(long);
+        //sending the message in the queue 
+        if(msgsnd(msqid, &m, mSize, 0) == -1)
+            errExit("msgsnd failed");
+    \end{lstlisting}
+    \textbf{N.B.:} la coda di messaggi sa già di doversi 
+    aspettare un long, quindi va tolta la sua dimensione 
+    nell'invio.
+
+    \subsection{msgrcv}
+
+    \begin{lstlisting}[language=C]
+        #include <sys/msg.h>
+
+        //Returns number of bytes copied
+        //into msgp on success, or -1 on error 
+        ssize_t msgrcv(int msqid, void *msgp, size_t msgz, long msgtype, int msgflg);
+    \end{lstlisting}
+    Legge il messaggio e allo stesso tempo \textbf{rimuove} 
+    il messaggio dalla coda liberando spazio.
+    \verb|*msgp| è il puntatore alla struttura in cui 
+    verrà salvato il messaggio. \verb|msgsz| la dimensione
+    del messaggio da leggere. \verb|msgtype| permette di 
+    filtrare i messaggi alla ricerca di quelli con \verb|mtype| 
+    specificato. Se \verb|msgtype| è 0, si leggerà in ordine 
+    di arrivo, la lettura di default è FIFO. Infine se
+    \verb|msgtype| fosse negativo, verrà fatto l'assoluto 
+    del valore passato e si estrae dalla coda tutti i 
+    messaggi con valore minore o uguale a quello passato.
+    
+    Se la coda è vuota o non c'è un messaggio con 
+    \verb|mtype| specifico, il processo che 
+    fa la chiamata si blocca. Usando la flag \verb|IPC_NOWAIT|
+    nel campo \verb|msgflg|, la lettura non sarà bloccante 
+    e si avrà in output l'errore \verb|ENOMSG|, a indicare 
+    che non ci sono messaggi. Un'altra possibile flag 
+    è la \verb|MSG_NOERROR|, di default se la dimensione 
+    del corpo del messaggio con \verb|mtype| escluso, è 
+    più grande del \verb|msgsz|, ritornerà un errore 
+    perché si proverà a leggere più byte del dovuto. Con 
+    questa flag, invece la \verb|msgrcv| 
+    leggerà, ma darà comunque un errore in aggiunta.
+    
+    \subsection{msgctl}
+
+    \begin{lstlisting}[language=C]
+        #include <sys/msg.h>
+
+        //Returns 0 on success, or -1 on error 
+        int msgctl(int msqid, int cmd, struct msqid_ds *buf);
+    \end{lstlisting}
+    Permette di effettuare operazioni di controllo. 
+    Per il parametro \verb|cmd| sono i soliti:
+    \begin{itemize}
+        \item \verb|IPC_RMID|: rimuove immediatamente 
+        la coda di messaggi, tutti i messaggi non letti 
+        andranno perduti e ogni possibile processo in 
+        scrittura/lettura bloccato verrà sbloccato, settando 
+        \verb|errno| con l'errore \verb|EIDRM|. Per Questo
+        \verb|cmd| la \verb|struct| viene ignorata;
+        \item \verb|IPC_STAT|: copia la \verb|struct msqid_ds| 
+        associata alla coda di messaggi all'interno della 
+        \verb|struct| puntata da \verb|buf|;
+        \item \verb|IPC_SET|: aggiorna i campi della \verb|struct msqid_ds| 
+        associata usando i valori passati tramite \verb|buf|.
+    \end{itemize}
+    La \verb|struct msqid_ds| è la seguente:
+    \begin{lstlisting}[language=C]
+        struct msqid_ds{
+            struct ipc_perm msg_perm; //Ownership and permissions 
+            time_t msg_stime; //Time of last msgsnd() 
+            time_t msg_rtime; //Time of last msgrcv() 
+            time_t msg_ctime; //Time of last change 
+            unsigned long __msg_cbytes; //Number of bytes in queue 
+            msgqnum_t msg_qnum; //Number of message in queue 
+            msglen_t msg_qbytes; //Maximum bytes in queue 
+            pid_t msg_lspid; //PID of last msgsnd() 
+            pid_t msg_lrpid; //PID of last msgrcv()
+        }
+    \end{lstlisting}
+    Con \verb|IPC_STAT| e \verb|IPC_SET| si può ottenere 
+    e modificare solo \verb|msg_perm| e \verb|msg_qbytes|.
+    
+    \section{Tabella riassuntiva}
+    
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline 
+            Interface & Message Queues & Semaphores & Shared memory \\
+            \hline 
+            Header file & \verb|<sys/msg.h>| & \verb|<sys/sem.h>| & \verb|<sys/sem.h>| \\
+            Data structure & \verb|msqid_ds| & \verb|semid_ds| & \verb|shmid_ds| \\
+            Create/Open & \verb|msgget(...)| & \verb|semget(...)| & \verb|shmget(...)| \\
+            Close & none & none & \verb|shdt(...)| \\
+            Control oper. & \verb|msgctl(...)| & \verb|semctl(...)| & \verb|shmctl(...)| \\
+            \multirow{2}{4em}{Performing IPC} & \verb|msgsnd(...)| & \verb|semop(...)| & access memory \\
+            & \verb|msgrcv(...)| & to test/adjust & in shared region \\
+            \hline
+        \end{tabular}    
+    \end{center}
+    
+
+    
+    
+
+
+
+
+
+
 
 
     
@@ -1488,7 +1813,7 @@
         \item \textbf{D:} Dove va a finire l'handler dell'exit? (lezione 2 al 1:00:00)
         
         \textbf{R:} L'handler viene preso dal SO così com'è e viene 
-        mappa da qualche parte all'interno del SO, non 
+        mappato da qualche parte all'interno del SO, non 
         all'interno della memoria del processo. Quando viene 
         chiamato si va fuori e poi si ritorno all'interno 
         del processo.
@@ -1503,16 +1828,28 @@
         più flessibile possibile, \verb|INIT| tramite la \verb|wait| eredita i processi 
         zombie ed eventualmente li termina.
         \item \textbf{D:} Differenza tra \verb|exec| e \verb|fork|
-        \item \textbf{D:} Mostra come posso modificare i permessi 
+        \item \textbf{D:} Spiega come posso modificare i permessi 
         di un determinato semaforo. 
 
-        \textbf{R:} serve l'ID del semaphore set, tramite la \verb|semctl| 
+        \textbf{R:} Serve l'ID del semaphore set, tramite la \verb|semctl| 
         passo tale valore con \verb|IPC_STAT| che  verrà salvato 
         in \verb|arg.buf|, in cui posso entrare dentro e 
         da lì modificare i permessi.
         \item \textbf{D:} Dove avviene l'handling da parte del signal handler?
         
         \textbf{R:} Avviene all'interno del Kernel.
+        \item \textbf{D:} Dove si trova la memoria condivisa? (shared memory)
+        
+        \textbf{R:} Non si trova nel layout di memoria di un processo, 
+        ma nella memoria fisica del Kernel, poi il processo lo 
+        crea e richiede il link/attach a quella memoria. Se la 
+        memoria è condivisa in scrittura con altri processi 
+        occore garantire la mutua eslusione.
+        \item \textbf{D:} Come posso aumentare la dimensione della 
+        shared memory?
+
+        \textbf{R:} Detacho ed elimino l'attuale e ne creo una nuova 
+        con una dimensione maggiore.
     \end{enumerate}
 
     
