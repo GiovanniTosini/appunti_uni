@@ -78,4 +78,9 @@
 \contentsline {subsection}{\numberline {6.7.3}msgrcv}{46}{subsection.6.7.3}%
 \contentsline {subsection}{\numberline {6.7.4}msgctl}{46}{subsection.6.7.4}%
 \contentsline {section}{\numberline {6.8}Tabella riassuntiva}{48}{section.6.8}%
-\contentsline {chapter}{\numberline {7}Domande fatte all'orale}{49}{chapter.7}%
+\contentsline {section}{\numberline {6.9}PIPE}{48}{section.6.9}%
+\contentsline {subsection}{\numberline {6.9.1}pipe}{48}{subsection.6.9.1}%
+\contentsline {section}{\numberline {6.10}FIFO}{50}{section.6.10}%
+\contentsline {subsection}{\numberline {6.10.1}mkfifo}{51}{subsection.6.10.1}%
+\contentsline {subsection}{\numberline {6.10.2}open}{51}{subsection.6.10.2}%
+\contentsline {chapter}{\numberline {7}Domande fatte all'orale}{53}{chapter.7}%

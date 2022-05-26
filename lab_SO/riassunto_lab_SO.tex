@@ -1777,9 +1777,228 @@
             \hline
         \end{tabular}    
     \end{center}
-    
 
+    \section{PIPE}
+
+    La PIPE è un byte stream, un buffer gestito dal kernel,
+    viene creato al suo interno ed è gestito totalmente 
+    dal kernel, i processi lo utilizzano tramite il descriptor.
+    Permette di inviare e leggere dati, è unidirezionale, 
+    la lettura avviene nell'ordine in cui si è scritto, diversamente 
+    dalle message queue. Non esiste un concetto di messaggio,
+    PIPE e FIFO vengono trattate come dei semplici file.
+    Come si crea una PIPE, il SO la istanzia, esiste ma è
+    vuota, un processo che prova a leggere su una PIPE vuota 
+    si blocca, finchè un altro non ci scrive oppure 
+    qualche processo chiude la PIPE, in quel caso riceve 
+    un errore di \verb|EINTR|. 
     
+    Una PIPE ha due lati, uno di scrittura e uno di lettura, 
+    è fondamentale che \textbf{uno} solo legga e 
+    \textbf{uno} solo scriva. Non fare ciò può portare a 
+    errori. Se il lato di scrittura di una PIPE è chiuso 
+    o è stato chiuso, il processo in lettura vedrà una 
+    volta letto tutto un end-of-file, a segnalare 
+    che la PIPE è stata chiusa dal lato scrittura.
+
+    Un processo che cerca di scrivere sulla PIPE viene 
+    bloccato se non c'è più spazio disponibile sulla 
+    PIPE (la PIPE ha una dimensione fissa su Linux sono 
+    65.536B), oppure riceve un segnale di terminazione.
+
+    La singola scrittura su una PIPE ha una dimensione \verb|PIPE_BUF|
+    massima di 4.096B, superare tale dimensione genera 
+    un errore. Sia su PIPE che su FIFO le scritture sono 
+    \textbf{atomiche}, non c'è possibilità che due messaggi 
+    si intersechino tra di loro.
+    
+    \subsection{pipe}
+
+    L'apertura di un PIPE è equivalente alla \verb|open| 
+    di un file, ma ovviamente con la sua system call dedicata.
+
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+
+        //Returns 0 on success, or -1 on error 
+        int pipe(int filedes[2]);
+    \end{lstlisting}
+    Prende in input un array vuoto, salverà all'interno 
+    di \verb|filedes[0]| il lato di lettura, mentre in 
+    \verb|filedes[1]| il lato di scrittura. Si tratta 
+    esattamente di un file descriptor che andrà a essere 
+    salvato all'interno della file descriptor table.
+
+    La lettura e scrittura verranno fatte tramite la \verb|read| 
+    e la \verb|write| per la gestione dei file, la prima su 
+    \verb|filedes[0]| e la seconda su \verb|filedes[1]|.
+
+    La \textbf{differenza principale} tra PIPE e FIFO 
+    è che la prima viene usata per far comunicare 
+    processi che hanno una relazione tra di loro. Per 
+    il semplice motivo che il programmatore non ha 
+    controllo sui file descriptor generati dalla 
+    \verb|pipe|, perché sono gestiti dal SO, l'unico modo 
+    che un secondo processo sia a conoscenza di tali 
+    file descriptor è che sia figlio del primo processo 
+    e che quindi abbia ereditato tale informazioni.
+
+    Esempio:
+    \begin{lstlisting}[language=C]
+        int fd[2];
+        //checking if PIPE successed 
+        if(pipe(fd) == -1)
+            errExit("PIPE");
+        //create a child process 
+        switch(fork()){
+            case -1:
+                errExit("fork");
+            case 0:
+                //child reads from PIPE 
+                break;
+            default:
+                //parent writes to PIPE 
+                break;
+        }
+    \end{lstlisting}
+    La chiusura di un lato della PIPE da parte di un processo 
+    e dell'altro da parte di un altro processo verrà fatta 
+    successivamente la \verb|fork|, perché prima il figlio 
+    potrà ereditare il file descriptor completo dal 
+    padre e poi ognuno potrà modificarlo per sè.
+
+    Esempio di lettura da parte del figlio:
+    \begin{lstlisting}[language=C]
+        char buf[SIZE];
+        ssize_t nBys;
+
+        //close unused write-end 
+        if(close(fd[1]) == -1)
+            errExit("close - child");
+        //reading from the PIPE 
+        nBys = read(fd[0], buf, SIZE);
+        //0: end-of-file, -1: failure 
+        if(nBys > 0){
+            buf[nBys] = '\0';
+            printf("%s\n", buf);
+        }
+        //close read-end of PIPE 
+        if(close(fd[0]) == -1)
+            errExit("close - child");
+    \end{lstlisting}    
+
+    Esempio di scrittura da parte del padre:
+    \begin{lstlisting}[language=C]
+        char buf[] = "Ciao Mondo\n";
+        ssize_t nBys;
+
+        //close unused read-end 
+        if(close(fd[0]) == -1)
+            errExit("close - parent");
+        //writing to the PIPE 
+        nBys = write(fd[1], buf, strlen(buf));
+        //checking if write successed 
+        if(nBys != strlen(buf)){
+            errExit("write - parent");
+        }
+        //close write-end of PIPE 
+        if(close(fd[1]) == -1)
+            errExit("close - parent");
+    \end{lstlisting}    
+    \textbf{N.B.:} una PIPE continua a esistere fino a quando 
+    non vengono chiusi tutti i file descriptor in scrittura, 
+    perchè il kernel vede che è tuttora in uso e quindi 
+    non manda il carattere di terminazione.
+
+    \section{FIFO}
+
+    Sono byte stream anch'esse, dei buffer istanziati dal SO.
+    La differenza principale tra FIFO e PIPE è che per la 
+    PIPE il nome viene generato in automatico dal SO e 
+    il programmatore non ha modo di far ottenere i file descriptor
+    fra i diversi processi a meno che non siano padre e 
+    figlio o tramite altre IPC. Le FIFO ci permettono 
+    di dare un nome specifico alla creazione e poi due 
+    processi senza alcun legame tra di loro possono 
+    comunicare solo sapendo il nome della FIFO. Anche in 
+    questo caso, gli eventuali figli ereditano il file 
+    descriptor se fosse già stato creato dopo prima della 
+    \verb|fork|.
+
+    \subsection{mkfifo}
+
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+
+        //Returns 0 on success, or -1 on error 
+        int mkfifo(const char *pathname, mode_t mode);
+    \end{lstlisting}
+    Il \verb|pathname| è un path in cui noi decidiamo di 
+    andare a salvare la FIFO, il nome che si può scegliere
+    per capirci. Le \verb|mode| sono le stesse della 
+    system call \verb|open|, permessi di scrittua, lettura, etc.
+    Una volta creata la FIFO, la si apre tramite la \verb|open|.
+
+    \subsection{open}
+
+    \begin{lstlisting}[language=C]
+        #include <unistd.h>
+
+        //Returns file descriptor on success, or -1 on error 
+        int open(const char *pathname, int flags);
+    \end{lstlisting}
+    Si passa in input lo stesso \verb|pathname| usato per 
+    la \verb|mkfifo|. La FIFO può essere aperta in due 
+    modalità, lettura con \verb|O_RDONLY| o scrittura 
+    \verb|O_WRONLY|. Una volta ottenuto il file descriptor, 
+    si leggerà e scriverà tramite le \verb|read| e la 
+    \verb|write|.
+
+    \textbf{Attenzione:} dopo la creazione di una FIFO, se un processo 
+    A la apre, questo rimarrà bloccato finchè un processo 
+    B l'avrà aperta a sua volta. Ad ogni lettura o scrittura 
+    deve corrispondere un'apertura in scrittura o lettura.
+    La FIFO potrebbe essere usata per sincronizzare i processi 
+    per esempio.
+
+    Esempio di lettura:
+    \begin{lstlisting}[language=C]
+        char *fname = "/tmp/myfifo";
+        int res = mkfifo(fname, S_IRUSR | S_IWUSR);
+        //Opening for reading only 
+        int fd = open(fname, O_RDONLY);
+
+        //reading bytes from fifo 
+        char buffer[LEN];
+        read(fd, buffer, LEN);
+
+        //printing buffer on stdout 
+        printf("%s\n", buffer);
+
+        //closing the fifo 
+        close(fd);
+
+        //removing fifo 
+        unlink(fname);
+    \end{lstlisting}
+    Esempio di scrittura:
+    \begin{lstlisting}[language=C]
+        char *fname = "/tmp/myfifo";
+
+        //opening for writing only 
+        int fd = open(fname, O_WRONLY);
+
+        //reading a str.(no spaces)
+        char buffer[LEN];
+        printf("Give me a string: ");
+        scanf("%s", buffer);
+
+        //writing the string on fifo 
+        write(fd, buffer, strlen(buffer));
+
+        //closing the fifo
+        close(fd);
+    \end{lstlisting}
     
 
 
@@ -1850,6 +2069,13 @@
 
         \textbf{R:} Detacho ed elimino l'attuale e ne creo una nuova 
         con una dimensione maggiore.
+        \item \textbf{D:} Cosa uso per far comunicare processo 
+        padre con processo figlio?
+        \item \textbf{D:} Se ho una processo A e un 
+        processo B che non hanno legami, posso usare la 
+        PIPE?
+
+        
     \end{enumerate}
 
     

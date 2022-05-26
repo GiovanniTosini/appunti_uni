@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1649063744 "/home/poppo/Università/appunti_miei/appunti_uni/template/template.tex" "template.pdf" "template" 1649063745
-  "/home/poppo/Università/appunti_miei/appunti_uni/template/template.tex" 1649063743 10898 8bb517c00342ec8868bc64e902b0da01 ""
+["pdflatex"] 1653378556 "/home/poppo/Università/appunti_miei/appunti_uni/template/template.tex" "template.pdf" "template" 1653378557
+  "/home/poppo/Università/appunti_miei/appunti_uni/template/template.tex" 1653378555 10899 36e577a7c0dc27c796dbbb1f23ca9e65 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -129,10 +129,10 @@
   "/usr/local/texlive/2021/texmf.cnf" 1643544867 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
   "cat.jpeg" 1647785346 60938 5603e105e0b46e9ea59da2985d46f9f2 ""
   "dog.jpeg" 1647786187 25969 41c8ad3cb85950036087e81773b9c457 ""
-  "template.aux" 1649063745 4763 e35ba15d53c7e242b051a3be201c652d "pdflatex"
-  "template.out" 1649063745 2132 425222cc445592a4ca4f3549f392bc40 "pdflatex"
-  "template.tex" 1649063743 10898 8bb517c00342ec8868bc64e902b0da01 ""
-  "template.toc" 1649063745 2386 56c8ebc29d112ebf1c74ee7b07289101 "pdflatex"
+  "template.aux" 1653378557 4763 e35ba15d53c7e242b051a3be201c652d "pdflatex"
+  "template.out" 1653378557 2132 425222cc445592a4ca4f3549f392bc40 "pdflatex"
+  "template.tex" 1653378555 10899 36e577a7c0dc27c796dbbb1f23ca9e65 ""
+  "template.toc" 1653378557 2386 56c8ebc29d112ebf1c74ee7b07289101 "pdflatex"
   (generated)
   "template.aux"
   "template.log"
