@@ -8,6 +8,8 @@
 \usepackage{subfig}
 \usepackage[colorlinks]{hyperref}
 \hypersetup{linktoc=all}
+\newcommand{\foto}[1]{\includegraphics[width=0.5\textwidth]{#1}}
+
 
 
 \begin{document}
@@ -1060,7 +1062,7 @@ all'interno della cartella. Tali attributi sono:
     \item identità del proprietario.
 \end{itemize}
 Questi attributi vengono memorizzati in una struttura 
-inode, che ha bisogno di spazio e viene memorizzata 
+\verb|inode|, che ha bisogno di spazio e viene memorizzata 
 all'interno della cartella.
 
 \subsection{Operazioni su file}
@@ -1094,6 +1096,196 @@ La rinominazione \textbf{non} è un'operazione su file,
 avviene sulla struttua della cartella, perché cambiare il 
 nome di un file consiste nel cambiare la sua posizione, 
 il suo pathname.
+
+\subsection{Metodi di accesso}
+
+Un compilatore avrà necessità di accedere al file in modo 
+sequenziale, mentre un gestore di base dati dovrà accedervi 
+randomicamente
+
+\subsubsection{Sequenziale}
+
+Un processo che vuole accedere a un file in modo sequenziale 
+avrà bisogno di operazioni come:
+\begin{itemize}
+    \item \verb|read next|;
+    \item \verb|write next|;
+    \item \verb|reset|.
+\end{itemize}
+In questa modalità di accesso l'operazione di \verb|rewrite| 
+non è ammissibile, perché si creerebbe inconsistenza rispetto 
+al contenuto precedente, condizione necessaria per un accesso
+sequenziale.
+
+\subsubsection{Diretto}
+
+Non interessa partire dall'inizio del file e leggerlo in sequenza, 
+quindi ogni elemento del file sarà leggibile e scrivibile 
+separatamente dagli altri, il file sarà strutturato a blocchi.
+Le operazioni permesse saranno:
+\begin{itemize}
+    \item \verb|read n|;
+    \item \verb|write n|;
+    \item \verb|position n|;
+    \item \verb|read next|;
+    \item \verb|write next|;
+    \item \verb|rewrite n|.
+\end{itemize}
+Non c'è rischio di creare inconsistenza perché ogni file è 
+diviso dagli altri(blocchi).
+
+\section{Struttura delle directory}
+
+Il file system è organizzato a volumi o partizioni, è una vista 
+logica, quindi indipendente dal numero dei dispositivi fisici.
+Esempio: un disco partizionato in due dischi, quindi dal punto 
+di vista logico se ne vedranno due. Vale anche la casistica opposta,
+due dischi visti dal sistema come un unico disco solo.
+
+All'interno delle partizioni, troviamo una collezione di nodi 
+contenenti informazioni sui file. Le directory sono elementi 
+che puntano ai file. All'interno della directory verranno memorizzati 
+gli attributi dei file visti sopra.
+
+\paragraph{Operazioni su directory}Una volta creata la directory con al suo interno gli \verb|inode|
+dei file che vi risiedono si possono compiere le seguenti 
+operazioni.
+\begin{itemize}
+    \item aggiungere file;
+    \item cancellare file;
+    \item visualizzarne il contenuto;
+    \item rinominare un file;
+    \item cercare un file;
+    \item attraversare il file system.
+\end{itemize}
+
+\paragraph{Obiettivi}Gli obiettivi per chi vuole implementare la gestione delle 
+directory sono un'elevata efficienza per un accesso rapido al 
+file, una nomenclatura che permette agli utenti di 
+avere un modo conveniente di dare un nome ai file e
+ricordarsi come si chiamano, infine il raggruppamento, ovvero
+poter classificare logicamente i file per criterio(tipo, 
+protezione, etc...).
+
+\subsection{Directory a un livello}
+
+Unica per tutti gli utenti, la nomenclatura era un problema 
+perché ogni file doveva avere un nome differente rispetto 
+agli altri, considerando che la lunghezza massima dei file 
+al tempo era di 8 caratteri.
+\begin{center}
+    \foto{mono_dir.png}
+\end{center}
+
+\subsection{Directory a due livelli}
+
+Una prima evoluzione è stata la separazione delle cartelle 
+a livello utente, è nato un primo concetto di cartella \verb|home|
+per ogni utente e al suo interno ogni utente metteva i loro file.
+La problematica sulla nomenclatura si spostava, ora non era più condivisa tra 
+tutti gli utenti, ma era per il singolo che all'interno della sua
+cartella non poteva crearne altre e di conseguenza era limitato 
+con la rinomina dei file. Nasce anche il problema di decidere 
+dove posizionare i programmi di sistema, se replicarli 
+all'interno di ogni singola cartella o no, da cui nasce a 
+sua volta il concetto di variabile di ambiente, che permettono di 
+specificare cose come il PATH. Sulle macchine Linux 
+tale variabile d'ambiente contiene cartelle e sottocartelle 
+con programmi eseguibili che permettono di essere lanciati da terminale.
+\begin{center}
+    \foto{bi_dir.png}
+\end{center}
+
+\subsection{Directory ad albero}
+
+Permettono una ricerca efficiente, attraversando l'albero 
+aggiungendo la possibilità di raggruppare sotto cartelle,
+nasce l'idea della directory corrente o directory '.', 
+di comandi \verb|cd| o \verb|pwd|. Nasce il concetto di percorso 
+assoluto e relativo ovvero relativo alla posizione attuale. Uno 
+'/' all'inizio del percorso indicherà un percorso assoluto, ovvero 
+dalla radice, mentre ometterlo indicherà un percorso relativo 
+ovvero partendo dalla locazione attuale in cui ci si trova.
+\begin{center}
+    \foto{dir_albero.png}
+\end{center}
+
+\subsection{Directory a grafo aciclico}
+
+Ci saranno dei rami che si ricongiungono, facilitando la condivisione 
+tra utenti. Da questo nasce il concetto di link, simbolici 
+e hard link. 
+\begin{description}
+    \item[Link simbolico:] un altro file con all'interno il pathname del file a cui si collega;
+    \item[Hard link:] il file è uno solo, al quale fa riferimo un \verb|inode1| e quello del link \verb|inode2|, un unico file con due strutture di attributi diversi.  
+\end{description}
+Cancellando un \verb|inode| a un hard link il file rimarrà, fintanto che avrà 
+un collegamento con un altro \verb|inode|. Se si cancella un 
+link simbolico, il file originale rimarrà, ma se si cancellasse 
+il file a cui il link simbolico punta, avremo un errore 
+tentando di aprirlo siccome non punterà più a nulla.
+Una modifica eseguita a un file tramite hard link sarà 
+visibile pure tramite l'altro link.
+\begin{center}
+    \foto{dir_grafo.png}
+\end{center}
+
+\subsection{Directory a grafo generico}
+
+Con questa struttura ci sono possono essere dei cicli, 
+ciò potrà causare dei problemi eventualmente con la 
+ricerca. In tal caso bisognerà usare degl algoritmi di controllo 
+dei cicli per verificare se nel link creato sia nato un 
+ciclo o meno.
+\begin{center}
+    \foto{dir_gen.png}
+\end{center}
+
+\subsection{Mount di file system}
+
+Meccanismo che permette di collegare un punto del 
+file system corrente a un altro file system, in modo 
+da poterlo raggiungere e attraversare come se facesse 
+parte del nostro file system, esempio: quando si collega 
+una chiavetta USB.
+
+\section{Protezione}
+
+Potendo creare file system grandi a piacere con cartelle 
+a grafo, occorre pensare anche ai livelli di protezione 
+per impedire che un utente faccia cose indesiderate sul file 
+system. Esistono varie possibilità per permettere al proprietario 
+del file di fare qualsiasi cosa. Si parte decidendo che tipo di 
+operazioni controllare, dando dei permessi:
+\begin{itemize}
+    \item lettura;
+    \item scrittura;
+    \item esecuzione;
+    \item append;
+    \item cancellazione;
+    \item ...
+\end{itemize}
+Un primo livello di protezione è un inserimento in ogni 
+directory di un elenco di chi può fare cosa. Molto 
+complicato da gestire ed estremamente lungo. Un meccanismo 
+più efficiente e meno fine è il raggruppamento in 3 classi
+usato dai sistemi Unix. Ogni file apparterrà all'utente che
+l'ha creato, quell'utente appartiene a un gruppo di utenti 
+che condividono un certo insieme di privilegi. Gli 
+utenti sono divisi in 3 categorie:
+\begin{itemize}
+    \item proprietario;
+    \item il gruppo di utenti a cui appartiene il proprietario;
+    \item tutti gli altri.
+\end{itemize}
+Ogni utente può appartenere a più gruppi contemporaneamente.
+I permessi per ogni classe verranno identificati tramite 
+i caratteri \verb|r|, \verb|w| e \verb|x|. Per un cartella 
+il permesso di execute \verb|x|, corrisponde alla possibilità 
+di poterla attraversare tramite il comando \verb|cd|.
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  15 MAY 2022 13:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  9 JUN 2022 12:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -219,26 +219,26 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 ) (./SO_secondo_semestre.aux)
 \openout1 = `SO_secondo_semestre.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Info: Redefining \it@ocap on input line 13.
-LaTeX Info: Redefining \it@ccap on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Info: Redefining \it@ocap on input line 15.
+LaTeX Info: Redefining \it@ccap on input line 15.
  (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count287
@@ -285,7 +285,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 149.
 )
-Package hyperref Info: Link coloring ON on input line 13.
+Package hyperref Info: Link coloring ON on input line 15.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/local/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
@@ -295,17 +295,17 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count293
 )
-LaTeX Info: Redefining \ref on input line 13.
-LaTeX Info: Redefining \pageref on input line 13.
-LaTeX Info: Redefining \nameref on input line 13.
+LaTeX Info: Redefining \ref on input line 15.
+LaTeX Info: Redefining \pageref on input line 15.
+LaTeX Info: Redefining \nameref on input line 15.
  (./SO_secondo_semestre.out) (./SO_secondo_semestre.out)
 \@outlinefile=\write3
 \openout3 = `SO_secondo_semestre.out'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 20.
+(Font)              <14.4> on input line 22.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 20.
+(Font)              <7> on input line 22.
  [1
 
 
@@ -324,23 +324,23 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [4]
 Capitolo 1.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 35.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 37.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<ovetto.png, id=281, 447.6725pt x 327.2225pt>
+<ovetto.png, id=336, 447.6725pt x 327.2225pt>
 File: ovetto.png Graphic file (type png)
 <use ovetto.png>
-Package pdftex.def Info: ovetto.png  used on input line 44.
+Package pdftex.def Info: ovetto.png  used on input line 46.
 (pdftex.def)             Requested size: 195.0pt x 142.53535pt.
  [5
 
  <./ovetto.png>] [6]
 Capitolo 2.
-<rag.jpg, id=295, 837.1275pt x 725.71124pt>
+<rag.jpg, id=350, 837.1275pt x 725.71124pt>
 File: rag.jpg Graphic file (type jpg)
 <use rag.jpg>
-Package pdftex.def Info: rag.jpg  used on input line 79.
+Package pdftex.def Info: rag.jpg  used on input line 81.
 (pdftex.def)             Requested size: 195.0pt x 169.03618pt.
 
 Underfull \vbox (badness 5908) has occurred while \output is active []
@@ -348,48 +348,48 @@ Underfull \vbox (badness 5908) has occurred while \output is active []
  [7
 
 ] [8 <./rag.jpg>]
-<rag_reclamo.png, id=307, 747.79375pt x 338.26375pt>
+<rag_reclamo.png, id=361, 747.79375pt x 338.26375pt>
 File: rag_reclamo.png Graphic file (type png)
 <use rag_reclamo.png>
-Package pdftex.def Info: rag_reclamo.png  used on input line 142.
+Package pdftex.def Info: rag_reclamo.png  used on input line 144.
 (pdftex.def)             Requested size: 312.00119pt x 141.1304pt.
  [9 <./rag_reclamo.png>]
-<banchiere3.png, id=313, 600.2425pt x 126.4725pt>
+<banchiere3.png, id=367, 600.2425pt x 126.4725pt>
 File: banchiere3.png Graphic file (type png)
 <use banchiere3.png>
-Package pdftex.def Info: banchiere3.png  used on input line 151.
+Package pdftex.def Info: banchiere3.png  used on input line 153.
 (pdftex.def)             Requested size: 390.0pt x 82.17526pt.
-<banchiere1.png, id=315, 751.80875pt x 433.62pt>
+<banchiere1.png, id=369, 751.80875pt x 433.62pt>
 File: banchiere1.png Graphic file (type png)
 <use banchiere1.png>
-Package pdftex.def Info: banchiere1.png  used on input line 155.
+Package pdftex.def Info: banchiere1.png  used on input line 157.
 (pdftex.def)             Requested size: 390.0pt x 224.94115pt.
-<banchiere2.png, id=316, 730.73pt x 508.90125pt>
+<banchiere2.png, id=370, 730.73pt x 508.90125pt>
 File: banchiere2.png Graphic file (type png)
 <use banchiere2.png>
-Package pdftex.def Info: banchiere2.png  used on input line 159.
+Package pdftex.def Info: banchiere2.png  used on input line 161.
 (pdftex.def)             Requested size: 390.0pt x 271.60332pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [10 <./banchiere3.png> <./banchiere1.png>]
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 171.
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 173.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<detection.png, id=324, 1010.77625pt x 654.445pt>
+<detection.png, id=378, 1010.77625pt x 654.445pt>
 File: detection.png Graphic file (type png)
 <use detection.png>
-Package pdftex.def Info: detection.png  used on input line 174.
+Package pdftex.def Info: detection.png  used on input line 176.
 (pdftex.def)             Requested size: 390.0pt x 252.51633pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11 <./banchiere2.png>]
-<detection2.png, id=331, 451.6875pt x 361.35pt>
+<detection2.png, id=385, 451.6875pt x 361.35pt>
 File: detection2.png Graphic file (type png)
 <use detection2.png>
-Package pdftex.def Info: detection2.png  used on input line 182.
+Package pdftex.def Info: detection2.png  used on input line 184.
 (pdftex.def)             Requested size: 390.0pt x 312.0176pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -399,141 +399,169 @@ Capitolo 3.
 [15
 
 ]
-<trasformazione.png, id=352, 835.12pt x 292.09125pt>
+<trasformazione.png, id=406, 835.12pt x 292.09125pt>
 File: trasformazione.png Graphic file (type png)
 <use trasformazione.png>
-Package pdftex.def Info: trasformazione.png  used on input line 249.
+Package pdftex.def Info: trasformazione.png  used on input line 251.
 (pdftex.def)             Requested size: 390.0pt x 136.40933pt.
  [16 <./trasformazione.png>] [17] [18]
 Capitolo 4.
 [19
 
 ]
-<mmu_partizioni_fisse.png, id=373, 788.9475pt x 258.9675pt>
+<mmu_partizioni_fisse.png, id=427, 788.9475pt x 258.9675pt>
 File: mmu_partizioni_fisse.png Graphic file (type png)
 <use mmu_partizioni_fisse.png>
-Package pdftex.def Info: mmu_partizioni_fisse.png  used on input line 375.
+Package pdftex.def Info: mmu_partizioni_fisse.png  used on input line 377.
 (pdftex.def)             Requested size: 390.0pt x 128.01344pt.
  [20 <./mmu_partizioni_fisse.png>]
-<buddy_system.png, id=379, 532.99126pt x 293.095pt>
+<buddy_system.png, id=433, 532.99126pt x 293.095pt>
 File: buddy_system.png Graphic file (type png)
 <use buddy_system.png>
-Package pdftex.def Info: buddy_system.png  used on input line 416.
+Package pdftex.def Info: buddy_system.png  used on input line 418.
 (pdftex.def)             Requested size: 195.0pt x 107.23146pt.
  [21 <./buddy_system.png>] [22] [23] [24] [25] [26]
 Capitolo 5.
 [27
 
 ] [28]
-<FIFO.png, id=431, 589.20125pt x 172.645pt>
+<FIFO.png, id=486, 589.20125pt x 172.645pt>
 File: FIFO.png Graphic file (type png)
 <use FIFO.png>
-Package pdftex.def Info: FIFO.png  used on input line 723.
+Package pdftex.def Info: FIFO.png  used on input line 725.
 (pdftex.def)             Requested size: 195.0pt x 57.13898pt.
-<belady.png, id=432, 630.355pt x 316.18124pt>
+<belady.png, id=487, 630.355pt x 316.18124pt>
 File: belady.png Graphic file (type png)
 <use belady.png>
-Package pdftex.def Info: belady.png  used on input line 725.
+Package pdftex.def Info: belady.png  used on input line 727.
 (pdftex.def)             Requested size: 195.0pt x 97.80771pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<ideale.png, id=433, 579.16376pt x 173.64874pt>
+<ideale.png, id=488, 579.16376pt x 173.64874pt>
 File: ideale.png Graphic file (type png)
 <use ideale.png>
-Package pdftex.def Info: ideale.png  used on input line 734.
+Package pdftex.def Info: ideale.png  used on input line 736.
 (pdftex.def)             Requested size: 195.0pt x 58.46481pt.
 [29]
-<LRU.png, id=439, 566.115pt x 146.5475pt>
+<LRU.png, id=493, 566.115pt x 146.5475pt>
 File: LRU.png Graphic file (type png)
 <use LRU.png>
-Package pdftex.def Info: LRU.png  used on input line 744.
+Package pdftex.def Info: LRU.png  used on input line 746.
 (pdftex.def)             Requested size: 195.0pt x 50.47842pt.
  [30 <./FIFO.png> <./belady.png> <./ideale.png> <./LRU.png>]
-<LRU_approx.png, id=455, 255.95625pt x 190.7125pt>
+<LRU_approx.png, id=509, 255.95625pt x 190.7125pt>
 File: LRU_approx.png Graphic file (type png)
 <use LRU_approx.png>
-Package pdftex.def Info: LRU_approx.png  used on input line 761.
+Package pdftex.def Info: LRU_approx.png  used on input line 763.
 (pdftex.def)             Requested size: 272.99881pt x 203.42305pt.
  [31 <./LRU_approx.png>] [32]
 Capitolo 6.
 [33
 
 ]
-<working_set.png, id=470, 556.0775pt x 149.55875pt>
+<working_set.png, id=524, 556.0775pt x 149.55875pt>
 File: working_set.png Graphic file (type png)
 <use working_set.png>
-Package pdftex.def Info: working_set.png  used on input line 821.
+Package pdftex.def Info: working_set.png  used on input line 823.
 (pdftex.def)             Requested size: 195.0pt x 52.44675pt.
-<pff.png, id=471, 455.7025pt x 234.8775pt>
+<pff.png, id=525, 455.7025pt x 234.8775pt>
 File: pff.png Graphic file (type png)
 <use pff.png>
-Package pdftex.def Info: pff.png  used on input line 838.
+Package pdftex.def Info: pff.png  used on input line 840.
 (pdftex.def)             Requested size: 195.0pt x 100.50793pt.
  [34 <./working_set.png>] [35 <./pff.png>] [36
 
 ]
 Capitolo 7.
 [37]
-<zigzag.png, id=491, 356.33125pt x 247.92625pt>
+<zigzag.png, id=545, 356.33125pt x 247.92625pt>
 File: zigzag.png Graphic file (type png)
 <use zigzag.png>
-Package pdftex.def Info: zigzag.png  used on input line 892.
+Package pdftex.def Info: zigzag.png  used on input line 894.
 (pdftex.def)             Requested size: 195.0pt x 135.67513pt.
-<sstf.png, id=492, 463.7325pt x 312.16624pt>
+<sstf.png, id=546, 463.7325pt x 312.16624pt>
 File: sstf.png Graphic file (type png)
 <use sstf.png>
-Package pdftex.def Info: sstf.png  used on input line 903.
+Package pdftex.def Info: sstf.png  used on input line 905.
 (pdftex.def)             Requested size: 195.0pt x 131.26611pt.
  [38 <./zigzag.png> <./sstf.png>]
-<scan.png, id=499, 393.47pt x 262.9825pt>
+<scan.png, id=553, 393.47pt x 262.9825pt>
 File: scan.png Graphic file (type png)
 <use scan.png>
-Package pdftex.def Info: scan.png  used on input line 915.
+Package pdftex.def Info: scan.png  used on input line 917.
 (pdftex.def)             Requested size: 195.0pt x 130.33122pt.
-<c-scan.png, id=500, 432.61626pt x 304.13625pt>
+<c-scan.png, id=554, 432.61626pt x 304.13625pt>
 File: c-scan.png Graphic file (type png)
 <use c-scan.png>
-Package pdftex.def Info: c-scan.png  used on input line 928.
+Package pdftex.def Info: c-scan.png  used on input line 930.
 (pdftex.def)             Requested size: 195.0pt x 137.08743pt.
  [39 <./scan.png> <./c-scan.png>]
-<nuda.png, id=507, 440.64626pt x 54.2025pt>
+<nuda.png, id=561, 440.64626pt x 54.2025pt>
 File: nuda.png Graphic file (type png)
 <use nuda.png>
-Package pdftex.def Info: nuda.png  used on input line 978.
+Package pdftex.def Info: nuda.png  used on input line 980.
 (pdftex.def)             Requested size: 195.0pt x 23.98645pt.
-<form_fisica.png, id=508, 430.60875pt x 41.15375pt>
+<form_fisica.png, id=562, 430.60875pt x 41.15375pt>
 File: form_fisica.png Graphic file (type png)
 <use form_fisica.png>
-Package pdftex.def Info: form_fisica.png  used on input line 980.
+Package pdftex.def Info: form_fisica.png  used on input line 982.
 (pdftex.def)             Requested size: 195.0pt x 18.63643pt.
-<form_logica.png, id=509, 431.6125pt x 42.1575pt>
+<form_logica.png, id=563, 431.6125pt x 42.1575pt>
 File: form_logica.png Graphic file (type png)
 <use form_logica.png>
-Package pdftex.def Info: form_logica.png  used on input line 982.
+Package pdftex.def Info: form_logica.png  used on input line 984.
 (pdftex.def)             Requested size: 195.0pt x 19.04594pt.
  [40 <./nuda.png> <./form_fisica.png> <./form_logica.png>] [41] [42
 
 ]
 Capitolo 8.
-[43] [44] (./SO_secondo_semestre.aux)
+[43] [44] [45]
+<mono_dir.png, id=601, 515.9275pt x 108.405pt>
+File: mono_dir.png Graphic file (type png)
+<use mono_dir.png>
+Package pdftex.def Info: mono_dir.png  used on input line 1177.
+(pdftex.def)             Requested size: 195.0pt x 40.97267pt.
+<bi_dir.png, id=602, 487.8225pt x 160.6pt>
+File: bi_dir.png Graphic file (type png)
+<use bi_dir.png>
+Package pdftex.def Info: bi_dir.png  used on input line 1196.
+(pdftex.def)             Requested size: 195.0pt x 64.19719pt.
+ [46 <./mono_dir.png>]
+<dir_albero.png, id=610, 386.44376pt x 275.0275pt>
+File: dir_albero.png Graphic file (type png)
+<use dir_albero.png>
+Package pdftex.def Info: dir_albero.png  used on input line 1210.
+(pdftex.def)             Requested size: 195.0pt x 138.78078pt.
+<dir_grafo.png, id=611, 332.24126pt x 279.0425pt>
+File: dir_grafo.png Graphic file (type png)
+<use dir_grafo.png>
+Package pdftex.def Info: dir_grafo.png  used on input line 1230.
+(pdftex.def)             Requested size: 195.0pt x 163.77782pt.
+ [47 <./bi_dir.png> <./dir_albero.png>]
+<dir_gen.png, id=618, 420.57124pt x 254.9525pt>
+File: dir_gen.png Graphic file (type png)
+<use dir_gen.png>
+Package pdftex.def Info: dir_gen.png  used on input line 1241.
+(pdftex.def)             Requested size: 195.0pt x 118.20934pt.
+ [48 <./dir_grafo.png> <./dir_gen.png>] [49] (./SO_secondo_semestre.aux)
 Package rerunfilecheck Info: File `SO_secondo_semestre.out' has not changed.
-(rerunfilecheck)             Checksum: CCA4C5F4EF46054539A18220FEE811F1;6581.
+(rerunfilecheck)             Checksum: 30B0880A79891269EF7D2401F054F093;8128.
  ) 
 Here is how much of TeX's memory you used:
- 11765 strings out of 478287
- 191443 string characters out of 5846764
- 491245 words of memory out of 5000000
- 29678 multiletter control sequences out of 15000+600000
+ 11828 strings out of 478287
+ 192387 string characters out of 5846764
+ 491264 words of memory out of 5000000
+ 29718 multiletter control sequences out of 15000+600000
  483862 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,11n,79p,389b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbi1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsl1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on SO_secondo_semestre.pdf (44 pages, 1138043 bytes).
+Output written on SO_secondo_semestre.pdf (49 pages, 1270771 bytes).
 PDF statistics:
- 647 PDF objects out of 1000 (max. 8388607)
- 509 compressed objects within 6 object streams
- 113 named destinations out of 1000 (max. 500000)
- 468 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 739 PDF objects out of 1000 (max. 8388607)
+ 586 compressed objects within 6 object streams
+ 131 named destinations out of 1000 (max. 500000)
+ 565 words of extra memory for PDF output out of 10000 (max. 10000000)
 
