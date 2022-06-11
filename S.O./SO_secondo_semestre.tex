@@ -9,6 +9,7 @@
 \usepackage[colorlinks]{hyperref}
 \hypersetup{linktoc=all}
 \newcommand{\foto}[1]{\includegraphics[width=0.5\textwidth]{#1}}
+\usepackage{listings}
 
 
 
@@ -1283,6 +1284,423 @@ I permessi per ogni classe verranno identificati tramite
 i caratteri \verb|r|, \verb|w| e \verb|x|. Per un cartella 
 il permesso di execute \verb|x|, corrisponde alla possibilità 
 di poterla attraversare tramite il comando \verb|cd|.
+
+\section{Implementazione del file system}
+
+Il file system è strutturato in un insieme di livelli che 
+implementano una serie di funzionalità sfruttando quello che 
+viene offerto dal livello inferiore per offrirne al livello superiore (strutturazione modulare).
+Nella parte più bassa ci sono i dispositivi di memorizzazione 
+di massa, controllati dai device driver, ovvero software 
+creati per permettere al SO di riconoscere le funzionalità 
+delle periferiche. Esistono devide driver generici, ovvero 
+compatibili con la tipologia di device driver e permettono 
+di avere un meccanismo plug 'n play.
+
+I \textbf{device driver} al loro interno implementano il primo livello 
+di gestione: I/O Control, quella parte che gestisce anche 
+l'aspetto relativo alla gestione dell'interrupt, garantisce 
+l'interazione tra periferica e sistema e implementa la 
+gestione fisica della scrittura dei blocchi e lettura da 
+periferica verso la memoria. 
+
+A livello di \textbf{I/O Control} c'è il disk scheduling 
+e gestione di lettura/scrittura fisica dei blocchi, queste 
+azione vengono effettuate a fronte di comandi implementati 
+a livello di \textbf{basic file system}, comandi indipendenti dal device 
+driver o periferica specifica, astraggono l'idea di scrivere/leggere 
+blocchi di dati. Al suo interno si troverano primitive che 
+ci permetteranno di scrivere/leggere un blocco. Questi comandi 
+arrivano dal \textbf{file-organization module}, dove non si 
+parla più di blocchi, ma l'entità minima è il file. In questa zona 
+si troveranno operazioni che permettono di tradurre dove si trova 
+fisicamente un blocco logico nello spazio fisico.
+
+Il livello superiore sarà il \textbf{logical file system} 
+ovvero l'interfaccia tra programmi e utente.
+
+Per gestire l'implementazione di un file system, sarà necessario 
+creare delle strutture dati, alcune risiederanno in memoria per 
+motivi di efficienza e altre su disco per motivi di non 
+volatilità e successivamente caricate in memoria per migliorare 
+l'accesso e renderlo più rapido.
+
+\subsection{Strutture su disco}
+
+All'interno del disco si troveranno aree dedicate a:
+\begin{itemize}
+    \item gestire il blocco di boot, ovvero gestire le info 
+    di avvio del sistema, quando si avvia la macchina, questa 
+    andrà a verificare una spefica area su disco, l'area di boot,
+    fondamentale per l'avvio;
+    \item blocco di controllo delle partizioni, descrive come i 
+    vari dischi sono stati distribuiti dal punto di vista logico
+    come visto più su;
+    \item strutture delle directory
+    \item descrittori dei file (inode), contengono gli attributi 
+    tra cui quelli che indicano dove si trovano i blocchi dei file 
+    fisicamente su disco.
+\end{itemize}
+
+\subsection{Strutture in memoria}
+
+\begin{itemize}
+    \item tabella delle partizioni, contengono informazioni 
+    sulle partizioni montate e che sono visibili all'utente;
+    \item struttura delle directory, presente anche in memoria 
+    per una gestione più rapida;
+    \item tabella globale dei file aperti, contiene la copia 
+    del descrittore del file dei file aperti;
+    \item tabella dei file aperti per ogni processo, contiene in particolare 
+    informazioni riguardo la copia file aperto-processo; 
+\end{itemize}
+
+\subsection{Allocazione dello spazio su disco}
+
+L'obiettivo è di alloccare spazio su disco per file e cartelle, 
+cercando di massimizzare l'uso del disco senza sprecare spazio 
+(ridurre le strutture di controllo e di gestione come le cartelle)
+e minimizzare i tempi di accesso su disco. Le possibili
+alternative sono:
+\begin{itemize}
+    \item allocazione contigua;
+    \item allocazione a lista concatenata (linked);
+    \item allocazione indicizzata;
+\end{itemize}
+
+\subsubsection{Allocazione contigua}
+
+Simile a quella in memoria.
+\begin{itemize}
+    \item \textbf{Vantaggi}:
+    \begin{itemize}
+        \item semplifica la struttura della directory, 
+        la directory dovrà solo memorizzare il blocco 
+        di partenza del file e la sua dimensione, con solo 
+        queste due info potrà accedere al file;
+        \item accesso semplice, se si è al blocco B l'accesso 
+        al blocco successivo sarà semplicemente al blocco B+1
+        inoltre permette l'accesso sia sequenziale che casuale, 
+        per andare al blocco i-esimo basterà fare B+i;
+    \end{itemize}
+    \item \textbf{Svantaggi}:
+    \begin{itemize}
+        \item necessità di avere meccanismi di ricerca di
+        uno spazio sufficientemente grande, portando a creare
+        frammentazione esterna (effetto groviera);
+        \item cosa succede se il file cresce? lo si limita 
+        per impedire che cresca ulteriormente o si trova una 
+        nuova zona più spaziosa con lo spostamento di tutto 
+        il file da un'area a un'altra;
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Allocazione a lista (linked list)}
+
+Si taglia a blocchi di equa dimensione il file, ogni 
+file sarà una lista di blocchi che possono essere 
+locati ovunque. La directory conterrà per ogni file il 
+puntatore per il primo blocco il quale al suo interno 
+conterrà il puntatore al blocco successivo. La directory
+avrà anche il puntatore all'ultimo blocco, nel caso di 
+errori come blocchi difettosi o errori software che portano 
+a rovinare un blocco della lista e di conseguenza impedire 
+la lettura dei blocchi successivi, con il puntatore 
+all'ultimo blocco si potrà provare a ricostruire il file.
+Questo è possibile perché ogni blocco punta a quello successivo 
+e a quello precedente, ovviamente nel caso in cui un intero 
+blocco fosse completamente compromesso, il file sarebbe 
+spezzato a metà e irrecuperabile. 
+
+Esempio di indirizzamento:
+\begin{lstlisting}[language=C]
+    X = indirizzo logico
+    N = dimensione del blocco
+    /*per capire a quale blocco leggere*/
+    X / (N - 1)
+    /*per capire quanto leggere di quel blocco*/
+    X % (N - 1)
+\end{lstlisting}
+N.B.: il -1 è dovuto alla presenza del puntatore che ovviamente 
+non deve essere considerato per leggere o scrivere su un blocco.
+\begin{itemize}
+    \item \textbf{Vantaggi}:
+    \begin{itemize}
+        \item creare un nuovo file è semplice, si trova un 
+        blocco libero e ci si scrive al suo interno, nel caso 
+        di necessità di altri blocchi se ne trova un altro 
+        libero (recuperandolo dalla \textbf{free list}, la 
+        lista dei blocchi liberi in memoria), lo si 
+        concatena e si prosegue ci sarà uno spreco minimo 
+        perché occorrerrà solo mettere due puntatori per blocco
+        evitando la frammentazione esterna;
+    \end{itemize}
+    \item \textbf{Svantaggi}:
+    \begin{itemize}
+        \item l'accesso casuale non è facile da fare, se 
+        si vuole leggere a metà di una lista linkata 
+        sarà sempre necessario scorrerla completamente e 
+        se i blocchi si trovano sparpagliati per il disco 
+        la testina dovrà continuamente muoversi portando 
+        ad aumentare il tempo di lettura;
+        \item affidabilità, spiegato sopra, se un blocco dovesse 
+        corrompersi completamente il file rimarrebbe troncato 
+        e irrecuperabile;
+    \end{itemize}
+\end{itemize}
+\paragraph{Esempio - FAT (File Allocation Table)} usata nei 
+sistemi MS-DOS, la cartella aveva il nome del file e il blocco di partenza, 
+questo blocco non puntava alla zona del disco in cui si trovava, 
+ma a una tabella allocata contiguamente su disco e compatta, con 
+all'interno solamente l'insieme di puntatori a ogni blocco.
+
+\paragraph{Variante con allocazione contigua} si crea una 
+lista di aree contigue invece di una lista di blocchi, 
+permette di aumentare l'efficienza, siccome leggere un'area 
+contigua è più veloce rispetto a leggere blocchi. Un'area 
+contigua si definirà \textbf{extent} lunga quanto possibile, 
+alla creazione di un file si prenderà la prima area contigua disponibile,
+il primo \textbf{extent} e si memorizzerà ciò che interessa.
+Se il file dovesse crescere, si cercheranno dei blocchi 
+liberi contigui, se si trovano si aumenterà l'\textbf{extent} in 
+alternativa si andrà alla ricerca di un'altra area libera 
+e si concateneranno gli \textbf{extent} senza la necessità 
+fare allocazione dinamica e causare frammentazione.
+
+\subsubsection{Allocazione indicizzata}
+
+Ogni directory contiene la \textbf{index table} (simile 
+alla tabella delle pagine) che contiene le 
+informazioni riguardo i blocchi costituenti del file
+\begin{center}
+    \foto{index_table.png}
+\end{center}
+I -1 sono ulteriori puntatori a blocchi che potranno essere 
+utilizzati per accrescere il file.
+
+L'allocazione indicizzata ha un accesso sequenziale e casuale efficiente, 
+posso accedere a qualunque posizione del file nello stesso tempo, 
+seguendo gli indici della tabella. Ha un accesso dinamico
+senza necessità di frammentazione esterna, posso prendere 
+qualunque blocco libero e farlo puntare dalla tabella dei 
+blocchi, il costo è maggiore rispetto all'allocazione 
+a lista, perché qui servirà un blocco per ogni file.
+
+Esempio di indirizzamento:
+\begin{lstlisting}[language=C]
+    X = indirizzo logico
+    N = dimensione del blocco
+    /* ottengo la riga della tabella dove
+    andare a leggere */
+    X / N = offset della index table
+    X % N = offset all'interno del blocco dati
+\end{lstlisting}
+
+La dimensione del blocco limiterà la dimensione del file.
+Per superare queste dimensione si applicano:
+\begin{itemize}
+    \item indici multilivello;
+    \item schema concatenato;
+    \item schema combinato.
+\end{itemize}
+
+\paragraph{Indici multilivello} simile alle tabelle delle 
+pagine a più livello, ogni riga di un indice base di primo 
+livello punterà a una tabella di indici di secondo livello
+che potrà a sua volta puntare ad altre tabelle di indici oppure 
+direttamente ai blocchi con i dati desiderati.
+
+Esempio:
+\begin{itemize}
+    \item Tabella più esterna contiene puntatori
+    alle index table
+    \begin{itemize}
+        \item X = indirizzo logico  
+        \item N = dimensione del blocco(in parole)
+        \begin{itemize}
+            \item X / (N * N) = blocco della index table 1° livello
+            \item X \% (N * N) = R
+        \end{itemize}
+        \item R usato come segue
+        \begin{itemize}
+            \item R / N = offset nel blocco della index table 
+            di 2° livello
+            \item R \% N = offset nel blocco dati
+        \end{itemize}
+    \end{itemize}
+    \item Es.: blocchi da 4KB consentono 1K indici da 4B 
+        -> due livelli di indici consentono file da 4GB
+\end{itemize}
+
+\paragraph{Schema concatenato} si prende un primo blocco 
+indice e si usano tutti i puntatori per indirizzare il 
+file, l'ultimo se serve ancora spazio punterà a un altro 
+blocco indice, in cui tutti i puntatori verranno usati 
+alla stessa maniera. La lista di blocchi indice sarà lunga 
+quanto sarà necessario per indirizzare il file.
+
+L'indirizzamento sarà:
+\begin{itemize}
+    \item X = indirizzo logico
+    \item N = dimensione del blocco (in parole)
+    \begin{itemize}
+        \item X / (N(N - 1)) = numero del blocco indice 
+        all'interno della lista dei blocchi indice
+        \item X \% (N(N - 1)) = R 
+    \end{itemize}
+    \item R usato come segue
+    \begin{itemize}
+        \item R / N = offset nel blocco indice
+        \item R \% N = offset nel blocco dati
+    \end{itemize}
+\end{itemize}
+
+Esempio:
+\begin{itemize}
+    \item N = 1KB = 256 parole
+    \begin{itemize}
+        \item 4 B per parola
+    \end{itemize}
+    \item Max file = 256 blocchi da 1KB = 256KB
+    \begin{itemize}
+        \item X = 12200
+        \begin{itemize}
+            \item X / N = 12200 / 256 = 47(blocco 47)
+            \item X \% N = 168(parola 168 in blocco 47)
+        \end{itemize}
+        \item X = 644000 non basta un primo livello
+        \begin{itemize}
+            \item X / (N(N - 1)) = 9(blocco lista)
+            \item X \% (N(N - 1)) = R = 56480
+            \item R / N = 220(offset nel blocco indice)
+            \item R \% N = 160(offset nel blocco dati)
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{Implementazione delle directory}
+
+Viene utilizzato lo stesso meccanismo usato per memorizzare 
+i file, da ricordare che le directory non contengono dati, 
+ma avranno degli inode. Nelle directory principalmente 
+si eseguono delle ricerche dei file, per ottimizzare 
+le ricerche al loro interno ci sono delle tabelle hash
+
+\section{Gestione dello spazio libero}
+
+Struttura dati necessaria per tenere traccia dei 
+blocchi che si possono usare per creare un nuovo file 
+o per estenderne uno esistente. Quando un file viene 
+eliminato la struttura verrà aggiornata con i blocchi 
+disponibili. Esistono 4 forme/modalità di utilizzo differenti:
+\begin{itemize}
+    \item vettore di bit;
+    \item lista concatenata;
+    \item raggruppamento;
+    \item conteggio.
+\end{itemize}
+
+\subsection{Vettore di bit} 
+
+Consiste di un vettore composto da tanti elementi quanti 
+sono i blocchi del sistema di memorizzazione di massa, 
+all'interno ci sarà un 1 (blocco disponibile) o uno 0 
+(blocco occupato). Quando si avrà bisogno di cercare un
+blocco per un nuovo file si scorrerà il vettore alla 
+ricerca di un elemento con all'interno un 1, sapendo 
+eventualmente quanti blocchi servono per tempo si potranno
+cercare aree con quel numero di blocchi liberi contigui 
+per velocizzare i tempi di accesso.
+
+Un contro di questo meccanismo è che richiede spazio extra 
+per tenere traccia di questo vettore, che occuperà spazio 
+sia su disco che in memoria. 
+
+\subsection{Lista concatenata}
+
+Spreca poco spazio, perché non è necessario avere 
+un vettore di bit, è solamente necessario avere un 
+puntatore a una lista, che punterà al primo, a sua volta 
+al secondo, etc. 
+
+Lo svantaggio è che non si può tenere spazio contiguo 
+facilmente. 
+
+\subsection{Raggruppamento}
+
+Una possibile miglioria è l'uso di una lista con un 
+raggruppamento, il primo blocco libero non punta 
+al successivo, ma a una lista di blocchi liberi, una sorta 
+di lista indicizzata, rendendo facile recuperare gruppi 
+di blocchi liberi.
+
+\subsection{Conteggio}
+
+All'interno di un blocco disponibile si andrà a scrivere 
+quanti blocchi contigui sono disponibili dopo di esso, 
+il puntatore in questo caso punterà al blocco libero
+successivo non contiguo.
+
+\section{Efficienza e prestazioni}
+
+Il disco fisso è il collo di bottiglia rispetto al resto, 
+esiste la possibilità di migliorare le prestazioni.
+\begin{itemize}
+    \item ram disk;
+    \item buffer cache.
+\end{itemize}
+Il disco ha un controllore che contiene un buffer per una 
+traccia, una alla volta viene trasferita tramite il controllore 
+alla memoria principale. In memoria si potrà creare un'ulteriore 
+area di cache, in cui memorizzare le tracce a cui si è fatto 
+accesso più recentemente. I programmi così se dovranno 
+riutilizzare tracce già visitate, le troveranno disponibili
+all'interno di questa cache. 
+
+Un'altra possibilità è di creare un disco virtuale, localizzato 
+in RAM, per velocizzare l'accesso.
+
+\subsection{Dischi virtuali}
+
+Una parte della RAM verrà utilizzata per memorizzare file,
+dal punto di vista dei processi, le stesse primitive usate 
+per leggere su disco fisso andranno bene pure sul disco
+virtuale. \textbf{N.B.}: non è una cache, viene gestita 
+dall'utente.
+
+Questa funzione ovviamente va bene per i file temporanei.
+
+\subsection{Buffer cache}
+
+In memoria RAM, ma usata come cache e controllata dal 
+SO, memorizzerà i blocchi visitati più frequentemente 
+in modo di evitare accessi al disco, funziona grazie al 
+principio della località temporale.
+
+\subsection{File system log structured}
+
+Quando viene richiesto di scrivere su un file, con questo 
+file system la scrittura non avverrà sui blocchi 
+fisici associati ai file, ma su dei blocchi di un file di 
+log in cui il sistema scrive tutto ciò che avviene. 
+In questo modo si evita lo spreco di tempo della testina 
+sul disco, scrivendo tutto sequenzialmente su questo blocco 
+di log. Infine quando il disco sarà inutilizzato, avverrà 
+la scrittura effettiva sui blocchi associati. Questa 
+funzione è resistente ai crash, siccome il file rimarrà
+salvato.  
+
+
+
+
+
+    
+    
+
+
+
+
+
 
 
 
