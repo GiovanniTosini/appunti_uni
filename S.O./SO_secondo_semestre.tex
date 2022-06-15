@@ -129,7 +129,7 @@ Stato SAFE o UNSAFE? Si va in ordine per processo:
     \item p1 ne chiede 4, ne ha già 2, 3 sono libere, di conseguenza se andasse prima lui ne avremmo 5 libere dopo
 \end{itemize}
 Quindi saremmo in uno stato SAFE.\\
-N.B.: lo scheduler in tutto ciò non ha rilevanza, lui si limita scegliere quali processi mettere nella CPU.
+N.B.: lo scheduler in tutto ciò non ha rilevanza, lui si limita a scegliere quali processi mettere nella CPU.
 
 Lo svantaggio della
 previsione dinamica è l'uso delle risorse minore, perché ci possono esserne alcune che non vengono sfruttate.
@@ -205,13 +205,13 @@ Usando l'algoritmo si passa man mano ogni singolo processo e si verifica se nell
  \end{itemize}
  In entrambi i casi sarebbe un grosso danno, perché i processi hanno lavorato fino a quel momento  
  per niente.
- Per la prima, invece di uccidere tutti i processi si può scegliere di ucciderne uno alla volta in base a 
+ Per la prima, invece di uccidere tutti i processi si può scegliere di ucciderne uno alla volta in base  
  alle risorse allocate, a quante ne mancano, a quanto tempo mancava, etc e verificare dopo se il Deadlock 
  è tuttora presente o meno.
- La seconda possibilità invece porta il problema che prelazione un singolo processo equivale quasi a ucciderlo 
+ La seconda possibilità invece porta il problema che prelazionare un singolo processo equivale quasi a ucciderlo 
  visto che non può continuare normalmente come prima, una possibile soluzione è il \textbf{rollback} che comporta
  un lavoro in precedenza eseguito dalla CPU per salvare uno stato in cui il processo non era bloccato.
- Successivamente quest potrebbe causare un fenomeno di starvation se si andrà a fare \textbf{rollback} dei soliti
+ Successivamente questo potrebbe causare un fenomeno di starvation se si andrà a fare \textbf{rollback} dei soliti
  processi, in quel caso una possibile soluzione potrebbe essere quella di considerare il numero di \textbf{rollback}
  nei fattori di costo.
 

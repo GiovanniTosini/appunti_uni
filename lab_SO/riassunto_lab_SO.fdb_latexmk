@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1654851036 "/home/poppo/Università/appunti_miei/appunti_uni/lab_SO/riassunto_lab_SO.tex" "riassunto_lab_SO.pdf" "riassunto_lab_SO" 1654851038
-  "/home/poppo/Università/appunti_miei/appunti_uni/lab_SO/riassunto_lab_SO.tex" 1654851035 80435 466b92b7efece9fc6ae5cac838b1c6fe ""
+["pdflatex"] 1655290184 "/home/poppo/Università/appunti_miei/appunti_uni/lab_SO/riassunto_lab_SO.tex" "riassunto_lab_SO.pdf" "riassunto_lab_SO" 1655290186
+  "/home/poppo/Università/appunti_miei/appunti_uni/lab_SO/riassunto_lab_SO.tex" 1655290178 80423 676cf592d0731ff12693aa2c9773fab9 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -108,10 +108,10 @@
   "flag_open.png" 1651848693 56930 0a766bbd3754b652861f1b3e3e5b64a7 ""
   "lseek.png" 1651852328 33193 38dd85ed9eee6fe90162531a8bb17cd4 ""
   "mode_open.png" 1651848949 104818 fcc2e909bb52205c922efbaa4b21b46a ""
-  "riassunto_lab_SO.aux" 1654851038 11300 540a7275fe46b1309346c387b596ae28 "pdflatex"
-  "riassunto_lab_SO.out" 1654851038 9154 ce4702211f2d57d9deef4ddb2a587e35 "pdflatex"
-  "riassunto_lab_SO.tex" 1654851035 80435 466b92b7efece9fc6ae5cac838b1c6fe ""
-  "riassunto_lab_SO.toc" 1654851038 6595 bb1cbbac6ab182ce434b1c03a30a1a22 "pdflatex"
+  "riassunto_lab_SO.aux" 1655290186 11300 540a7275fe46b1309346c387b596ae28 "pdflatex"
+  "riassunto_lab_SO.out" 1655290186 9154 ce4702211f2d57d9deef4ddb2a587e35 "pdflatex"
+  "riassunto_lab_SO.tex" 1655290178 80423 676cf592d0731ff12693aa2c9773fab9 ""
+  "riassunto_lab_SO.toc" 1655290186 6595 bb1cbbac6ab182ce434b1c03a30a1a22 "pdflatex"
   "st_mode.png" 1651853810 17540 40c261fba6cc6af261954dfb7c4844dc ""
   (generated)
   "riassunto_lab_SO.aux"
