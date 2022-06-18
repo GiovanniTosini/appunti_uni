@@ -776,6 +776,11 @@ INPUT ./dir_gen.png
 INPUT dir_gen.png
 INPUT ./dir_gen.png
 INPUT ./dir_gen.png
+INPUT ./file_system.png
+INPUT ./file_system.png
+INPUT file_system.png
+INPUT ./file_system.png
+INPUT ./file_system.png
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty

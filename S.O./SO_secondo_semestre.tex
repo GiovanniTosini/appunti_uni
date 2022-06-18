@@ -33,10 +33,10 @@ Si tratta di una struttura simile ai semafori, implementa di default la mutua es
     \item costruttore
 \end{itemize}
 
-Quando un processo usa una entry del Monitor, gli altri non possono accedervi. Al suo interno posso dichiarare variabili di tipo CONDITION, non hanno valore, vengo usate esclusivamente con i metodi WAIT e SIGNAL.
+Quando un processo usa una entry del Monitor, gli altri non possono accedervi. Al suo interno posso dichiarare variabili di tipo \verb|condition|, non hanno valore, vengo usate esclusivamente con i metodi \verb|wait| e \verb|signal|.
 
 \begin{verbatim}
-    CONDITION x
+    condition x
     x.wait -> blocca il processo, non avvengono incrementi
               o decrementi come con i semafori
     x.signal -> se fatto quando non ci sono processi in
@@ -47,10 +47,10 @@ Quando un processo usa una entry del Monitor, gli altri non possono accedervi. A
     \includegraphics[width=0.5\textwidth]{ovetto.png}
 \end{center}
 
-Il comando SIGNAL può rompere la mutua esclusione, perché un eventuale processo fermo potrebbe ripartire e in quel caso entrambi sarebbe all'interno della sezione critica, per evitare ciò il processo che la chiama:
+Il comando \verb|signal| può rompere la mutua esclusione, perché un eventuale processo fermo potrebbe ripartire e in quel caso entrambi sarebbe all'interno della sezione critica, per evitare ciò il processo che la chiama:
 \begin{itemize}
     \item viene bloccato
-    \item oppure SIGNAL deve essere l'ultima istruzione prima di uscire dal Monitor
+    \item oppure \verb|signal| deve essere l'ultima istruzione prima di uscire dal Monitor
 \end{itemize}
 
 Quale metodo usare? Dipende dal Monitor.
@@ -255,9 +255,9 @@ La variabile X viene presa dal \textbf{compilatore} e trasformata da indirizzo \
 creato un modulo oggetto, in cui alla variabile viene assegnato un indirizzo di memoria, X non sarà più X, sarà l'area di memoria
 all'indirizzo 100. Il \textbf{linker} collegherà l'indirizzo 100 con gli indirizzi delle eventuali librerie incluse nel programma,
 ciò causerà la creazione di un modulo ricaribile in memoria. La X dall'indirizzo 100 sarà spostata all'indirizzo 1100 per fare spazio
-alle eventuali librerie. Il modulo caricabile è quello che effettivamente verrà caricato in memoria dal \textbf{loader}. Il SO
+alle eventuali librerie. Il modulo caricabile è quello che effettivamente verrà caricato in memoria dal \textbf{loader}. Il S.O.
 assegnerà uno spazio all'interno della memoria tenendo conto dello spazio effettivamente occupato al momento. Eventualmente se
-l'indirizzo 1100 fosse occupato, il SO potrà spostarlo a un altro indirizzo libero, fatto questo il processo verrà eseguito.
+l'indirizzo 1100 fosse occupato, il S.O. potrà spostarlo a un altro indirizzo libero, fatto questo il processo verrà eseguito.
 Se si troverà un'istruzione 
 \begin{center}
     \begin{verbatim}
@@ -266,7 +266,9 @@ Se si troverà un'istruzione
 \end{center}
 vedendo che l'operando da prelevare è X, verrà ripescato dall'indirizzo di memoria, tale azione che collega indirizzi 
 \textbf{simbolici} a indirizzi \textbf{fisici} viene denominata \textbf{binding degli indirizzi}.
-\section{Tempi di compilazione}
+
+\section{Binding degli indirizzi}
+
 \begin{description}
     \item[compile-time:] avviene a tempo di compilazione,in quel caso ci sarà solo il 
     \textbf{compilatore} che non può sapere se l'indirizzo che assegna al programma sia occupato o meno, di conseguenza 
@@ -287,7 +289,7 @@ Può essere diverso indipendentemente dal tipo di \textbf{binding}.
     \item[statico:] tradizionale, prima di mandare in esecuzione il processo, si è creato un'immagine di memoria con 
     tutte le librerie incluse.
     \item[dinamico:]il sistema viene preparato per accogliere un'immagine del codice e delle librerie, ma il linking vero e
-    e proprio avverrà solo al momento dell'esecuzione, l'eseguibile sarà più piccolo perché non conterrà le librerie, ma solo 
+     proprio avverrà solo al momento dell'esecuzione, l'eseguibile sarà più piccolo perché non conterrà le librerie, ma solo 
     il loro riferimento.  
 \end{description}
 
@@ -325,12 +327,12 @@ diventa decisamente più utile.
 
 \section{Spazio di indirizzamento logico}
 
-Consiste nello spazio visto dalla CPU quando esegue un processo, mappato su uno spazio di indirizzamento fisico in RAM. Il SO 
+Consiste nello spazio visto dalla CPU quando esegue un processo, mappato su uno spazio di indirizzamento fisico in RAM. Il S.O. 
 deve mappare indirizzi logici o virtuali su indirizzi fisici reali, quando si fa \textbf{binding} a \textbf{compile-time} o
 \textbf{load-time} l'indirizzo logico e fisico coincidono. Invece con un \textbf{binding} a \textbf{run-time} l'indirrizzo
 logico generato dalla CPU potrebbe non coincidere con quello fisico presente in RAM, tutto ciò viene sempre gestito dal
-SO. Una gestione dinamica come questa ha un costo, ovvero il tempo che ci mette la MMU (Memory Management Unit) che tiene 
-conto del riferimento tra indirizzo logico a quello fisico a tradurre la richiesta.
+S.O.. Una gestione dinamica come questa ha un costo, ovvero il tempo che ci mette la MMU (Memory Management Unit) che tiene 
+conto del riferimento tra indirizzo logico e quello fisico a tradurre la richiesta.
 
 La MMU può essere composta da un registro e un sommatore che somma gli indirizzi logici con un offset, potrebbe essere problematico
 con processi che dovrebbero essere divisi all'interno dello spazio di memoria.
@@ -352,7 +354,7 @@ La memoria è divisa a blocchi, ciascun blocco con una determinata
     \begin{itemize}
         \item un'unica coda di attesa, con i processi in fila e come si libera uno spazio il processo in testa verificherà
         se riesce a entrarci o meno
-        \item tante code, una per partizione, il SO fa un preselezione del processo che verrà messo nella coda più adatta a lui
+        \item tante code, una per partizione, il S.O. fa un preselezione del processo che verrà messo nella coda più adatta a lui
     \end{itemize}
 
     Entrambe hanno vantaggi e svantaggi, una coda per partizione causerà la possibilità di avere delle code vuote e altre piene, 
@@ -381,14 +383,14 @@ Lo schema della MMU con un allocazione contigua a partizioni fisse è il seguent
 Pro e contro:
 
 \begin{description}
-    \item[Pro:] semplicità, il SO deve solo tenere traccia di una tabella in cui si definisce in quale partizione andrà il processo
+    \item[Pro:] semplicità, il S.O. deve solo tenere traccia di una tabella in cui si definisce in quale partizione andrà il processo
     \item[Contro:] il livello di multiprogrammazione è vincolato dal numero di partizioni, inoltre c'è uno spreco di memoria causato
     dalla frammentazione:
     
     \begin{description}
-        \item[Interna:] causata dall'assegnamento di un processo a una partizione che non viene occupata al 100%
-        \item[Esterna:] la somma della parte libera di partizioni parzialmente occupate potrebbe essere grande a sufficienza
-        per un processo che invece sarà costretto ad attendere 
+        \item[Interna:] causata dall'assegnamento di un processo a una partizione che non viene occupata al 100\%;
+        \item[Esterna:] la somma delle parti libere in memoria potrebbe essere grande a sufficienza
+        per un processo che invece sarà costretto ad attendere perché non contigue.
     \end{description}
     la frammentazione riduce l'efficacia nell'uso della memoria, la tecnica con partizioni fisse soffre di entrambe, è più adatta per
     processi delle dimensioni giuste ed esatte alle partizioni che si vogliono occupare, quindi più verso i sistemi embedded.
@@ -416,7 +418,7 @@ immaginare la memoria un blocco fisso, come arriva un
 processo parte il sequente schema:  
 
 \begin{SCfigure}[50][h!]
-    \includegraphics[width=0.5\textwidth]{buddy_system.png}
+    \includegraphics[width=0.8\textwidth]{buddy_system.png}
     \caption{Flowchart Buddy System}
 \end{SCfigure}
 
@@ -430,16 +432,16 @@ Elimina totalmente la frammentazione esterna. La memoria fisica
 viene suddivisa in tante piccole aree della stessa dimensione detti \textbf{frame}.
 Lo spazio di allocazione non deve essere contiguo, al processo 
 che arriva si daranno piccole aree fino a occupare tutte 
-quelle necessarie. Il processo viene diviso,
-quando un processo dovrà essere eseguito in CPU, SO dovrà
+quelle necessarie. Il processo viene diviso
+e quando dovrà essere eseguito in CPU, il S.O. dovrà
 ricomporlo, quindi occorre una mappa delle locazioni.
 
 La CPU è a conoscenza degli indirizzi logici, la memoria
-logica viene divisa in blocchi della stessa dimensione le \textbf{pagine}, il SO 
+logica viene divisa in blocchi della stessa dimensione le \textbf{pagine}, il S.O. 
 trasforma le pagine in frame.
 Entra in aiuto una tabella delle pagine, ovvero una mappa
 della memoria specifica per ogni singolo processo, attraverso
-la quale il SO riesce a tradurre l'indirizzo logico che serve alla 
+la quale il S.O. riesce a tradurre l'indirizzo logico che serve alla 
 CPU in un indirizzo fisico e recuperare di conseguenza le 
 informazioni necessarie.
 
@@ -454,7 +456,7 @@ interna.
 
 \paragraph{Come avviene la ricerca nella tabella delle pagine?}
 L'indirizzo logico richiesto dalla CPU è composto dal numero
-di pagina e da un offset, SO tramite il numero di pagina 
+di pagina e da un offset, il S.O. tramite il numero di pagina 
 andrà alla ricerca nella tabella delle pagine del processo
 in questione, una volta trovato otterrà l'altra metà di 
 indirizzo fisico da sommare all'offset per ottenere 
@@ -510,7 +512,7 @@ Una tabella unica nel sistema e non per processo, indicizzata per frame che cont
     \item informazioni sul processo che usa la pagina
 \end{itemize}
 Il tempo di traduzione degli indirizzi cresce perché non sarà più una ricerca per indice, ma per contenuto. Perché 
-la tabella è indicizzata per frame, mentre la CPU richiederà per pagina, il SO dovrà scorrere la tabella alla ricerca della 
+la tabella è indicizzata per frame, mentre la CPU richiederà per pagina, il S.O. dovrà scorrere la tabella alla ricerca della 
 pagina e solo così otterrà il frame corrispondente che sarà l'indice del contenuto. Questo viene facilitato tramite una struttura 
 a tabella hash, invece di usare una ricerca lineare. Cambia come viene generato l'indirizzo richiesto dalla CPU, sarà diviso in tre parti:
 \begin{itemize}
@@ -547,7 +549,7 @@ Il $+1$ causato dall'accesso al dato.
 Il problema della paginazione è che lo spezzettare a blocchi il processo viene fatto senza rispettare la struttura dati 
 creata dal compilatore, sarebbe più utile avere pagine contenenti blocchi interi utili: una pagina con il main, una per le 
 funzioni, etc\dots Finché la pagina ha una dimensione fissa questo non si può ottenere, la \textbf{segmentazione} è analoga alla 
-paginazione, ma non si vincola più alla dimensione di una pagina fissa. Dal punto di vista di SO, avremo una tabella dei segmenti 
+paginazione, ma non si vincola più alla dimensione di una pagina fissa. Dal punto di vista di S.O., avremo una tabella dei segmenti 
 che verranno tagliati a dimensione variabile. Un segmento di dimensioni variabili torna ad avere la problematica dell'allocazione 
 contigua, ovvero che non può essere messo dovunque, ma in blocchi unici. Nella tabella dei segmenti, ogni entry conterrà oltre 
 che all'indirizzo base del segmento anche la sua dimensione, che precedentemente non era necessaria con le pagine. 
@@ -593,31 +595,33 @@ pagino, segmentandolo prima mantengo l'unità logica che verrà paginata omogene
 
 \section{Paginazione vs Segmentazione}
 
-Vantaggi della paginazione:
 \begin{itemize}
-    \item non esiste frammentazione, a parte una piccola frammentazione interna;
-    \item l'allocazione dei frame non richiede algoritmi specifici;
-\end{itemize} 
-Svantaggi della paginazione:
-\begin{itemize}
-    \item non mantiene l'omogeneità;
-\end{itemize}
-Vantaggi della segmentazione:
-\begin{itemize}
-    \item omogeneità;
-    \item associazione di protezione/condivisione ai segmenti;
-\end{itemize} 
-Svantaggi della segmentazione:
-\begin{itemize}
-    \item richiede degli algoritmi di allocazione dinamica dello spazione, essendo i segmenti variabili;
-    \item reintroduce la problematica della frammentazione esterna;
+    \item Vantaggi della paginazione:
+    \begin{itemize}
+        \item non esiste frammentazione, a parte una piccola frammentazione interna;
+        \item l'allocazione dei frame non richiede algoritmi specifici;
+    \end{itemize}
+    \item Svantaggi della paginazione:
+    \begin{itemize}
+        \item non mantiene l'omogeneità;
+    \end{itemize}
+    \item Vantaggi della segmentazione:
+    \begin{itemize}
+        \item omogeneità;
+        \item associazione di protezione/condivisione ai segmenti;
+    \end{itemize}
+    \item Svantaggi della segmentazione:
+    \begin{itemize}
+        \item richiede degli algoritmi di allocazione dinamica dello spazione, essendo i segmenti variabili;
+        \item reintroduce la problematica della frammentazione esterna;
+    \end{itemize}
 \end{itemize}
 
 Unendole si porteranno dietro i vantaggi di ciascuna limitando gli svantaggi.
 
 \section{Segmentazione paginata}
 
-L'indirizzo logico sarà composto da segmento e offset, il numero di segmento verrà sommato al valore all'interno \textbf{Segment Table Base Register} (indica dove si trova la tabella dei segmenti all'interno della memoria) 
+L'indirizzo logico sarà composto da segmento e offset, il numero di segmento verrà sommato al valore all'interno del \textbf{Segment Table Base Register} (indica dove si trova la tabella dei segmenti all'interno della memoria) 
 per andare a indicizzare la tabella dei segmenti. All'interno della tabella dei segmenti si troverà la lunghezza del segmento e 
 la \textbf{Page Table Base} in cui si troverà l'indirizzo di locazione della tabella delle pagine specifica di quel segmento. 
 L'indirizzo verrà combinato con l'offset, che è composto da due parti, una che indica il numero di pagina e una che indica 
@@ -661,7 +665,7 @@ Questo avviene a ogni \textbf{page fault}.
 
 \subsection{EAT di un Page Fault}
 
-Introduciamo un parametro p (tasso di page fault), che vale in questo intervallo $0 \le p \le 1$, dove 
+Introduciamo un parametro p (tasso di page fault), che in questo intervallo vale $0 \le p \le 1$, dove 
 
 \begin{itemize}
     \item p = 0, nessun page fault;
@@ -723,9 +727,9 @@ aumentare i page fault diversamente da quello che ci si aspetterebbe.
 \begin{figure}[h!]
     \centering
     \subfloat[][\textbf{\emph{Esempio con algoritmo FIFO, causa 15 page fault}}]
-    {\includegraphics[width=0.5\textwidth]{FIFO.png}}\quad
+    {\includegraphics[width=0.8\textwidth]{FIFO.png}}\quad
     \subfloat[][\textbf{\emph{Anomalia di Belady, all'aumentare dei frame aumentano i page fault}}]
-    {\includegraphics[width=0.5\textwidth]{belady.png}}
+    {\includegraphics[width=0.8\textwidth]{belady.png}}
 \end{figure}
 
 \subsection{Algoritmo Ideale}
@@ -734,7 +738,7 @@ L'\textbf{algoritmo ideale}, dovrebbe essere in grado di scegliere la pagina che
  non avrò page fault.
 
 \begin{SCfigure}[50][h!]
-    \includegraphics[width=0.5\textwidth]{ideale.png}
+    \includegraphics[width=0.8\textwidth]{ideale.png}
     \caption{Esempio di algoritmo ideale}
 \end{SCfigure}
 
@@ -744,7 +748,7 @@ L'algoritmo \textbf{Least Recently Used}, approssima un possibile algoritmo idea
 che non viene utilizzata da più tempo.
 
 \begin{SCfigure}[50][h!]
-    \includegraphics[width=0.5\textwidth]{LRU.png}
+    \includegraphics[width=0.8\textwidth]{LRU.png}
     \caption{Esempio di algoritmo LRU, uso dell'asterisco per indicare la pagina meno utilizzata da più tempo}
 \end{SCfigure}
 
@@ -764,8 +768,8 @@ da mettere in cima.
     \includegraphics[width=0.7\textwidth]{LRU_approx.png}
 \end{center}
 
-Un'altra approssimazione potrebbe basarsi sui i bit di reference, alla pagina se ne assocerebbero di meno, con un limite inferiore 
-uguale a 1, mentre il massimo il numero di bit necessari a memorizzare il time stamp. Si userà per individuare le pagina da eliminare
+Un'altra approssimazione potrebbe basarsi su i bit di reference, alla pagina se ne assocerebbero di meno, con un limite inferiore 
+uguale a 1, mentre il massimo numero di bit necessari a memorizzare il time stamp si userà per individuare le pagina da eliminare
 in caso di necessità, quindi varrà 0 o 1, se 0 verrà eliminata.
 
 Un'ulteriore approssimazione è tramite l'algoritmo dell'\textbf{orologio} o algoritmo \textbf{secondo chance}. Al posto delle ore 
@@ -805,7 +809,7 @@ Si divide in due ulteriori categorie:
     \item[In parti uguali:] i frame vengono assegnati in maniera equa a ogni processo, anche se un processo ne avrebbe bisogno di un numero maggiore;
     \item[Proporzionale:] in base alla grandezza in frame dei processi richiedenti i frame disponibili vengono assegnati in maniera proporzionale;  
 \end{description}
-Un contro della proporzionale è che un processo che richiede molti frame in realtà poi all'interno a righe di codice che gli portano 
+Un contro della proporzionale è che un processo che richiede molti frame in realtà poi all'interno ha righe di codice che gli portano 
 a dover usare molti frame in meno rispetto a quella che sembrava inizialmente. 
 
 \section{Allocazione variabile}
@@ -821,7 +825,7 @@ Una soluzione migliore, allocare a runtime è decisamente meglio, ma è molto di
 Segue il principio di località, i frame verranno assegnati in base alla località. Come lo misuro? 
 
 \begin{center}
-    \includegraphics[width=0.5\textwidth]{working_set.png}
+    \includegraphics[width=0.8\textwidth]{working_set.png}
 \end{center}
 Periodicamento, al tempo $t_1$, $t_2$, etc..., si andrà a guardare a quante pagine ci si è riferiti negli istanti di tempo ovvero 
 $\Delta$, all'istante $t_1$ il working set è di 5 pagine, ma all'istante successivo come si può vedere calerà a 2 pagine. In base a ciò
@@ -829,7 +833,7 @@ vengono assegnati i frame. Sarà fondamentale scegliere il parametro $\Delta$, t
 grande potrebbe essere a cavallo di due località. 
 
 Cosa succede se la somma dei working set richiede un numero di frame maggiori di quelli a disposizione? Si verifica il fenomeno del 
-\textbf{thrashing}, il SO si accorge che l'uso della CPU è sceso e ci sono molti processi in coda per fare accesso al disco e fare 
+\textbf{thrashing}, il S.O. si accorge che l'uso della CPU è sceso e ci sono molti processi in coda per fare accesso al disco e fare 
 swap in e swap out. Una cattiva gestione porterebbe a fare entrare pronti altri processi, che avrebbero necessità
 di memoria e di conseguenza tale memoria verrebbe rimossa a quelli già presenti, i quali vedranno i pochi frame a loro disposizione 
 calare ulteriormente e di conseguenza richiederebbero ulteriori swap in e swap out e ciclicamente nuovi processi che entrano e 
@@ -838,11 +842,11 @@ ulteriori frame rimossi fino a un blocco totale.
 \subsection{Page Fault Frequency}
 
 \begin{center}
-    \includegraphics[width=0.5\textwidth]{pff.png}
+    \includegraphics[width=0.8\textwidth]{pff.png}
 \end{center}
 
 L'obiettivo è di mantenere tutti i processi nella fascia 
-intermedia tra upper bound e lower bound, il SO 
+intermedia tra upper bound e lower bound, il S.O. 
 farà scelte per fare in modo che se ci sono processi 
 sotto la soglia lower bound, gli toglierà dei frame perché 
 il numero di page fault è molto basso, quindi potrà assegnare 
@@ -859,12 +863,12 @@ parametri:
     \item \textbf{Latency Time}, tempo di attesa che il disco sottostante porti il settore di interesse sotto la testina, il disco ruota continuamente;
     \item \textbf{Transfer Time}, tempo necessario per spostare i dati da disco a controllore o viceversa.
 \end{itemize}
-Essendo il Seek Time il momento che fa perdere pià tempo in 
+Essendo il Seek Time il momento che fa perdere più tempo in 
 assoluto, conviene muoversi a cilindri lungo i dischi, così 
 da non dover spostare la testina, ma bisogna anche considerare 
 che non si riesce a memorizzare un file tutto contiguo.
 Inolte poichè il disco è uno, ma i processi che leggono e scrivono
-sono tanti, il SO riceverà molte richieste di lettura 
+sono tanti, il S.O. riceverà molte richieste di lettura 
 e scrittura su zone diverse del disco.
 
 Queste problematiche svaniscono tramite l'uso di dispositivi
@@ -882,11 +886,11 @@ coda di richieste con indirizzi e blocchi che indicano dove
 devono essere fatti e annessa quantità di dati da leggere 
 o scrivere. 
 
-Il SO ragiona in termini di costi ed efficacia per decidere
+Il S.O. ragiona in termini di costi ed efficacia per decidere
 riguardo gli accessi. Esempio:
 \begin{itemize}
     \item disco con 200 intervalli di valori ammissibili [0, 199];
-    \item la testina di lettura e scrittua si trova sulla testina 53;
+    \item la testina di lettura e scrittua si trova sulla traccia 53;
     \item le richieste di accesso sono per i valori: 98, 183, 37, 122, 14, 124, 65 e 67;
 \end{itemize}
 Applicando il meccanismo \textbf{FIFO}, la testina si sposterà a 
@@ -908,7 +912,7 @@ ma non il migliore.
 Se l'elenco di richieste accesso in lettura e scrittura fosse 
 stabile, andrebbe bene, ma durante l'accesso al primo blocco
 molto probabilmente arriverebbero altre richieste di accesso, 
-quindi la coda di richieste è in continup aggiornamento.
+quindi la coda di richieste è in continuo aggiornamento.
 
 Una possibile alternativa a questa è l'implementazione 
 dell'algoritmo dell'ascensore o \textbf{SCAN}. Si sposta 
@@ -946,7 +950,7 @@ SCAN, mentre un con valore uguale a 1 si tornerebbe all'
 algoritmo FIFO. Con un valore intermedio le cose verrebbero 
 gestite decisamente meglio.
 
-La variante più semplicemte e \textbf{FSCAN} (Fast SCAN)
+La variante più semplice è \textbf{FSCAN} (Fast SCAN)
 che ha solo due code, si riempie una prima coda e nel 
 mentre che viene servita si riempie la seconda, alternandosi 
 tra le due.
@@ -963,7 +967,7 @@ varia.
 
 \section{Formattazione dei dischi}
 
-Un disco per essere utilizzare deve essere formattato, 
+Un disco per essere utilizzato deve essere formattato, 
 esistono due tipi di formattazione:
 \begin{itemize}
     \item basso livello o fisica;
@@ -971,10 +975,10 @@ esistono due tipi di formattazione:
 \end{itemize}
 La prima permette di partizionarlo e prepararlo a ricevere 
 i dati e iniziare a essere utilizzato. La seconda prepara 
-le strutture dati che verranno usate dal SO per gestire 
+le strutture dati che verranno usate dal S.O. per gestire 
 il disco. Inoltre la formattazione logica va a inserire il 
 programma di Bootstrap per caricare i driver dei dispositivi 
-e lanciare il SO.
+e lanciare il S.O..
 \begin{figure}[h!]
     \centering
     \subfloat[][\textbf{\emph{Disco nudo, preformattazione fisica e logica}}]
@@ -1005,7 +1009,7 @@ Esistono dei meccanismi di gestione degli errori online,
 un blocco che non funziona lo rimappo in un blocco di scorta.
 Il dato non verrà recuperato, però evita di riutilizzare 
 il blocco difettoso. I processi continueranno a chiedere 
-accessi al blocco difettoso e il SO saprà che dovrà rigirare
+accessi al blocco difettoso e il S.O. saprà che dovrà rigirare
 tutto al blocco rimappato. Lo svantaggio è che andrà a inficiare 
 i meccanismi di scheduling visti sopra, loro saranno convinti 
 di andare al blocco con un certo numero, che essendo 
@@ -1025,7 +1029,7 @@ Così avremo un sistema meno efficiente perché si avrà a
 che fare con struttre dati inutili per quello che viene 
 salvato lì, ma risparmio il dover definire delle 
 system call apposite. Viceversa con una partizione 
-separata occorerranno le system call ad hoc, ma le 
+separata occorreranno le system call ad hoc, ma le 
 prestazioni aumenteranno notevolmente.
 
 \chapter{File System}
@@ -1049,7 +1053,7 @@ struttura omogenea rispetto all'utilizzo che se ne farà.
 \paragraph{Cosa contiene un file?} Oltre ai dati 
 che si vogliono memorizzare contiene una parte di attributi,
 una sorta di Process Control Block. Gi attributi non sono 
-memorizzati dentro al file stesso, ma vengono memorizzate 
+memorizzati dentro al file stesso, ma vengono memorizzati 
 all'interno della cartella. Tali attributi sono:
 \begin{itemize}
     \item il nome;
@@ -1069,7 +1073,7 @@ all'interno della cartella.
 \subsection{Operazioni su file}
 
 \begin{description}
-    \item[Creazione]: il SO deve mettere a disposizione delle 
+    \item[Creazione]: il S.O. deve mettere a disposizione delle 
     system call per creare file, che vanno a cercare dello 
     spazio a disposizione per contenere il file.
     \item[Scrittura e lettura]: necessità di sapere la 
@@ -1086,7 +1090,7 @@ all'interno della cartella.
     \item[Apertura]: impone la ricerca del file all'interno
     della struttura della cartella su disco, la copia in memoria 
     del contenuto e la creazione di due tabelle all'interno 
-    delle strutture dati del SO. Una per ogni file aperto 
+    delle strutture dati del S.O.. Una per ogni file aperto 
     e una che lega il file al processo che l'ha aperto.
     Finchè il file è in uso, una sua copia viene 
     caricato in RAM, così da velocizzare lettura e scrittura, 
@@ -1235,7 +1239,7 @@ visibile pure tramite l'altro link.
 
 Con questa struttura ci sono possono essere dei cicli, 
 ciò potrà causare dei problemi eventualmente con la 
-ricerca. In tal caso bisognerà usare degl algoritmi di controllo 
+ricerca. In tal caso bisognerà usare degli algoritmi di controllo 
 dei cicli per verificare se nel link creato sia nato un 
 ciclo o meno.
 \begin{center}
@@ -1287,13 +1291,15 @@ di poterla attraversare tramite il comando \verb|cd|.
 
 \section{Implementazione del file system}
 
+\foto{file_system.png}
+
 Il file system è strutturato in un insieme di livelli che 
 implementano una serie di funzionalità sfruttando quello che 
 viene offerto dal livello inferiore per offrirne al livello superiore (strutturazione modulare).
 Nella parte più bassa ci sono i dispositivi di memorizzazione 
 di massa, controllati dai device driver, ovvero software 
-creati per permettere al SO di riconoscere le funzionalità 
-delle periferiche. Esistono devide driver generici, ovvero 
+creati per permettere al S.O. di riconoscere le funzionalità 
+delle periferiche. Esistono device driver generici, ovvero 
 compatibili con la tipologia di device driver e permettono 
 di avere un meccanismo plug 'n play.
 
@@ -1306,11 +1312,11 @@ periferica verso la memoria.
 
 A livello di \textbf{I/O Control} c'è il disk scheduling 
 e gestione di lettura/scrittura fisica dei blocchi, queste 
-azione vengono effettuate a fronte di comandi implementati 
+azioni vengono effettuate a fronte di comandi implementati 
 a livello di \textbf{basic file system}, comandi indipendenti dal device 
-driver o periferica specifica, astraggono l'idea di scrivere/leggere 
-blocchi di dati. Al suo interno si troverano primitive che 
-ci permetteranno di scrivere/leggere un blocco. Questi comandi 
+driver o periferica specifica, astraggono l'idea di scrivere o leggere 
+blocchi di dati. Al suo interno si troveranno primitive che 
+ci permetteranno di scrivere o leggere un blocco. Questi comandi 
 arrivano dal \textbf{file-organization module}, dove non si 
 parla più di blocchi, ma l'entità minima è il file. In questa zona 
 si troveranno operazioni che permettono di tradurre dove si trova 
@@ -1329,7 +1335,7 @@ l'accesso e renderlo più rapido.
 
 All'interno del disco si troveranno aree dedicate a:
 \begin{itemize}
-    \item gestire il blocco di boot, ovvero gestire le info 
+    \item gestire il blocco di boot, ovvero gestire le informazioni 
     di avvio del sistema, quando si avvia la macchina, questa 
     andrà a verificare una spefica area su disco, l'area di boot,
     fondamentale per l'avvio;
@@ -1352,7 +1358,7 @@ All'interno del disco si troveranno aree dedicate a:
     \item tabella globale dei file aperti, contiene la copia 
     del descrittore del file dei file aperti;
     \item tabella dei file aperti per ogni processo, contiene in particolare 
-    informazioni riguardo la copia file aperto-processo; 
+    informazioni riguardo la coppia file aperto-processo; 
 \end{itemize}
 
 \subsection{Allocazione dello spazio su disco}
@@ -1370,7 +1376,7 @@ alternative sono:
 
 \subsubsection{Allocazione contigua}
 
-Simile a quella in memoria.
+Simile a quella in memoria:
 \begin{itemize}
     \item \textbf{Vantaggi}:
     \begin{itemize}
@@ -1673,7 +1679,7 @@ Questa funzione ovviamente va bene per i file temporanei.
 \subsection{Buffer cache}
 
 In memoria RAM, ma usata come cache e controllata dal 
-SO, memorizzerà i blocchi visitati più frequentemente 
+S.O., memorizzerà i blocchi visitati più frequentemente 
 in modo di evitare accessi al disco, funziona grazie al 
 principio della località temporale.
 

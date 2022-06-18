@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  13 JUN 2022 11:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021) (preloaded format=pdflatex 2022.1.30)  18 JUN 2022 13:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -348,7 +348,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [4]
 Capitolo 1.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 38.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 36.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
@@ -436,15 +436,30 @@ Capitolo 4.
 <mmu_partizioni_fisse.png, id=512, 788.9475pt x 258.9675pt>
 File: mmu_partizioni_fisse.png Graphic file (type png)
 <use mmu_partizioni_fisse.png>
-Package pdftex.def Info: mmu_partizioni_fisse.png  used on input line 378.
+Package pdftex.def Info: mmu_partizioni_fisse.png  used on input line 380.
 (pdftex.def)             Requested size: 390.0pt x 128.01344pt.
  [20 <./mmu_partizioni_fisse.png>]
 <buddy_system.png, id=518, 532.99126pt x 293.095pt>
 File: buddy_system.png Graphic file (type png)
 <use buddy_system.png>
-Package pdftex.def Info: buddy_system.png  used on input line 419.
-(pdftex.def)             Requested size: 195.0pt x 107.23146pt.
- [21 <./buddy_system.png>] [22] [23] [24] [25] [26]
+Package pdftex.def Info: buddy_system.png  used on input line 421.
+(pdftex.def)             Requested size: 312.00119pt x 171.57391pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 423--423
+[][]\T1/cmr/m/n/12 :
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 423--423
+|\T1/cmr/m/n/12 Flo-w-chart
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 423--423
+\T1/cmr/m/n/12 Bud-dy
+ []
+
+[21 <./buddy_system.png>] [22] [23] [24] [25] [26]
 Capitolo 5.
 [27
 
@@ -452,13 +467,13 @@ Capitolo 5.
 <FIFO.png, id=570, 589.20125pt x 172.645pt>
 File: FIFO.png Graphic file (type png)
 <use FIFO.png>
-Package pdftex.def Info: FIFO.png  used on input line 726.
-(pdftex.def)             Requested size: 195.0pt x 57.13898pt.
+Package pdftex.def Info: FIFO.png  used on input line 730.
+(pdftex.def)             Requested size: 312.00119pt x 91.42236pt.
 <belady.png, id=571, 630.355pt x 316.18124pt>
 File: belady.png Graphic file (type png)
 <use belady.png>
-Package pdftex.def Info: belady.png  used on input line 728.
-(pdftex.def)             Requested size: 195.0pt x 97.80771pt.
+Package pdftex.def Info: belady.png  used on input line 732.
+(pdftex.def)             Requested size: 312.00119pt x 156.49812pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -466,21 +481,84 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <ideale.png, id=572, 579.16376pt x 173.64874pt>
 File: ideale.png Graphic file (type png)
 <use ideale.png>
-Package pdftex.def Info: ideale.png  used on input line 737.
-(pdftex.def)             Requested size: 195.0pt x 58.46481pt.
+Package pdftex.def Info: ideale.png  used on input line 741.
+(pdftex.def)             Requested size: 312.00119pt x 93.54634pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 743--743
+[][]\T1/cmr/m/n/12 :
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 743--743
+|\T1/cmr/m/n/12 Esem-pio di
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 743--743
+\T1/cmr/m/n/12 al-go-rit-mo
+ []
+
 [29]
 <LRU.png, id=577, 566.115pt x 146.5475pt>
 File: LRU.png Graphic file (type png)
 <use LRU.png>
-Package pdftex.def Info: LRU.png  used on input line 747.
-(pdftex.def)             Requested size: 195.0pt x 50.47842pt.
- [30 <./FIFO.png> <./belady.png> <./ideale.png> <./LRU.png>]
-<LRU_approx.png, id=594, 255.95625pt x 190.7125pt>
+Package pdftex.def Info: LRU.png  used on input line 751.
+(pdftex.def)             Requested size: 312.00119pt x 80.76906pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 753--753
+[][]\T1/cmr/m/n/12 :
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 753--753
+|\T1/cmr/m/n/12 Esem-pio di
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 753--753
+\T1/cmr/m/n/12 al-go-rit-mo
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 753--753
+\T1/cmr/m/n/12 LRU, uso
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 753--753
+\T1/cmr/m/n/12 del-l'a-ste-ri-sco
+ []
+
+
+Underfull \hbox (badness 2961) in paragraph at lines 753--753
+\T1/cmr/m/n/12 per in-di-ca-re
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 753--753
+\T1/cmr/m/n/12 la pa-gi-na
+ []
+
+
+Underfull \hbox (badness 2512) in paragraph at lines 753--753
+\T1/cmr/m/n/12 me-no uti-liz-
+ []
+
+
+Underfull \hbox (badness 1210) in paragraph at lines 753--753
+\T1/cmr/m/n/12 za-ta da più
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[30 <./FIFO.png> <./belady.png> <./ideale.png>]
+<LRU_approx.png, id=592, 255.95625pt x 190.7125pt>
 File: LRU_approx.png Graphic file (type png)
 <use LRU_approx.png>
-Package pdftex.def Info: LRU_approx.png  used on input line 764.
+Package pdftex.def Info: LRU_approx.png  used on input line 768.
 (pdftex.def)             Requested size: 272.99881pt x 203.42305pt.
- [31 <./LRU_approx.png>] [32]
+ [31 <./LRU.png> <./LRU_approx.png>] [32]
 Capitolo 6.
 [33
 
@@ -488,13 +566,13 @@ Capitolo 6.
 <working_set.png, id=609, 556.0775pt x 149.55875pt>
 File: working_set.png Graphic file (type png)
 <use working_set.png>
-Package pdftex.def Info: working_set.png  used on input line 824.
-(pdftex.def)             Requested size: 195.0pt x 52.44675pt.
+Package pdftex.def Info: working_set.png  used on input line 828.
+(pdftex.def)             Requested size: 312.00119pt x 83.91435pt.
 <pff.png, id=610, 455.7025pt x 234.8775pt>
 File: pff.png Graphic file (type png)
 <use pff.png>
-Package pdftex.def Info: pff.png  used on input line 841.
-(pdftex.def)             Requested size: 195.0pt x 100.50793pt.
+Package pdftex.def Info: pff.png  used on input line 845.
+(pdftex.def)             Requested size: 312.00119pt x 160.81485pt.
  [34 <./working_set.png>] [35 <./pff.png>] [36
 
 ]
@@ -503,39 +581,39 @@ Capitolo 7.
 <zigzag.png, id=630, 356.33125pt x 247.92625pt>
 File: zigzag.png Graphic file (type png)
 <use zigzag.png>
-Package pdftex.def Info: zigzag.png  used on input line 895.
+Package pdftex.def Info: zigzag.png  used on input line 899.
 (pdftex.def)             Requested size: 195.0pt x 135.67513pt.
 <sstf.png, id=631, 463.7325pt x 312.16624pt>
 File: sstf.png Graphic file (type png)
 <use sstf.png>
-Package pdftex.def Info: sstf.png  used on input line 906.
+Package pdftex.def Info: sstf.png  used on input line 910.
 (pdftex.def)             Requested size: 195.0pt x 131.26611pt.
  [38 <./zigzag.png> <./sstf.png>]
 <scan.png, id=638, 393.47pt x 262.9825pt>
 File: scan.png Graphic file (type png)
 <use scan.png>
-Package pdftex.def Info: scan.png  used on input line 918.
+Package pdftex.def Info: scan.png  used on input line 922.
 (pdftex.def)             Requested size: 195.0pt x 130.33122pt.
 <c-scan.png, id=639, 432.61626pt x 304.13625pt>
 File: c-scan.png Graphic file (type png)
 <use c-scan.png>
-Package pdftex.def Info: c-scan.png  used on input line 931.
+Package pdftex.def Info: c-scan.png  used on input line 935.
 (pdftex.def)             Requested size: 195.0pt x 137.08743pt.
  [39 <./scan.png> <./c-scan.png>]
 <nuda.png, id=646, 440.64626pt x 54.2025pt>
 File: nuda.png Graphic file (type png)
 <use nuda.png>
-Package pdftex.def Info: nuda.png  used on input line 981.
+Package pdftex.def Info: nuda.png  used on input line 985.
 (pdftex.def)             Requested size: 195.0pt x 23.98645pt.
 <form_fisica.png, id=647, 430.60875pt x 41.15375pt>
 File: form_fisica.png Graphic file (type png)
 <use form_fisica.png>
-Package pdftex.def Info: form_fisica.png  used on input line 983.
+Package pdftex.def Info: form_fisica.png  used on input line 987.
 (pdftex.def)             Requested size: 195.0pt x 18.63643pt.
 <form_logica.png, id=648, 431.6125pt x 42.1575pt>
 File: form_logica.png Graphic file (type png)
 <use form_logica.png>
-Package pdftex.def Info: form_logica.png  used on input line 985.
+Package pdftex.def Info: form_logica.png  used on input line 989.
 (pdftex.def)             Requested size: 195.0pt x 19.04594pt.
  [40 <./nuda.png> <./form_fisica.png> <./form_logica.png>] [41] [42
 
@@ -545,57 +623,66 @@ Capitolo 8.
 <mono_dir.png, id=685, 515.9275pt x 108.405pt>
 File: mono_dir.png Graphic file (type png)
 <use mono_dir.png>
-Package pdftex.def Info: mono_dir.png  used on input line 1178.
+Package pdftex.def Info: mono_dir.png  used on input line 1182.
 (pdftex.def)             Requested size: 195.0pt x 40.97267pt.
 <bi_dir.png, id=686, 487.8225pt x 160.6pt>
 File: bi_dir.png Graphic file (type png)
 <use bi_dir.png>
-Package pdftex.def Info: bi_dir.png  used on input line 1197.
+Package pdftex.def Info: bi_dir.png  used on input line 1201.
 (pdftex.def)             Requested size: 195.0pt x 64.19719pt.
  [46 <./mono_dir.png>]
 <dir_albero.png, id=694, 386.44376pt x 275.0275pt>
 File: dir_albero.png Graphic file (type png)
 <use dir_albero.png>
-Package pdftex.def Info: dir_albero.png  used on input line 1211.
+Package pdftex.def Info: dir_albero.png  used on input line 1215.
 (pdftex.def)             Requested size: 195.0pt x 138.78078pt.
 <dir_grafo.png, id=695, 332.24126pt x 279.0425pt>
 File: dir_grafo.png Graphic file (type png)
 <use dir_grafo.png>
-Package pdftex.def Info: dir_grafo.png  used on input line 1231.
+Package pdftex.def Info: dir_grafo.png  used on input line 1235.
 (pdftex.def)             Requested size: 195.0pt x 163.77782pt.
  [47 <./bi_dir.png> <./dir_albero.png>]
 <dir_gen.png, id=702, 420.57124pt x 254.9525pt>
 File: dir_gen.png Graphic file (type png)
 <use dir_gen.png>
-Package pdftex.def Info: dir_gen.png  used on input line 1242.
+Package pdftex.def Info: dir_gen.png  used on input line 1246.
 (pdftex.def)             Requested size: 195.0pt x 118.20934pt.
- [48 <./dir_grafo.png> <./dir_gen.png>] [49] [50] [51] (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
+ [48 <./dir_grafo.png> <./dir_gen.png>]
+<file_system.png, id=709, 489.83pt x 477.785pt>
+File: file_system.png Graphic file (type png)
+<use file_system.png>
+Package pdftex.def Info: file_system.png  used on input line 1294.
+(pdftex.def)             Requested size: 195.0pt x 190.19931pt.
+
+Underfull \vbox (badness 3503) has occurred while \output is active []
+
+ [49] [50 <./file_system.png>] [51] (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 ) [52]
-<index_table.png, id=738, 463.7325pt x 424.58624pt>
+<index_table.png, id=740, 463.7325pt x 424.58624pt>
 File: index_table.png Graphic file (type png)
 <use index_table.png>
-Package pdftex.def Info: index_table.png  used on input line 1476.
+Package pdftex.def Info: index_table.png  used on input line 1482.
 (pdftex.def)             Requested size: 195.0pt x 178.5388pt.
- [53 <./index_table.png>] [54] [55] [56] [57] [58] (./SO_secondo_semestre.aux)
+ [53] [54 <./index_table.png>] [55] [56] [57] [58] (./SO_secondo_semestre.aux)
 Package rerunfilecheck Info: File `SO_secondo_semestre.out' has not changed.
-(rerunfilecheck)             Checksum: 684767B40DADA558D2A6AFF2752E99CC;10506.
+(rerunfilecheck)             Checksum: 1FB482983FC98A0B8D84869AA8268EA5;10516.
  ) 
 Here is how much of TeX's memory you used:
- 13630 strings out of 478287
- 216602 string characters out of 5846764
- 693754 words of memory out of 5000000
- 31455 multiletter control sequences out of 15000+600000
+ 13637 strings out of 478287
+ 216738 string characters out of 5846764
+ 694721 words of memory out of 5000000
+ 31461 multiletter control sequences out of 15000+600000
  484923 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,11n,79p,389b,1181s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,11n,79p,438b,1181s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbi1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsl1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on SO_secondo_semestre.pdf (58 pages, 1371281 bytes).
+Output written on SO_secondo_semestre.pdf (58 pages, 1406883 bytes).
 PDF statistics:
- 902 PDF objects out of 1000 (max. 8388607)
+ 904 PDF objects out of 1000 (max. 8388607)
  733 compressed objects within 8 object streams
  175 named destinations out of 1000 (max. 500000)
- 682 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 687 words of extra memory for PDF output out of 10000 (max. 10000000)
 

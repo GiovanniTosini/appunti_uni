@@ -8,7 +8,7 @@
 \contentsline {chapter}{\numberline {3}Gestione della memoria}{15}{chapter.3}%
 \contentsline {paragraph}{Come avviene il passaggio da programma a processo?}{15}{section*.3}%
 \contentsline {paragraph}{Chi compie questa trasformazione?}{16}{section*.4}%
-\contentsline {section}{\numberline {3.1}Tempi di compilazione}{17}{section.3.1}%
+\contentsline {section}{\numberline {3.1}Binding degli indirizzi}{17}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Linking}{17}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Loading}{18}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Spazio di indirizzamento logico}{18}{section.3.4}%
@@ -64,24 +64,24 @@
 \contentsline {subsection}{\numberline {8.2.5}Directory a grafo generico}{48}{subsection.8.2.5}%
 \contentsline {subsection}{\numberline {8.2.6}Mount di file system}{48}{subsection.8.2.6}%
 \contentsline {section}{\numberline {8.3}Protezione}{48}{section.8.3}%
-\contentsline {section}{\numberline {8.4}Implementazione del file system}{49}{section.8.4}%
-\contentsline {subsection}{\numberline {8.4.1}Strutture su disco}{50}{subsection.8.4.1}%
-\contentsline {subsection}{\numberline {8.4.2}Strutture in memoria}{50}{subsection.8.4.2}%
+\contentsline {section}{\numberline {8.4}Implementazione del file system}{50}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Strutture su disco}{51}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Strutture in memoria}{51}{subsection.8.4.2}%
 \contentsline {subsection}{\numberline {8.4.3}Allocazione dello spazio su disco}{51}{subsection.8.4.3}%
-\contentsline {subsubsection}{Allocazione contigua}{51}{section*.20}%
+\contentsline {subsubsection}{Allocazione contigua}{52}{section*.20}%
 \contentsline {subsubsection}{Allocazione a lista (linked list)}{52}{section*.21}%
 \contentsline {paragraph}{Esempio - FAT (File Allocation Table)}{53}{section*.22}%
 \contentsline {paragraph}{Variante con allocazione contigua}{53}{section*.23}%
 \contentsline {subsubsection}{Allocazione indicizzata}{53}{section*.24}%
 \contentsline {paragraph}{Indici multilivello}{54}{section*.25}%
 \contentsline {paragraph}{Schema concatenato}{55}{section*.26}%
-\contentsline {section}{\numberline {8.5}Implementazione delle directory}{55}{section.8.5}%
+\contentsline {section}{\numberline {8.5}Implementazione delle directory}{56}{section.8.5}%
 \contentsline {section}{\numberline {8.6}Gestione dello spazio libero}{56}{section.8.6}%
 \contentsline {subsection}{\numberline {8.6.1}Vettore di bit}{56}{subsection.8.6.1}%
-\contentsline {subsection}{\numberline {8.6.2}Lista concatenata}{56}{subsection.8.6.2}%
-\contentsline {subsection}{\numberline {8.6.3}Raggruppamento}{56}{subsection.8.6.3}%
+\contentsline {subsection}{\numberline {8.6.2}Lista concatenata}{57}{subsection.8.6.2}%
+\contentsline {subsection}{\numberline {8.6.3}Raggruppamento}{57}{subsection.8.6.3}%
 \contentsline {subsection}{\numberline {8.6.4}Conteggio}{57}{subsection.8.6.4}%
 \contentsline {section}{\numberline {8.7}Efficienza e prestazioni}{57}{section.8.7}%
-\contentsline {subsection}{\numberline {8.7.1}Dischi virtuali}{57}{subsection.8.7.1}%
-\contentsline {subsection}{\numberline {8.7.2}Buffer cache}{57}{subsection.8.7.2}%
-\contentsline {subsection}{\numberline {8.7.3}File system log structured}{57}{subsection.8.7.3}%
+\contentsline {subsection}{\numberline {8.7.1}Dischi virtuali}{58}{subsection.8.7.1}%
+\contentsline {subsection}{\numberline {8.7.2}Buffer cache}{58}{subsection.8.7.2}%
+\contentsline {subsection}{\numberline {8.7.3}File system log structured}{58}{subsection.8.7.3}%
